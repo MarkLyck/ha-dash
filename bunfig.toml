@@ -1,0 +1,3 @@
+[install.scopes]
+
+"@fortawesome" = { token = "9C6B8A02-A946-4C34-9574-8D4F6A7773E4", url = "https://npm.fontawesome.com/" }

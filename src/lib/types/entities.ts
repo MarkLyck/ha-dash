@@ -30,14 +30,14 @@ interface Lock extends Omit<EntityBase, "state" | "domain"> {
   state: "locked" | "unlocked";
 }
 
-// interface Camera extends Omit<EntityBase, "state" | "domain"> {
-//   domain: "camera";
-//   state: "on" | "off";
-// }
+interface Camera extends Omit<EntityBase, "state" | "domain"> {
+  domain: "camera";
+  state: "on" | "off";
+}
 
-// interface Light extends Omit<EntityBase, "state" | "domain"> {
-//   domain: "light";
-//   state: "on" | "off";
-// }
+interface Light extends Omit<EntityBase, "state" | "domain"> {
+  domain: "light";
+  state: "on" | "off";
+}
 
-export type Entity = Lock; //| Camera | Light;
+export type Entity = Lock | Camera | Light;

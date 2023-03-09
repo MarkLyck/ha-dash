@@ -25,16 +25,30 @@ export const Lock: Story = {
   },
 };
 
-// export const Light: Story = {
-//   args: {
-//     entity: {
-//       entity_id: "light.ceiling",
-//       object_id: "ceiling_light",
-//       domain: "light",
-//       name: "Ceiling light",
-//       state: "on",
-//       last_updated: new Date(),
-//       last_changed: new Date(),
-//     },
-//   },
-// };
+export const Light: Story = {
+  args: {
+    entity: {
+      entity_id: "light.ceiling",
+      object_id: "ceiling_light",
+      domain: "light",
+      name: "Ceiling light",
+      state: "on",
+      last_updated: new Date(),
+      last_changed: new Date(),
+    },
+  },
+};
+
+export const Camera: Story = {
+  args: {
+    entity: {
+      entity_id: "camera.backyard",
+      object_id: "backyard_camera",
+      domain: "camera",
+      name: "Camera",
+      state: "on",
+      last_updated: new Date(),
+      last_changed: new Date(),
+    },
+  },
+};
