@@ -2,14 +2,64 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Scene } from './scene'
 
-const meta: Meta<typeof Scene> = {
-  title: 'Scene',
+const meta = {
   component: Scene,
   tags: ['autodocs'],
-}
+} satisfies Meta<typeof Scene>
 
 export default meta
 type Story = StoryObj<typeof Scene>
+
+const sceneTypes = [
+  'Good morning',
+  'Good night',
+  'Away',
+  'Romance',
+  'Cooking',
+  'Breakfast',
+  'Dinner',
+  'Party',
+  'Work',
+  'Reading',
+  'TV',
+  'Gaming',
+  'Exercise',
+  'Vacation',
+]
+
+export const DemoOn: Story = {
+  parameters: {
+    controls: false,
+  },
+  render: () => {
+    return (
+      <div className="flex flex-wrap gap-2">
+        {sceneTypes.map((name) => (
+          <Scene key={name} name={name} active setActive={console.log} />
+        ))}
+      </div>
+    )
+  },
+}
+export const DemoOff: Story = {
+  parameters: {
+    controls: false,
+  },
+  render: () => {
+    return (
+      <div className="flex flex-wrap gap-2">
+        {sceneTypes.map((name) => (
+          <Scene
+            key={name}
+            name={name}
+            active={false}
+            setActive={console.log}
+          />
+        ))}
+      </div>
+    )
+  },
+}
 
 export const GoodMorning: Story = {
   args: {
