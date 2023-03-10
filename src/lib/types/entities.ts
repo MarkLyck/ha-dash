@@ -40,4 +40,10 @@ interface Light extends Omit<EntityBase, "state" | "domain"> {
   state: "on" | "off";
 }
 
-export type Entity = Lock | Camera | Light;
+// special entity state for scenes
+interface Scene extends Omit<EntityBase, "state" | "domain"> {
+  domain: "scene";
+  state: "on" | "off";
+}
+
+export type Entity = Scene | Lock | Camera | Light;
