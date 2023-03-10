@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
-const defaultClasses = ['mr-3', 'text-2xl', 'h-6', 'w-6', 'opacity-50']
+const defaultClasses = ['mr-3', 'text-2xl', 'h-6', 'w-6']
 
 const icon = cva(defaultClasses, {
   variants: {
     active: {
       true: ['text-neutral-500', 'dark:text-neutral-100', 'opacity-100'],
-      false: ['text-neutral-700', 'dark:text-neutral-300'],
+      false: ['text-neutral-700', 'dark:text-neutral-300', 'opacity-50'],
     },
   },
 })

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import Typography from '@/components/ui/typography'
 import { Scene } from './scene'
 
 const meta = {
@@ -33,10 +34,13 @@ export const DemoOn: Story = {
   },
   render: () => {
     return (
-      <div className="flex flex-wrap gap-2">
-        {sceneTypes.map((name) => (
-          <Scene key={name} name={name} active setActive={console.log} />
-        ))}
+      <div className="rounded bg-white p-4 dark:bg-[#262B34]">
+        <Typography.Title className="mb-4">Scenes</Typography.Title>
+        <div className="flex flex-wrap gap-2 ">
+          {sceneTypes.map((name) => (
+            <Scene key={name} name={name} active setActive={console.log} />
+          ))}
+        </div>
       </div>
     )
   },
@@ -47,15 +51,18 @@ export const DemoOff: Story = {
   },
   render: () => {
     return (
-      <div className="flex flex-wrap gap-2">
-        {sceneTypes.map((name) => (
-          <Scene
-            key={name}
-            name={name}
-            active={false}
-            setActive={console.log}
-          />
-        ))}
+      <div className="rounded bg-white p-4 dark:bg-[#262B34]">
+        <Typography.Title className="mb-4">Scenes</Typography.Title>
+        <div className="flex flex-wrap gap-2 ">
+          {sceneTypes.map((name) => (
+            <Scene
+              key={name}
+              name={name}
+              active={false}
+              setActive={console.log}
+            />
+          ))}
+        </div>
       </div>
     )
   },

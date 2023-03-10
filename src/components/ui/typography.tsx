@@ -1,5 +1,7 @@
 import { cva } from 'class-variance-authority'
 
+import { cn } from '@/lib/utils'
+
 export type TypographyProps = {
   children: React.ReactNode
   className?: string
@@ -7,7 +9,7 @@ export type TypographyProps = {
 
 const H1 = ({ children, className = '' }: TypographyProps) => (
   <h1
-    className={`scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl ${className}`}
+    className={`dark:text-neutral-50lg:text-5xl scroll-m-20 text-4xl font-extrabold  tracking-tight  ${className}`}
   >
     {children}
   </h1>
@@ -15,7 +17,7 @@ const H1 = ({ children, className = '' }: TypographyProps) => (
 
 const H2 = ({ children, className = '' }: TypographyProps) => (
   <h2
-    className={`mt-10 scroll-m-20 border-b border-b-slate-200 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 dark:border-b-slate-700 ${className}`}
+    className={`dark:text-neutral-50text-3xl scroll-m-20 border-b border-b-slate-200  pb-2  font-semibold tracking-tight transition-colors first:mt-0 dark:border-b-slate-700 ${className}`}
   >
     {children}
   </h2>
@@ -23,7 +25,7 @@ const H2 = ({ children, className = '' }: TypographyProps) => (
 
 const H3 = ({ children, className = '' }: TypographyProps) => (
   <h3
-    className={`mt-8 scroll-m-20 text-2xl font-semibold tracking-tight ${className}`}
+    className={`scroll-m-20 text-2xl font-semibold tracking-tight dark:text-neutral-50 ${className}`}
   >
     {children}
   </h3>
@@ -31,7 +33,7 @@ const H3 = ({ children, className = '' }: TypographyProps) => (
 
 const H4 = ({ children, className = '' }: TypographyProps) => (
   <h4
-    className={`mt-8 scroll-m-20 text-xl font-semibold tracking-tight ${className}`}
+    className={`scroll-m-20 text-xl font-semibold tracking-tight dark:text-neutral-50 ${className}`}
   >
     {children}
   </h4>
@@ -98,7 +100,7 @@ const textClasses = cva(['text-slate-900', 'dark:text-slate-50'], {
 })
 
 export const Text = ({ children, size = 'md', className = '' }: TextProps) => (
-  <p className={textClasses({ size, className })}>{children}</p>
+  <p className={cn(textClasses({ size, className }))}>{children}</p>
 )
 
 export const Subtle = ({ children, className = '' }: TextProps) => (
