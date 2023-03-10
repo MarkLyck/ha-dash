@@ -98,7 +98,7 @@ const textClasses = cva(['text-slate-900', 'dark:text-slate-50'], {
 })
 
 export const Text = ({ children, size = 'md', className = '' }: TextProps) => (
-  <p className={`${textClasses({ size })} ${className}`}>{children}</p>
+  <p className={textClasses({ size, className })}>{children}</p>
 )
 
 export const Subtle = ({ children, className = '' }: TextProps) => (

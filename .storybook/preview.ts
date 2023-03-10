@@ -1,11 +1,32 @@
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import type { Preview } from '@storybook/react'
 
 import 'tailwindcss/tailwind.css'
+import '@/lib/icons'
 
 const preview: Preview = {
   parameters: {
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+    },
     backgrounds: {
       default: 'light',
+    },
+    themes: {
+      clearable: false,
+      list: [
+        {
+          name: 'Light',
+          class: [],
+          color: '#ffffff',
+          default: true,
+        },
+        {
+          name: 'Dark',
+          class: ['dark'],
+          color: '#000000',
+        },
+      ],
     },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {

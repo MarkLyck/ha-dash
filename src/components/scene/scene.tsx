@@ -1,5 +1,7 @@
 import { cva } from 'class-variance-authority'
 
+import { Button } from '@/components/ui/button'
+import Typography from '@/components/ui/typography'
 import { getSceneIcon } from './sceneIcons'
 
 type SceneProps = {
@@ -9,44 +11,38 @@ type SceneProps = {
 }
 
 const container = cva(
-  [
-    'flex',
-    'h-12',
-    'w-[132px]',
-    'items-center',
-    'rounded',
-    'p-2',
-    'px-3',
-    'hover:bg-white',
-  ],
+  ['flex', 'h-12', 'w-[132px]', 'items-center', 'rounded', 'p-2', 'px-3'],
   {
     variants: {
       active: {
-        true: ['bg-white', 'shadow-sm'],
-        false: 'bg-neutral-200',
+        true: ['shadow-sm', 'bg-white', 'dark:bg-neutral-800'],
+        false: ['bg-neutral-200', 'dark:bg-neutral-700'],
       },
     },
   }
 )
 
-const text = cva(['font-md', 'leading-4', 'text-left', 'flex-1'], {
-  variants: {
-    active: {
-      true: 'text-neutral-900',
-      false: 'text-neutral-500',
+const text = cva(
+  ['font-md', 'leading-4', 'text-left', 'flex-1', 'text-neutral-900'],
+  {
+    variants: {
+      active: {
+        false: 'text-opacity-40',
+      },
     },
-  },
-})
+  }
+)
 
 export const Scene = ({ name, active, setActive }: SceneProps) => {
   const SceneIcon = getSceneIcon({ name })
   return (
-    <button
+    <Button
+      variant="outline"
       className={container({ active })}
       onClick={() => setActive(!active)}
     >
       <SceneIcon active={active} />
-      <span className={text({ active })}>{name}</span>
-    </button>
+      <Typography.Text className={text({ active })}>{name}</Typography.Text>
+    </Button>
   )
 }
