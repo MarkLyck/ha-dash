@@ -1,7 +1,6 @@
 import type { Entity } from "@/lib/types/entities";
 import { cva } from "class-variance-authority";
 import { FontAwesomeIcon, getEntityIcon } from "@/utils/icon";
-import { getEntityColor } from "@/utils/color";
 
 const iconContainer = cva(
   [
@@ -33,8 +32,6 @@ type StatusProps = {
 
 export const Status = ({ entity }: StatusProps) => {
   if (!entity) return null;
-  const entityColor = getEntityColor(entity);
-  console.log("🔈 ~ entityColor:", entityColor);
 
   return (
     <div className="flex flex-col items-center">
