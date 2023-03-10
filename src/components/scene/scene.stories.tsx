@@ -1,49 +1,49 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Scene } from "./scene";
+import { Scene } from './scene'
 
 const meta: Meta<typeof Scene> = {
-  title: "Scene",
+  title: 'Scene',
   component: Scene,
-  tags: ["autodocs"],
-};
+  tags: ['autodocs'],
+}
 
-export default meta;
-type Story = StoryObj<typeof Scene>;
+export default meta
+type Story = StoryObj<typeof Scene>
 
 export const GoodMorning: Story = {
   args: {
-    name: "Good Morning",
+    name: 'Good Morning',
     active: true,
     setActive: (active) => {
-      console.dir(active);
+      console.dir(active)
     },
   },
-};
+}
 export const GoodNight: Story = {
   args: {
-    name: "Good Night",
+    name: 'Good Night',
     active: true,
     setActive: (active) => {
-      console.dir(active);
+      console.dir(active)
     },
   },
-};
+}
 export const Romantic: Story = {
   args: {
-    name: "Romance",
+    name: 'Romance',
     active: true,
     setActive: (active) => {
-      console.dir(active);
+      console.dir(active)
     },
   },
-};
+}
 export const Other: Story = {
   args: {
-    name: "Other",
+    name: 'Other',
     active: true,
     setActive: (active) => {
-      console.dir(active);
+      console.dir(active)
     },
   },
-};
+}
