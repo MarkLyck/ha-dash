@@ -1,59 +1,59 @@
-import { cva } from "class-variance-authority";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouseNight,
   faStars,
   faSunBright,
-} from "@fortawesome/pro-duotone-svg-icons";
+} from '@fortawesome/pro-duotone-svg-icons'
 import {
-  faHouseWindow as faHouseWindowSolid,
   faHeart as faHeartSolid,
-} from "@fortawesome/pro-solid-svg-icons";
+  faHouseWindow as faHouseWindowSolid,
+} from '@fortawesome/pro-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { cva } from 'class-variance-authority'
 
-const icon = cva(["mr-3", "text-2xl", "h-6", "w-6"], {
+const icon = cva(['mr-3', 'text-2xl', 'h-6', 'w-6'], {
   variants: {
     active: {
-      true: "text-yellow-500",
-      false: "text-neutral-700",
+      true: 'text-yellow-500',
+      false: 'text-neutral-700',
     },
   },
-});
+})
 
 export const getSceneIcon = ({ name }: { name: string }) => {
-  const sceneName = name.toLowerCase();
-  if (sceneName.includes("night")) return GoodNightSceneIcon;
-  if (sceneName.includes("morning")) return GoodMorningSceneIcon;
+  const sceneName = name.toLowerCase()
+  if (sceneName.includes('night')) return GoodNightSceneIcon
+  if (sceneName.includes('morning')) return GoodMorningSceneIcon
   if (
-    sceneName === "romance" ||
-    sceneName === "love" ||
-    sceneName.includes("romantic") ||
-    sceneName.includes("sexy")
+    sceneName === 'romance' ||
+    sceneName === 'love' ||
+    sceneName.includes('romantic') ||
+    sceneName.includes('sexy')
   ) {
-    return RomanticSceneIcon;
+    return RomanticSceneIcon
   }
 
-  return DefaultSceneIcon;
-};
+  return DefaultSceneIcon
+}
 
 export const DefaultSceneIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon icon={faStars} className={icon({ active })} />
-);
+)
 const goodMorningIconSun = cva([], {
   variants: {
     active: {
-      true: "text-yellow-500",
-      false: "text-neutral-400",
+      true: 'text-yellow-500',
+      false: 'text-neutral-400',
     },
   },
-});
+})
 const goodMorningIconHouse = cva([], {
   variants: {
     active: {
-      true: "text-[#7249E3]",
-      false: "text-neutral-700",
+      true: 'text-[#7249E3]',
+      false: 'text-neutral-700',
     },
   },
-});
+})
 export const GoodMorningSceneIcon = ({ active }: { active: boolean }) => (
   <span className={`${icon({ active })} fa-layers`}>
     <FontAwesomeIcon
@@ -68,7 +68,7 @@ export const GoodMorningSceneIcon = ({ active }: { active: boolean }) => (
       className={goodMorningIconHouse({ active })}
     />
   </span>
-);
+)
 
 export const GoodNightSceneIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon
@@ -78,28 +78,28 @@ export const GoodNightSceneIcon = ({ active }: { active: boolean }) => (
       active
         ? {
             // @ts-expect-error - font awesome
-            "--fa-primary-color": "#7249E3",
-            "--fa-secondary-color": "#DBC157",
+            '--fa-primary-color': '#7249E3',
+            '--fa-secondary-color': '#DBC157',
           }
         : undefined
     }
   />
-);
+)
 
-const romanticIcon = cva(["text-opacity-100"], {
+const romanticIcon = cva(['text-opacity-100'], {
   variants: {
     active: {
-      true: "text-red-500",
-      false: "text-neutral-700",
+      true: 'text-red-500',
+      false: 'text-neutral-700',
     },
   },
-});
+})
 export const RomanticSceneIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon
     icon={faHeartSolid}
     className={`${icon({ active })} ${romanticIcon({ active })}`}
   />
-);
+)
 
 // Cooking
 // Party
