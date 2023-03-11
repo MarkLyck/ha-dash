@@ -10,19 +10,6 @@ const preview: Preview = {
     viewport: {
       viewports: INITIAL_VIEWPORTS,
     },
-    // backgrounds: {
-    //   default: 'light',
-    //   values: [
-    //     {
-    //       name: 'light',
-    //       value: '#fff',
-    //     },
-    //     {
-    //       name: 'dark',
-    //       value: '#1E2227',
-    //     },
-    //   ],
-    // },
     themes: {
       clearable: false,
       list: [
