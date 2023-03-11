@@ -3,14 +3,12 @@ import type { Preview } from '@storybook/react'
 
 import 'tailwindcss/tailwind.css'
 import '@/lib/icons'
+import './index.css'
 
 const preview: Preview = {
   parameters: {
     viewport: {
       viewports: INITIAL_VIEWPORTS,
-    },
-    backgrounds: {
-      default: 'light',
     },
     themes: {
       clearable: false,
@@ -24,7 +22,7 @@ const preview: Preview = {
         {
           name: 'Dark',
           class: ['dark'],
-          color: '#000000',
+          color: '#1E2227',
         },
       ],
     },
