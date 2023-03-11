@@ -24,14 +24,18 @@ export const getSceneIcon = ({ name }: { name: string }) => {
   if (sceneName.includes('exercise')) return ExerciseIcon
   if (sceneName.includes('away')) return AwayIcon
   if (sceneName.includes('vacation')) return VacationIcon
-
+  if (sceneName.includes('makeup')) return MakeupIcon
+  if (sceneName.includes('bath') || sceneName.includes('shower')) {
+    return BathIcon
+  }
   if (sceneName.includes('gaming') || sceneName.includes('game')) {
     return GamingIcon
   }
   if (
     sceneName.includes('tv') ||
     sceneName.includes('televison') ||
-    sceneName.includes('watching')
+    sceneName.includes('watching') ||
+    sceneName.includes('movie')
   ) {
     return TVIcon
   }
@@ -182,7 +186,7 @@ export const PartyIcon = ({ active }: { active: boolean }) => (
         ? {
             // @ts-expect-error - font awesome
             '--fa-primary-color': '#fcd34d',
-            '--fa-secondary-color': '#7e22ce',
+            '--fa-secondary-color': '#dc2626',
           }
         : undefined
     }
@@ -276,6 +280,36 @@ export const VacationIcon = ({ active }: { active: boolean }) => (
             // @ts-expect-error - font awesome
             '--fa-primary-color': '#059669',
             '--fa-secondary-color': '#fbbf24',
+          }
+        : undefined
+    }
+  />
+)
+export const BathIcon = ({ active }: { active: boolean }) => (
+  <FontAwesomeIcon
+    icon={['fad', 'bath']}
+    className={`${icon({ active })}`}
+    style={
+      active
+        ? {
+            // @ts-expect-error - font awesome
+            '--fa-primary-color': '#0284c7',
+            '--fa-secondary-color': '#0284c7',
+          }
+        : undefined
+    }
+  />
+)
+export const MakeupIcon = ({ active }: { active: boolean }) => (
+  <FontAwesomeIcon
+    icon={['fad', 'lips']}
+    className={`${icon({ active })}`}
+    style={
+      active
+        ? {
+            // @ts-expect-error - font awesome
+            '--fa-primary-color': '#dc2626',
+            '--fa-secondary-color': '#dc2626',
           }
         : undefined
     }
