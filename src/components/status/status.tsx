@@ -1,7 +1,6 @@
-import { FontAwesomeIcon, getEntityIcon } from '@/utils/icon'
+import { FontAwesomeIcon } from '@/utils/icon'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { cva } from 'class-variance-authority'
-
-import type { Entity } from '@/lib/types/entities'
 
 const iconContainer = cva(
   [
@@ -28,19 +27,23 @@ const iconContainer = cva(
 )
 
 type StatusProps = {
-  entity?: Entity
+  name: string
+  state: string
+  type: string
+  icon: IconProp
 }
 
-export const Status = ({ entity }: StatusProps) => {
-  if (!entity) return null
+export const Status = ({ name, state, type, icon }: StatusProps) => {
+  if (!name || !state || !type) return null
 
   return (
     <div className="flex flex-col items-center">
-      <div className={iconContainer({ type: entity.domain })}>
-        <FontAwesomeIcon icon={getEntityIcon(entity)} />
+      {/* @ts-expect-error - string doesn't match variant type */}
+      <div className={iconContainer({ type: type })}>
+        <FontAwesomeIcon icon={icon} />
       </div>
-      <h4 className="font-semibold">{entity.name}</h4>
-      <span className="opacity-50">{entity.state}</span>
+      <h4 className="font-semibold">{name}</h4>
+      <span className="opacity-50">{state}</span>
     </div>
   )
 }
