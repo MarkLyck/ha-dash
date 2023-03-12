@@ -1,28 +1,20 @@
-import type { Icon } from '@fortawesome/fontawesome-svg-core'
-import {
-  faCameraCctv,
-  faLightbulb,
-  faLightbulbOn,
-  faLock,
-  faLockOpen,
-  faQuestion,
-} from '@fortawesome/pro-duotone-svg-icons'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import type { Entity } from '@/lib/types/entities'
 
 export { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const getEntityIcon = (entity: Entity): Icon => {
-  let icon: unknown = faQuestion
+export const getEntityIcon = (entity: Entity): IconProp => {
+  let icon: IconProp = ['fad', 'question']
   if (entity.domain === 'lock') {
-    icon = faLock
-    if (entity.state === 'unlocked') icon = faLockOpen
+    icon = ['fad', 'lock']
+    if (entity.state === 'unlocked') icon = ['fad', 'lock-open']
   } else if (entity.domain === 'light') {
-    icon = faLightbulb
-    if (entity.state === 'on') icon = faLightbulbOn
+    icon = ['fad', 'lightbulb']
+    if (entity.state === 'on') icon = ['fad', 'lightbulb-on']
   } else if (entity.domain === 'camera') {
-    icon = faCameraCctv
+    icon = ['fad', 'camera-cctv']
   }
 
-  return icon as Icon
+  return icon
 }

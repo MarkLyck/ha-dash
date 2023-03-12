@@ -1,11 +1,11 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
-import Color from 'colorjs.io'
 import colors from 'tailwindcss/colors'
 
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
+import { calculateContrast } from './utils'
 
 type LightCardProps = {
   name: string
@@ -42,16 +42,7 @@ export const LightCard = ({
   setState,
 }: LightCardProps) => {
   let lightColor: string = color
-  if (!color) {
-    lightColor = colors.amber[500]
-  }
-
-  const cColor = new Color(lightColor)
-  const cBackgroundColor = new Color('white')
-
-  // if the contrast is too low, use a different color
-  // e.g. if a user sets the light to "white" on a white background, it should not show as white
-  const contrast = cColor.contrastWCAG21(cBackgroundColor)
+  const contrast = calculateContrast(lightColor)
   if (contrast < 1.1) {
     lightColor = colors.amber[500]
   }
@@ -71,7 +62,7 @@ export const LightCard = ({
         />
       </div>
       <Typography.Text className="text-sm font-medium">{name}</Typography.Text>
-      <Typography.Subtle className="text-sm text-opacity-50">
+      <Typography.Subtle className="text-sm text-opacity-60">
         {isOn ? 'On' : 'Off'}
       </Typography.Subtle>
     </div>
