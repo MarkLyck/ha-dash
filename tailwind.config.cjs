@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const colors = require('tailwindcss/colors')
-console.log('🔈 ~ colors:', colors)
-
 /** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: 'class', //['class', '[data-theme="dark"]'],
