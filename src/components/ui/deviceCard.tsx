@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const deviceCardStyle = cva(
-  'flex flex-col p-3 rounded-xl max-w-[140px] w-full border transition active:scale-95 outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 ',
+  'flex flex-col p-3 rounded-xl max-w-[140px] w-full border transition outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 ',
   {
     variants: {
       active: {
