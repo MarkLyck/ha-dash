@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 import colors from 'tailwindcss/colors'
 
+import { calculateContrast } from '@/lib/utils'
 import { BrightnessSlider } from '@/components/ui/brightnessSlider'
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
-import { calculateContrast } from './utils'
 
 type LightCardProps = {
   name: string
@@ -37,7 +37,7 @@ export const LightCard = ({
   setState,
 }: LightCardProps) => {
   let colorOfLight: string | undefined = color
-  const contrast = calculateContrast(colorOfLight)
+  const contrast = calculateContrast(colorOfLight, 'white')
   if (contrast < 1.1) {
     colorOfLight = colors.slate[100]
   }
@@ -61,9 +61,11 @@ export const LightCard = ({
         />
       </div>
       <Typography.Text className="text-sm font-medium">{name}</Typography.Text>
-      <Typography.Subtle className="text-sm text-opacity-60">
-        {statusText}
-      </Typography.Subtle>
+      {isOn && isDimmable ? null : (
+        <Typography.Subtle className="text-sm text-opacity-60">
+          {statusText}
+        </Typography.Subtle>
+      )}
       {isOn && isDimmable ? (
         <div className="mt-2 flex w-full gap-2">
           <BrightnessSlider

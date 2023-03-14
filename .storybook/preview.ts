@@ -1,31 +1,16 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import type { Preview } from '@storybook/react'
 
+import { WithTheme } from './decorators/withTheme'
 import 'tailwindcss/tailwind.css'
 import '@/lib/icons'
 import './index.css'
 
 const preview: Preview = {
+  decorators: [WithTheme],
   parameters: {
     viewport: {
       viewports: INITIAL_VIEWPORTS,
-    },
-    themes: {
-      clearable: false,
-      default: 'Dark',
-      list: [
-        {
-          name: 'Light',
-          class: [],
-          color: '#ffffff',
-          default: true,
-        },
-        {
-          name: 'Dark',
-          class: ['dark'],
-          color: '#191A23',
-        },
-      ],
     },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -33,6 +18,22 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+  },
+}
+
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Select a theme',
+    defaultValue: 'both',
+    toolbar: {
+      items: [
+        { value: 'light', title: 'Light', icon: 'sun' },
+        { value: 'dark', title: 'Dark', icon: 'moon' },
+        { value: 'both', title: 'Both', icon: 'mirror' },
+      ],
+      dynamicTitle: true,
     },
   },
 }

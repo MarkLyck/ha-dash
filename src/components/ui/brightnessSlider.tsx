@@ -1,15 +1,19 @@
 'use client'
 
 import * as React from 'react'
+import { useTheme } from '@/hooks/useTheme'
 import * as SliderPrimitive from '@radix-ui/react-slider'
 
-import { cn } from '@/lib/utils'
+import { calculateContrast, cn } from '@/lib/utils'
 
 export const BrightnessSlider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, color, ...props }, ref) => {
   const value = Number(props.value)
+
+  const contrast = calculateContrast(color, 'white')
+  console.log('🔈 ~ contrast:', contrast)
 
   return (
     <SliderPrimitive.Root
@@ -27,7 +31,7 @@ export const BrightnessSlider = React.forwardRef<
         />
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb
-        className="relative mr-2 block h-[10px] w-[2px] rounded border border-none bg-slate-400 transition focus:outline-none dark:bg-slate-800 "
+        className="relative mr-2 block h-[10px] w-[2px] rounded border border-none bg-slate-100 transition focus:outline-none dark:bg-slate-800 "
         style={value < 10 ? { opacity: 0 } : { opacity: 1 }}
       />
     </SliderPrimitive.Root>
