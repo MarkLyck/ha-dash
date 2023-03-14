@@ -1,19 +1,22 @@
 import React from 'react'
 
 export const WithTheme = (Story, context) => {
-  let { scheme } = context.globals
+  let { theme } = context.globals
 
-  document.body.classList.remove('light', 'dark')
+  document.body.classList.remove('light')
+  document.body.classList.remove('dark')
 
-  if (scheme === 'light' || scheme === 'dark') {
-    document.body.classList.add(scheme)
+  if (theme === 'light' || theme === 'dark') {
+    document.body.classList.add(theme)
     document.body.style.padding = '16px'
     return (
-      <body className={scheme}>
+      <body className={theme}>
         <Story />
       </body>
     )
   } else {
+    document.body.classList.remove('light')
+    document.body.classList.remove('dark')
     document.body.style.padding = '0px'
   }
 

@@ -11,10 +11,9 @@ export const BrightnessSlider = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, color, ...props }, ref) => {
   const value = Number(props.value)
-  const { type } = useTheme()
-  console.log('🔈 ~ type:', type)
 
   const contrast = calculateContrast(color, 'white')
+  console.log('🔈 ~ contrast:', contrast)
 
   return (
     <SliderPrimitive.Root

@@ -23,8 +23,8 @@ const preview: Preview = {
 }
 
 export const globalTypes = {
-  scheme: {
-    name: 'Scheme',
+  theme: {
+    name: 'Theme',
     description: 'Select a theme',
     defaultValue: 'both',
     toolbar: {
