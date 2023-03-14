@@ -6,18 +6,18 @@ const config = {
     extend: {
       colors: {
         slate: {
-          0: '#ffffff', // card bg light theme
-          50: '#f9fafb',
-          100: '#F7F8FA', // db bg & unselected scene (light theme
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6C717F', // icon color
-          600: '#4b5563',
-          700: '#3C424B', // highlighted scene
-          800: '#252A32', // card background
-          900: '#1D2126', // db bg & unselected scene
-          1000: '#000000',
+          100: '#EEEFFC', // highlight text
+          200: '#D1D3DF', // text color
+          300: '#A8A9B6', // unselected text
+          400: '#9898A5', // unselected text
+          500: '#383943', // border
+          600: '#292A34', // selected bg
+          700: '#2C2D36', // disabled border color
+          800: '#272831', // selected bg
+          900: '#23242D', // disabled bg
+          1000: '#1F2029', // unselected bg
+          1100: '#191A22', // dashboard bg
+          1200: '#15161E', // dark bg
         },
       },
       keyframes: {

@@ -38,7 +38,7 @@ export const Demo: Story = {
   render: () => {
     return (
       <>
-        <div className="rounded bg-white p-4 dark:bg-[#262B34]">
+        <div className="rounded bg-white p-4 dark:bg-slate-700">
           <Typography.Title className="mb-4">Scenes</Typography.Title>
           <div className="flex flex-wrap gap-2 ">
             {sceneTypes.map((name) => (
@@ -46,7 +46,7 @@ export const Demo: Story = {
             ))}
           </div>
         </div>
-        <div className="rounded bg-white p-4 dark:bg-[#262B34]">
+        <div className="rounded bg-white p-4 dark:bg-slate-700">
           <Typography.Title className="mb-4">Scenes</Typography.Title>
           <div className="flex flex-wrap gap-2 ">
             {sceneTypes.map((name) => (

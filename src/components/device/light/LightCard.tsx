@@ -15,16 +15,30 @@ type LightCardProps = {
   setState: (state: boolean) => void
 }
 
-const containerStyle = cva([
-  'flex',
-  'flex-col',
-  'p-3',
-  'rounded-xl',
-  'bg-white',
-  'dark:bg-slate-700',
-  'max-w-[140px]',
-  'w-full',
-])
+const containerStyle = cva(
+  [
+    'flex',
+    'flex-col',
+    'p-3',
+    'rounded-xl',
+    'max-w-[140px]',
+    'w-full',
+    'border',
+  ],
+  {
+    variants: {
+      isOn: {
+        false: [
+          'bg-slate-100',
+          'border-slate-200',
+          'dark:bg-slate-1000',
+          'dark:border-slate-700',
+        ],
+        true: ['bg-white', 'dark:bg-slate-800', 'dark:border-slate-500'],
+      },
+    },
+  }
+)
 
 const iconStyle = cva(['text-xl'], {
   variants: {
@@ -48,7 +62,7 @@ export const LightCard = ({
   }
 
   return (
-    <div className={containerStyle()}>
+    <div className={containerStyle({ isOn })}>
       <div className="mb-4 flex w-full items-center justify-between">
         <FontAwesomeIcon
           icon={icon}
@@ -58,7 +72,7 @@ export const LightCard = ({
         <Switch
           checked={isOn}
           onCheckedChange={setState}
-          style={{ backgroundColor: isOn ? lightColor : undefined }}
+          style={{ backgroundColor: isOn ? '#5E6AD2' : undefined }}
         />
       </div>
       <Typography.Text className="text-sm font-medium">{name}</Typography.Text>

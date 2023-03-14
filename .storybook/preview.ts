@@ -12,6 +12,7 @@ const preview: Preview = {
     },
     themes: {
       clearable: false,
+      default: 'Dark',
       list: [
         {
           name: 'Light',
@@ -22,7 +23,7 @@ const preview: Preview = {
         {
           name: 'Dark',
           class: ['dark'],
-          color: '#1E2227',
+          color: '#191A23',
         },
       ],
     },
