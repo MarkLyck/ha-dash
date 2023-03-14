@@ -54,6 +54,8 @@ export const Demo: Story = {
         icon={['far', 'lamp']}
         isOn
         color="lightpink"
+        isDimmable
+        brightness={14}
         setState={() => {
           //
         }}
@@ -85,6 +87,7 @@ export const OutdoorBulb: Story = {
     name: 'Outdoor bulb',
     icon: ['far', 'light-ceiling'],
     isOn: true,
+    isDimmable: true,
     color: 'yellow',
     setState: () => {
       //
