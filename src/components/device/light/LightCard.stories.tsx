@@ -5,6 +5,11 @@ import { LightCard } from './LightCard'
 const meta = {
   component: LightCard,
   tags: ['autodocs'],
+  argTypes: {
+    brightness: {
+      control: { type: 'range', min: 0, max: 100, step: 1 },
+    },
+  },
 } satisfies Meta<typeof LightCard>
 
 export default meta

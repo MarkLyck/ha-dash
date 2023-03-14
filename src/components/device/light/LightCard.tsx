@@ -11,7 +11,7 @@ import { calculateContrast } from './utils'
 
 type LightCardProps = {
   name: string
-  color: string
+  color: string | undefined
   isOn: boolean
   isDimmable?: boolean
   brightness?: number
@@ -19,7 +19,7 @@ type LightCardProps = {
   setState: (state: boolean) => void
 }
 
-const iconStyle = cva(['text-xl'], {
+const iconStyle = cva(['text-xl', 'text-slate-600', 'dark:text-slate-100'], {
   variants: {
     isOn: {
       false: ['text-slate-400', 'dark:text-slate-400'],
@@ -36,10 +36,10 @@ export const LightCard = ({
   icon,
   setState,
 }: LightCardProps) => {
-  let lightColor: string = color
-  const contrast = calculateContrast(lightColor)
+  let colorOfLight: string = color
+  const contrast = calculateContrast(colorOfLight)
   if (contrast < 1.1) {
-    lightColor = colors.amber[500]
+    colorOfLight = colors.slate[100]
   }
 
   let statusText = 'Off'
@@ -56,7 +56,7 @@ export const LightCard = ({
         <FontAwesomeIcon
           icon={icon}
           className={iconStyle({ isOn })}
-          style={{ color: isOn ? lightColor : undefined }}
+          // style={{ color: isOn ? colorOfLight : undefined }}
         />
         <Switch
           checked={isOn}
@@ -69,8 +69,14 @@ export const LightCard = ({
         {statusText}
       </Typography.Subtle>
       {isOn && isDimmable ? (
-        <div className="mt-2 w-full">
-          <BrightnessSlider value={[brightness]} max={100} step={1} />
+        <div className="mt-2 flex w-full gap-2">
+          <BrightnessSlider
+            value={[brightness]}
+            color={color}
+            max={100}
+            step={1}
+            className="flex-1"
+          />
         </div>
       ) : null}
     </DeviceCard>
