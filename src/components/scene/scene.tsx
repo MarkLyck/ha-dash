@@ -21,6 +21,8 @@ const container = cva(
     'p-2',
     'px-3',
     'dark:border-none',
+    'dark:border-slate-500',
+    'border-1',
   ],
   {
     variants: {

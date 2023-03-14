@@ -15,7 +15,7 @@ export const Demo: Story = {
     <div className="flex flex-wrap gap-4">
       <LightCard
         name="Outdoor bulb"
-        icon={['fad', 'lightbulb-on']}
+        icon={['far', 'lightbulb-on']}
         isOn
         color="yellow"
         setState={() => {
@@ -24,7 +24,7 @@ export const Demo: Story = {
       />
       <LightCard
         name="Living room light"
-        icon={['fad', 'light-ceiling']}
+        icon={['far', 'light-ceiling']}
         isOn={false}
         color="yellow"
         setState={() => {
@@ -33,7 +33,7 @@ export const Demo: Story = {
       />
       <LightCard
         name="Desk lamp"
-        icon={['fad', 'lamp-desk']}
+        icon={['far', 'lamp-desk']}
         isOn
         color="purple"
         setState={() => {
@@ -42,7 +42,7 @@ export const Demo: Story = {
       />
       <LightCard
         name="Floor lamp"
-        icon={['fad', 'lamp-floor']}
+        icon={['far', 'lamp-floor']}
         isOn={false}
         color="#ffffff"
         setState={() => {
@@ -51,16 +51,18 @@ export const Demo: Story = {
       />
       <LightCard
         name="Sofa lamp"
-        icon={['fad', 'lamp']}
+        icon={['far', 'lamp']}
         isOn
         color="lightpink"
+        isDimmable
+        brightness={14}
         setState={() => {
           //
         }}
       />
       <LightCard
         name="Holiday lights"
-        icon={['fad', 'lights-holiday']}
+        icon={['far', 'lights-holiday']}
         isOn
         color="red"
         setState={() => {
@@ -69,7 +71,7 @@ export const Demo: Story = {
       />
       <LightCard
         name="Christmas tree"
-        icon={['fad', 'tree-christmas']}
+        icon={['far', 'tree-christmas']}
         isOn
         color="green"
         setState={() => {
@@ -83,8 +85,9 @@ export const Demo: Story = {
 export const OutdoorBulb: Story = {
   args: {
     name: 'Outdoor bulb',
-    icon: ['fad', 'light-ceiling'],
+    icon: ['far', 'light-ceiling'],
     isOn: true,
+    isDimmable: true,
     color: 'yellow',
     setState: () => {
       //
@@ -95,7 +98,7 @@ export const OutdoorBulb: Story = {
 export const DeskLamp: Story = {
   args: {
     name: 'Desk lamp',
-    icon: ['fad', 'lamp-desk'],
+    icon: ['far', 'lamp-desk'],
     isOn: true,
     color: 'yellow',
     setState: () => {
