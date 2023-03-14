@@ -26,10 +26,13 @@ export const globalTypes = {
   scheme: {
     name: 'Scheme',
     description: 'Select a theme',
-    defaultValue: 'dark',
+    defaultValue: 'both',
     toolbar: {
-      icon: 'circlehollow',
-      items: ['light', 'dark', 'both'],
+      items: [
+        { value: 'light', title: 'Light', icon: 'sun' },
+        { value: 'dark', title: 'Dark', icon: 'moon' },
+        { value: 'both', title: 'Both', icon: 'mirror' },
+      ],
       dynamicTitle: true,
     },
   },
