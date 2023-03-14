@@ -24,3 +24,5 @@ jobs:
           exitOnceUploaded: true
           onlyChanged: true
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        env:
+          DATABASE_URL: ''
