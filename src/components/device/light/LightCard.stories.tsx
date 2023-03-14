@@ -49,6 +49,8 @@ export const Demo: Story = {
         name="Floor lamp"
         icon={['far', 'lamp-floor']}
         isOn={false}
+        isDimmable
+        brightness={70}
         color="#ffffff"
         setState={() => {
           //
@@ -69,6 +71,8 @@ export const Demo: Story = {
         name="Holiday lights"
         icon={['far', 'lights-holiday']}
         isOn
+        isDimmable
+        brightness={99}
         color="red"
         setState={() => {
           //
