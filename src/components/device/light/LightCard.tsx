@@ -9,7 +9,7 @@ import { DeviceCard } from '@/components/ui/deviceCard'
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
 
-type LightCardProps = {
+export interface LightCardProps {
   name: string
   color: string | undefined
   isOn: boolean
@@ -57,6 +57,7 @@ export const LightCard = ({
         <Switch
           checked={isOn}
           onCheckedChange={setState}
+          onClick={(e) => e.stopPropagation()}
           style={{ backgroundColor: isOn ? '#5E6AD2' : undefined }}
         />
       </div>
@@ -69,6 +70,7 @@ export const LightCard = ({
       {isOn && isDimmable ? (
         <div className="mt-2 flex w-full gap-2">
           <BrightnessSlider
+            onClick={(e) => e.stopPropagation()}
             value={[brightness]}
             color={color}
             max={100}

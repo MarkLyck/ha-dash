@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { LightCard } from './LightCard'
+import { Light as LightCard } from './index'
+
+// import { LightCard } from './LightCard'
 
 const meta = {
   component: LightCard,
