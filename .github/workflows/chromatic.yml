@@ -25,4 +25,4 @@ jobs:
           onlyChanged: true
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         env:
-          DATABASE_URL: ''
+          DATABASE_URL: file:./db.sqlite
