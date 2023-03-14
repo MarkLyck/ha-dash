@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { LightCard } from './LightCard'
+import { Light as LightCard } from './index'
+
+// import { LightCard } from './LightCard'
 
 const meta = {
   component: LightCard,
@@ -22,7 +24,7 @@ export const Demo: Story = {
         name="Outdoor bulb"
         icon={['far', 'lightbulb-on']}
         isOn
-        color="yellow"
+        color="white"
         setState={() => {
           //
         }}
@@ -31,7 +33,7 @@ export const Demo: Story = {
         name="Living room light"
         icon={['far', 'light-ceiling']}
         isOn={false}
-        color="yellow"
+        color="white"
         setState={() => {
           //
         }}
@@ -97,7 +99,7 @@ export const OutdoorBulb: Story = {
     icon: ['far', 'light-ceiling'],
     isOn: true,
     isDimmable: true,
-    color: 'yellow',
+    color: 'white',
     setState: () => {
       //
     },
@@ -109,7 +111,7 @@ export const DeskLamp: Story = {
     name: 'Desk lamp',
     icon: ['far', 'lamp-desk'],
     isOn: true,
-    color: 'yellow',
+    color: 'white',
     setState: () => {
       //
     },
