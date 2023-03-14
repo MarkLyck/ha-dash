@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Setup Bun Runtime
+      - name: 🥟 Setup Bun
         uses: antongolub/action-setup-bun@v1
-      - name: install depencies
+      - name: 📦 install depencies
         run: bun i
-      - name: Publish to Chromatic
+      - name: ☁️ Publish to Chromatic
         uses: chromaui/action@v1
         with:
           exitOnceUploaded: true
