@@ -1,6 +1,8 @@
 import Color from 'colorjs.io'
 
-export const calculateContrast = (color: string) => {
+export const calculateContrast = (color: string | undefined) => {
+  if (!color) return 0
+
   let contrast = 0
   try {
     const lightColor = new Color(color)

@@ -36,7 +36,7 @@ export const LightCard = ({
   icon,
   setState,
 }: LightCardProps) => {
-  let colorOfLight: string = color
+  let colorOfLight: string | undefined = color
   const contrast = calculateContrast(colorOfLight)
   if (contrast < 1.1) {
     colorOfLight = colors.slate[100]
@@ -53,11 +53,7 @@ export const LightCard = ({
   return (
     <DeviceCard active={isOn}>
       <div className="mb-4 flex w-full items-center justify-between">
-        <FontAwesomeIcon
-          icon={icon}
-          className={iconStyle({ isOn })}
-          // style={{ color: isOn ? colorOfLight : undefined }}
-        />
+        <FontAwesomeIcon icon={icon} className={iconStyle({ isOn })} />
         <Switch
           checked={isOn}
           onCheckedChange={setState}
