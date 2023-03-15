@@ -62,7 +62,7 @@ export const LightCard = ({
         />
       </div>
       <Typography.Text className="text-sm font-medium">{name}</Typography.Text>
-      {isOn && isDimmable ? null : (
+      {isDimmable ? null : (
         <Typography.Subtle className="text-sm text-opacity-60">
           {statusText}
         </Typography.Subtle>
