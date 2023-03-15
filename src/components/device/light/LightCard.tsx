@@ -8,6 +8,7 @@ import { BrightnessSlider } from '@/components/ui/brightnessSlider'
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
+import { LightDialogContent } from './DialogContent'
 
 export interface LightCardProps {
   name: string
@@ -17,6 +18,8 @@ export interface LightCardProps {
   brightness?: number
   icon: IconProp
   setState: (state: boolean) => void
+  setColor: (color: string) => void
+  setBrightness: (brightness: number) => void
 }
 
 const iconStyle = cva(['text-xl', 'text-slate-600', 'dark:text-slate-100'], {
@@ -35,6 +38,8 @@ export const LightCard = ({
   color,
   icon,
   setState,
+  setColor,
+  setBrightness,
 }: LightCardProps) => {
   let colorOfLight: string | undefined = color
   const contrast = calculateContrast(colorOfLight, 'white')
@@ -51,7 +56,11 @@ export const LightCard = ({
   }
 
   return (
-    <DeviceCard active={isOn}>
+    <DeviceCard
+      active={isOn}
+      name={name}
+      modalContent={<LightDialogContent color={color} setColor={setColor} />}
+    >
       <div className="mb-4 flex w-full items-center justify-between">
         <FontAwesomeIcon icon={icon} className={iconStyle({ isOn })} />
         <Switch
@@ -71,6 +80,7 @@ export const LightCard = ({
         <div className="mt-2 flex w-full gap-2">
           <BrightnessSlider
             onClick={(e) => e.stopPropagation()}
+            onChange={(value) => setBrightness(Number(value))}
             value={[brightness]}
             color={color}
             max={100}

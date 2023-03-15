@@ -1,5 +1,13 @@
 import { cva } from 'class-variance-authority'
 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+
 export const deviceCardStyle = cva(
   'flex flex-1 flex-col p-3 rounded-xl w-full border transition ',
   {
@@ -25,8 +33,37 @@ export const deviceCardStyle = cva(
 
 type DeviceCardProps = {
   active: boolean
+  name: string
   children: React.ReactNode
+  modalContent?: React.ReactNode
 }
-export const DeviceCard = ({ active, children }: DeviceCardProps) => {
-  return <div className={deviceCardStyle({ active })}>{children}</div>
+export const DeviceCard = ({
+  name,
+  active,
+  modalContent,
+  children,
+}: DeviceCardProps) => {
+  if (!modalContent) {
+    return (
+      <div className="w-full max-w-[140px]">
+        <div className={deviceCardStyle({ active })}>{children}</div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="w-full max-w-[140px]">
+      <Dialog>
+        <DialogTrigger className="w-full rounded-xl text-left outline-none transition focus:ring-2 focus:ring-slate-400 focus:ring-offset-2  dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900">
+          <div className={deviceCardStyle({ active })}>{children}</div>
+        </DialogTrigger>
+        <DialogContent className="w-auto">
+          <DialogHeader>
+            <DialogTitle className="mb-4">{name}</DialogTitle>
+            {modalContent}
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
 }

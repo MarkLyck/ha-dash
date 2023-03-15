@@ -17,77 +17,73 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof LightCard>
 
+const defaultProps = {
+  name: 'Light',
+  icon: ['far', 'lightbulb-on'],
+  isOn: true,
+  isDimmable: false,
+  color: 'white',
+  setState: () => {
+    //
+  },
+  setColor: () => {
+    //
+  },
+  setBrightness: () => {
+    //
+  },
+}
+
 export const Demo: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
       <LightCard
+        {...defaultProps}
         name="Outdoor bulb"
         icon={['far', 'lightbulb-on']}
         isOn
         color="white"
-        setState={() => {
-          //
-        }}
       />
       <LightCard
+        {...defaultProps}
         name="Living room light"
         icon={['far', 'light-ceiling']}
         isOn={false}
-        color="white"
-        setState={() => {
-          //
-        }}
       />
       <LightCard
+        {...defaultProps}
         name="Desk lamp"
         icon={['far', 'lamp-desk']}
-        isOn
         color="purple"
-        setState={() => {
-          //
-        }}
       />
       <LightCard
+        {...defaultProps}
         name="Floor lamp"
         icon={['far', 'lamp-floor']}
-        isOn={false}
         isDimmable
-        brightness={70}
-        color="#ffffff"
-        setState={() => {
-          //
-        }}
+        brightness={100}
       />
       <LightCard
+        {...defaultProps}
         name="Sofa lamp"
         icon={['far', 'lamp']}
-        isOn
         color="lightpink"
         isDimmable
         brightness={14}
-        setState={() => {
-          //
-        }}
       />
       <LightCard
+        {...defaultProps}
         name="Holiday lights"
         icon={['far', 'lights-holiday']}
-        isOn
         isDimmable
-        brightness={99}
+        brightness={79}
         color="red"
-        setState={() => {
-          //
-        }}
       />
       <LightCard
+        {...defaultProps}
         name="Christmas tree"
         icon={['far', 'tree-christmas']}
-        isOn
         color="green"
-        setState={() => {
-          //
-        }}
       />
     </div>
   ),
@@ -95,25 +91,18 @@ export const Demo: Story = {
 
 export const OutdoorBulb: Story = {
   args: {
+    ...defaultProps,
     name: 'Outdoor bulb',
     icon: ['far', 'light-ceiling'],
-    isOn: true,
     isDimmable: true,
-    color: 'white',
-    setState: () => {
-      //
-    },
+    brightness: 80,
   },
 }
 
 export const DeskLamp: Story = {
   args: {
+    ...defaultProps,
     name: 'Desk lamp',
     icon: ['far', 'lamp-desk'],
-    isOn: true,
-    color: 'white',
-    setState: () => {
-      //
-    },
   },
 }
