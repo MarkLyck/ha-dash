@@ -2,11 +2,12 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
+import { BrightnessSlider } from '@/components/ui/brightnessSlider'
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
 
-export interface LightCardProps {
+export interface SwitchCardProps {
   name: string
   color: string | undefined
   isOn: boolean
@@ -14,7 +15,6 @@ export interface LightCardProps {
   brightness?: number
   icon: IconProp
   setState: (state: boolean) => void
-  setColor: (color: string) => void
   setBrightness: (brightness: number) => void
 }
 
@@ -26,7 +26,23 @@ const iconStyle = cva(['text-xl', 'text-slate-600', 'dark:text-slate-100'], {
   },
 })
 
-export const SwitchCard = ({ name, isOn, icon, setState }: LightCardProps) => {
+export const SwitchCard = ({
+  name,
+  icon,
+  isOn,
+  isDimmable,
+  brightness = 0,
+  setState,
+  setBrightness,
+}: SwitchCardProps) => {
+  let statusText = 'Off'
+  if (isOn) {
+    statusText = 'On'
+    if (isDimmable) {
+      statusText = `${brightness}%`
+    }
+  }
+
   return (
     <DeviceCard active={isOn} name={name}>
       <div className="mb-4 flex w-full items-center justify-between">
@@ -39,9 +55,24 @@ export const SwitchCard = ({ name, isOn, icon, setState }: LightCardProps) => {
         />
       </div>
       <Typography.Text className="text-sm font-medium">{name}</Typography.Text>
-      <Typography.Subtle className="text-sm text-opacity-60">
-        {isOn}
-      </Typography.Subtle>
+      {isOn && isDimmable ? null : (
+        <Typography.Subtle className="text-sm text-opacity-60">
+          {statusText}
+        </Typography.Subtle>
+      )}
+      {isOn && isDimmable ? (
+        <div className="mt-2 flex w-full gap-2">
+          <BrightnessSlider
+            onClick={(e) => e.stopPropagation()}
+            onChange={(value) => setBrightness(Number(value))}
+            value={[brightness]}
+            color="white"
+            max={100}
+            step={1}
+            className="flex-1"
+          />
+        </div>
+      ) : null}
     </DeviceCard>
   )
 }
