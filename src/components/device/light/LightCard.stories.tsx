@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Light as LightCard } from './index'
 
-// import { LightCard } from './LightCard'
-
 const meta = {
   component: LightCard,
   tags: ['autodocs'],
