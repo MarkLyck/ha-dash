@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Light as LightCard } from './index'
+import { Light } from './index'
 
 const meta = {
-  component: LightCard,
+  component: Light,
   tags: ['autodocs'],
   argTypes: {
     brightness: {
       control: { type: 'range', min: 0, max: 100, step: 1 },
     },
   },
-} satisfies Meta<typeof LightCard>
+} satisfies Meta<typeof Light>
 
 export default meta
-type Story = StoryObj<typeof LightCard>
+type Story = StoryObj<typeof Light>
 
 const defaultProps = {
   name: 'Light',
@@ -35,33 +35,33 @@ const defaultProps = {
 export const Demo: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <LightCard
+      <Light
         {...defaultProps}
         name="Outdoor bulb"
         icon={['far', 'lightbulb-on']}
         isOn
         color="white"
       />
-      <LightCard
+      <Light
         {...defaultProps}
         name="Living room light"
         icon={['far', 'light-ceiling']}
         isOn={false}
       />
-      <LightCard
+      <Light
         {...defaultProps}
         name="Desk lamp"
         icon={['far', 'lamp-desk']}
         color="purple"
       />
-      <LightCard
+      <Light
         {...defaultProps}
         name="Floor lamp"
         icon={['far', 'lamp-floor']}
         isDimmable
         brightness={100}
       />
-      <LightCard
+      <Light
         {...defaultProps}
         name="Sofa lamp"
         icon={['far', 'lamp']}
@@ -69,7 +69,7 @@ export const Demo: Story = {
         isDimmable
         brightness={14}
       />
-      <LightCard
+      <Light
         {...defaultProps}
         name="Holiday lights"
         icon={['far', 'lights-holiday']}
@@ -77,7 +77,7 @@ export const Demo: Story = {
         brightness={79}
         color="red"
       />
-      <LightCard
+      <Light
         {...defaultProps}
         name="Christmas tree"
         icon={['far', 'tree-christmas']}
