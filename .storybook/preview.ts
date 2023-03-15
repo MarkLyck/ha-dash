@@ -33,7 +33,6 @@ export const globalTypes = {
         { value: 'dark', title: 'Dark', icon: 'moon' },
         { value: 'both', title: 'Both', icon: 'mirror' },
       ],
-      dynamicTitle: true,
     },
   },
 }
