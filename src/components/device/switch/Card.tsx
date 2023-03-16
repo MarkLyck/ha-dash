@@ -9,13 +9,12 @@ import Typography from '@/components/ui/typography'
 
 export interface SwitchCardProps {
   name: string
-  color: string | undefined
   isOn: boolean
   isDimmable?: boolean
   brightness?: number
   icon: IconProp
   setState: (state: boolean) => void
-  setBrightness: (brightness: number) => void
+  setBrightness?: (brightness: number) => void
 }
 
 const iconStyle = cva(['text-xl', 'text-slate-600', 'dark:text-slate-100'], {
@@ -64,7 +63,7 @@ export const SwitchCard = ({
         <div className="mt-2 flex w-full gap-2">
           <BrightnessSlider
             onClick={(e) => e.stopPropagation()}
-            onChange={(value) => setBrightness(Number(value))}
+            onChange={(value) => setBrightness?.(Number(value))}
             value={[brightness]}
             color="white"
             max={100}
