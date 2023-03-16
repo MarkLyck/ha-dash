@@ -2,7 +2,7 @@
 
 import type { StoryObj } from '@storybook/react'
 
-import { Light, Lock, Switch } from './index'
+import { Light, Lock, Switch, Thermostat } from './index'
 
 const meta = {
   title: 'components/device',
@@ -48,6 +48,16 @@ export const Devices: Story = {
         name="front door"
         icon={['far', 'lock']}
         isLocked
+        setState={() => {
+          //
+        }}
+      />
+      <Thermostat
+        name="Thermostat"
+        icon={['far', 'air-conditioner']}
+        mode="cooling"
+        currentTemperature={76}
+        targetTemperature={72}
         setState={() => {
           //
         }}

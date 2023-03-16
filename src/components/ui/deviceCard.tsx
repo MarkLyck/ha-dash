@@ -1,3 +1,5 @@
+import { type IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
 import {
@@ -7,6 +9,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { Switch } from '@/components/ui/switch'
+import Typography from '@/components/ui/typography'
 
 export const deviceCardStyle = cva(
   'flex flex-1 flex-col p-3 rounded-xl w-full border transition ',
@@ -31,22 +35,56 @@ export const deviceCardStyle = cva(
   }
 )
 
+const iconStyle = cva(['text-xl', 'text-slate-600', 'dark:text-slate-100'], {
+  variants: {
+    active: {
+      false: ['text-slate-400', 'dark:text-slate-400'],
+    },
+  },
+})
+
 type DeviceCardProps = {
-  active: boolean
+  isActive: boolean
   name: string
-  children: React.ReactNode
+  icon: IconProp
+  status: string
+  showStatus?: boolean
+  handleOnOffState: (value: boolean) => void
+  children?: React.ReactNode
   modalContent?: React.ReactNode
 }
 export const DeviceCard = ({
   name,
-  active,
+  icon,
+  status,
+  showStatus = true,
+  handleOnOffState,
+  isActive,
   modalContent,
   children,
 }: DeviceCardProps) => {
   if (!modalContent) {
     return (
       <div className="w-full max-w-[140px]">
-        <div className={deviceCardStyle({ active })}>{children}</div>
+        <div className={deviceCardStyle({ active: isActive })}>
+          <div className="mb-4 flex w-full items-center justify-between">
+            <FontAwesomeIcon
+              icon={icon}
+              className={iconStyle({ active: isActive })}
+            />
+            <Switch
+              checked={isActive}
+              onCheckedChange={() => handleOnOffState(!isActive)}
+              onClick={(e) => e.stopPropagation()}
+              style={{ backgroundColor: isActive ? '#5E6AD2' : undefined }}
+            />
+          </div>
+          <Typography.Text className="text-sm font-medium">
+            {name}
+          </Typography.Text>
+          {showStatus ? <StatusText>{status}</StatusText> : null}
+          {children}
+        </div>
       </div>
     )
   }
@@ -55,7 +93,25 @@ export const DeviceCard = ({
     <div className="w-full max-w-[140px]">
       <Dialog>
         <DialogTrigger className="w-full rounded-xl text-left outline-none transition focus:ring-2 focus:ring-slate-400 focus:ring-offset-2  dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900">
-          <div className={deviceCardStyle({ active })}>{children}</div>
+          <div className={deviceCardStyle({ active: isActive })}>
+            <div className="mb-4 flex w-full items-center justify-between">
+              <FontAwesomeIcon
+                icon={icon}
+                className={iconStyle({ active: isActive })}
+              />
+              <Switch
+                checked={isActive}
+                onCheckedChange={() => handleOnOffState(!isActive)}
+                onClick={(e) => e.stopPropagation()}
+                style={{ backgroundColor: isActive ? '#5E6AD2' : undefined }}
+              />
+            </div>
+            <Typography.Text className="text-sm font-medium">
+              {name}
+            </Typography.Text>
+            {showStatus ? <StatusText>{status}</StatusText> : null}
+            {children}
+          </div>
         </DialogTrigger>
         <DialogContent className="w-auto">
           <DialogHeader>
@@ -67,3 +123,9 @@ export const DeviceCard = ({
     </div>
   )
 }
+
+export const StatusText = ({ children }: { children: React.ReactNode }) => (
+  <Typography.Subtle className="text-sm capitalize text-opacity-60">
+    {children}
+  </Typography.Subtle>
+)
