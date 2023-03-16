@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Switch } from './index'
+import { Switch as SwitchComponent } from './index'
 
 const meta = {
-  component: Switch,
+  component: SwitchComponent,
   tags: ['autodocs'],
   argTypes: {
     brightness: {
       control: { type: 'range', min: 0, max: 100, step: 1 },
     },
   },
-} satisfies Meta<typeof Switch>
+} satisfies Meta<typeof SwitchComponent>
 
 export default meta
-type Story = StoryObj<typeof Switch>
+type Story = StoryObj<typeof SwitchComponent>
 
 const defaultProps = {
   name: 'Light Switch',
@@ -29,7 +29,7 @@ const defaultProps = {
   },
 }
 
-export const LightSwitch: Story = {
+export const Switch: Story = {
   args: {
     ...defaultProps,
     icon: ['far', 'light-switch'],

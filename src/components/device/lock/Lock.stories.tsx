@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Lock } from './index'
+import { Lock as LockComponent } from './index'
 
 const meta = {
-  component: Lock,
+  component: LockComponent,
   tags: ['autodocs'],
-} satisfies Meta<typeof Lock>
+} satisfies Meta<typeof LockComponent>
 
 export default meta
-type Story = StoryObj<typeof Lock>
+type Story = StoryObj<typeof LockComponent>
 
 const defaultProps = {
   name: 'Front door',
@@ -19,7 +19,7 @@ const defaultProps = {
   },
 }
 
-export const LightSwitch: Story = {
+export const Lock: Story = {
   args: {
     ...defaultProps,
     icon: ['far', 'lock'],
