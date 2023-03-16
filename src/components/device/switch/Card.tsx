@@ -47,6 +47,7 @@ export const SwitchCard = ({
       isActive={isOn}
       name={name}
       status={status}
+      showStatus={!isDimmable && isOn}
       icon={icon}
       handleOnOffState={setState}
     >
