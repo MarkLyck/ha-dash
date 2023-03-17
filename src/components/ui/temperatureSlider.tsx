@@ -5,10 +5,10 @@ import * as SliderPrimitive from '@radix-ui/react-slider'
 
 import { cn } from '@/lib/utils'
 
-export const BrightnessSlider = React.forwardRef<
+export const TemperatureSlider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, color, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   const value = Number(props.value)
 
   return (
@@ -21,10 +21,7 @@ export const BrightnessSlider = React.forwardRef<
       {...props}
     >
       <SliderPrimitive.Track className="relative h-4 w-full grow overflow-hidden rounded border border-slate-200 bg-slate-100 dark:border-none dark:bg-slate-1000">
-        <SliderPrimitive.Range
-          className="absolute h-full bg-slate-900 dark:bg-slate-200"
-          style={color ? { background: color } : undefined}
-        />
+        <SliderPrimitive.Range className="absolute h-full bg-slate-900 dark:bg-slate-200" />
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb
         className="relative mr-2 block h-[10px] w-[2px] rounded border border-none bg-slate-100 transition focus:outline-none dark:bg-slate-800 "
@@ -33,4 +30,4 @@ export const BrightnessSlider = React.forwardRef<
     </SliderPrimitive.Root>
   )
 })
-BrightnessSlider.displayName = SliderPrimitive.Root.displayName
+TemperatureSlider.displayName = SliderPrimitive.Root.displayName

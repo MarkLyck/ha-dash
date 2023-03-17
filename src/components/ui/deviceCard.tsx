@@ -47,8 +47,7 @@ type DeviceCardProps = {
   isActive: boolean
   name: string
   icon: IconProp
-  status: string
-  showStatus?: boolean
+  status?: string | null
   handleOnOffState: (value: boolean) => void
   children?: React.ReactNode
   modalContent?: React.ReactNode
@@ -57,7 +56,6 @@ export const DeviceCard = ({
   name,
   icon,
   status,
-  showStatus = true,
   handleOnOffState,
   isActive,
   modalContent,
@@ -79,10 +77,8 @@ export const DeviceCard = ({
               style={{ backgroundColor: isActive ? '#5E6AD2' : undefined }}
             />
           </div>
-          <Typography.Text className="text-sm font-medium">
-            {name}
-          </Typography.Text>
-          {showStatus ? <StatusText>{status}</StatusText> : null}
+          <DeviceName>{name}</DeviceName>
+          {status ? <Status>{status}</Status> : null}
           {children}
         </div>
       </div>
@@ -106,10 +102,8 @@ export const DeviceCard = ({
                 style={{ backgroundColor: isActive ? '#5E6AD2' : undefined }}
               />
             </div>
-            <Typography.Text className="text-sm font-medium">
-              {name}
-            </Typography.Text>
-            {showStatus ? <StatusText>{status}</StatusText> : null}
+            <DeviceName>{name}</DeviceName>
+            {status ? <Status>{status}</Status> : null}
             {children}
           </div>
         </DialogTrigger>
@@ -124,7 +118,13 @@ export const DeviceCard = ({
   )
 }
 
-export const StatusText = ({ children }: { children: React.ReactNode }) => (
+export const DeviceName = ({ children }: { children: React.ReactNode }) => (
+  <Typography.Text className="text-sm font-medium capitalize">
+    {children}
+  </Typography.Text>
+)
+
+export const Status = ({ children }: { children: React.ReactNode }) => (
   <Typography.Subtle className="text-sm capitalize text-opacity-60">
     {children}
   </Typography.Subtle>
