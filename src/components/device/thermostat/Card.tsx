@@ -19,17 +19,22 @@ export const ThermostatCard = ({
   targetTemperature,
   setState,
 }: ThermostatCardProps) => {
-  const isOn = mode !== 'off'
+  const isActive = mode !== 'off'
+
+  let statusText = isActive ? `${targetTemperature}°` : 'off'
+  if (mode === 'cooling' || mode === 'heating') {
+    statusText = `${mode} to ${targetTemperature}°`
+  }
 
   return (
     <DeviceCard
-      isActive={isOn}
+      isActive={isActive}
       name={name}
-      status={`${targetTemperature}°`}
+      status={statusText}
       icon={icon}
       handleOnOffState={setState}
     >
-      {isOn ? (
+      {isActive ? (
         <div className="mt-2 flex w-full gap-2">
           <TemperatureSlider
             value={[targetTemperature]}

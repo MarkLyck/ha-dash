@@ -119,12 +119,14 @@ export const DeviceCard = ({
 }
 
 export const DeviceName = ({ children }: { children: React.ReactNode }) => (
+  // TODO capitalize only first letter
   <Typography.Text className="text-sm font-medium capitalize">
     {children}
   </Typography.Text>
 )
 
 export const Status = ({ children }: { children: React.ReactNode }) => (
+  // TODO capitalize only first letter
   <Typography.Subtle className="text-sm capitalize text-opacity-60">
     {children}
   </Typography.Subtle>
