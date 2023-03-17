@@ -1,10 +1,9 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { cva } from 'class-variance-authority'
 import colors from 'tailwindcss/colors'
 
 import { calculateContrast } from '@/lib/utils'
-import { BrightnessSlider } from '@/components/ui/brightnessSlider'
 import { DeviceCard } from '@/components/ui/deviceCard'
+import { Slider } from '@/components/ui/slider'
 import { LightDialogContent } from './DialogContent'
 
 export interface LightCardProps {
@@ -49,13 +48,13 @@ export const LightCard = ({
       isActive={isOn}
       icon={icon}
       name={name}
-      status={!isDimmable && isOn ? status : null}
-      handleOnOffState={setState}
+      status={status}
+      setIsActive={setState}
       modalContent={<LightDialogContent color={color} setColor={setColor} />}
     >
       {isOn && isDimmable ? (
         <div className="mt-2 flex w-full gap-2">
-          <BrightnessSlider
+          <Slider
             onClick={(e) => e.stopPropagation()}
             onChange={(value) => setBrightness(Number(value))}
             value={[brightness]}

@@ -17,7 +17,7 @@ export const LockCard = ({ name, icon, isLocked, setState }: LockCardProps) => {
       isActive={isLocked}
       name={name}
       status={status}
-      handleOnOffState={setState}
+      setIsActive={setState}
       icon={icon}
     />
   )
