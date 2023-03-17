@@ -47,8 +47,8 @@ type DeviceCardProps = {
   isActive: boolean
   name: string
   icon: IconProp
-  status?: string | null
-  handleOnOffState: (value: boolean) => void
+  status?: React.ReactNode
+  setIsActive: (value: boolean) => void
   children?: React.ReactNode
   modalContent?: React.ReactNode
 }
@@ -56,7 +56,7 @@ export const DeviceCard = ({
   name,
   icon,
   status,
-  handleOnOffState,
+  setIsActive,
   isActive,
   modalContent,
   children,
@@ -72,7 +72,7 @@ export const DeviceCard = ({
             />
             <Switch
               checked={isActive}
-              onCheckedChange={() => handleOnOffState(!isActive)}
+              onCheckedChange={() => setIsActive(!isActive)}
               onClick={(e) => e.stopPropagation()}
               style={{ backgroundColor: isActive ? '#5E6AD2' : undefined }}
             />
@@ -88,7 +88,7 @@ export const DeviceCard = ({
   return (
     <div className="w-full max-w-[140px]">
       <Dialog>
-        <DialogTrigger className="w-full rounded-xl text-left outline-none transition focus:ring-2 focus:ring-slate-400 focus:ring-offset-2  dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900">
+        <DialogTrigger className="w-full rounded-xl text-left outline-none transition focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900">
           <div className={deviceCardStyle({ active: isActive })}>
             <div className="mb-4 flex w-full items-center justify-between">
               <FontAwesomeIcon
@@ -97,7 +97,7 @@ export const DeviceCard = ({
               />
               <Switch
                 checked={isActive}
-                onCheckedChange={() => handleOnOffState(!isActive)}
+                onCheckedChange={() => setIsActive(!isActive)}
                 onClick={(e) => e.stopPropagation()}
                 style={{ backgroundColor: isActive ? '#5E6AD2' : undefined }}
               />
@@ -120,14 +120,14 @@ export const DeviceCard = ({
 
 export const DeviceName = ({ children }: { children: React.ReactNode }) => (
   // TODO capitalize only first letter
-  <Typography.Text className="text-sm font-medium capitalize">
+  <Typography.Text className="text-sm font-medium first-letter:capitalize">
     {children}
   </Typography.Text>
 )
 
 export const Status = ({ children }: { children: React.ReactNode }) => (
   // TODO capitalize only first letter
-  <Typography.Subtle className="text-sm capitalize text-opacity-60">
+  <Typography.Subtle className="text-sm text-opacity-60 first-letter:capitalize">
     {children}
   </Typography.Subtle>
 )
