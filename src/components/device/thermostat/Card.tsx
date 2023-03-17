@@ -1,7 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { cva } from 'class-variance-authority'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
+import { TemperatureSlider } from '@/components/ui/temperatureSlider'
 
 export interface ThermostatCardProps {
   name: string
@@ -16,17 +16,34 @@ export const ThermostatCard = ({
   name,
   icon,
   mode,
+  targetTemperature,
   setState,
 }: ThermostatCardProps) => {
-  const isOn = mode !== 'off'
+  const isActive = mode !== 'off'
+
+  let statusText = isActive ? `${targetTemperature}°` : 'off'
+  if (mode === 'cooling' || mode === 'heating') {
+    statusText = `${mode} to ${targetTemperature}°`
+  }
 
   return (
     <DeviceCard
-      isActive={isOn}
+      isActive={isActive}
       name={name}
-      status={mode}
+      status={statusText}
       icon={icon}
       handleOnOffState={setState}
-    />
+    >
+      {isActive ? (
+        <div className="mt-2 flex w-full gap-2">
+          <TemperatureSlider
+            value={[targetTemperature]}
+            onChange={() => {
+              //
+            }}
+          />
+        </div>
+      ) : null}
+    </DeviceCard>
   )
 }

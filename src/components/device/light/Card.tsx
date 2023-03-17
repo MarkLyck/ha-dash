@@ -1,13 +1,10 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 import colors from 'tailwindcss/colors'
 
 import { calculateContrast } from '@/lib/utils'
 import { BrightnessSlider } from '@/components/ui/brightnessSlider'
-import { DeviceCard, StatusText } from '@/components/ui/deviceCard'
-import { Switch } from '@/components/ui/switch'
-import Typography from '@/components/ui/typography'
+import { DeviceCard } from '@/components/ui/deviceCard'
 import { LightDialogContent } from './DialogContent'
 
 export interface LightCardProps {
@@ -21,14 +18,6 @@ export interface LightCardProps {
   setColor: (color: string) => void
   setBrightness: (brightness: number) => void
 }
-
-const iconStyle = cva(['text-xl', 'text-slate-600', 'dark:text-slate-100'], {
-  variants: {
-    isOn: {
-      false: ['text-slate-400', 'dark:text-slate-400'],
-    },
-  },
-})
 
 export const LightCard = ({
   name,
@@ -60,8 +49,7 @@ export const LightCard = ({
       isActive={isOn}
       icon={icon}
       name={name}
-      status={status}
-      showStatus={!isDimmable && isOn}
+      status={!isDimmable && isOn ? status : null}
       handleOnOffState={setState}
       modalContent={<LightDialogContent color={color} setColor={setColor} />}
     >

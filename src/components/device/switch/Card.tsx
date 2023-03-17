@@ -1,11 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { cva } from 'class-variance-authority'
 
 import { BrightnessSlider } from '@/components/ui/brightnessSlider'
-import { DeviceCard, StatusText } from '@/components/ui/deviceCard'
-import { Switch } from '@/components/ui/switch'
-import Typography from '@/components/ui/typography'
+import { DeviceCard } from '@/components/ui/deviceCard'
 
 export interface SwitchCardProps {
   name: string
@@ -16,14 +12,6 @@ export interface SwitchCardProps {
   setState: (state: boolean) => void
   setBrightness?: (brightness: number) => void
 }
-
-const iconStyle = cva(['text-xl', 'text-slate-600', 'dark:text-slate-100'], {
-  variants: {
-    isOn: {
-      false: ['text-slate-400', 'dark:text-slate-400'],
-    },
-  },
-})
 
 export const SwitchCard = ({
   name,
@@ -46,8 +34,7 @@ export const SwitchCard = ({
     <DeviceCard
       isActive={isOn}
       name={name}
-      status={status}
-      showStatus={!isDimmable && isOn}
+      status={!isDimmable && isOn ? status : null}
       icon={icon}
       handleOnOffState={setState}
     >
