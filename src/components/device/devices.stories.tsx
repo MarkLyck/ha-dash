@@ -2,7 +2,7 @@
 
 import type { StoryObj } from '@storybook/react'
 
-import { Light, Lock, Switch, Thermostat } from './index'
+import { Light, Lock, Speaker, Switch, Thermostat, Vacuum } from './index'
 
 const meta = {
   title: 'components/device',
@@ -19,6 +19,22 @@ type Story = StoryObj
 export const Devices: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
+      <Switch
+        name="kitchen lights"
+        icon={['far', 'light-switch-on']}
+        isOn
+        setState={() => {
+          //
+        }}
+      />
+      <Lock
+        name="front door"
+        icon={['far', 'lock']}
+        isLocked
+        setState={() => {
+          //
+        }}
+      />
       <Light
         name="ceiling light"
         icon={['far', 'light-ceiling']}
@@ -36,28 +52,29 @@ export const Devices: Story = {
           //
         }}
       />
-      <Switch
-        name="kitchen lights"
-        icon={['far', 'light-switch-on']}
-        isOn
-        setState={() => {
-          //
-        }}
-      />
-      <Lock
-        name="front door"
-        icon={['far', 'lock']}
-        isLocked
-        setState={() => {
-          //
-        }}
-      />
       <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
         mode="cooling"
         currentTemperature={76}
         targetTemperature={72}
+        setState={() => {
+          //
+        }}
+      />
+      <Vacuum
+        name="Vacuum"
+        icon={['far', 'vacuum-robot']}
+        mode="cleaning"
+        setState={() => {
+          //
+        }}
+      />
+      <Speaker
+        name="Speaker"
+        icon={['far', 'speaker']}
+        mode="playing"
+        content="Celine Dion"
         setState={() => {
           //
         }}

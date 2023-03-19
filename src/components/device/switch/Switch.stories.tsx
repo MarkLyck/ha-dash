@@ -4,7 +4,6 @@ import { Switch as SwitchComponent } from './index'
 
 const meta = {
   component: SwitchComponent,
-  tags: ['autodocs'],
   argTypes: {
     brightness: {
       control: { type: 'range', min: 0, max: 100, step: 1 },

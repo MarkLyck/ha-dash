@@ -4,7 +4,6 @@ import { Lock as LockComponent } from './index'
 
 const meta = {
   component: LockComponent,
-  tags: ['autodocs'],
 } satisfies Meta<typeof LockComponent>
 
 export default meta

@@ -12,14 +12,17 @@ type TemperatureSliderProps = React.ComponentPropsWithoutRef<
   currentValue: number
 }
 
-const currentTempStyle = cva('absolute top-[1px] bottom-[1px] w-[1px]', {
-  variants: {
-    isHigher: {
-      true: 'bg-slate-500 dark:bg-slate-400',
-      false: 'bg-slate-400 dark:bg-slate-500',
+const currentTempStyle = cva(
+  'absolute top-[6px] bottom-[6px] w-[2px] rounded opacity-25',
+  {
+    variants: {
+      isHigher: {
+        true: 'bg-slate-500 dark:bg-slate-400',
+        false: 'bg-slate-400 dark:bg-slate-500',
+      },
     },
-  },
-})
+  }
+)
 
 export const TemperatureSlider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
@@ -32,6 +35,8 @@ export const TemperatureSlider = React.forwardRef<
       (Number(props?.max) - Number(props?.min))) *
     100
 
+  const showCurrentValue = currentValue !== value
+
   return (
     <SliderPrimitive.Root
       ref={ref}
@@ -41,17 +46,19 @@ export const TemperatureSlider = React.forwardRef<
       )}
       {...props}
     >
-      <SliderPrimitive.Track className="relative h-5 w-full grow overflow-hidden rounded border border-slate-200 bg-slate-100 hover:cursor-pointer dark:border-none dark:bg-slate-1000">
+      <SliderPrimitive.Track className="relative h-6 w-full grow overflow-hidden rounded border border-slate-200 bg-slate-100 hover:cursor-pointer dark:border-none dark:bg-slate-1000">
         <SliderPrimitive.Range className="absolute h-full bg-slate-900 dark:bg-slate-200" />
       </SliderPrimitive.Track>
-      <div
-        className={currentTempStyle({ isHigher: currentValue > value })}
-        style={{
-          left: `calc(${percentageOffset}% - 1px)`,
-        }}
-      />
+      {showCurrentValue ? (
+        <div
+          className={currentTempStyle({ isHigher: currentValue > value })}
+          style={{
+            left: `calc(${percentageOffset}% - 1px)`,
+          }}
+        />
+      ) : null}
       <SliderPrimitive.Thumb
-        className="relative mr-2 block h-[12px] w-[2px] rounded border border-none bg-slate-100 transition focus:outline-none dark:bg-slate-800 "
+        className="relative mr-2 block h-[14px] w-[2px] rounded border border-none bg-slate-100 transition focus:outline-none dark:bg-slate-800 "
         style={value < 10 ? { opacity: 0 } : { opacity: 1 }}
       />
     </SliderPrimitive.Root>
