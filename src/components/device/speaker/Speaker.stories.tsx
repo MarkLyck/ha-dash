@@ -10,7 +10,7 @@ export default meta
 type Story = StoryObj<typeof SpeakerComponent>
 
 const defaultProps = {
-  name: 'Vacuum',
+  name: 'Speaker',
   setState: () => {
     //
   },
