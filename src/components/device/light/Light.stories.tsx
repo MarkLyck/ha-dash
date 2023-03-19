@@ -4,7 +4,6 @@ import { Light } from './index'
 
 const meta = {
   component: Light,
-  tags: ['autodocs'],
   argTypes: {
     brightness: {
       control: { type: 'range', min: 0, max: 100, step: 1 },

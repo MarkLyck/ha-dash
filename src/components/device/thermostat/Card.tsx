@@ -1,5 +1,4 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { cva } from 'class-variance-authority'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { TemperatureSlider } from '@/components/ui/temperatureSlider'
@@ -12,15 +11,6 @@ export interface ThermostatCardProps {
   icon: IconProp
   setState: (state: boolean) => void
 }
-
-const statusStyle = cva('', {
-  variants: {
-    mode: {
-      heating: ['text-amber-500'],
-      cooling: ['text-blue-500'],
-    },
-  },
-})
 
 export const ThermostatCard = ({
   name,
@@ -46,7 +36,7 @@ export const ThermostatCard = ({
       setIsActive={setState}
     >
       {isActive ? (
-        <div className="mt-2 flex w-full gap-2">
+        <div className="flex w-full gap-2">
           <TemperatureSlider
             value={[targetTemperature]}
             currentValue={currentTemperature}

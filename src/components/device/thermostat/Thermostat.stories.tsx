@@ -4,7 +4,6 @@ import { Thermostat as ThermostatComponent } from './index'
 
 const meta = {
   component: ThermostatComponent,
-  tags: ['autodocs'],
 } satisfies Meta<typeof ThermostatComponent>
 
 export default meta

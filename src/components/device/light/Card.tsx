@@ -53,7 +53,7 @@ export const LightCard = ({
       modalContent={<LightDialogContent color={color} setColor={setColor} />}
     >
       {isOn && isDimmable ? (
-        <div className="mt-2 flex w-full gap-2">
+        <div className="flex w-full gap-2">
           <Slider
             onClick={(e) => e.stopPropagation()}
             onChange={(value) => setBrightness(Number(value))}
