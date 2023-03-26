@@ -28,6 +28,9 @@ export const getSceneIcon = ({ name }: { name: string }) => {
   if (sceneName.includes('bath') || sceneName.includes('shower')) {
     return BathIcon
   }
+  if (sceneName.includes('board game')) {
+    return BoardGameIcon
+  }
   if (sceneName.includes('gaming') || sceneName.includes('game')) {
     return GamingIcon
   }
@@ -49,6 +52,9 @@ export const getSceneIcon = ({ name }: { name: string }) => {
     sceneName.includes('sexy')
   ) {
     return RomanticIcon
+  }
+  if (sceneName.includes('horror') || sceneName.includes('scary')) {
+    return HorrorIcon
   }
 
   return DefaultIcon
@@ -107,6 +113,9 @@ export const ExerciseIcon = ({ active }: { active: boolean }) => (
 export const TVIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon icon={['fad', 'tv']} className={icon({ active })} />
 )
+export const BoardGameIcon = ({ active }: { active: boolean }) => (
+  <FontAwesomeIcon icon={['fad', 'game-board']} className={icon({ active })} />
+)
 export const GamingIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon
     icon={['fad', 'gamepad-modern']}
@@ -124,4 +133,7 @@ export const BathIcon = ({ active }: { active: boolean }) => (
 )
 export const MakeupIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon icon={['fad', 'lips']} className={icon({ active })} />
+)
+export const HorrorIcon = ({ active }: { active: boolean }) => (
+  <FontAwesomeIcon icon={['fad', 'skull']} className={icon({ active })} />
 )

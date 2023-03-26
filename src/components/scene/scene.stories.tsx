@@ -22,6 +22,8 @@ const sceneTypes = [
   'Work',
   'Reading',
   'TV',
+  'Horror',
+  'Board game',
   'Gaming',
   'Exercise',
   'Vacation',

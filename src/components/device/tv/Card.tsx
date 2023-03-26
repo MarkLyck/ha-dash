@@ -45,7 +45,7 @@ export const TVCard = ({
             <FontAwesomeIcon icon={['fas', 'volume']} />
           </QuickActionButton>
           <QuickActionButton>
-            <FontAwesomeIcon icon={['fas', 'forward']} />
+            <FontAwesomeIcon icon={['fas', 'tv-retro']} />
           </QuickActionButton>
         </div>
       ) : null}
