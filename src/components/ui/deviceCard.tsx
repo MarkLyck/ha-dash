@@ -2,6 +2,7 @@ import { type IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
+import { BatteryIcon } from '@/components/ui/batteryIcon'
 import {
   Dialog,
   DialogContent,
@@ -47,6 +48,8 @@ type DeviceCardProps = {
   name: string
   icon: IconProp
   status?: React.ReactNode
+  batteryPercentage?: number
+  isCharging?: boolean
   action?: React.ReactNode
   isActive: boolean
   setIsActive: (value: boolean) => void
@@ -59,11 +62,13 @@ export const DeviceCard = ({
   status,
   action,
   isActive,
+  batteryPercentage,
+  isCharging,
   setIsActive,
   modalContent,
   children,
 }: DeviceCardProps) => {
-  if (!action) {
+  if (action === undefined) {
     action = (
       <Switch
         checked={isActive}
@@ -82,10 +87,23 @@ export const DeviceCard = ({
             icon={icon}
             className={iconStyle({ active: isActive })}
           />
+
           {action}
         </div>
         <DeviceName>{name}</DeviceName>
-        {status ? <Status>{status}</Status> : null}
+
+        {status ? (
+          <Status>
+            <span className="first-letter:capitalize">{status}</span>
+            {batteryPercentage ? (
+              <BatteryIcon
+                percentage={batteryPercentage}
+                isCharging={isCharging}
+                className="ml-1"
+              />
+            ) : null}
+          </Status>
+        ) : null}
         {children ? <div className="mt-2">{children}</div> : null}
       </div>
     </div>
@@ -103,7 +121,9 @@ export const DeviceCard = ({
         </DialogTrigger>
         <DialogContent className="w-auto">
           <DialogHeader>
-            <DialogTitle className="mb-4">{name}</DialogTitle>
+            <DialogTitle className="mb-4 first-letter:capitalize">
+              {name}
+            </DialogTitle>
             {modalContent}
           </DialogHeader>
         </DialogContent>
@@ -119,7 +139,7 @@ export const DeviceName = ({ children }: { children: React.ReactNode }) => (
 )
 
 export const Status = ({ children }: { children: React.ReactNode }) => (
-  <Typography.Subtle className="w-full overflow-hidden whitespace-nowrap text-sm text-opacity-60 first-letter:capitalize">
+  <Typography.Subtle className="flex w-full items-center justify-between overflow-hidden whitespace-nowrap text-sm text-opacity-60 first-letter:capitalize">
     {children}
   </Typography.Subtle>
 )

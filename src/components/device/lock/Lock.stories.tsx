@@ -22,5 +22,13 @@ export const Lock: Story = {
   args: {
     ...defaultProps,
     icon: ['far', 'lock'],
+    batteryPercentage: 72,
+  },
+}
+export const LowBattery: Story = {
+  args: {
+    ...defaultProps,
+    icon: ['far', 'lock-open'],
+    batteryPercentage: 18,
   },
 }

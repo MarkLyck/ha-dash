@@ -21,13 +21,26 @@ export const Off: Story = {
     ...defaultProps,
     mode: 'off',
     icon: ['far', 'vacuum-robot'],
+    batteryPercentage: 100,
+    isCharging: true,
   },
 }
+export const Charging: Story = {
+  args: {
+    ...defaultProps,
+    mode: 'off',
+    icon: ['far', 'vacuum-robot'],
+    batteryPercentage: 97,
+    isCharging: true,
+  },
+}
+
 export const Cleaning: Story = {
   args: {
     ...defaultProps,
     mode: 'cleaning',
     icon: ['far', 'vacuum-robot'],
+    batteryPercentage: 72,
   },
 }
 export const Returning: Story = {
@@ -35,5 +48,6 @@ export const Returning: Story = {
     ...defaultProps,
     mode: 'returning',
     icon: ['far', 'vacuum-robot'],
+    batteryPercentage: 18,
   },
 }

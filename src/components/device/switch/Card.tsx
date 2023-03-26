@@ -34,12 +34,12 @@ export const SwitchCard = ({
     <DeviceCard
       isActive={isOn}
       name={name}
-      status={!isDimmable && isOn ? status : null}
+      status={status}
       icon={icon}
       setIsActive={setState}
     >
       {isOn && isDimmable ? (
-        <div className="mt-2 flex w-full gap-2">
+        <div className="flex w-full gap-2">
           <Slider
             onClick={(e) => e.stopPropagation()}
             onChange={(value) => setBrightness?.(Number(value))}

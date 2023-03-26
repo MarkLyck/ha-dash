@@ -5,7 +5,6 @@ import { Scene } from './scene'
 
 const meta = {
   component: Scene,
-  tags: ['autodocs'],
 } satisfies Meta<typeof Scene>
 
 export default meta
@@ -38,7 +37,7 @@ export const Demo: Story = {
   render: () => {
     return (
       <>
-        <div className="rounded bg-white p-4 dark:bg-slate-700">
+        <div className="mb-8">
           <Typography.Title className="mb-4">Scenes</Typography.Title>
           <div className="flex flex-wrap gap-2 ">
             {sceneTypes.map((name) => (
@@ -46,7 +45,7 @@ export const Demo: Story = {
             ))}
           </div>
         </div>
-        <div className="rounded bg-white p-4 dark:bg-slate-700">
+        <div>
           <Typography.Title className="mb-4">Scenes</Typography.Title>
           <div className="flex flex-wrap gap-2 ">
             {sceneTypes.map((name) => (

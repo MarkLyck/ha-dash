@@ -4,50 +4,48 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { QuickActionButton } from '@/components/ui/quickActionButton'
 
-export interface VacuumCardProps {
+export interface TVCardProps {
   name: string
-  mode: 'off' | 'cleaning' | 'returning'
-  batteryPercentage?: number
-  isCharging?: boolean
+  mode: 'off' | 'playing' | 'paused'
+  content?: string
   icon: IconProp
   setState: (state: boolean) => void
 }
 
-export const VacuumCard = ({
+export const TVCard = ({
   name,
   icon,
   mode,
-  batteryPercentage,
-  isCharging,
+  content,
   setState,
-}: VacuumCardProps) => {
+}: TVCardProps) => {
   const isActive = mode !== 'off'
+
+  let status: string = mode
+  if (mode === 'playing' && content) {
+    status = `${mode} - ${content}`
+  }
 
   return (
     <DeviceCard
       isActive={isActive}
       name={name}
-      status={mode}
-      batteryPercentage={batteryPercentage}
-      isCharging={isCharging}
-      action={
-        <QuickActionButton isActive={isActive} className="flex-none">
-          <FontAwesomeIcon icon={['far', isActive ? 'home' : 'play']} />
-        </QuickActionButton>
-      }
+      status={status}
       icon={icon}
       setIsActive={setState}
     >
       {isActive ? (
         <div className="flex justify-between gap-1">
           <QuickActionButton>
-            <FontAwesomeIcon icon={['fas', 'pause']} />
+            <FontAwesomeIcon
+              icon={['fas', mode === 'playing' ? 'pause' : 'play']}
+            />
           </QuickActionButton>
           <QuickActionButton>
-            <FontAwesomeIcon icon={['far', 'fan']} />
+            <FontAwesomeIcon icon={['fas', 'volume']} />
           </QuickActionButton>
           <QuickActionButton>
-            <FontAwesomeIcon icon={['far', 'water']} />
+            <FontAwesomeIcon icon={['fas', 'forward']} />
           </QuickActionButton>
         </div>
       ) : null}
