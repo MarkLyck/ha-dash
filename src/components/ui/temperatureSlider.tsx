@@ -51,7 +51,7 @@ export const TemperatureSlider = React.forwardRef<
       {...props}
     >
       <SliderPrimitive.Track className="relative h-6 w-full grow overflow-hidden rounded border border-slate-200 bg-slate-100 hover:cursor-pointer dark:border-none dark:bg-slate-1000">
-        <SliderPrimitive.Range className="absolute h-full bg-slate-900 dark:bg-slate-200" />
+        <SliderPrimitive.Range className="absolute h-full bg-slate-500 dark:bg-slate-200" />
       </SliderPrimitive.Track>
       {showCurrentValue ? (
         <div

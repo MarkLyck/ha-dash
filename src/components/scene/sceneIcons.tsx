@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
-const defaultClasses = ['mr-3', 'text-2xl', 'h-6', 'w-6']
+const defaultClasses = ['mr-3', 'h-4', 'w-4']
 
 const icon = cva(defaultClasses, {
   variants: {
@@ -59,260 +59,69 @@ export const DefaultIcon = ({ active }: { active: boolean }) => (
 )
 
 export const GoodMorningIcon = ({ active }: { active: boolean }) => (
-  <span className={icon({ active, className: 'fa-layers' })}>
-    <FontAwesomeIcon
-      icon={['fas', 'sun-bright']}
-      transform="shrink-6 up-2 left-3"
-      inverse
-      className="opacity-50"
-      style={
-        active
-          ? {
-              color: '#fff',
-            }
-          : {
-              color: '#737373',
-            }
-      }
-    />
-    <FontAwesomeIcon
-      icon={['fas', 'house-window']}
-      transform="shrink-6 down-1 right-1"
-      style={
-        active
-          ? {
-              color: '#fbbf24',
-            }
-          : undefined
-      }
-    />
-  </span>
+  <FontAwesomeIcon
+    className={icon({ active })}
+    icon={['fad', 'sun-bright']}
+    inverse
+  />
 )
 
 export const GoodNightIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'house-night']}
-    className={icon({ active })}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#fbbf24',
-            '--fa-secondary-color': '#fff',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'moon']} className={icon({ active })} />
 )
 export const AwayIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon
     icon={['fad', 'house-person-leave']}
-    className={`${icon({ active })} fa-swap-opacity`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#fbbf24',
-            '--fa-secondary-color': '#fbbf24',
-          }
-        : undefined
-    }
+    className={icon({ active })}
   />
 )
 
 export const RomanticIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fas', 'heart']}
-    className={icon({ active })}
-    style={
-      active
-        ? {
-            color: '#dc2626',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'heart']} className={icon({ active })} />
 )
 export const CookingIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'pot-food']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#000',
-            '--fa-secondary-color': '#EBB305',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'pot-food']} className={icon({ active })} />
 )
 export const BreakfastIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'pan-frying']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#000',
-            '--fa-secondary-color': '#F2AC06',
-            '--fa-secondary-opacity': '1',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'pan-frying']} className={icon({ active })} />
 )
 export const DinnerIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon
     icon={['fad', 'plate-utensils']}
-    className={`${icon({ active })} fa-swap-opacity`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-secondary-color': '#fff',
-          }
-        : undefined
-    }
+    className={icon({ active })}
   />
 )
 export const PartyIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'party-horn']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#fcd34d',
-            '--fa-secondary-color': '#fff',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'party-horn']} className={icon({ active })} />
 )
 export const WorkIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'briefcase']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#713f12',
-            '--fa-secondary-color': '#713f12',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'briefcase']} className={icon({ active })} />
 )
 export const StudyIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'books']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#059669',
-            '--fa-secondary-color': '#eab308',
-            '--fa-secondary-opacity': '0.6',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'books']} className={icon({ active })} />
 )
 export const ExerciseIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'dumbbell']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#000',
-            '--fa-secondary-color': '#727272',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'dumbbell']} className={icon({ active })} />
 )
 
 export const TVIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'tv']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#000',
-            '--fa-secondary-color': '#727272',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'tv']} className={icon({ active })} />
 )
 export const GamingIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon
     icon={['fad', 'gamepad-modern']}
-    className={`${icon({ active })} fa-swap-opacity`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#000',
-            '--fa-secondary-color': '#eee',
-            '--fa-primary-opacity': '1',
-          }
-        : undefined
-    }
+    className={icon({ active })}
   />
 )
 export const VacationIcon = ({ active }: { active: boolean }) => (
   <FontAwesomeIcon
     icon={['fad', 'island-tropical']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#059669',
-            '--fa-secondary-color': '#fbbf24',
-          }
-        : undefined
-    }
+    className={icon({ active })}
   />
 )
 export const BathIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'bath']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#0284c7',
-            '--fa-secondary-color': '#0284c7',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'bath']} className={icon({ active })} />
 )
 export const MakeupIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'lips']}
-    className={`${icon({ active })}`}
-    style={
-      active
-        ? {
-            // @ts-expect-error - font awesome
-            '--fa-primary-color': '#dc2626',
-            '--fa-secondary-color': '#dc2626',
-          }
-        : undefined
-    }
-  />
+  <FontAwesomeIcon icon={['fad', 'lips']} className={icon({ active })} />
 )
