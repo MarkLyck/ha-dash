@@ -21,7 +21,7 @@ export const WithTheme = (Story, context) => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       <body className="dark" style={{ padding: 16 }}>
         <Story />
       </body>
