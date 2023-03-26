@@ -6,10 +6,17 @@ export interface LockCardProps {
   name: string
   icon: IconProp
   isLocked: boolean
+  batteryPercentage?: number
   setState: (state: boolean) => void
 }
 
-export const LockCard = ({ name, icon, isLocked, setState }: LockCardProps) => {
+export const LockCard = ({
+  name,
+  icon,
+  isLocked,
+  batteryPercentage,
+  setState,
+}: LockCardProps) => {
   const status = isLocked ? 'locked' : 'unlocked'
 
   return (
@@ -17,6 +24,11 @@ export const LockCard = ({ name, icon, isLocked, setState }: LockCardProps) => {
       isActive={isLocked}
       name={name}
       status={status}
+      batteryPercentage={
+        batteryPercentage && batteryPercentage < 25
+          ? batteryPercentage
+          : undefined
+      }
       setIsActive={setState}
       icon={icon}
     />

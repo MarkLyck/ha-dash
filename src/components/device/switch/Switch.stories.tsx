@@ -28,10 +28,27 @@ const defaultProps = {
   },
 }
 
-export const Switch: Story = {
+export const On: Story = {
   args: {
     ...defaultProps,
-    icon: ['far', 'light-switch'],
+    icon: ['far', 'light-switch-on'],
+    isDimmable: false,
+    isOn: true,
+  },
+}
+export const Off: Story = {
+  args: {
+    ...defaultProps,
+    icon: ['far', 'light-switch-off'],
+    isDimmable: false,
+    isOn: false,
+  },
+}
+export const DimmableOn: Story = {
+  args: {
+    ...defaultProps,
+    icon: ['far', 'light-switch-off'],
     isDimmable: true,
+    isOn: true,
   },
 }

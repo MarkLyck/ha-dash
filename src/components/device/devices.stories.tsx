@@ -2,7 +2,19 @@
 
 import type { StoryObj } from '@storybook/react'
 
-import { Light, Lock, Speaker, Switch, Thermostat, Vacuum } from './index'
+import {
+  AirPurifier,
+  Car,
+  GarageDoor,
+  Humidifier,
+  Light,
+  Lock,
+  Speaker,
+  Switch,
+  TV,
+  Thermostat,
+  Vacuum,
+} from './index'
 
 const meta = {
   title: 'components/device',
@@ -31,6 +43,27 @@ export const Devices: Story = {
         name="front door"
         icon={['far', 'lock']}
         isLocked
+        setState={() => {
+          //
+        }}
+      />
+      <GarageDoor
+        name="Garage"
+        isOpen={true}
+        setState={() => {
+          //
+        }}
+      />
+      <AirPurifier
+        name="air purifier"
+        isOn={true}
+        setState={() => {
+          //
+        }}
+      />
+      <Humidifier
+        name="Humidifier"
+        isOn={true}
         setState={() => {
           //
         }}
@@ -66,6 +99,7 @@ export const Devices: Story = {
         name="Vacuum"
         icon={['far', 'vacuum-robot']}
         mode="cleaning"
+        batteryPercentage={72}
         setState={() => {
           //
         }}
@@ -75,6 +109,23 @@ export const Devices: Story = {
         icon={['far', 'speaker']}
         mode="playing"
         content="Celine Dion"
+        setState={() => {
+          //
+        }}
+      />
+      <TV
+        name="TV"
+        mode="playing"
+        content="Netflix"
+        setState={() => {
+          //
+        }}
+      />
+      <Car
+        name="Tesla"
+        mode="driving"
+        batteryPercentage={59}
+        isCharging={false}
         setState={() => {
           //
         }}

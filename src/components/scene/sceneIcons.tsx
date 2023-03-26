@@ -7,7 +7,7 @@ const icon = cva(defaultClasses, {
   variants: {
     active: {
       true: ['text-neutral-500', 'dark:text-neutral-100', 'opacity-100'],
-      false: ['text-neutral-700', 'dark:text-neutral-300', 'opacity-50'],
+      false: ['text-neutral-700', 'dark:text-neutral-300', 'opacity-30'],
     },
   },
 })
@@ -68,7 +68,7 @@ export const GoodMorningIcon = ({ active }: { active: boolean }) => (
       style={
         active
           ? {
-              color: '#fbbf24',
+              color: '#fff',
             }
           : {
               color: '#737373',
@@ -81,7 +81,7 @@ export const GoodMorningIcon = ({ active }: { active: boolean }) => (
       style={
         active
           ? {
-              color: '#5b21b6',
+              color: '#fbbf24',
             }
           : undefined
       }
@@ -97,8 +97,8 @@ export const GoodNightIcon = ({ active }: { active: boolean }) => (
       active
         ? {
             // @ts-expect-error - font awesome
-            '--fa-primary-color': '#5b21b6',
-            '--fa-secondary-color': '#DBC157',
+            '--fa-primary-color': '#fbbf24',
+            '--fa-secondary-color': '#fff',
           }
         : undefined
     }
@@ -158,6 +158,7 @@ export const BreakfastIcon = ({ active }: { active: boolean }) => (
             // @ts-expect-error - font awesome
             '--fa-primary-color': '#000',
             '--fa-secondary-color': '#F2AC06',
+            '--fa-secondary-opacity': '1',
           }
         : undefined
     }
@@ -171,7 +172,7 @@ export const DinnerIcon = ({ active }: { active: boolean }) => (
       active
         ? {
             // @ts-expect-error - font awesome
-            '--fa-secondary-color': '#0284c7',
+            '--fa-secondary-color': '#fff',
           }
         : undefined
     }
@@ -186,7 +187,7 @@ export const PartyIcon = ({ active }: { active: boolean }) => (
         ? {
             // @ts-expect-error - font awesome
             '--fa-primary-color': '#fcd34d',
-            '--fa-secondary-color': '#dc2626',
+            '--fa-secondary-color': '#fff',
           }
         : undefined
     }
@@ -263,7 +264,7 @@ export const GamingIcon = ({ active }: { active: boolean }) => (
         ? {
             // @ts-expect-error - font awesome
             '--fa-primary-color': '#000',
-            '--fa-secondary-color': '#000',
+            '--fa-secondary-color': '#eee',
             '--fa-primary-opacity': '1',
           }
         : undefined
