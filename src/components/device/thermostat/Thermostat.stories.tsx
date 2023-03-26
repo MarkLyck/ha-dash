@@ -18,10 +18,19 @@ const defaultProps = {
   },
 }
 
-export const Thermostat: Story = {
+export const Cooling: Story = {
   args: {
     ...defaultProps,
     mode: 'cooling',
+    icon: ['far', 'air-conditioner'],
+  },
+}
+export const Heating: Story = {
+  args: {
+    ...defaultProps,
+    mode: 'heating',
+    currentTemperature: 69,
+    targetTemperature: 74,
     icon: ['far', 'air-conditioner'],
   },
 }
