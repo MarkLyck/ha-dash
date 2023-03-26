@@ -11,6 +11,7 @@ type Story = StoryObj<typeof SpeakerComponent>
 
 const defaultProps = {
   name: 'Speaker',
+  volume: 40,
   setState: () => {
     //
   },

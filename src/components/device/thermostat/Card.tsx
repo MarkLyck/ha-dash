@@ -33,9 +33,9 @@ export const ThermostatCard = ({
           {isActive ? (
             <span className="ml-auto">
               <FontAwesomeIcon
-                className="text-[12px]"
+                className="mr-1 text-[12px]"
                 icon={['far', 'temperature-half']}
-              />{' '}
+              />
               {targetTemperature}°
             </span>
           ) : null}
