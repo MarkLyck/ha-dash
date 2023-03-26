@@ -23,11 +23,6 @@ export const ThermostatCard = ({
 }: ThermostatCardProps) => {
   const isActive = mode !== 'off'
 
-  let statusText = isActive ? `${targetTemperature}°` : 'off'
-  if (mode === 'cooling' || mode === 'heating') {
-    statusText = `${mode} to ${targetTemperature}°`
-  }
-
   return (
     <DeviceCard
       isActive={isActive}
@@ -35,13 +30,15 @@ export const ThermostatCard = ({
       status={
         <div className="flex w-full items-center justify-between">
           <span className="first-letter:capitalize">{mode}</span>
-          <span className="ml-auto">
-            <FontAwesomeIcon
-              className="text-[12px]"
-              icon={['far', 'temperature-half']}
-            />{' '}
-            {targetTemperature}°
-          </span>
+          {isActive ? (
+            <span className="ml-auto">
+              <FontAwesomeIcon
+                className="text-[12px]"
+                icon={['far', 'temperature-half']}
+              />{' '}
+              {targetTemperature}°
+            </span>
+          ) : null}
         </div>
       }
       icon={icon}

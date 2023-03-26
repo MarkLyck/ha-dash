@@ -14,7 +14,7 @@ type TemperatureSliderProps = React.ComponentPropsWithoutRef<
 }
 
 const currentTempStyle = cva(
-  'absolute top-[6px] bottom-[6px] w-[2px] rounded opacity-25',
+  'absolute top-1/2 -translate-y-1/2 h-[4px] w-[4px] rounded opacity-25',
   {
     variants: {
       isHigher: {
