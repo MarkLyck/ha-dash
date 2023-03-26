@@ -2,6 +2,7 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { TemperatureSlider } from '@/components/ui/temperatureSlider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface ThermostatCardProps {
   name: string
@@ -31,7 +32,18 @@ export const ThermostatCard = ({
     <DeviceCard
       isActive={isActive}
       name={name}
-      status={statusText}
+      status={
+        <div className="flex w-full items-center justify-between">
+          <span className="first-letter:capitalize">{mode}</span>
+          <span className="ml-auto">
+            <FontAwesomeIcon
+              className="text-[12px]"
+              icon={['far', 'temperature-half']}
+            />{' '}
+            {targetTemperature}°
+          </span>
+        </div>
+      }
       icon={icon}
       setIsActive={setState}
     >
@@ -40,8 +52,8 @@ export const ThermostatCard = ({
           <TemperatureSlider
             value={[targetTemperature]}
             currentValue={currentTemperature}
-            min={0}
-            max={100}
+            min={50}
+            max={90}
             onChange={() => {
               //
             }}

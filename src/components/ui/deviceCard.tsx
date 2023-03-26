@@ -94,7 +94,7 @@ export const DeviceCard = ({
 
         {status ? (
           <Status>
-            <span className="first-letter:capitalize">{status}</span>
+            <div className="w-full first-letter:capitalize">{status}</div>
             {batteryPercentage ? (
               <BatteryIcon
                 percentage={batteryPercentage}
