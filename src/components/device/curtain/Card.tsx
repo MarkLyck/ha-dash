@@ -2,6 +2,8 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { Slider } from '@/components/ui/slider'
+import { StateActionButton } from '@/components/ui/quickActionButton'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface CurtainCardProps {
   name: string
@@ -31,6 +33,13 @@ export const CurtainCard = ({
       isActive={isActive}
       name={name}
       status={status}
+      action={
+        <StateActionButton isActive={isActive}>
+          <FontAwesomeIcon
+            icon={['far', isActive ? 'down-to-line' : 'up-to-line']}
+          />
+        </StateActionButton>
+      }
       batteryPercentage={
         batteryPercentage && batteryPercentage < 25
           ? batteryPercentage

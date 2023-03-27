@@ -32,3 +32,15 @@ export const QuickActionButton = ({
     {children}
   </Button>
 )
+
+export const StateActionButton = ({
+  isActive,
+  children,
+}: {
+  isActive: boolean
+  children: React.ReactNode
+}) => (
+  <QuickActionButton isActive={isActive} className="round h-8 w-8 flex-none">
+    {children}
+  </QuickActionButton>
+)
