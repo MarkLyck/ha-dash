@@ -14,6 +14,7 @@ import {
   TV,
   Thermostat,
   Vacuum,
+  Curtain,
 } from './index'
 
 const meta = {
@@ -65,6 +66,13 @@ export const Devices: Story = {
         name="Humidifier"
         isOn={true}
         setState={() => {
+          //
+        }}
+      />
+      <Curtain
+        name="Blinds"
+        percentClosed={75}
+        setPercentClosed={() => {
           //
         }}
       />
