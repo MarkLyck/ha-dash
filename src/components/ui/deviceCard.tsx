@@ -82,7 +82,7 @@ export const DeviceCard = ({
   const content = (
     <div className="w-full max-w-[160px]">
       <div className={deviceCardStyle({ active: isActive })}>
-        <div className="mb-4 flex h-6 w-full items-center justify-between">
+        <div className="mb-4 flex h-8 w-full items-center justify-between">
           <FontAwesomeIcon
             icon={icon}
             className={iconStyle({ active: isActive })}

@@ -2,7 +2,10 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
-import { QuickActionButton } from '@/components/ui/quickActionButton'
+import {
+  QuickActionButton,
+  StateActionButton,
+} from '@/components/ui/quickActionButton'
 
 export interface VacuumCardProps {
   name: string
@@ -31,9 +34,9 @@ export const VacuumCard = ({
       batteryPercentage={batteryPercentage}
       isCharging={isCharging}
       action={
-        <QuickActionButton isActive={isActive} className="flex-none">
+        <StateActionButton isActive={isActive}>
           <FontAwesomeIcon icon={['far', isActive ? 'home' : 'play']} />
-        </QuickActionButton>
+        </StateActionButton>
       }
       icon={icon}
       setIsActive={setState}
