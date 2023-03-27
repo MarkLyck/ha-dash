@@ -7,6 +7,7 @@ import { QuickActionButton } from '@/components/ui/quickActionButton'
 export interface TVCardProps {
   name: string
   mode: 'off' | 'playing' | 'paused'
+  volume?: number
   content?: string
   icon: IconProp
   setState: (state: boolean) => void
@@ -16,6 +17,7 @@ export const TVCard = ({
   name,
   icon,
   mode,
+  volume,
   content,
   setState,
 }: TVCardProps) => {
@@ -30,7 +32,22 @@ export const TVCard = ({
     <DeviceCard
       isActive={isActive}
       name={name}
-      status={status}
+      status={
+        <div className="flex w-full items-center justify-between">
+          <span className="flex-1 overflow-hidden first-letter:capitalize">
+            {status}
+          </span>
+          {isActive && volume !== undefined ? (
+            <span className="ml-1">
+              <FontAwesomeIcon
+                className="mr-1 text-[12px]"
+                icon={['fas', 'volume']}
+              />
+              {volume}
+            </span>
+          ) : null}
+        </div>
+      }
       icon={icon}
       setIsActive={setState}
     >

@@ -109,6 +109,7 @@ export const Devices: Story = {
         icon={['far', 'speaker']}
         mode="playing"
         content="Celine Dion"
+        volume={40}
         setState={() => {
           //
         }}
@@ -117,6 +118,7 @@ export const Devices: Story = {
         name="TV"
         mode="playing"
         content="Netflix"
+        volume={40}
         setState={() => {
           //
         }}

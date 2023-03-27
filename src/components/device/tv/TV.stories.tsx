@@ -20,6 +20,7 @@ export const Off: Story = {
   args: {
     ...defaultProps,
     mode: 'off',
+    volume: 40,
   },
 }
 export const Playing: Story = {
@@ -27,11 +28,13 @@ export const Playing: Story = {
     ...defaultProps,
     mode: 'playing',
     content: 'Netflix',
+    volume: 40,
   },
 }
 export const Paused: Story = {
   args: {
     ...defaultProps,
     mode: 'paused',
+    volume: 40,
   },
 }

@@ -34,9 +34,11 @@ export const SpeakerCard = ({
       name={name}
       status={
         <div className="flex w-full items-center justify-between">
-          <span className="first-letter:capitalize">{status}</span>
+          <span className="flex-1 overflow-hidden first-letter:capitalize">
+            {status}
+          </span>
           {isActive && volume !== undefined ? (
-            <span className="ml-auto">
+            <span className="ml-1">
               <FontAwesomeIcon
                 className="mr-1 text-[12px]"
                 icon={['fas', 'volume']}
