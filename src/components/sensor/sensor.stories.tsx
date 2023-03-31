@@ -7,6 +7,7 @@ import {
   TemperatureSensor,
   HumiditySensor,
   WifiSensor,
+  MotionSensor,
 } from './index'
 
 const meta = {
@@ -28,6 +29,7 @@ export const Sensors: Story = {
       <HumiditySensor value={59} />
       <BrightnessSensor value={89} />
       <WifiSensor value={42.86} />
+      <MotionSensor detected={true} />
     </div>
   ),
 }

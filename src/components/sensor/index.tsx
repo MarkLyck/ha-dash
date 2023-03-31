@@ -1,4 +1,5 @@
 export * from './brightness'
 export * from './temperature'
 export * from './humidity'
+export * from './motion'
 export * from './wifi'
