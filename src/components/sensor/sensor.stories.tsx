@@ -2,7 +2,12 @@
 
 import type { StoryObj } from '@storybook/react'
 
-import { BrightnessSensor, TemperatureSensor, HumiditySensor } from './index'
+import {
+  BrightnessSensor,
+  TemperatureSensor,
+  HumiditySensor,
+  WifiSensor,
+} from './index'
 
 const meta = {
   title: 'components/sensor',
@@ -22,6 +27,7 @@ export const Sensors: Story = {
       <TemperatureSensor value={72} />
       <HumiditySensor value={59} />
       <BrightnessSensor value={89} />
+      <WifiSensor value={42.86} />
     </div>
   ),
 }
