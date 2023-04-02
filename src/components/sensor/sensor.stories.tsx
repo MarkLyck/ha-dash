@@ -3,11 +3,14 @@
 import type { StoryObj } from '@storybook/react'
 
 import {
+  AirQualitySensor,
   BrightnessSensor,
   TemperatureSensor,
   HumiditySensor,
   WifiSensor,
   MotionSensor,
+  VibrationSensor,
+  OpenCloseSensor,
 } from './index'
 
 const meta = {
@@ -27,9 +30,12 @@ export const Sensors: Story = {
     <div className="flex flex-wrap gap-2">
       <TemperatureSensor value={72} />
       <HumiditySensor value={59} />
+      <AirQualitySensor value={992} />
       <BrightnessSensor value={89} />
       <WifiSensor value={42.86} />
       <MotionSensor detected={true} />
+      <VibrationSensor detected={true} />
+      <OpenCloseSensor isOpen={true} type="door" />
     </div>
   ),
 }

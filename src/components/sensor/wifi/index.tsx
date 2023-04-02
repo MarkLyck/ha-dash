@@ -11,7 +11,7 @@ export const WifiSensor = ({ value }: WifiSensorProps) => {
   let downloadSpeed = value.toFixed(0)
 
   if (value < 100) {
-    icon = ['far', 'wifi']
+    icon = ['fas', 'wifi']
   }
   if (value < 10) {
     icon = ['fad', 'wifi-fair']
