@@ -11,6 +11,10 @@ import {
   MotionSensor,
   VibrationSensor,
   OpenCloseSensor,
+  SmokeSensor,
+  DefaultSensor,
+  WaterSensor,
+  OccupancySensor,
 } from './index'
 
 const meta = {
@@ -34,8 +38,15 @@ export const Sensors: Story = {
       <BrightnessSensor value={89} />
       <WifiSensor value={42.86} />
       <MotionSensor detected={true} />
+      <OccupancySensor detected={true} />
       <VibrationSensor detected={true} />
-      <OpenCloseSensor isOpen={true} type="door" />
+      <SmokeSensor detected={false} />
+      <OpenCloseSensor isOpen={false} type="door" />
+      <OpenCloseSensor isOpen={true} type="window" />
+      <OpenCloseSensor isOpen={true} type={undefined} />
+      <WaterSensor detected={false} />
+
+      <DefaultSensor value={true} />
     </div>
   ),
 }

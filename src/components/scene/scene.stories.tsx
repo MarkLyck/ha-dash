@@ -11,24 +11,28 @@ export default meta
 type Story = StoryObj<typeof Scene>
 
 const sceneTypes = [
+  'Home',
+  'Away',
   'Good morning',
   'Good night',
-  'Away',
   'Romance',
   'Cooking',
   'Breakfast',
   'Dinner',
   'Party',
   'Work',
+  'Meeting',
   'Reading',
   'TV',
   'Horror',
   'Board game',
   'Gaming',
   'Exercise',
+  'Laundry',
   'Vacation',
   'Bath',
   'Makeup',
+  'Cleaning',
   'Default',
 ]
 

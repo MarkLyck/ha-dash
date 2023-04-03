@@ -1,4 +1,4 @@
-import { SensorCard } from '@/components/sensor/card'
+import { SensorCard, type SensorCardProps } from '@/components/sensor/card'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -9,6 +9,7 @@ export interface WifiSensorProps {
 export const WifiSensor = ({ value }: WifiSensorProps) => {
   let icon: IconProp = ['far', 'wifi']
   let downloadSpeed = value.toFixed(0)
+  let type: SensorCardProps['type']
 
   if (value < 100) {
     icon = ['fas', 'wifi']
@@ -19,13 +20,15 @@ export const WifiSensor = ({ value }: WifiSensorProps) => {
   }
   if (value < 1) {
     icon = ['fad', 'wifi-weak']
+    type = 'warning'
   }
   if (value === 0) {
     icon = ['fad', 'wifi-slash']
+    type = 'error'
   }
 
   return (
-    <SensorCard>
+    <SensorCard type={type}>
       <FontAwesomeIcon icon={icon} />
       {downloadSpeed} Mb/s
     </SensorCard>

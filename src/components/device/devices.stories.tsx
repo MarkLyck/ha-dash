@@ -15,6 +15,8 @@ import {
   Thermostat,
   Vacuum,
   Curtain,
+  FoodDispenser,
+  WaterSupply,
 } from './index'
 
 const meta = {
@@ -136,6 +138,21 @@ export const Devices: Story = {
         mode="driving"
         batteryPercentage={59}
         isCharging={false}
+        setState={() => {
+          //
+        }}
+      />
+      <FoodDispenser
+        name="Dog food"
+        isEmpty={false}
+        lastDispensed={new Date()}
+        setState={() => {
+          //
+        }}
+      />
+      <WaterSupply
+        name="Water supply"
+        isOn={true}
         setState={() => {
           //
         }}

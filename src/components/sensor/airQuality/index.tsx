@@ -9,7 +9,7 @@ export const AirQualitySensor = ({ value }: AirQualitySensorProps) => {
   return (
     <SensorCard>
       <FontAwesomeIcon icon={['fas', 'leaf']} />
-      {value}
+      {value} ppm
     </SensorCard>
   )
 }

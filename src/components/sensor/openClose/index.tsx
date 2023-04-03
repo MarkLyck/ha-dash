@@ -1,6 +1,15 @@
 import { SensorCard } from '@/components/sensor/card'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { cva } from 'class-variance-authority'
+
+const iconStyle = cva('', {
+  variants: {
+    unknownType: {
+      true: 'rotate-90',
+    },
+  },
+})
 
 type OpenCloseType = 'door' | 'window'
 
@@ -30,14 +39,16 @@ export interface OpenCloseSensorProps {
 
 export const OpenCloseSensor = ({ isOpen, type }: OpenCloseSensorProps) => {
   let icon = iconMap[type as OpenCloseType]?.[isOpen ? 'open' : 'closed']
+  let unknownType = false
 
   if (!icon) {
-    icon = isOpen ? ['far', 'door-open'] : ['far', 'door-closed']
+    unknownType = true
+    icon = isOpen ? ['far', 'arrows-from-line'] : ['far', 'arrows-to-line']
   }
 
   return (
     <SensorCard>
-      <FontAwesomeIcon icon={icon} />
+      <FontAwesomeIcon icon={icon} className={iconStyle({ unknownType })} />
       <span className="first-letter:capitalize">
         {isOpen ? 'open' : 'closed'}
       </span>
