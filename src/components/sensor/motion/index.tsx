@@ -13,10 +13,9 @@ export const MotionSensor = ({ detected }: MotionSensorProps) => {
   }
 
   return (
-    <SensorCard>
-      <FontAwesomeIcon icon={icon} />
+    <SensorCard icon={<FontAwesomeIcon icon={icon} />} name="motion sensor">
       <span className="first-letter:capitalize">
-        {detected ? 'motion' : 'still'}
+        {detected ? 'motion' : 'no motion'}
       </span>
     </SensorCard>
   )

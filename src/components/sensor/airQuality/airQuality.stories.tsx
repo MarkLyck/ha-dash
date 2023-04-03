@@ -14,3 +14,13 @@ export const AirQuality: Story = {
     value: 91,
   },
 }
+export const Poor: Story = {
+  args: {
+    value: 910,
+  },
+}
+export const VeryBad: Story = {
+  args: {
+    value: 1498,
+  },
+}

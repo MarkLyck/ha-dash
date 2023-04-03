@@ -15,6 +15,8 @@ import {
   DefaultSensor,
   WaterSensor,
   OccupancySensor,
+  CPUSensor,
+  MemorySensor,
 } from './index'
 
 const meta = {
@@ -34,7 +36,7 @@ export const Sensors: Story = {
     <div className="flex flex-wrap gap-2">
       <TemperatureSensor value={72} />
       <HumiditySensor value={59} />
-      <AirQualitySensor value={992} />
+      <AirQualitySensor value={892} />
       <BrightnessSensor value={89} />
       <WifiSensor value={42.86} />
       <MotionSensor detected={true} />
@@ -45,6 +47,8 @@ export const Sensors: Story = {
       <OpenCloseSensor isOpen={true} type="window" />
       <OpenCloseSensor isOpen={true} type={undefined} />
       <WaterSensor detected={false} />
+      <CPUSensor value={38} />
+      <MemorySensor value={44} />
 
       <DefaultSensor value={true} />
     </div>

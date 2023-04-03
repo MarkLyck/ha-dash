@@ -28,8 +28,11 @@ export const WifiSensor = ({ value }: WifiSensorProps) => {
   }
 
   return (
-    <SensorCard type={type}>
-      <FontAwesomeIcon icon={icon} />
+    <SensorCard
+      name="download speed"
+      type={type}
+      icon={<FontAwesomeIcon icon={icon} />}
+    >
       {downloadSpeed} Mb/s
     </SensorCard>
   )

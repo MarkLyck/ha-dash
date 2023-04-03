@@ -7,8 +7,10 @@ export interface TemperatureSensorProps {
 
 export const TemperatureSensor = ({ value }: TemperatureSensorProps) => {
   return (
-    <SensorCard>
-      <FontAwesomeIcon icon={['far', 'temperature-half']} />
+    <SensorCard
+      name="temperature"
+      icon={<FontAwesomeIcon icon={['far', 'temperature-half']} />}
+    >
       {value}°F
     </SensorCard>
   )

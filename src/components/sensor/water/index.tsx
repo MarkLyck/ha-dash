@@ -14,8 +14,11 @@ export const WaterSensor = ({ detected }: WaterSensorProps) => {
   }
 
   return (
-    <SensorCard type={type}>
-      <FontAwesomeIcon icon={icon} />
+    <SensorCard
+      name="leak detector"
+      type={type}
+      icon={<FontAwesomeIcon icon={icon} />}
+    >
       <span className="first-letter:capitalize">
         {detected ? 'water detected' : 'no water'}
       </span>

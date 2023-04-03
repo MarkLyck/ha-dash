@@ -1,8 +1,9 @@
 import { cva } from 'class-variance-authority'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button } from '@/components/ui/button'
 
 const sensorStyle = cva(
-  'relative inline-block rounded-lg border px-2 py-1 text-[14px] [&>svg]:mr-2',
+  'relative rounded-lg border px-2 py-1 text-[14px] inline-block text-left hover:bg-slate-50 bg-slate-100 dark:bg-slate-900',
   {
     variants: {
       type: {
@@ -30,19 +31,44 @@ const stateIconStyle = cva(
   }
 )
 
+const sensorStatusStyle = cva('first-letter:capitalize', {
+  variants: {
+    type: {
+      default: 'dark:text-slate-100',
+      warning: 'dark:text-warning-600',
+      error: 'dark:text-danger-600',
+    },
+  },
+})
+
 export type SensorCardProps = {
   children: React.ReactNode
+  icon: React.ReactNode
+  name: string
   type?: 'default' | 'warning' | 'error'
 }
 
-export const SensorCard = ({ children, type = 'default' }: SensorCardProps) => (
-  <div className={sensorStyle({ type })}>
+export const SensorCard = ({
+  children,
+  icon,
+  name,
+  type = 'default',
+}: SensorCardProps) => (
+  <Button className={sensorStyle({ type })}>
     <div className={stateIconStyle({ type })}>
       <FontAwesomeIcon
         icon={['fas', 'exclamation']}
-        className="h-[10px] text-center"
+        className="h-[10px] w-[10px]"
       />
     </div>
-    {children}
-  </div>
+    <div className="flex flex-row items-center [&>svg]:mr-2 [&>svg]:h-5 [&>svg]:w-5">
+      {icon}
+      <div className="">
+        <div className="-mb-1 text-[10px] text-slate-500 opacity-50 first-letter:capitalize dark:text-slate-200">
+          {name}
+        </div>
+        <div className={sensorStatusStyle({ type })}>{children}</div>
+      </div>
+    </div>
+  </Button>
 )

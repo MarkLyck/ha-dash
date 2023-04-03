@@ -14,3 +14,13 @@ export const Humidity: Story = {
     value: 59,
   },
 }
+export const HighHumidity: Story = {
+  args: {
+    value: 74,
+  },
+}
+export const ExtremeHumidity: Story = {
+  args: {
+    value: 98,
+  },
+}

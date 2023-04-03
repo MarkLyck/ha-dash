@@ -13,8 +13,7 @@ export const OccupancySensor = ({ detected }: OccupancySensorProps) => {
   }
 
   return (
-    <SensorCard>
-      <FontAwesomeIcon icon={icon} />
+    <SensorCard icon={<FontAwesomeIcon icon={icon} />} name="occupancy sensor">
       <span className="first-letter:capitalize">
         {detected ? 'occupied' : 'unoccupied'}
       </span>

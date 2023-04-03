@@ -9,5 +9,7 @@ export * from './wifi'
 export * from './openClose'
 export * from './smoke'
 export * from './water'
+export * from './cpu'
+export * from './memory'
 
 export * from './default'

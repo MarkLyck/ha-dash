@@ -13,8 +13,7 @@ export const VibrationSensor = ({ detected }: VibrationSensorProps) => {
   }
 
   return (
-    <SensorCard>
-      <FontAwesomeIcon icon={icon} />
+    <SensorCard name="vibration sensor" icon={<FontAwesomeIcon icon={icon} />}>
       <span className="first-letter:capitalize">
         {detected ? 'vibrating' : 'still'}
       </span>

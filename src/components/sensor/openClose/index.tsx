@@ -47,8 +47,12 @@ export const OpenCloseSensor = ({ isOpen, type }: OpenCloseSensorProps) => {
   }
 
   return (
-    <SensorCard>
-      <FontAwesomeIcon icon={icon} className={iconStyle({ unknownType })} />
+    <SensorCard
+      name={type ? type : 'contact sensor'}
+      icon={
+        <FontAwesomeIcon icon={icon} className={iconStyle({ unknownType })} />
+      }
+    >
       <span className="first-letter:capitalize">
         {isOpen ? 'open' : 'closed'}
       </span>

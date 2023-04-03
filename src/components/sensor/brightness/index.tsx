@@ -7,8 +7,10 @@ export interface BrightnessSensorProps {
 
 export const BrightnessSensor = ({ value }: BrightnessSensorProps) => {
   return (
-    <SensorCard>
-      <FontAwesomeIcon icon={['far', 'brightness']} />
+    <SensorCard
+      icon={<FontAwesomeIcon icon={['far', 'brightness']} />}
+      name="brightness"
+    >
       {value}
     </SensorCard>
   )
