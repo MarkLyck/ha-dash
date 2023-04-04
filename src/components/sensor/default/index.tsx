@@ -20,7 +20,7 @@ export const DefaultSensor = ({ value }: DefaultSensorProps) => {
   }
 
   return (
-    <SensorCard icon={<FontAwesomeIcon icon={icon} />} name="default">
+    <SensorCard icon={<FontAwesomeIcon icon={icon} />} name="unknown">
       {valueText}
     </SensorCard>
   )

@@ -26,6 +26,7 @@ export const SceneIcon = ({ name, active = false }: SceneIconProps) => {
   if (sceneName.includes('morning')) icon[1] = 'sun-bright'
   if (sceneName.includes('cooking')) icon[1] = 'oven'
   if (sceneName.includes('dinner')) icon[1] = 'plate-utensils'
+  if (sceneName.includes('lunch')) icon[1] = 'burger-soda'
   if (sceneName.includes('breakfast')) icon[1] = 'pan-frying'
   if (sceneName.includes('party')) icon[1] = 'party-horn'
   if (sceneName.includes('work')) icon[1] = 'briefcase'
@@ -34,12 +35,17 @@ export const SceneIcon = ({ name, active = false }: SceneIconProps) => {
   if (sceneName.includes('exercise') || sceneName.includes('workout')) {
     icon[1] = 'dumbbell'
   }
+  if (sceneName.includes('yoga') || sceneName.includes('meditat')) {
+    icon[1] = 'yin-yang'
+  }
   if (sceneName.includes('away') || sceneName.includes('leaving')) {
     icon[1] = 'house-person-leave'
   }
   if (sceneName.includes('home') || sceneName.includes('arriving')) {
     icon[1] = 'house-person-arrive'
   }
+  if (sceneName.includes('study') || sceneName.includes('homework'))
+    icon[1] = 'book'
   if (sceneName.includes('vacation')) icon[1] = 'island-tropical'
   if (sceneName.includes('makeup')) icon[1] = 'lips'
   if (sceneName.includes('clean')) icon[1] = 'broom-wide'
@@ -60,9 +66,7 @@ export const SceneIcon = ({ name, active = false }: SceneIconProps) => {
   ) {
     icon[1] = 'tv'
   }
-  if (sceneName.includes('study') || sceneName.includes('reading')) {
-    icon[1] = 'books'
-  }
+  if (sceneName.includes('reading')) icon[1] = 'books'
   if (
     sceneName === 'romance' ||
     sceneName === 'love' ||

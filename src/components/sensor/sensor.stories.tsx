@@ -7,7 +7,8 @@ import {
   BrightnessSensor,
   TemperatureSensor,
   HumiditySensor,
-  WifiSensor,
+  SoilMoistureSensor,
+  DownloadSpeedSensor,
   MotionSensor,
   VibrationSensor,
   OpenCloseSensor,
@@ -17,6 +18,8 @@ import {
   OccupancySensor,
   CPUSensor,
   MemorySensor,
+  ToothBrush,
+  UploadSpeedSensor,
 } from './index'
 
 const meta = {
@@ -38,17 +41,21 @@ export const Sensors: Story = {
       <HumiditySensor value={59} />
       <AirQualitySensor value={892} />
       <BrightnessSensor value={89} />
-      <WifiSensor value={42.86} />
       <MotionSensor detected={true} />
       <OccupancySensor detected={true} />
       <VibrationSensor detected={true} />
       <SmokeSensor detected={false} />
+      <WaterSensor detected={false} />
       <OpenCloseSensor isOpen={false} type="door" />
       <OpenCloseSensor isOpen={true} type="window" />
+      <OpenCloseSensor isOpen={false} type="safe" />
       <OpenCloseSensor isOpen={true} type={undefined} />
-      <WaterSensor detected={false} />
+      <DownloadSpeedSensor value={422.86} />
+      <UploadSpeedSensor value={98.22} />
       <CPUSensor value={38} />
       <MemorySensor value={44} />
+      <ToothBrush brushing={false} />
+      <SoilMoistureSensor value={24} />
 
       <DefaultSensor value={true} />
     </div>

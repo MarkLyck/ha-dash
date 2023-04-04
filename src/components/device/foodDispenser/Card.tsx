@@ -18,6 +18,7 @@ export const FoodDispenserCard = ({
   lastDispensed,
   setState,
 }: FoodDispenserCardProps) => {
+  const isActive = false
   let status = lastDispensed?.toDateString()
   let type: DeviceCardType = 'default'
   if (isEmpty) {
@@ -27,14 +28,14 @@ export const FoodDispenserCard = ({
 
   return (
     <DeviceCard
-      isActive={true}
+      isActive={isActive}
       name={name}
       status={status}
       type={type}
       setIsActive={setState}
       icon={icon}
       action={
-        <StateActionButton isActive={true}>
+        <StateActionButton isActive={isActive}>
           <FontAwesomeIcon icon={['far', 'bowl-food']} />
         </StateActionButton>
       }

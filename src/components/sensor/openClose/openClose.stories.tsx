@@ -33,6 +33,18 @@ export const ClosedWindow: Story = {
     type: 'window',
   },
 }
+export const Safe: Story = {
+  args: {
+    isOpen: false,
+    type: 'safe',
+  },
+}
+export const Mailbox: Story = {
+  args: {
+    isOpen: false,
+    type: 'mailbox',
+  },
+}
 export const Unknown: Story = {
   args: {
     isOpen: true,

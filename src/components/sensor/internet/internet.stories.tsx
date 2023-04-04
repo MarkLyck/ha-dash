@@ -1,27 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { WifiSensor } from './index'
+import { DownloadSpeedSensor } from './index'
 
 const meta = {
-  component: WifiSensor,
-} satisfies Meta<typeof WifiSensor>
+  component: DownloadSpeedSensor,
+} satisfies Meta<typeof DownloadSpeedSensor>
 
 export default meta
-type Story = StoryObj<typeof WifiSensor>
+type Story = StoryObj<typeof DownloadSpeedSensor>
 
 export const Strong: Story = {
   args: {
-    value: 42.86,
+    value: 422.86,
   },
 }
 export const Fair: Story = {
   args: {
-    value: 9.23,
+    value: 19.23,
   },
 }
 export const Weak: Story = {
   args: {
-    value: 0.74,
+    value: 7.4,
   },
 }
 export const NotWorking: Story = {

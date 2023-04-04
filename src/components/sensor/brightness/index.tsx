@@ -11,7 +11,7 @@ export const BrightnessSensor = ({ value }: BrightnessSensorProps) => {
       icon={<FontAwesomeIcon icon={['far', 'brightness']} />}
       name="brightness"
     >
-      {value}
+      {value} lumen
     </SensorCard>
   )
 }

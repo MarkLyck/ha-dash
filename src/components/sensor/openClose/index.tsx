@@ -11,7 +11,7 @@ const iconStyle = cva('', {
   },
 })
 
-type OpenCloseType = 'door' | 'window'
+type OpenCloseType = 'door' | 'window' | 'safe' | 'mailbox'
 
 type IconMap = Record<
   OpenCloseType,
@@ -29,6 +29,14 @@ const iconMap: IconMap = {
   window: {
     open: ['far', 'window-frame-open'],
     closed: ['far', 'window-frame'],
+  },
+  safe: {
+    open: ['far', 'vault'],
+    closed: ['far', 'vault'],
+  },
+  mailbox: {
+    open: ['far', 'mailbox-flag-up'],
+    closed: ['far', 'mailbox'],
   },
 }
 
