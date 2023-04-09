@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import Typography from '@/components/ui/typography'
-import { getSceneIcon } from './sceneIcons'
+import { SceneIcon } from './sceneIcons'
 
 type SceneProps = {
   name: string
@@ -32,14 +32,13 @@ export const container = cva('py-3 px-4 rounded-xl border transition ', {
 })
 
 export const Scene = ({ name, active, setActive }: SceneProps) => {
-  const SceneIcon = getSceneIcon({ name })
   return (
     <Button
       variant="outline"
       className={cn(container({ active }))}
       onClick={() => setActive(!active)}
     >
-      <SceneIcon active={active} />
+      <SceneIcon name={name} active={active} />
       <Typography.Text
         className={
           'flex-1 text-left text-sm font-normal leading-4 text-slate-900'
