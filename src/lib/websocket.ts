@@ -1,3 +1,5 @@
+'use client'
+
 import { signal } from '@preact/signals-core'
 import {
   ERR_HASS_HOST_REQUIRED,
@@ -15,6 +17,7 @@ import {
   //   HassEntities,
   type HassUser,
 } from 'home-assistant-js-websocket'
+import store from 'store'
 
 let connection: Connection, auth: Auth
 
@@ -22,16 +25,14 @@ export const entities = signal({})
 
 export function saveTokens(tokens?: AuthData | null) {
   try {
-    localStorage.setItem('hass_tokens', JSON.stringify(tokens))
+    store.set('hassTokens', tokens)
   } catch (err) {}
 }
 
 export function loadTokens() {
   let hassTokens
   try {
-    hassTokens = JSON.parse(
-      String(localStorage.getItem('hass_tokens'))
-    ) as AuthData
+    hassTokens = store.get('hass_tokens') as AuthData
   } catch (err) {}
   return hassTokens
 }
@@ -39,15 +40,16 @@ export function loadTokens() {
 const hassUrl = process.env.HASS_URL
 
 const connectToHASS = () => {
-  if (!connection)
+  if (!connection) {
     void (async () => {
-      localStorage.setItem('hass_url', hassUrl ?? '')
-      auth = await getAuth({
-        hassUrl: hassUrl,
-        saveTokens: saveTokens,
-        loadTokens: () => Promise.resolve(loadTokens()),
-      })
+      store.set('hass_url', hassUrl)
+
       try {
+        auth = await getAuth({
+          hassUrl: hassUrl,
+          saveTokens: saveTokens,
+          loadTokens: () => Promise.resolve(loadTokens()),
+        })
         connection = await createConnection({ auth })
       } catch (err) {
         try {
@@ -81,6 +83,7 @@ const connectToHASS = () => {
         console.log('Logged into Home Assistant as', user.name)
       })
     })()
+  }
 }
 
 // async function connect() {
