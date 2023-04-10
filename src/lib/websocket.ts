@@ -1,118 +1,62 @@
 'use client'
 
-import { signal } from '@preact/signals-core'
+import { signal } from '@preact/signals-react'
 import {
-  ERR_HASS_HOST_REQUIRED,
-  ERR_INVALID_AUTH,
-  //   callService,
   createConnection,
-  getAuth,
+  createLongLivedTokenAuth,
   getUser,
-  //   subscribeConfig,
-  //   subscribeEntities,
-  type Auth,
-  type AuthData,
+  subscribeConfig,
+  subscribeEntities,
+  subscribeServices,
   type Connection,
-  //   HassConfig,
-  //   HassEntities,
+  type HassConfig,
+  type HassEntities,
+  type HassServices,
   type HassUser,
 } from 'home-assistant-js-websocket'
-import store from 'store'
+import { z } from 'zod'
 
-let connection: Connection, auth: Auth
+import { entityMapSchema } from '@/lib/types/entities'
 
-export const entities = signal({})
+let connection: Connection
 
-export function saveTokens(tokens?: AuthData | null) {
-  try {
-    store.set('hassTokens', tokens)
-  } catch (err) {}
+export const haEntities = signal<HassEntities>({})
+export const haServices = signal<HassServices>({})
+export const haConfig = signal<HassConfig | null>(null)
+export const haUser = signal<HassUser | null>(null)
+
+const updateConfig = (config: HassConfig) => {
+  haConfig.value = config
+}
+const updateEntities = (entitiesMap: HassEntities) => {
+  const data = entityMapSchema.parse(entitiesMap)
+  haEntities.value = data
+}
+const updateServices = (services: HassServices) => {
+  haServices.value = services
 }
 
-export function loadTokens() {
-  let hassTokens
-  try {
-    hassTokens = store.get('hass_tokens') as AuthData
-  } catch (err) {}
-  return hassTokens
-}
+const hassUrl = z.string().url().parse(process.env.NEXT_PUBLIC_HASS_URL)
+const hassToken = z.string().parse(process.env.NEXT_PUBLIC_HASS_TOKEN)
 
-const hassUrl = process.env.HASS_URL
-
-const connectToHASS = () => {
+export const connectToHASS = () => {
   if (!connection) {
     void (async () => {
-      store.set('hass_url', hassUrl)
-
       try {
-        auth = await getAuth({
-          hassUrl: hassUrl,
-          saveTokens: saveTokens,
-          loadTokens: () => Promise.resolve(loadTokens()),
-        })
+        const auth = createLongLivedTokenAuth(hassUrl, hassToken)
         connection = await createConnection({ auth })
       } catch (err) {
-        try {
-          if (err !== ERR_HASS_HOST_REQUIRED) {
-            throw err
-          }
-          // @ts-expect-error - no overlap
-          if (err !== ERR_INVALID_AUTH) {
-            throw err
-          }
-          // We can get invalid auth if auth tokens were stored that are no longer valid
-          // Clear stored tokens.
-          saveTokens()
-          auth = await getAuth({
-            hassUrl: hassUrl,
-            saveTokens: saveTokens,
-            loadTokens: () => Promise.resolve(loadTokens()),
-          })
-          connection = await createConnection({ auth })
-        } catch (err) {
-          throw err
-        }
+        throw err
       }
-      //   props.setConnected(true)
-      //   connection.removeEventListener('ready', eventHandler)
-      //   connection.addEventListener('ready', eventHandler)
-      //   props.setAuth(auth)
-      //   subscribeConfig(connection, updateConfig)
-      //   subscribeEntities(connection, updateEntites)
+
+      subscribeEntities(connection, updateEntities)
+      subscribeServices(connection, updateServices)
+      subscribeConfig(connection, updateConfig)
+
       await getUser(connection).then((user: HassUser) => {
         console.log('Logged into Home Assistant as', user.name)
+        haUser.value = user
       })
     })()
   }
 }
-
-// async function connect() {
-//   let auth
-//   try {
-//     // Try to pick up authentication after user logs in
-//     auth = await getAuth()
-//   } catch (err) {
-//     if (err === ERR_HASS_HOST_REQUIRED) {
-//       const hassUrl = 'https://thranehome.com'
-//       // Redirect user to log in on their instance
-//       auth = await getAuth({
-//         hassUrl,
-//         saveTokens: saveTokens,
-//         loadTokens: () => Promise.resolve(loadTokens()),
-//       })
-//     } else if (err === ERR_INVALID_AUTH) {
-//       console.log('ERR_INVALID_AUTH')
-//     } else {
-//       console.log('🔈 ~ unknown err:', err)
-//       return
-//     }
-//   }
-//   const connection = await createConnection({ auth })
-//   subscribeEntities(connection, (ent) => {
-//     entities.value = ent
-//     console.log(ent)
-//   })
-// }
-
-// void connect()
-connectToHASS()

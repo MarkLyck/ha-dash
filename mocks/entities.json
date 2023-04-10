@@ -1,0 +1,1250 @@
+{
+  "person.thrane": {
+    "entity_id": "person.thrane",
+    "state": "unknown",
+    "attributes": {
+      "editable": true,
+      "id": "thrane",
+      "user_id": "973ccdc751f64a5ab86691ac0cab3318",
+      "friendly_name": "Jakob Thrane"
+    },
+    "context": {
+      "id": "01GX714DZ7C0ECDRV82Q5ZDQYH",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:14:45.169Z",
+    "last_updated": "2023-04-04T21:00:29.543Z"
+  },
+  "update.home_assistant_supervisor_update": {
+    "entity_id": "update.home_assistant_supervisor_update",
+    "state": "off",
+    "attributes": {
+      "auto_update": true,
+      "installed_version": "2023.04.0",
+      "in_progress": false,
+      "latest_version": "2023.04.0",
+      "release_summary": null,
+      "release_url": "https://github.com/home-assistant/supervisor/releases/tag/2023.04.0",
+      "skipped_version": null,
+      "title": "Home Assistant Supervisor",
+      "entity_picture": "https://brands.home-assistant.io/hassio/icon.png",
+      "friendly_name": "Home Assistant Supervisor Update",
+      "supported_features": 1
+    },
+    "context": {
+      "id": "01GX96BSH2CC6PQTJJBJ7KW7XG",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T17:10:22.498Z",
+    "last_updated": "2023-04-05T17:10:22.498Z"
+  },
+  "update.home_assistant_core_update": {
+    "entity_id": "update.home_assistant_core_update",
+    "state": "on",
+    "attributes": {
+      "auto_update": false,
+      "installed_version": "2023.3.6",
+      "in_progress": false,
+      "latest_version": "2023.4.2",
+      "release_summary": null,
+      "release_url": "https://www.home-assistant.io/latest-release-notes/",
+      "skipped_version": null,
+      "title": "Home Assistant Core",
+      "entity_picture": "https://brands.home-assistant.io/homeassistant/icon.png",
+      "friendly_name": "Home Assistant Core Update",
+      "supported_features": 11
+    },
+    "context": {
+      "id": "01GXJDJGB6S47KZ79V0QTS44V6",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T21:06:56.380Z",
+    "last_updated": "2023-04-09T07:09:32.390Z"
+  },
+  "update.studio_code_server_update": {
+    "entity_id": "update.studio_code_server_update",
+    "state": "off",
+    "attributes": {
+      "auto_update": false,
+      "installed_version": "5.5.6",
+      "in_progress": false,
+      "latest_version": "5.5.6",
+      "release_summary": "## What’s changed\n\n## 🧰 Maintenance\n\n- 🔨 Adjust upstream code-server org name @frenck ([#603](https://github.com/hassio-addons/addon-vscode/pull/603))\n\n## 📚 Documentation\n\n- Update URLs in documentation @wrt54g ([#602](https://github.com/hassio-addons/add",
+      "release_url": null,
+      "skipped_version": null,
+      "title": "Studio Code Server",
+      "entity_picture": "/api/hassio/addons/a0d7b954_vscode/icon",
+      "friendly_name": "Studio Code Server Update",
+      "supported_features": 25
+    },
+    "context": {
+      "id": "01GX6YGWAFHK04S6DWFMAF1SJF",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:14:51.727Z",
+    "last_updated": "2023-04-04T20:14:51.727Z"
+  },
+  "update.silicon_labs_multiprotocol_update": {
+    "entity_id": "update.silicon_labs_multiprotocol_update",
+    "state": "off",
+    "attributes": {
+      "auto_update": false,
+      "installed_version": "1.1.1",
+      "in_progress": false,
+      "latest_version": "1.1.1",
+      "release_summary": "# Changelog\n\n## 1.1.1\n\n- Bugfix: bump universal SiLabs flasher to 0.0.12 for amd64\n\n## 1.1.0\n\n- Use default baudrate of 460800 (WARNING: You MUST update your configuration!)\n- Bump universal SiLabs flasher to 0.0.12\n\n## 1.0.2\n\n- Use Silicon Labs Gecko SDK",
+      "release_url": null,
+      "skipped_version": null,
+      "title": "Silicon Labs Multiprotocol",
+      "entity_picture": "/api/hassio/addons/core_silabs_multiprotocol/icon",
+      "friendly_name": "Silicon Labs Multiprotocol Update",
+      "supported_features": 25
+    },
+    "context": {
+      "id": "01GXGKCT431YJJK4VXTV8Y9HA7",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T08:26:54.378Z",
+    "last_updated": "2023-04-08T14:12:48.387Z"
+  },
+  "update.node_red_update": {
+    "entity_id": "update.node_red_update",
+    "state": "off",
+    "attributes": {
+      "auto_update": false,
+      "installed_version": "14.1.3",
+      "in_progress": false,
+      "latest_version": "14.1.3",
+      "release_summary": null,
+      "release_url": null,
+      "skipped_version": null,
+      "title": "Node-RED",
+      "entity_picture": "/api/hassio/addons/a0d7b954_nodered/icon",
+      "friendly_name": "Node-RED Update",
+      "supported_features": 25
+    },
+    "context": {
+      "id": "01GX734AQYJZ2S3GASGBZBVVCM",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:14:51.728Z",
+    "last_updated": "2023-04-04T21:35:23.390Z"
+  },
+  "update.ssh_web_terminal_update": {
+    "entity_id": "update.ssh_web_terminal_update",
+    "state": "off",
+    "attributes": {
+      "auto_update": false,
+      "installed_version": "13.1.0",
+      "in_progress": false,
+      "latest_version": "13.1.0",
+      "release_summary": "## What’s changed\n\n## ✨ New features\n\n- Add support for VSCode Remote - SSH @BNolet ([#498](https://github.com/hassio-addons/addon-ssh/pull/498))\n\n## 🚀 Enhancements\n\n- Sync server `KexAlgorithms` with OpenSSH 9.1 and ssh-audit dev @scop ([#513](https://gi",
+      "release_url": null,
+      "skipped_version": null,
+      "title": "SSH & Web Terminal",
+      "entity_picture": "/api/hassio/addons/a0d7b954_ssh/icon",
+      "friendly_name": "SSH & Web Terminal Update",
+      "supported_features": 25
+    },
+    "context": {
+      "id": "01GXGKCT4455F6WYMC0FVJGN2D",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:14:51.728Z",
+    "last_updated": "2023-04-08T14:12:48.388Z"
+  },
+  "update.cloudflared_update": {
+    "entity_id": "update.cloudflared_update",
+    "state": "on",
+    "attributes": {
+      "auto_update": false,
+      "installed_version": "4.0.14",
+      "in_progress": false,
+      "latest_version": "4.1.0",
+      "release_summary": "## What’s changed\n## 🚀 Enhancements\n\n- Add option for Post-Quantum Crypto @brenner-tobias (#357)\n\n## 🧰 Maintenance\n\n- Configure Renovate, incl. auto-merge @renovate, @elcajon\n\n## 📚 Documentation\n\n- Add option in documentation for wildcard DNS record @gera",
+      "release_url": null,
+      "skipped_version": null,
+      "title": "Cloudflared",
+      "entity_picture": "/api/hassio/addons/9074a9fa_cloudflared/icon",
+      "friendly_name": "Cloudflared Update",
+      "supported_features": 25
+    },
+    "context": {
+      "id": "01GXGKCT446N5NF5CQBHX1Q47E",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-06T11:07:30.409Z",
+    "last_updated": "2023-04-08T14:12:48.388Z"
+  },
+  "update.home_assistant_operating_system_update": {
+    "entity_id": "update.home_assistant_operating_system_update",
+    "state": "off",
+    "attributes": {
+      "auto_update": false,
+      "installed_version": "9.5",
+      "in_progress": false,
+      "latest_version": "9.5",
+      "release_summary": null,
+      "release_url": "https://github.com/home-assistant/operating-system/releases/tag/9.5",
+      "skipped_version": null,
+      "title": "Home Assistant Operating System",
+      "entity_picture": "https://brands.home-assistant.io/homeassistant/icon.png",
+      "friendly_name": "Home Assistant Operating System Update",
+      "supported_features": 3
+    },
+    "context": {
+      "id": "01GX6YGWAHYXW70CB9QGGCQ02Y",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:14:51.729Z",
+    "last_updated": "2023-04-04T20:14:51.729Z"
+  },
+  "sun.sun": {
+    "entity_id": "sun.sun",
+    "state": "above_horizon",
+    "attributes": {
+      "next_dawn": "2023-04-11T03:53:01.567680+00:00",
+      "next_dusk": "2023-04-10T19:01:24.649386+00:00",
+      "next_midnight": "2023-04-10T23:27:33+00:00",
+      "next_noon": "2023-04-11T11:27:39+00:00",
+      "next_rising": "2023-04-11T04:32:27.313247+00:00",
+      "next_setting": "2023-04-10T18:21:54.011480+00:00",
+      "elevation": 25.89,
+      "azimuth": 244.4,
+      "rising": false,
+      "friendly_name": "Sun"
+    },
+    "context": {
+      "id": "01GXNVB5A1JYP96JZA7ZNBKRX0",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T04:34:58.754Z",
+    "last_updated": "2023-04-10T15:07:55.073Z"
+  },
+  "zone.home": {
+    "entity_id": "zone.home",
+    "state": "0",
+    "attributes": {
+      "latitude": 55.5147,
+      "longitude": 8.3911,
+      "radius": 100,
+      "passive": false,
+      "persons": [],
+      "editable": true,
+      "icon": "mdi:home",
+      "friendly_name": "Home"
+    },
+    "context": {
+      "id": "01GX6YH8Q0N4MK1AP09Y4D7JVK",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:04.416Z",
+    "last_updated": "2023-04-04T20:15:04.416Z"
+  },
+  "binary_sensor.robot_vacuum_mop_attached": {
+    "entity_id": "binary_sensor.robot_vacuum_mop_attached",
+    "state": "off",
+    "attributes": {
+      "device_class": "connectivity",
+      "icon": "mdi:square-rounded",
+      "friendly_name": "Robot vacuum Mop attached"
+    },
+    "context": {
+      "id": "01GXMCHZBAHCX8H7TM9MT77J3Y",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.274Z",
+    "last_updated": "2023-04-10T01:30:15.274Z"
+  },
+  "binary_sensor.robot_vacuum_water_box_attached": {
+    "entity_id": "binary_sensor.robot_vacuum_water_box_attached",
+    "state": "off",
+    "attributes": {
+      "device_class": "connectivity",
+      "icon": "mdi:water",
+      "friendly_name": "Robot vacuum Water box attached"
+    },
+    "context": {
+      "id": "01GXMCHZBBB7SJ5QKQFMNMEGQN",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.275Z",
+    "last_updated": "2023-04-10T01:30:15.275Z"
+  },
+  "sensor.robot_vacuum_last_clean_start": {
+    "entity_id": "sensor.robot_vacuum_last_clean_start",
+    "state": "2023-04-08T13:05:43+00:00",
+    "attributes": {
+      "device_class": "timestamp",
+      "icon": "mdi:clock-time-twelve",
+      "friendly_name": "Robot vacuum Last clean start"
+    },
+    "context": {
+      "id": "01GXMCHZBBM9XFW0W6TQ1VYAQQ",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.275Z",
+    "last_updated": "2023-04-10T01:30:15.275Z"
+  },
+  "sensor.robot_vacuum_last_clean_end": {
+    "entity_id": "sensor.robot_vacuum_last_clean_end",
+    "state": "2023-04-08T14:13:40+00:00",
+    "attributes": {
+      "device_class": "timestamp",
+      "icon": "mdi:clock-time-twelve",
+      "friendly_name": "Robot vacuum Last clean end"
+    },
+    "context": {
+      "id": "01GXMCHZBC83S0XMJKMJSA7QTE",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.276Z",
+    "last_updated": "2023-04-10T01:30:15.276Z"
+  },
+  "sensor.robot_vacuum_last_clean_duration": {
+    "entity_id": "sensor.robot_vacuum_last_clean_duration",
+    "state": "4005",
+    "attributes": {
+      "unit_of_measurement": "s",
+      "device_class": "duration",
+      "icon": "mdi:timer-sand",
+      "friendly_name": "Robot vacuum Last clean duration"
+    },
+    "context": {
+      "id": "01GXMCHZBCSHV5RQZRFRNS3QB7",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.276Z",
+    "last_updated": "2023-04-10T01:30:15.276Z"
+  },
+  "sensor.robot_vacuum_last_clean_area": {
+    "entity_id": "sensor.robot_vacuum_last_clean_area",
+    "state": "72.9925",
+    "attributes": {
+      "unit_of_measurement": "m²",
+      "icon": "mdi:texture-box",
+      "friendly_name": "Robot vacuum Last clean area"
+    },
+    "context": {
+      "id": "01GXMCHZBDPW78SQDW6A731DF2",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.277Z",
+    "last_updated": "2023-04-10T01:30:15.277Z"
+  },
+  "sensor.robot_vacuum_current_clean_duration": {
+    "entity_id": "sensor.robot_vacuum_current_clean_duration",
+    "state": "4005",
+    "attributes": {
+      "unit_of_measurement": "s",
+      "device_class": "duration",
+      "icon": "mdi:timer-sand",
+      "friendly_name": "Robot vacuum Current clean duration"
+    },
+    "context": {
+      "id": "01GXMCHZBDPTCHCKZH9644XQQ1",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.277Z",
+    "last_updated": "2023-04-10T01:30:15.277Z"
+  },
+  "sensor.robot_vacuum_current_clean_area": {
+    "entity_id": "sensor.robot_vacuum_current_clean_area",
+    "state": "72.9925",
+    "attributes": {
+      "unit_of_measurement": "m²",
+      "icon": "mdi:texture-box",
+      "friendly_name": "Robot vacuum Current clean area"
+    },
+    "context": {
+      "id": "01GXMCHZBDGD3SCWB8Y736Z3HD",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.277Z",
+    "last_updated": "2023-04-10T01:30:15.277Z"
+  },
+  "sensor.robot_vacuum_main_brush_left": {
+    "entity_id": "sensor.robot_vacuum_main_brush_left",
+    "state": "636220",
+    "attributes": {
+      "unit_of_measurement": "s",
+      "device_class": "duration",
+      "icon": "mdi:brush",
+      "friendly_name": "Robot vacuum Main brush left"
+    },
+    "context": {
+      "id": "01GXMCHZBEPJAS5ETWJZXQXA7C",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.278Z",
+    "last_updated": "2023-04-10T01:30:15.278Z"
+  },
+  "sensor.robot_vacuum_side_brush_left": {
+    "entity_id": "sensor.robot_vacuum_side_brush_left",
+    "state": "276220",
+    "attributes": {
+      "unit_of_measurement": "s",
+      "device_class": "duration",
+      "icon": "mdi:brush",
+      "friendly_name": "Robot vacuum Side brush left"
+    },
+    "context": {
+      "id": "01GXMCHZBET40X6KTWC7ZR1JBA",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.278Z",
+    "last_updated": "2023-04-10T01:30:15.278Z"
+  },
+  "sensor.robot_vacuum_filter_left": {
+    "entity_id": "sensor.robot_vacuum_filter_left",
+    "state": "529851",
+    "attributes": {
+      "unit_of_measurement": "s",
+      "device_class": "duration",
+      "icon": "mdi:air-filter",
+      "friendly_name": "Robot vacuum Filter left"
+    },
+    "context": {
+      "id": "01GXMCHZBEMTXRQ418QB84SSFN",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.278Z",
+    "last_updated": "2023-04-10T01:30:15.278Z"
+  },
+  "sensor.robot_vacuum_sensor_dirty_left": {
+    "entity_id": "sensor.robot_vacuum_sensor_dirty_left",
+    "state": "97851",
+    "attributes": {
+      "unit_of_measurement": "s",
+      "device_class": "duration",
+      "icon": "mdi:eye-outline",
+      "friendly_name": "Robot vacuum Sensor dirty left"
+    },
+    "context": {
+      "id": "01GXMCHZBF5DGWX2MAGMBFDCHX",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.279Z",
+    "last_updated": "2023-04-10T01:30:15.279Z"
+  },
+  "media_player.apple_tv": {
+    "entity_id": "media_player.apple_tv",
+    "state": "off",
+    "attributes": {
+      "icon": "mdi:apple",
+      "friendly_name": "Apple TV",
+      "supported_features": 448439
+    },
+    "context": {
+      "id": "01GX6YHBH27GMQKT4DBWG05WE3",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:07.298Z",
+    "last_updated": "2023-04-04T20:15:07.298Z"
+  },
+  "media_player.samsung_tv_oscar": {
+    "entity_id": "media_player.samsung_tv_oscar",
+    "state": "unavailable",
+    "attributes": {
+      "source_list": ["TV", "HDMI"],
+      "device_class": "tv",
+      "friendly_name": "Samsung TV Oscar",
+      "supported_features": 20285
+    },
+    "context": {
+      "id": "01GX74MKGC7ND352EY30S9330E",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T22:01:45.228Z",
+    "last_updated": "2023-04-04T22:01:45.228Z"
+  },
+  "weather.forecast_home": {
+    "entity_id": "weather.forecast_home",
+    "state": "cloudy",
+    "attributes": {
+      "temperature": 16,
+      "temperature_unit": "°C",
+      "humidity": 57,
+      "pressure": 1013.3,
+      "pressure_unit": "hPa",
+      "wind_bearing": 159,
+      "wind_speed": 27,
+      "wind_speed_unit": "km/h",
+      "visibility_unit": "km",
+      "precipitation_unit": "mm",
+      "forecast": [
+        {
+          "condition": "cloudy",
+          "precipitation_probability": 99.9,
+          "datetime": "2023-04-11T10:00:00+00:00",
+          "wind_bearing": 258.3,
+          "temperature": 10.1,
+          "templow": 7.2,
+          "wind_speed": 37.4,
+          "precipitation": 4.1
+        },
+        {
+          "condition": "rainy",
+          "precipitation_probability": 90,
+          "datetime": "2023-04-12T10:00:00+00:00",
+          "wind_bearing": 140.2,
+          "temperature": 8.5,
+          "templow": 3.7,
+          "wind_speed": 32.4,
+          "precipitation": 6.9
+        },
+        {
+          "condition": "rainy",
+          "precipitation_probability": 37.3,
+          "datetime": "2023-04-13T10:00:00+00:00",
+          "wind_bearing": 197.2,
+          "temperature": 9.4,
+          "templow": 5.5,
+          "wind_speed": 26.6,
+          "precipitation": 1.6
+        },
+        {
+          "condition": "partlycloudy",
+          "precipitation_probability": 13.7,
+          "datetime": "2023-04-14T10:00:00+00:00",
+          "wind_bearing": 164.4,
+          "temperature": 11.3,
+          "templow": 5.8,
+          "wind_speed": 14.4,
+          "precipitation": 0
+        },
+        {
+          "condition": "cloudy",
+          "precipitation_probability": 17.6,
+          "datetime": "2023-04-15T10:00:00+00:00",
+          "wind_bearing": 100.8,
+          "temperature": 12,
+          "templow": 4.8,
+          "wind_speed": 15.5,
+          "precipitation": 0
+        }
+      ],
+      "attribution": "Weather forecast from met.no, delivered by the Norwegian Meteorological Institute.",
+      "friendly_name": "Forecast Home"
+    },
+    "context": {
+      "id": "01GXNTQSN90TX3KNFTNSN93QYM",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T13:03:20.627Z",
+    "last_updated": "2023-04-10T14:57:20.553Z"
+  },
+  "remote.apple_tv": {
+    "entity_id": "remote.apple_tv",
+    "state": "off",
+    "attributes": {
+      "friendly_name": "Apple TV",
+      "supported_features": 0
+    },
+    "context": {
+      "id": "01GX6YHC74QN069NZ29NDFV7SP",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:08.004Z",
+    "last_updated": "2023-04-04T20:15:08.004Z"
+  },
+  "vacuum.robot_vacuum": {
+    "entity_id": "vacuum.robot_vacuum",
+    "state": "docked",
+    "attributes": {
+      "fan_speed_list": [
+        "Silent",
+        "Standard",
+        "Medium",
+        "Turbo",
+        "Gentle",
+        "Auto"
+      ],
+      "battery_level": 100,
+      "battery_icon": "mdi:battery-charging-100",
+      "fan_speed": "Standard",
+      "status": "Charging",
+      "friendly_name": "Robot vacuum",
+      "supported_features": 14204
+    },
+    "context": {
+      "id": "01GXMCHZBFNM77V7S4F5DJRDT5",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T01:30:15.279Z",
+    "last_updated": "2023-04-10T01:30:15.279Z"
+  },
+  "media_player.samsung_frame": {
+    "entity_id": "media_player.samsung_frame",
+    "state": "off",
+    "attributes": {
+      "source_list": [
+        "TV",
+        "HDMI",
+        "Apple TV+",
+        "Blockbuster",
+        "C More",
+        "Canal Digital",
+        "DRTV",
+        "Dansk Filmskat",
+        "Disney+",
+        "Fortrolighedsvalg",
+        "Google Play Film og TV",
+        "HBO Max",
+        "HBO Nordic",
+        "Internet",
+        "McAfee Security for TV",
+        "Min Bio",
+        "Netflix",
+        "Neverthink",
+        "Plejmo",
+        "Prime Video",
+        "Rakuten TV",
+        "SF Anytime",
+        "SkyShowtime",
+        "Spotify - Music and Podcasts",
+        "TV 2 PLAY",
+        "Viafree",
+        "Viaplay",
+        "YouSee Play",
+        "YouTube",
+        "discovery+",
+        "e-Manual"
+      ],
+      "device_class": "tv",
+      "friendly_name": "Samsung Frame",
+      "supported_features": 20413
+    },
+    "context": {
+      "id": "01GXN3DAC5TW1RW0BM43PBEYR8",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T08:09:39.973Z",
+    "last_updated": "2023-04-10T08:09:39.973Z"
+  },
+  "scene.vin_nat_belysning": {
+    "entity_id": "scene.vin_nat_belysning",
+    "state": "unknown",
+    "attributes": {
+      "group_name": "Vin",
+      "group_type": "room",
+      "name": "Nat belysning",
+      "speed": 0.5,
+      "brightness": 0.39,
+      "is_dynamic": false,
+      "friendly_name": "Vin Nat belysning"
+    },
+    "context": {
+      "id": "01GX6YHHY5T3270RM1G7M2XPTN",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:13.861Z",
+    "last_updated": "2023-04-04T20:15:13.861Z"
+  },
+  "scene.vin_klar": {
+    "entity_id": "scene.vin_klar",
+    "state": "unknown",
+    "attributes": {
+      "group_name": "Vin",
+      "group_type": "room",
+      "name": "Klar",
+      "speed": 0.5,
+      "brightness": 100,
+      "is_dynamic": false,
+      "friendly_name": "Vin Klar"
+    },
+    "context": {
+      "id": "01GX6YHHY647KNQ8791RBXHCJ6",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:13.862Z",
+    "last_updated": "2023-04-04T20:15:13.862Z"
+  },
+  "scene.vin_daempet": {
+    "entity_id": "scene.vin_daempet",
+    "state": "unknown",
+    "attributes": {
+      "group_name": "Vin",
+      "group_type": "room",
+      "name": "Dæmpet",
+      "speed": 0.5,
+      "brightness": 30.31,
+      "is_dynamic": false,
+      "friendly_name": "Vin Dæmpet"
+    },
+    "context": {
+      "id": "01GX6YHHY6TVYK8N1RCSTWTV1N",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:13.862Z",
+    "last_updated": "2023-04-04T20:15:13.862Z"
+  },
+  "light.hue_lightstrip_right": {
+    "entity_id": "light.hue_lightstrip_right",
+    "state": "off",
+    "attributes": {
+      "min_color_temp_kelvin": 2000,
+      "max_color_temp_kelvin": 6535,
+      "min_mireds": 153,
+      "max_mireds": 500,
+      "effect_list": ["None", "candle", "fire"],
+      "supported_color_modes": ["color_temp", "xy"],
+      "mode": "normal",
+      "dynamics": "none",
+      "icon": "mdi:led-strip-variant",
+      "friendly_name": "Vin Lightstrip Right",
+      "supported_features": 44
+    },
+    "context": {
+      "id": "01GXETDPXV9YFS060FTA087YC4",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-07T21:37:09.051Z",
+    "last_updated": "2023-04-07T21:37:09.051Z"
+  },
+  "light.hue_lighstrip_left": {
+    "entity_id": "light.hue_lighstrip_left",
+    "state": "off",
+    "attributes": {
+      "min_color_temp_kelvin": 2000,
+      "max_color_temp_kelvin": 6535,
+      "min_mireds": 153,
+      "max_mireds": 500,
+      "effect_list": ["None", "candle", "fire"],
+      "supported_color_modes": ["color_temp", "xy"],
+      "mode": "normal",
+      "dynamics": "none",
+      "icon": "mdi:led-strip-variant",
+      "friendly_name": "Lightstrip left",
+      "supported_features": 44
+    },
+    "context": {
+      "id": "01GXHG72XN9BQNDTG7J16JZ44Z",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-08T22:36:29.493Z",
+    "last_updated": "2023-04-08T22:36:29.493Z"
+  },
+  "light.vin": {
+    "entity_id": "light.vin",
+    "state": "off",
+    "attributes": {
+      "min_color_temp_kelvin": 2000,
+      "max_color_temp_kelvin": 6535,
+      "min_mireds": 153,
+      "max_mireds": 500,
+      "supported_color_modes": ["color_temp", "xy"],
+      "is_hue_group": true,
+      "hue_scenes": ["Nat belysning", "Klar", "Dæmpet"],
+      "hue_type": "room",
+      "lights": ["Hue lightstrip plus 2", "Hue lightstrip plus 1"],
+      "dynamics": false,
+      "icon": "mdi:lightbulb-group",
+      "friendly_name": "Vin",
+      "supported_features": 40
+    },
+    "context": {
+      "id": "01GXETDPXWFF26KK1XCAEWJETF",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-07T21:37:09.052Z",
+    "last_updated": "2023-04-07T21:37:09.052Z"
+  },
+  "binary_sensor.sagemcom_fast3890v3_wan_status": {
+    "entity_id": "binary_sensor.sagemcom_fast3890v3_wan_status",
+    "state": "on",
+    "attributes": {
+      "device_class": "connectivity",
+      "friendly_name": "Sagemcom Fast3890v3 wan status"
+    },
+    "context": {
+      "id": "01GX6YHJ416NTFSV8RC6D5CNBE",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:14.049Z",
+    "last_updated": "2023-04-04T20:15:14.049Z"
+  },
+  "sensor.sagemcom_fast3890v3_external_ip": {
+    "entity_id": "sensor.sagemcom_fast3890v3_external_ip",
+    "state": "83.89.115.63",
+    "attributes": {
+      "icon": "mdi:server-network",
+      "friendly_name": "Sagemcom Fast3890v3 External IP"
+    },
+    "context": {
+      "id": "01GX6YHJ42EQTHG0W2031Y8ETQ",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:14.050Z",
+    "last_updated": "2023-04-04T20:15:14.050Z"
+  },
+  "media_player.tv_stue_2": {
+    "entity_id": "media_player.tv_stue_2",
+    "state": "paused",
+    "attributes": {
+      "volume_level": 0.3,
+      "media_content_type": "music",
+      "media_duration": 305,
+      "media_position": 2,
+      "media_position_updated_at": "2023-04-04T20:15:14.087864+00:00",
+      "media_title": "This Is Where You Can Reach Me Now",
+      "media_artist": "U2",
+      "media_album_name": "Songs of Innocence",
+      "app_id": "com.apple.Music",
+      "app_name": "AirMusic",
+      "shuffle": true,
+      "repeat": "off",
+      "entity_picture": "/api/media_player_proxy/media_player.tv_stue_2?token=51ffb05f6f83a0e9f6f9ba379052a37914c64d0bef131bbf6db518ea743988a1&cache=Features1/v4/75/26/06/75260685-4a6d-7342-9ad8-c5a56e5b8c50/mza_3295371297510140818.jpg",
+      "friendly_name": "Tv-stue",
+      "supported_features": 448439
+    },
+    "context": {
+      "id": "01GX6YHJ586Y49VVKX7ADFV6HA",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:14.088Z",
+    "last_updated": "2023-04-04T20:15:14.088Z"
+  },
+  "remote.tv_stue": {
+    "entity_id": "remote.tv_stue",
+    "state": "on",
+    "attributes": {
+      "friendly_name": "Tv-stue",
+      "supported_features": 0
+    },
+    "context": {
+      "id": "01GX6YHJ4RKSR8EFF8JRT41F02",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:14.072Z",
+    "last_updated": "2023-04-04T20:15:14.072Z"
+  },
+  "media_player.kokken": {
+    "entity_id": "media_player.kokken",
+    "state": "idle",
+    "attributes": {
+      "volume_level": 0.128,
+      "app_id": "",
+      "friendly_name": "Køkken",
+      "supported_features": 448439
+    },
+    "context": {
+      "id": "01GXE9W1G1KTGZH2K7XNW9H04H",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-07T16:47:52.833Z",
+    "last_updated": "2023-04-07T16:47:52.833Z"
+  },
+  "remote.kokken": {
+    "entity_id": "remote.kokken",
+    "state": "on",
+    "attributes": {
+      "friendly_name": "Køkken",
+      "supported_features": 0
+    },
+    "context": {
+      "id": "01GXE4NNQCJS9B5G7B13HBEABH",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-07T15:17:01.292Z",
+    "last_updated": "2023-04-07T15:17:01.292Z"
+  },
+  "sensor.hacs": {
+    "entity_id": "sensor.hacs",
+    "state": "1",
+    "attributes": {
+      "repositories": [
+        {
+          "name": "hacs/integration",
+          "display_name": "HACS",
+          "installed_version": "1.31.0",
+          "available_version": "1.32.1"
+        }
+      ],
+      "unit_of_measurement": "pending update(s)",
+      "icon": "hacs:hacs",
+      "friendly_name": "hacs"
+    },
+    "context": {
+      "id": "01GXHBBA9Z8TD7FS3ZWAF4RV7E",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-08T21:11:25.247Z",
+    "last_updated": "2023-04-08T21:11:25.247Z"
+  },
+  "media_player.tv_stue": {
+    "entity_id": "media_player.tv_stue",
+    "state": "off",
+    "attributes": {
+      "source_list": [
+        "TV",
+        "HDMI",
+        "Apple TV+",
+        "BLOCKBUSTER DK",
+        "Blockbuster",
+        "C More",
+        "Canal Digital",
+        "DRTV",
+        "Dansk Filmskat",
+        "Disney+",
+        "Eurosport",
+        "Facebook Watch",
+        "Fortrolighedsvalg",
+        "GameFly Streaming",
+        "Google Play Film og TV",
+        "HBO Max",
+        "HBO Nordic",
+        "Internet",
+        "McAfee Security for TV",
+        "Min Bio",
+        "Netflix",
+        "Plejmo",
+        "Prime Video",
+        "Rakuten TV",
+        "SF Anytime",
+        "SkyShowtime",
+        "Spotify - Music and Podcasts",
+        "Storytel",
+        "TV 2 PLAY",
+        "Viafree",
+        "Viaplay",
+        "YouSee Play",
+        "YouTube",
+        "discovery+",
+        "e-Manual"
+      ],
+      "device_class": "tv",
+      "friendly_name": "Tv stue",
+      "supported_features": 20413
+    },
+    "context": {
+      "id": "01GX9NXBC09NKZNWG9K5TDTSWT",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T21:42:06.464Z",
+    "last_updated": "2023-04-05T21:42:06.464Z"
+  },
+  "media_player.sovevaerelse": {
+    "entity_id": "media_player.sovevaerelse",
+    "state": "idle",
+    "attributes": {
+      "volume_level": 0.309,
+      "friendly_name": "Soveværelse",
+      "supported_features": 448439
+    },
+    "context": {
+      "id": "01GXM84XBW338EWW17X5B8XMMF",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T00:13:12.956Z",
+    "last_updated": "2023-04-10T00:13:12.956Z"
+  },
+  "remote.sovevaerelse": {
+    "entity_id": "remote.sovevaerelse",
+    "state": "on",
+    "attributes": {
+      "friendly_name": "Soveværelse",
+      "supported_features": 0
+    },
+    "context": {
+      "id": "01GXM84XBRAARESETKZBZ6E29Q",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-10T00:13:12.952Z",
+    "last_updated": "2023-04-10T00:13:12.952Z"
+  },
+  "persistent_notification.156ca956f69610a0ab2e02e5e32eb458": {
+    "entity_id": "persistent_notification.156ca956f69610a0ab2e02e5e32eb458",
+    "state": "notifying",
+    "attributes": {
+      "message": "To set up HASS Bridge:21064 in the Home App, scan the QR code or enter the following code:\n### 329-03-838\n![image](/api/homekit/pairingqr?156ca956f69610a0ab2e02e5e32eb458-b7682f29a4fc41b2ad3b75abf4db0f02b5cbb4ec59ee14a223c1dbd36809e063)",
+      "title": "HomeKit Pairing",
+      "friendly_name": "HomeKit Pairing"
+    },
+    "context": {
+      "id": "01GX6YHYZ55PHTKH9FD75PSQHH",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:27.205Z",
+    "last_updated": "2023-04-04T20:15:27.205Z"
+  },
+  "persistent_notification.config_entry_discovery": {
+    "entity_id": "persistent_notification.config_entry_discovery",
+    "state": "notifying",
+    "attributes": {
+      "message": "We have discovered new devices on your network. [Check it out](/config/integrations).",
+      "title": "New devices discovered",
+      "friendly_name": "New devices discovered"
+    },
+    "context": {
+      "id": "01GX6YJ0G73VWMMRFHS3M41DC8",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T20:15:28.775Z",
+    "last_updated": "2023-04-04T20:15:28.775Z"
+  },
+  "media_player.tv_tv_stue": {
+    "entity_id": "media_player.tv_tv_stue",
+    "state": "unavailable",
+    "attributes": {
+      "friendly_name": "[TV] Tv stue",
+      "supported_features": 0
+    },
+    "context": {
+      "id": "01GX9NV018HHQRN5QP1DCBY9YR",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T21:40:49.320Z",
+    "last_updated": "2023-04-05T21:40:49.320Z"
+  },
+  "persistent_notification.http_login": {
+    "entity_id": "persistent_notification.http_login",
+    "state": "notifying",
+    "attributes": {
+      "message": "Login attempt or request with invalid authentication from D47098BC.rev.sefiber.dk (212.112.152.188). See the log for details.",
+      "title": "Login attempt failed",
+      "friendly_name": "Login attempt failed"
+    },
+    "context": {
+      "id": "01GXKRNSBR10EGYXZFGEJZ7ZMX",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-04T21:41:51.731Z",
+    "last_updated": "2023-04-09T19:42:48.696Z"
+  },
+  "device_tracker.marks_iphone_14_pro": {
+    "entity_id": "device_tracker.marks_iphone_14_pro",
+    "state": "unknown",
+    "attributes": {
+      "source_type": "gps",
+      "friendly_name": "Mark’s iPhone 14 Pro"
+    },
+    "context": {
+      "id": "01GX9HB80MS8RQBQPESHNJJBCR",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:18.900Z",
+    "last_updated": "2023-04-05T20:22:18.900Z"
+  },
+  "sensor.marks_iphone_14_pro_battery_level": {
+    "entity_id": "sensor.marks_iphone_14_pro_battery_level",
+    "state": "83",
+    "attributes": {
+      "unit_of_measurement": "%",
+      "device_class": "battery",
+      "icon": "mdi:battery-80",
+      "friendly_name": "Mark’s iPhone 14 Pro Battery Level"
+    },
+    "context": {
+      "id": "01GX9HB8D2Z20F09S4AD481M5P",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.298Z",
+    "last_updated": "2023-04-05T20:22:19.298Z"
+  },
+  "sensor.marks_iphone_14_pro_battery_state": {
+    "entity_id": "sensor.marks_iphone_14_pro_battery_state",
+    "state": "Not Charging",
+    "attributes": {
+      "Low Power Mode": false,
+      "icon": "mdi:battery-80",
+      "friendly_name": "Mark’s iPhone 14 Pro Battery State"
+    },
+    "context": {
+      "id": "01GX9HB8DAGFF5FJ4RJJ8VY6NS",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.306Z",
+    "last_updated": "2023-04-05T20:22:19.306Z"
+  },
+  "sensor.marks_iphone_14_pro_bssid": {
+    "entity_id": "sensor.marks_iphone_14_pro_bssid",
+    "state": "Not Connected",
+    "attributes": {
+      "icon": "mdi:wifi-off",
+      "friendly_name": "Mark’s iPhone 14 Pro BSSID"
+    },
+    "context": {
+      "id": "01GX9HB8GGM9R013556VMKQ7CS",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.408Z",
+    "last_updated": "2023-04-05T20:22:19.408Z"
+  },
+  "sensor.marks_iphone_14_pro_geocoded_location": {
+    "entity_id": "sensor.marks_iphone_14_pro_geocoded_location",
+    "state": "Unknown",
+    "attributes": {
+      "icon": "mdi:map",
+      "friendly_name": "Mark’s iPhone 14 Pro Geocoded Location"
+    },
+    "context": {
+      "id": "01GX9HB8GT2X59TCHAPFR1C9D0",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.418Z",
+    "last_updated": "2023-04-05T20:22:19.418Z"
+  },
+  "sensor.marks_iphone_14_pro_storage": {
+    "entity_id": "sensor.marks_iphone_14_pro_storage",
+    "state": "85.18",
+    "attributes": {
+      "Available": "392.88 GB",
+      "Available (Important)": "441.83 GB",
+      "Available (Opportunistic)": "436.03 GB",
+      "Total": "511.87 GB",
+      "unit_of_measurement": "% available",
+      "icon": "mdi:database",
+      "friendly_name": "Mark’s iPhone 14 Pro Storage"
+    },
+    "context": {
+      "id": "01GX9HB8HYS8QD2XM8HG04Z8YE",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.454Z",
+    "last_updated": "2023-04-05T20:22:19.454Z"
+  },
+  "sensor.marks_iphone_14_pro_sim_1": {
+    "entity_id": "sensor.marks_iphone_14_pro_sim_1",
+    "state": "3 DK",
+    "attributes": {
+      "Allows VoIP": true,
+      "Carrier ID": "0000000100000001",
+      "Carrier Name": "3 DK",
+      "Current Radio Technology": "5G Non-Standalone",
+      "ISO Country Code": "dk",
+      "Mobile Country Code": "238",
+      "Mobile Network Code": "06",
+      "icon": "mdi:sim",
+      "friendly_name": "Mark’s iPhone 14 Pro SIM 1"
+    },
+    "context": {
+      "id": "01GX9HB8JRBV8X4AR8JCFHF22W",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.480Z",
+    "last_updated": "2023-04-05T20:22:19.480Z"
+  },
+  "sensor.marks_iphone_14_pro_last_update_trigger": {
+    "entity_id": "sensor.marks_iphone_14_pro_last_update_trigger",
+    "state": "registration",
+    "attributes": {
+      "icon": "mdi:cellphone-wireless",
+      "friendly_name": "Mark’s iPhone 14 Pro Last Update Trigger"
+    },
+    "context": {
+      "id": "01GX9HB8JSNPQ6RRRGT9TY3DAJ",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.481Z",
+    "last_updated": "2023-04-05T20:22:19.481Z"
+  },
+  "sensor.marks_iphone_14_pro_ssid": {
+    "entity_id": "sensor.marks_iphone_14_pro_ssid",
+    "state": "Not Connected",
+    "attributes": {
+      "icon": "mdi:wifi-off",
+      "friendly_name": "Mark’s iPhone 14 Pro SSID"
+    },
+    "context": {
+      "id": "01GX9HB8JSPAZ7JKP68M6W9B53",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.481Z",
+    "last_updated": "2023-04-05T20:22:19.481Z"
+  },
+  "sensor.marks_iphone_14_pro_sim_2": {
+    "entity_id": "sensor.marks_iphone_14_pro_sim_2",
+    "state": "dtac",
+    "attributes": {
+      "Allows VoIP": true,
+      "Carrier ID": "0000000100000002",
+      "Carrier Name": "dtac",
+      "ISO Country Code": "N/A",
+      "Mobile Country Code": "N/A",
+      "Mobile Network Code": "N/A",
+      "icon": "mdi:sim",
+      "friendly_name": "Mark’s iPhone 14 Pro SIM 2"
+    },
+    "context": {
+      "id": "01GX9HB8JSZFAJVED77895G08R",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.481Z",
+    "last_updated": "2023-04-05T20:22:19.481Z"
+  },
+  "sensor.marks_iphone_14_pro_connection_type": {
+    "entity_id": "sensor.marks_iphone_14_pro_connection_type",
+    "state": "Wi-Fi",
+    "attributes": {
+      "icon": "mdi:wifi",
+      "friendly_name": "Mark’s iPhone 14 Pro Connection Type"
+    },
+    "context": {
+      "id": "01GX9HB8JT40EV3K00GKXVV2HD",
+      "parent_id": null,
+      "user_id": null
+    },
+    "last_changed": "2023-04-05T20:22:19.482Z",
+    "last_updated": "2023-04-05T20:22:19.482Z"
+  }
+}

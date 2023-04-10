@@ -1,19 +1,20 @@
+import { z } from 'zod'
+
 interface Attributes {
   friendly_name?: string
   icon?: string
   entity_picture?: string
-  assumed_state?: boolean
   unit_of_measurement?: string
   [key: string]: unknown
 }
 
 interface Context {
-  context_id: string
+  id: string
   user_id: string
   parent_id: string
 }
 
-interface EntityBase {
+export interface EntityBase {
   state: string
   entity_id: string
   domain: string
@@ -24,6 +25,28 @@ interface EntityBase {
   attributes?: Attributes
   context?: Context
 }
+
+export const entitySchema = z.object({
+  state: z.string(),
+  entity_id: z.string(),
+  domain: z.string().optional(),
+  object_id: z.string().optional(),
+  name: z.string().optional(),
+  last_updated: z.string(),
+  last_changed: z.string(),
+  attributes: z.object({
+    friendly_name: z.string().optional(),
+    icon: z.string().optional(),
+    entity_picture: z.string().optional(),
+    unit_of_measurement: z.string().optional(),
+  }),
+  context: z.object({
+    id: z.string(),
+    user_id: z.string().nullable(),
+    parent_id: z.string().nullable(),
+  }),
+})
+export const entityMapSchema = z.record(entitySchema)
 
 interface Lock extends Omit<EntityBase, 'state' | 'domain'> {
   domain: 'lock'
