@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { RoomTabs } from './roomTabs'
+import { AreaCard } from './areaCard'
 
 const meta = {
-  component: RoomTabs,
-} satisfies Meta<typeof RoomTabs>
+  component: AreaCard,
+} satisfies Meta<typeof AreaCard>
 
 export default meta
-type Story = StoryObj<typeof RoomTabs>
+type Story = StoryObj<typeof AreaCard>
 
 const roomsList = [
   'bedroom',
@@ -52,7 +52,27 @@ const roomsList = [
 ]
 
 export const Rooms: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-4">
+      {roomsList.map((room) => (
+        <AreaCard
+          roomName={room}
+          key={room}
+          numberOfLightsOn={
+            room.indexOf('e') > 0 ? room.indexOf('e') : undefined
+          }
+          temperature={room.indexOf('a') > 0 ? 72 : undefined}
+          humidity={room.indexOf('i') > 0 ? 12 : undefined}
+        />
+      ))}
+    </div>
+  ),
+}
+
+export const Room: Story = {
   args: {
-    rooms: roomsList,
+    roomName: 'bedroom',
+    numberOfLightsOn: 2,
+    temperature: 74,
   },
 }
