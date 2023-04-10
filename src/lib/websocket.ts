@@ -1,6 +1,3 @@
-'use client'
-
-import { signal } from '@preact/signals-react'
 import {
   createConnection,
   createLongLivedTokenAuth,
@@ -14,32 +11,42 @@ import {
   type HassServices,
   type HassUser,
 } from 'home-assistant-js-websocket'
+import { atom } from 'jotai'
 import { z } from 'zod'
-
-import { entityMapSchema } from '@/lib/types/entities'
 
 let connection: Connection
 
-export const haEntities = signal<HassEntities>({})
-export const haServices = signal<HassServices>({})
-export const haConfig = signal<HassConfig | null>(null)
-export const haUser = signal<HassUser | null>(null)
-
-const updateConfig = (config: HassConfig) => {
-  haConfig.value = config
-}
-const updateEntities = (entitiesMap: HassEntities) => {
-  const data = entityMapSchema.parse(entitiesMap)
-  haEntities.value = data
-}
-const updateServices = (services: HassServices) => {
-  haServices.value = services
-}
+export const entitiesAtom = atom<HassEntities | null>(null)
+export const servicesAtom = atom<HassServices | null>(null)
+export const configAtom = atom<HassConfig | null>(null)
+export const userAtom = atom<HassUser | null>(null)
+export const areasAtom = atom<Area[]>([])
 
 const hassUrl = z.string().url().parse(process.env.NEXT_PUBLIC_HASS_URL)
 const hassToken = z.string().parse(process.env.NEXT_PUBLIC_HASS_TOKEN)
 
-export const connectToHASS = () => {
+const areaSchema = z.object({
+  aliases: z.array(z.string()),
+  area_id: z.string(),
+  name: z.string(),
+  picture: z.string().nullable(),
+})
+
+type Area = z.infer<typeof areaSchema>
+
+type connectToHASSOptions = {
+  setEntities: (entities: HassEntities) => void
+  setServices: (services: HassServices) => void
+  setConfig: (config: HassConfig) => void
+  setAreas: (areas: Area[]) => void
+}
+
+export const connectToHASS = ({
+  setEntities,
+  setServices,
+  setConfig,
+  setAreas,
+}: connectToHASSOptions) => {
   if (!connection) {
     void (async () => {
       try {
@@ -49,13 +56,19 @@ export const connectToHASS = () => {
         throw err
       }
 
-      subscribeEntities(connection, updateEntities)
-      subscribeServices(connection, updateServices)
-      subscribeConfig(connection, updateConfig)
+      subscribeEntities(connection, setEntities)
+      subscribeServices(connection, setServices)
+      subscribeConfig(connection, setConfig)
+
+      const areaData = await connection.sendMessagePromise({
+        type: 'config/area_registry/list',
+      })
+
+      const areas = z.array(areaSchema).parse(areaData)
+      setAreas(areas)
 
       await getUser(connection).then((user: HassUser) => {
         console.log('Logged into Home Assistant as', user.name)
-        haUser.value = user
       })
     })()
   }
