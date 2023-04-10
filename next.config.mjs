@@ -1,5 +1,3 @@
-// @ts-check
-
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
  * This is especially useful for Docker builds.
@@ -9,6 +7,9 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  experimental: {
+    appDir: true,
+  },
 
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you
@@ -22,8 +23,6 @@ const config = {
   },
 
   webpack: (config) => {
-    // ... other rules
-
     config.module.rules.push({
       test: /\.svg$/,
       use: [
@@ -46,4 +45,5 @@ const config = {
     return config
   },
 }
+
 export default config
