@@ -656,7 +656,7 @@
     "state": "unknown",
     "attributes": {
       "group_name": "Vin",
-      "group_type": "room",
+      "group_type": "area",
       "name": "Nat belysning",
       "speed": 0.5,
       "brightness": 0.39,
@@ -676,7 +676,7 @@
     "state": "unknown",
     "attributes": {
       "group_name": "Vin",
-      "group_type": "room",
+      "group_type": "area",
       "name": "Klar",
       "speed": 0.5,
       "brightness": 100,
@@ -696,7 +696,7 @@
     "state": "unknown",
     "attributes": {
       "group_name": "Vin",
-      "group_type": "room",
+      "group_type": "area",
       "name": "Dæmpet",
       "speed": 0.5,
       "brightness": 30.31,
@@ -770,7 +770,7 @@
       "supported_color_modes": ["color_temp", "xy"],
       "is_hue_group": true,
       "hue_scenes": ["Nat belysning", "Klar", "Dæmpet"],
-      "hue_type": "room",
+      "hue_type": "area",
       "lights": ["Hue lightstrip plus 2", "Hue lightstrip plus 1"],
       "dynamics": false,
       "icon": "mdi:lightbulb-group",

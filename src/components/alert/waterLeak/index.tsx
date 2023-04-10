@@ -1,9 +1,10 @@
-import { Title } from '@/components/ui/typography'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
+
+import { getAreaIcon } from '@/components/area/areaIcon'
 import { Button } from '@/components/ui/button'
-import { getRoomIcon } from '@/components/room/roomIcon'
+import { Title } from '@/components/ui/typography'
 
 const linkStyle = cva(
   'active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800 first-letter:capitalize',
@@ -27,11 +28,11 @@ const linkStyle = cva(
 )
 
 type WaterLeakAlertProps = {
-  room: string
+  area: string
   dateTime: Date
 }
 
-export const WaterLeakAlert = ({ room }: WaterLeakAlertProps) => {
+export const WaterLeakAlert = ({ area }: WaterLeakAlertProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <FontAwesomeIcon
@@ -44,7 +45,7 @@ export const WaterLeakAlert = ({ room }: WaterLeakAlertProps) => {
       </Title>
       <Title level={3} className="mb-4 text-lg">
         {/* TODO use real DateTime */}
-        In the {room} - 11:46 am
+        In the {area} - 11:46 am
       </Title>
       <div className="flex flex-col gap-4">
         <Button>
@@ -52,9 +53,9 @@ export const WaterLeakAlert = ({ room }: WaterLeakAlertProps) => {
           Turn off water supply
         </Button>
         <div className="flex gap-4">
-          <Link href={`/room/${room}`} className={linkStyle()}>
-            <FontAwesomeIcon icon={getRoomIcon(room)} className="mr-2" />
-            {room}
+          <Link href={`/area/${area}`} className={linkStyle()}>
+            <FontAwesomeIcon icon={getAreaIcon(area)} className="mr-2" />
+            {area}
           </Link>
           <Button className="flex-1">
             <FontAwesomeIcon icon={['fas', 'x']} className="mr-2" />

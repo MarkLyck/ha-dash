@@ -1,36 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { RoomCard } from './roomCard'
+import { AreaCard } from './areaCard'
 
 const meta = {
-  component: RoomCard,
-} satisfies Meta<typeof RoomCard>
+  component: AreaCard,
+} satisfies Meta<typeof AreaCard>
 
 export default meta
-type Story = StoryObj<typeof RoomCard>
+type Story = StoryObj<typeof AreaCard>
 
-const roomsList = [
-  'bedroom',
-  'guest room',
-  'kids room',
-  'play room',
+const areasList = [
+  'bedarea',
+  'guest area',
+  'kids area',
+  'play area',
   'nursery',
-  'living room',
-  'bathroom',
+  'living area',
+  'batharea',
   'toilet',
-  'dining room',
+  'dining area',
   'kitchen',
   'pantry',
   'office',
-  'tv room',
+  'tv area',
   'home cinema',
   'wine cellar',
   'man cave',
-  'gaming room',
+  'gaming area',
   'library',
   'art studio',
   'laundry',
-  'mudroom',
+  'mudarea',
   'entry way',
   'hallway',
   'stairway',
@@ -51,27 +51,27 @@ const roomsList = [
   'default',
 ]
 
-export const Rooms: Story = {
+export const areas: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      {roomsList.map((room) => (
-        <RoomCard
-          roomName={room}
-          key={room}
+      {areasList.map((area) => (
+        <AreaCard
+          areaName={area}
+          key={area}
           numberOfLightsOn={
-            room.indexOf('e') > 0 ? room.indexOf('e') : undefined
+            area.indexOf('e') > 0 ? area.indexOf('e') : undefined
           }
-          temperature={room.indexOf('a') > 0 ? 72 : undefined}
-          humidity={room.indexOf('i') > 0 ? 12 : undefined}
+          temperature={area.indexOf('a') > 0 ? 72 : undefined}
+          humidity={area.indexOf('i') > 0 ? 12 : undefined}
         />
       ))}
     </div>
   ),
 }
 
-export const Room: Story = {
+export const area: Story = {
   args: {
-    roomName: 'bedroom',
+    areaName: 'bedarea',
     numberOfLightsOn: 2,
     temperature: 74,
   },

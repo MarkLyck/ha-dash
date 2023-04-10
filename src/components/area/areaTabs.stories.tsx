@@ -1,36 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { RoomTabs } from './roomTabs'
+import { AreaTabs } from './areaTabs'
 
 const meta = {
-  component: RoomTabs,
-} satisfies Meta<typeof RoomTabs>
+  component: AreaTabs,
+} satisfies Meta<typeof AreaTabs>
 
 export default meta
-type Story = StoryObj<typeof RoomTabs>
+type Story = StoryObj<typeof AreaTabs>
 
-const roomsList = [
-  'bedroom',
-  'guest room',
-  'kids room',
-  'play room',
+const areasList = [
+  'bedarea',
+  'guest area',
+  'kids area',
+  'play area',
   'nursery',
-  'living room',
-  'bathroom',
+  'living area',
+  'batharea',
   'toilet',
-  'dining room',
+  'dining area',
   'kitchen',
   'pantry',
   'office',
-  'tv room',
+  'tv area',
   'home cinema',
   'wine cellar',
   'man cave',
-  'gaming room',
+  'gaming area',
   'library',
   'art studio',
   'laundry',
-  'mudroom',
+  'mudarea',
   'entry way',
   'hallway',
   'stairway',
@@ -51,8 +51,8 @@ const roomsList = [
   'default',
 ]
 
-export const Rooms: Story = {
+export const areas: Story = {
   args: {
-    rooms: roomsList,
+    areas: areasList,
   },
 }

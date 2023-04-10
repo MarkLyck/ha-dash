@@ -11,7 +11,7 @@ type Story = StoryObj<typeof SmokeAlert>
 
 export const SmokeDetected: Story = {
   args: {
-    room: 'kitchen',
+    area: 'kitchen',
     dateTime: new Date(),
   },
 }

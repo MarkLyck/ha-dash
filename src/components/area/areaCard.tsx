@@ -1,10 +1,10 @@
-import { deviceIconStyle, DeviceName } from '@/components/ui/deviceCard'
-import { Button } from '@/components/ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
-import Typography from '@/components/ui/typography'
 
-import { getRoomIcon } from './roomIcon'
+import { Button } from '@/components/ui/button'
+import { DeviceName, deviceIconStyle } from '@/components/ui/deviceCard'
+import Typography from '@/components/ui/typography'
+import { getAreaIcon } from './areaIcon'
 
 export const container = cva(
   'py-3 px-4 flex flex-col justify-start rounded-xl border transition w-full max-w-[160px] h-auto items-start',
@@ -36,27 +36,27 @@ const Divider = () => (
   <div className="mx-1 h-3 w-[1px] bg-slate-400 last-of-type:hidden" />
 )
 
-type RoomCardProps = {
-  roomName: string
+type AreaCardProps = {
+  areaName: string
   numberOfLightsOn?: number
   temperature?: number
   humidity?: number
 }
 
-export const RoomCard = ({
-  roomName,
+export const AreaCard = ({
+  areaName,
   numberOfLightsOn,
   temperature,
   humidity,
-}: RoomCardProps) => {
-  const icon = getRoomIcon(roomName)
+}: AreaCardProps) => {
+  const icon = getAreaIcon(areaName)
 
   return (
     <Button className={container({ active: true })}>
       <div className="mb-2 flex h-8 w-full items-center justify-between">
         <FontAwesomeIcon icon={icon} className={deviceIconStyle()} />
       </div>
-      <DeviceName>{roomName}</DeviceName>
+      <DeviceName>{areaName}</DeviceName>
 
       <Typography.Subtle className="mt-1 flex w-full items-center gap-1 overflow-hidden whitespace-nowrap text-sm text-opacity-60 first-letter:capitalize">
         {numberOfLightsOn ? (
