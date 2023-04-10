@@ -1,9 +1,10 @@
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
 const defaultClasses = ['mr-3', 'h-4', 'w-4']
 
-const icon = cva(defaultClasses, {
+const iconStyle = cva(defaultClasses, {
   variants: {
     active: {
       true: ['text-neutral-500', 'dark:text-neutral-100', 'opacity-100'],
@@ -12,27 +13,50 @@ const icon = cva(defaultClasses, {
   },
 })
 
-export const getSceneIcon = ({ name }: { name: string }) => {
+type SceneIconProps = {
+  name: string
+  active?: boolean
+}
+
+export const SceneIcon = ({ name, active = false }: SceneIconProps) => {
   const sceneName = name.toLowerCase()
-  if (sceneName.includes('night')) return GoodNightIcon
-  if (sceneName.includes('morning')) return GoodMorningIcon
-  if (sceneName.includes('cooking')) return CookingIcon
-  if (sceneName.includes('dinner')) return DinnerIcon
-  if (sceneName.includes('breakfast')) return BreakfastIcon
-  if (sceneName.includes('party')) return PartyIcon
-  if (sceneName.includes('work')) return WorkIcon
-  if (sceneName.includes('exercise')) return ExerciseIcon
-  if (sceneName.includes('away')) return AwayIcon
-  if (sceneName.includes('vacation')) return VacationIcon
-  if (sceneName.includes('makeup')) return MakeupIcon
-  if (sceneName.includes('bath') || sceneName.includes('shower')) {
-    return BathIcon
+  const icon: IconProp = ['fad', 'stars']
+
+  if (sceneName.includes('night')) icon[1] = 'moon'
+  if (sceneName.includes('morning')) icon[1] = 'sun-bright'
+  if (sceneName.includes('cooking')) icon[1] = 'oven'
+  if (sceneName.includes('dinner')) icon[1] = 'plate-utensils'
+  if (sceneName.includes('lunch')) icon[1] = 'burger-soda'
+  if (sceneName.includes('breakfast')) icon[1] = 'pan-frying'
+  if (sceneName.includes('party')) icon[1] = 'party-horn'
+  if (sceneName.includes('work')) icon[1] = 'briefcase'
+  if (sceneName.includes('meeting')) icon[1] = 'webcam'
+  if (sceneName.includes('laundry')) icon[1] = 'washing-machine'
+  if (sceneName.includes('exercise') || sceneName.includes('workout')) {
+    icon[1] = 'dumbbell'
   }
-  if (sceneName.includes('board game')) {
-    return BoardGameIcon
+  if (sceneName.includes('yoga') || sceneName.includes('meditat')) {
+    icon[1] = 'yin-yang'
+  }
+  if (sceneName.includes('away') || sceneName.includes('leaving')) {
+    icon[1] = 'house-person-leave'
+  }
+  if (sceneName.includes('home') || sceneName.includes('arriving')) {
+    icon[1] = 'house-person-arrive'
+  }
+  if (sceneName.includes('study') || sceneName.includes('homework'))
+    icon[1] = 'book'
+  if (sceneName.includes('vacation')) icon[1] = 'island-tropical'
+  if (sceneName.includes('makeup')) icon[1] = 'lips'
+  if (sceneName.includes('clean')) icon[1] = 'broom-wide'
+  if (sceneName.includes('bath') || sceneName.includes('shower')) {
+    icon[1] = 'bath'
   }
   if (sceneName.includes('gaming') || sceneName.includes('game')) {
-    return GamingIcon
+    icon[1] = 'gamepad-modern'
+  }
+  if (sceneName.includes('board game')) {
+    icon[1] = 'game-board'
   }
   if (
     sceneName.includes('tv') ||
@@ -40,100 +64,20 @@ export const getSceneIcon = ({ name }: { name: string }) => {
     sceneName.includes('watching') ||
     sceneName.includes('movie')
   ) {
-    return TVIcon
+    icon[1] = 'tv'
   }
-  if (sceneName.includes('study') || sceneName.includes('reading')) {
-    return StudyIcon
-  }
+  if (sceneName.includes('reading')) icon[1] = 'books'
   if (
     sceneName === 'romance' ||
     sceneName === 'love' ||
     sceneName.includes('romantic') ||
     sceneName.includes('sexy')
   ) {
-    return RomanticIcon
+    icon[1] = 'heart'
   }
   if (sceneName.includes('horror') || sceneName.includes('scary')) {
-    return HorrorIcon
+    icon[1] = 'skull'
   }
 
-  return DefaultIcon
+  return <FontAwesomeIcon icon={icon} className={iconStyle({ active })} />
 }
-
-export const DefaultIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'stars']} className={icon({ active })} />
-)
-
-export const GoodMorningIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    className={icon({ active })}
-    icon={['fad', 'sun-bright']}
-    inverse
-  />
-)
-
-export const GoodNightIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'moon']} className={icon({ active })} />
-)
-export const AwayIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'house-person-leave']}
-    className={icon({ active })}
-  />
-)
-
-export const RomanticIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'heart']} className={icon({ active })} />
-)
-export const CookingIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'pot-food']} className={icon({ active })} />
-)
-export const BreakfastIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'pan-frying']} className={icon({ active })} />
-)
-export const DinnerIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'plate-utensils']}
-    className={icon({ active })}
-  />
-)
-export const PartyIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'party-horn']} className={icon({ active })} />
-)
-export const WorkIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'briefcase']} className={icon({ active })} />
-)
-export const StudyIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'books']} className={icon({ active })} />
-)
-export const ExerciseIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'dumbbell']} className={icon({ active })} />
-)
-
-export const TVIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'tv']} className={icon({ active })} />
-)
-export const BoardGameIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'game-board']} className={icon({ active })} />
-)
-export const GamingIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'gamepad-modern']}
-    className={icon({ active })}
-  />
-)
-export const VacationIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon
-    icon={['fad', 'island-tropical']}
-    className={icon({ active })}
-  />
-)
-export const BathIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'bath']} className={icon({ active })} />
-)
-export const MakeupIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'lips']} className={icon({ active })} />
-)
-export const HorrorIcon = ({ active }: { active: boolean }) => (
-  <FontAwesomeIcon icon={['fad', 'skull']} className={icon({ active })} />
-)
