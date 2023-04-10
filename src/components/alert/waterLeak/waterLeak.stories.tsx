@@ -11,7 +11,7 @@ type Story = StoryObj<typeof WaterLeakAlert>
 
 export const WaterLeakDetected: Story = {
   args: {
-    room: 'laundry room',
+    area: 'laundry area',
     dateTime: new Date(),
   },
 }

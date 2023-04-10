@@ -5,10 +5,10 @@ export const getAreaIcon = (area: string) => {
   const icon: IconProp = ['fas', 'table-layout']
 
   if (areaName.includes('living')) icon[1] = 'loveseat'
-  if (areaName.includes('bedroom')) icon[1] = 'bed-alt'
-  if (areaName.includes('guest room')) icon[1] = 'bed-empty'
-  if (areaName.includes('kids room')) icon[1] = 'bed-bunk'
-  if (areaName.includes('play room')) icon[1] = 'star'
+  if (areaName.includes('bedarea')) icon[1] = 'bed-alt'
+  if (areaName.includes('guest area')) icon[1] = 'bed-empty'
+  if (areaName.includes('kids area')) icon[1] = 'bed-bunk'
+  if (areaName.includes('play area')) icon[1] = 'star'
   if (areaName.includes('nursery') || areaName.includes('baby'))
     icon[1] = 'baby'
   if (areaName.includes('hall')) icon[1] = 'walking'
@@ -17,7 +17,7 @@ export const getAreaIcon = (area: string) => {
   if (areaName.includes('kitchen')) icon[1] = 'oven'
   if (areaName.includes('pantry')) icon[1] = 'can-food'
   if (areaName.includes('dining')) icon[1] = 'utensils'
-  if (areaName.includes('bathroom')) icon[1] = 'bathtub'
+  if (areaName.includes('batharea')) icon[1] = 'bathtub'
   if (areaName.includes('toilet')) icon[1] = 'toilet'
   if (areaName.includes('office')) icon[1] = 'briefcase'
   if (areaName.includes('tv')) icon[1] = 'tv'
@@ -28,7 +28,7 @@ export const getAreaIcon = (area: string) => {
   if (areaName.includes('man cave')) icon[1] = 'axe'
   if (areaName.includes('gaming')) icon[1] = 'gamepad-alt'
   if (areaName.includes('laundry')) icon[1] = 'washing-machine'
-  if (areaName.includes('mudroom')) icon[1] = 'boot'
+  if (areaName.includes('mudarea')) icon[1] = 'boot'
   if (areaName.includes('bar')) icon[1] = 'whiskey-glass-ice'
   if (areaName.includes('basement')) icon[1] = 'arrow-down'
   if (areaName.includes('balcony')) icon[1] = 'question-circle'

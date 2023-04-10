@@ -43,7 +43,7 @@ export const Demo: Story = {
       />
       <Light
         {...defaultProps}
-        name="Living room light"
+        name="Living area light"
         icon={['far', 'light-ceiling']}
         isOn={false}
       />

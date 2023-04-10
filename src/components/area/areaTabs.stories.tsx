@@ -9,28 +9,28 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof AreaTabs>
 
-const roomsList = [
-  'bedroom',
-  'guest room',
-  'kids room',
-  'play room',
+const areasList = [
+  'bedarea',
+  'guest area',
+  'kids area',
+  'play area',
   'nursery',
-  'living room',
-  'bathroom',
+  'living area',
+  'batharea',
   'toilet',
-  'dining room',
+  'dining area',
   'kitchen',
   'pantry',
   'office',
-  'tv room',
+  'tv area',
   'home cinema',
   'wine cellar',
   'man cave',
-  'gaming room',
+  'gaming area',
   'library',
   'art studio',
   'laundry',
-  'mudroom',
+  'mudarea',
   'entry way',
   'hallway',
   'stairway',
@@ -51,8 +51,8 @@ const roomsList = [
   'default',
 ]
 
-export const Rooms: Story = {
+export const areas: Story = {
   args: {
-    rooms: roomsList,
+    areas: areasList,
   },
 }

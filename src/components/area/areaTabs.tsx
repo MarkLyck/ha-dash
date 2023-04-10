@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { getAreaIcon } from './areaIcon'
 
-type RoomTabsProps = {
-  rooms: string[]
+type areaTabsProps = {
+  areas: string[]
 }
 
-export const AreaTabs = ({ rooms }: RoomTabsProps) => {
+export const AreaTabs = ({ areas }: areaTabsProps) => {
   return (
     <div>
-      {rooms.map((room) => (
-        <div key={room} className="flex items-center py-2">
-          <FontAwesomeIcon icon={getAreaIcon(room)} className="mr-2 h-6 w-6" />{' '}
-          {room}
+      {areas.map((area) => (
+        <div key={area} className="flex items-center py-2">
+          <FontAwesomeIcon icon={getAreaIcon(area)} className="mr-2 h-6 w-6" />{' '}
+          {area}
         </div>
       ))}
     </div>

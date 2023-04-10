@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
-import { getRoomIcon } from '@/components/area/roomIcon'
+import { getAreaIcon } from '@/components/area/areaIcon'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/typography'
 
@@ -28,11 +28,11 @@ const linkStyle = cva(
 )
 
 type SmokeAlertProps = {
-  room: string
+  area: string
   dateTime: Date
 }
 
-export const SmokeAlert = ({ room }: SmokeAlertProps) => {
+export const SmokeAlert = ({ area }: SmokeAlertProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <FontAwesomeIcon
@@ -45,7 +45,7 @@ export const SmokeAlert = ({ room }: SmokeAlertProps) => {
       </Title>
       <Title level={3} className="mb-4 text-lg">
         {/* TODO use real DateTime */}
-        In the {room} - 01:42 am
+        In the {area} - 01:42 am
       </Title>
       <div className="flex flex-col gap-4">
         <Button>
@@ -53,9 +53,9 @@ export const SmokeAlert = ({ room }: SmokeAlertProps) => {
           Unlock doors
         </Button>
         <div className="flex  gap-4">
-          <Link href={`/areas/${room}`} className={linkStyle()}>
-            <FontAwesomeIcon icon={getRoomIcon(room)} className="mr-2" />
-            {room}
+          <Link href={`/areas/${area}`} className={linkStyle()}>
+            <FontAwesomeIcon icon={getAreaIcon(area)} className="mr-2" />
+            {area}
           </Link>
           <Button className="flex-1">
             <FontAwesomeIcon icon={['fas', 'x']} className="mr-2" />
