@@ -38,7 +38,6 @@ const setConfig = (config: HassConfig) => {
   useStore.getState().setConfig(config)
 }
 const setAreas = (areas: Area[]) => {
-  console.log('🔈 ~ setAreas:', areas)
   useStore.getState().setAreas(areas)
 }
 const setDevices = (devices: Device[]) => {
