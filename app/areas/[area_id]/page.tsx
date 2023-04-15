@@ -1,8 +1,6 @@
 'use client'
 
-import { useAtom } from 'jotai'
-
-import { areasAtom } from '@/lib/websocket'
+import useStore from '@/lib/useStore'
 
 type AreaProps = {
   params: {
@@ -11,7 +9,7 @@ type AreaProps = {
 }
 
 const Area = ({ params }: AreaProps) => {
-  const [areas] = useAtom(areasAtom)
+  const areas = useStore((s) => s.areas)
   const area = areas.find((area) => area.area_id === params.area_id)
 
   return <div className="p-4">{area?.name}</div>
