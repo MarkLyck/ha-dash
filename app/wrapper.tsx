@@ -7,15 +7,18 @@ import {
   areasAtom,
   configAtom,
   connectToHASS,
+  devicesAtom,
   entitiesAtom,
   servicesAtom,
 } from '@/lib/websocket'
 
 export const Wrapper = ({ children }: { children: React.ReactNode }) => {
-  const [entities, setEntities] = useAtom(entitiesAtom)
-  const [services, setServices] = useAtom(servicesAtom)
-  const [config, setConfig] = useAtom(configAtom)
-  const [areas, setAreas] = useAtom(areasAtom)
+  const [, setEntities] = useAtom(entitiesAtom)
+  const [, setServices] = useAtom(servicesAtom)
+  const [, setConfig] = useAtom(configAtom)
+  const [, setDevices] = useAtom(devicesAtom)
+  const [, setAreas] = useAtom(areasAtom)
+  // console.log('🔈 ~ devices:', devices)
   // console.log('🔈 ~ areas:', areas)
   // console.log('🔈 ~ entities:', entities)
   // console.log('🔈 ~ services:', services)
@@ -27,8 +30,9 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
       setServices,
       setConfig,
       setAreas,
+      setDevices,
     })
-  }, [setEntities, setServices, setConfig, setAreas])
+  }, [setEntities, setServices, setConfig, setAreas, setDevices])
 
   return <div className="h-full min-h-screen bg-slate-1000">{children}</div>
 }
