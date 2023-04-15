@@ -61,7 +61,7 @@ export const connectToHASS = () => {
       subscribeServices(connection, setServices)
       subscribeConfig(connection, setConfig)
 
-      const areaData = await connection.sendMessagePromise({
+      const areaRegistry = await connection.sendMessagePromise({
         type: 'config/area_registry/list',
       })
       const deviceRegistry = await connection.sendMessagePromise({
@@ -71,7 +71,7 @@ export const connectToHASS = () => {
         type: 'get_states',
       })
 
-      const areas = z.array(areaSchema).parse(areaData)
+      const areas = z.array(areaSchema).parse(areaRegistry)
       const devices = z.array(deviceSchema).parse(deviceRegistry)
       const states = z.array(stateSchema).parse(stateData)
 
