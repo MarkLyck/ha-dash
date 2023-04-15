@@ -12,7 +12,11 @@ const Areas = () => {
   return (
     <ul className="flex flex-wrap gap-2 p-4">
       {areas.map((area) => (
-        <Link key={area.area_id} href={`/areas/${area.area_id}`}>
+        <Link
+          key={area.area_id}
+          href={`/areas/${area.area_id}`}
+          className="w-full max-w-[160px]"
+        >
           <AreaCard areaName={area.name} />
         </Link>
       ))}
