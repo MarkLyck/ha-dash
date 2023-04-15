@@ -1,7 +1,8 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { StateActionButton } from '@/components/ui/quickActionButton'
-import { DeviceCard, type DeviceCardType } from '@/components/ui/deviceCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { DeviceCard, type DeviceCardType } from '@/components/ui/deviceCard'
+import { StateActionButton } from '@/components/ui/quickActionButton'
 
 export interface FoodDispenserCardProps {
   name: string
@@ -30,7 +31,7 @@ export const FoodDispenserCard = ({
     <DeviceCard
       isActive={isActive}
       name={name}
-      status={status}
+      status={<span data-chromatic="ignore">{status}</span>}
       type={type}
       setIsActive={setState}
       icon={icon}
