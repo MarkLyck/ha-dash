@@ -8,20 +8,20 @@ const {
   Paragraph: TypographyParagraph,
   Text: TypographyText,
   Blockquote: TypographyBlockquote,
-  InlineCode: TypographyInlineCode,
+  // InlineCode: TypographyInlineCode,
   Subtle: TypographySubtle,
 } = Typography
 
 const meta: Meta<typeof TypographyText> = {
   title: 'Typography/Text',
   component: TypographyText,
-  subcomponents: {
-    TypographyTitle,
-    TypographyParagraph,
-    TypographyBlockquote,
-    TypographyInlineCode,
-    TypographySubtle,
-  },
+  // subcomponents: {
+  //   TypographyTitle,
+  //   TypographyParagraph,
+  //   TypographyBlockquote,
+  //   TypographyInlineCode,
+  //   TypographySubtle,
+  // },
   tags: ['autodocs'],
 }
 
@@ -62,9 +62,9 @@ export const Demo = {
         but the king was firm:
       </TypographyParagraph>
       <TypographyParagraph>
-        As a result, people stopped telling jokes, and the kingdom fell into a
+        {`As a result, people stopped telling jokes, and the kingdom fell into a
         gloom. But there was one person who refused to let the king's
-        foolishness get him down: a court jester named Jokester.
+        foolishness get him down: a court jester named Jokester.`}
       </TypographyParagraph>
       <TypographyTitle level={3}>Jokester&apos;s Revolt</TypographyTitle>
       <TypographyParagraph>
