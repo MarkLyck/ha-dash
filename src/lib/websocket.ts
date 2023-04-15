@@ -71,15 +71,12 @@ export const connectToHASS = () => {
         type: 'get_states',
       })
 
-      const areas = z.array(areaSchema).safeParse(areaData)
-      const devices = z.array(deviceSchema).safeParse(deviceRegistry)
-      const states = z.array(stateSchema).safeParse(stateData)
+      const areas = z.array(areaSchema).parse(areaData)
+      const devices = z.array(deviceSchema).parse(deviceRegistry)
+      const states = z.array(stateSchema).parse(stateData)
 
-      // @ts-expect-error - ?
       setAreas(areas)
-      // @ts-expect-error - ?
       setDevices(devices)
-      // @ts-expect-error - ?
       setStates(states)
 
       await getUser(connection).then((user: HassUser) => {
