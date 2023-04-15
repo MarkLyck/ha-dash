@@ -51,7 +51,7 @@ const areasList = [
   'default',
 ]
 
-export const areas: Story = {
+export const Areas: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
       {areasList.map((area) => (
@@ -69,7 +69,7 @@ export const areas: Story = {
   ),
 }
 
-export const area: Story = {
+export const Area: Story = {
   args: {
     areaName: 'bedarea',
     numberOfLightsOn: 2,

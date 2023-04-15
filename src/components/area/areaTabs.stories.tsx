@@ -51,7 +51,7 @@ const areasList = [
   'default',
 ]
 
-export const areas: Story = {
+export const Areas: Story = {
   args: {
     areas: areasList,
   },
