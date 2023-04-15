@@ -11,64 +11,44 @@ import {
   type HassServices,
   type HassUser,
 } from 'home-assistant-js-websocket'
-import { atom } from 'jotai'
 import { z } from 'zod'
 
-let connection: Connection
+import {
+  areaSchema,
+  deviceSchema,
+  stateSchema,
+  type Area,
+  type Device,
+  type State,
+} from '@/lib/types/homeAssistant'
+import useStore from '@/lib/useStore'
 
-export const entitiesAtom = atom<HassEntities | null>(null)
-export const servicesAtom = atom<HassServices | null>(null)
-export const configAtom = atom<HassConfig | null>(null)
-export const userAtom = atom<HassUser | null>(null)
-export const areasAtom = atom<Area[]>([])
-export const devicesAtom = atom<Device[]>([])
+let connection: Connection
 
 const hassUrl = z.string().url().parse(process.env.NEXT_PUBLIC_HASS_URL)
 const hassToken = z.string().parse(process.env.NEXT_PUBLIC_HASS_TOKEN)
 
-const deviceSchema = z.object({
-  area_id: z.string().nullable(),
-  config_entries: z.array(z.string()),
-  configuration_url: z.string().nullable(),
-  connections: z.array(z.tuple([z.string(), z.string()])),
-  disabled_by: z.string().nullable(),
-  entry_type: z.string().nullable(),
-  hw_version: z.string().nullable(),
-  id: z.string(),
-  identifiers: z.array(z.array(z.string())),
-  manufacturer: z.string().nullable(),
-  model: z.string().nullable(),
-  name: z.string(),
-  name_by_user: z.string().nullable(),
-  sw_version: z.string().nullable(),
-  via_device_id: z.string().nullable(),
-})
-
-const areaSchema = z.object({
-  aliases: z.array(z.string()),
-  area_id: z.string(),
-  name: z.string(),
-  picture: z.string().nullable(),
-})
-
-type Area = z.infer<typeof areaSchema>
-type Device = z.infer<typeof deviceSchema>
-
-type connectToHASSOptions = {
-  setEntities: (entities: HassEntities) => void
-  setServices: (services: HassServices) => void
-  setConfig: (config: HassConfig) => void
-  setAreas: (areas: Area[]) => void
-  setDevices: (devices: Device[]) => void
+const setEntities = (entities: HassEntities) => {
+  useStore.getState().setEntities(entities)
+}
+const setServices = (services: HassServices) => {
+  useStore.getState().setServices(services)
+}
+const setConfig = (config: HassConfig) => {
+  useStore.getState().setConfig(config)
+}
+const setAreas = (areas: Area[]) => {
+  console.log('🔈 ~ setAreas:', areas)
+  useStore.getState().setAreas(areas)
+}
+const setDevices = (devices: Device[]) => {
+  useStore.getState().setDevices(devices)
+}
+const setStates = (states: State[]) => {
+  useStore.getState().setStates(states)
 }
 
-export const connectToHASS = ({
-  setEntities,
-  setServices,
-  setConfig,
-  setAreas,
-  setDevices,
-}: connectToHASSOptions) => {
+export const connectToHASS = () => {
   if (!connection) {
     void (async () => {
       try {
@@ -88,12 +68,17 @@ export const connectToHASS = ({
       const deviceRegistry = await connection.sendMessagePromise({
         type: 'config/device_registry/list',
       })
+      const stateData = await connection.sendMessagePromise({
+        type: 'get_states',
+      })
 
       const areas = z.array(areaSchema).parse(areaData)
       const devices = z.array(deviceSchema).parse(deviceRegistry)
+      const states = z.array(stateSchema).parse(stateData)
 
       setAreas(areas)
       setDevices(devices)
+      setStates(states)
 
       await getUser(connection).then((user: HassUser) => {
         console.log('Logged into Home Assistant as', user.name)

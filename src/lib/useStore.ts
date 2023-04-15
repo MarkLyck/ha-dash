@@ -5,58 +5,36 @@ import type {
 } from 'home-assistant-js-websocket'
 import { create } from 'zustand'
 
-import type { Area, Device } from './types/homeAssistant'
+import type { Area, Device, State } from './types/homeAssistant'
 
 interface StoreType {
-  areas: Record<string, Area>
-  setAreas: (areas: Record<string, Area>) => void
+  areas: Area[]
+  setAreas: (areas: Area[]) => void
   entities: HassEntities
   setEntities: (entities: HassEntities) => void
-  states: any
-  setStates: (states: any) => void
+  states: State[]
+  setStates: (states: State[]) => void
   services: HassServices
   setServices: (services: HassServices) => void
   config: HassConfig | null
   setConfig: (config: HassConfig) => void
-  deviceRegistry: Device[]
-  setDeviceRegistry: (deviceRegistry: Device[]) => void
-  entityRegistry: HassEntities
-  setEntityRegistry: (entityRegistry: HassEntities) => void
-  getDevice: (entityId: string) => Device | undefined
+  devices: Device[]
+  setDevices: (deviceRegistry: Device[]) => void
 }
 
-const useStore = create<StoreType>((set, get) => ({
-  areas: {},
+const useStore = create<StoreType>((set) => ({
+  areas: [],
   setAreas: (areas) => set(() => ({ areas })),
   entities: {},
   setEntities: (entities) => set(() => ({ entities })),
-  states: {},
-  // TODO
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  states: [],
   setStates: (states) => set(() => ({ states })),
   services: {},
   setServices: (services) => set(() => ({ services })),
   config: null,
   setConfig: (config) => set(() => ({ config })),
-  deviceRegistry: [],
-  setDeviceRegistry: (deviceRegistry) => set(() => ({ deviceRegistry })),
-  entityRegistry: {},
-  setEntityRegistry: (entityRegistry) => set(() => ({ entityRegistry })),
-  getDevice: (entityId: string) => {
-    const entityRegistry = get().entityRegistry
-    const deviceRegistry = get().deviceRegistry
-
-    const entityFromRegistry = entityRegistry[entityId]
-    // TODO
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const deviceId = entityFromRegistry.device_id
-
-    // TODO
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const device = deviceRegistry[deviceId]
-
-    return device
-  },
+  devices: [],
+  setDevices: (devices) => set(() => ({ devices })),
 }))
 
 export default useStore

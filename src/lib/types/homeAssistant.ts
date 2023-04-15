@@ -25,7 +25,21 @@ export const areaSchema = z.object({
   picture: z.string().nullable(),
 })
 
+export const stateSchema = z.object({
+  attributes: z.any(),
+  context: z.object({
+    id: z.string(),
+    parent_id: z.string().nullable(),
+    user_id: z.string().nullable(),
+  }),
+  entity_id: z.string(),
+  last_changed: z.string(),
+  last_updated: z.string(),
+  state: z.string(),
+})
+
 export const entitySchema = z.object({})
 
 export type Area = z.infer<typeof areaSchema>
 export type Device = z.infer<typeof deviceSchema>
+export type State = z.infer<typeof stateSchema>

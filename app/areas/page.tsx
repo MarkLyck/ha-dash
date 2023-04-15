@@ -1,13 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useAtom } from 'jotai'
 
-import { areasAtom } from '@/lib/websocket'
+import useStore from '@/lib/useStore'
 import { AreaCard } from '@/components/area/areaCard'
 
 const Areas = () => {
-  const [areas] = useAtom(areasAtom)
+  const areas = useStore((s) => s.areas)
 
   return (
     <ul className="flex flex-wrap gap-2 p-4">
