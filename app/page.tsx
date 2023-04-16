@@ -1,11 +1,5 @@
-import Link from 'next/link'
-
-const page = () => {
-  return (
-    <div>
-      <Link href="/areas">areas</Link>
-    </div>
-  )
+const Home = () => {
+  return <div className="p-4">Home</div>
 }
 
-export default page
+export default Home
