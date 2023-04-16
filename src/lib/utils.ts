@@ -7,6 +7,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export const isSSR = typeof window === 'undefined'
+
 export const calculateContrast = (
   color1: string | undefined,
   color2: string | undefined
