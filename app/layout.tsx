@@ -18,14 +18,18 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <head>
         <title>Home Dashboard</title>
       </head>
-      <body>
-        <Wrapper>
-          <div className="flex">
-            <SideMenu />
-            <div className="h-screen w-full">{children}</div>
+
+      <Wrapper>
+        <div className="flex">
+          <SideMenu />
+          <div
+            className="h-screen w-full overflow-y-auto"
+            style={{ overflowY: 'auto' }}
+          >
+            {children}
           </div>
-        </Wrapper>
-      </body>
+        </div>
+      </Wrapper>
     </html>
   )
 }

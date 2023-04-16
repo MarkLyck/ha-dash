@@ -1,5 +1,25 @@
-import { LightCard, type LightCardProps } from './Card'
+import type { HassEntity } from 'home-assistant-js-websocket'
 
-export const Light = (props: LightCardProps) => {
-  return <LightCard {...props} />
+import { LightCard } from './Card'
+
+export const Light = ({ entity }: { entity: HassEntity }) => {
+  console.log('🔈 ~ entity:', entity)
+
+  return (
+    <LightCard
+      setState={() => {
+        //
+      }}
+      setColor={() => {
+        //
+      }}
+      setBrightness={() => {
+        //
+      }}
+      icon={['far', 'lightbulb']}
+      color="#FFF"
+      isOn={entity.state !== 'off'}
+      name={entity.attributes.friendly_name || entity.entity_id}
+    />
+  )
 }

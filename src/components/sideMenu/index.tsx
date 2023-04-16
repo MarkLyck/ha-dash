@@ -55,7 +55,7 @@ export const SideMenu = () => {
           Logs
         </NavigationItem>
       </ul>
-      <div className="my-4">
+      <div className="my-4 flex justify-center">
         <ThemeSwitch />
       </div>
     </div>

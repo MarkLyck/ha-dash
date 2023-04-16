@@ -1,8 +1,8 @@
 import { type IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
-import { cn } from '@/lib/utils'
 
+import { cn } from '@/lib/utils'
 import { BatteryIcon } from '@/components/ui/batteryIcon'
 import {
   Dialog,
@@ -138,7 +138,7 @@ export const DeviceCard = ({
 
         {status ? (
           <DeviceStatus>
-            <div className="w-full first-letter:capitalize">{status}</div>
+            <span className="w-full first-letter:capitalize">{status}</span>
             {batteryPercentage ? (
               <BatteryIcon
                 percentage={batteryPercentage}
@@ -160,7 +160,10 @@ export const DeviceCard = ({
   return (
     <div className="w-full max-w-[160px]">
       <Dialog>
-        <DialogTrigger className="w-full rounded-xl text-left outline-none transition focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900">
+        <DialogTrigger
+          asChild
+          className="w-full cursor-pointer rounded-xl text-left outline-none transition focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900"
+        >
           {content}
         </DialogTrigger>
         <DialogContent className="w-auto">
