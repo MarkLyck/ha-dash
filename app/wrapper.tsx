@@ -9,5 +9,9 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
     connectToHASS()
   }, [])
 
-  return <div className="h-full min-h-screen bg-slate-1000">{children}</div>
+  return (
+    <main className="h-full min-h-screen bg-white dark:bg-slate-900">
+      {children}
+    </main>
+  )
 }

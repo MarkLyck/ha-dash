@@ -2,8 +2,10 @@
 
 import React from 'react'
 
+import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@/styles/globals.css'
 import '@/lib/icons'
+import { SideMenu } from '@/components/sideMenu'
 import { Wrapper } from './wrapper'
 
 type RootLayoutProps = {
@@ -17,7 +19,12 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         <title>Home Dashboard</title>
       </head>
       <body>
-        <Wrapper>{children}</Wrapper>
+        <Wrapper>
+          <div className="flex">
+            <SideMenu />
+            <div className="h-screen w-full">{children}</div>
+          </div>
+        </Wrapper>
       </body>
     </html>
   )

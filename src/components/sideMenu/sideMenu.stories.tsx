@@ -4,6 +4,9 @@ import { SideMenu } from './index'
 
 const meta = {
   component: SideMenu,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } satisfies Meta<typeof SideMenu>
 
 export default meta
