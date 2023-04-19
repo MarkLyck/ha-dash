@@ -1,10 +1,13 @@
 // Button.stories.ts|tsx
 
+import { phillipsHueLightStrip } from '@/../mocks/entities'
 import type { StoryObj } from '@storybook/react'
 
 import {
   AirPurifier,
   Car,
+  Curtain,
+  FoodDispenser,
   GarageDoor,
   Humidifier,
   Light,
@@ -14,8 +17,6 @@ import {
   TV,
   Thermostat,
   Vacuum,
-  Curtain,
-  FoodDispenser,
   WaterSupply,
 } from './index'
 
@@ -78,23 +79,7 @@ export const DevicesOn: Story = {
           //
         }}
       />
-      <Light
-        name="ceiling light"
-        icon={['far', 'light-ceiling']}
-        isOn
-        isDimmable
-        brightness={80}
-        color="white"
-        setState={() => {
-          //
-        }}
-        setColor={() => {
-          //
-        }}
-        setBrightness={() => {
-          //
-        }}
-      />
+      <Light entity={phillipsHueLightStrip} />
       <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
@@ -208,23 +193,7 @@ export const DevicesOff: Story = {
           //
         }}
       />
-      <Light
-        name="ceiling light"
-        icon={['far', 'light-ceiling']}
-        isOn={false}
-        isDimmable
-        brightness={75}
-        color="white"
-        setState={() => {
-          //
-        }}
-        setColor={() => {
-          //
-        }}
-        setBrightness={() => {
-          //
-        }}
-      />
+      <Light entity={phillipsHueLightStrip} />
       <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
