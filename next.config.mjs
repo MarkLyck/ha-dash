@@ -29,12 +29,12 @@ const config = {
         {
           loader: '@svgr/webpack',
         },
-        {
-          loader: 'file-loader',
-          options: {
-            name: 'static/[path][name].[ext]',
-          },
-        },
+        // {
+        //   loader: 'file-loader',
+        //   options: {
+        //     name: 'static/[path][name].[ext]',
+        //   },
+        // },
       ],
       type: 'javascript/auto',
       issuer: {

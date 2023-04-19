@@ -2,25 +2,24 @@
 
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import store from 'store'
 
-import { isSSR } from '@/lib/utils'
+// import { isSSR } from '@/lib/utils'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 
 export function ThemeSwitch() {
-  const [currentTheme, setCurrentTheme] = useState(
-    isSSR
-      ? 'light'
-      : document.body.classList.contains('dark')
-      ? 'dark'
-      : 'light'
+  const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>(
+    (store.get('theme') as 'light' | 'dark') || 'light'
   )
 
   const onCheckedChange = () => {
     if (currentTheme === 'light') {
+      store.set('theme', 'dark')
       document.body.classList.remove('light')
       document.body.classList.add('dark')
     } else {
+      store.set('theme', 'light')
       document.body.classList.remove('dark')
       document.body.classList.add('light')
     }
