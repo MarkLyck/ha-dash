@@ -7,7 +7,7 @@ import Typography from '@/components/ui/typography'
 import { getAreaIcon } from './areaIcon'
 
 export const container = cva(
-  'py-3 px-4 flex flex-col justify-start rounded-xl border transition w-full max-w-[160px] h-auto items-start',
+  'flex h-auto w-full max-w-[160px] flex-col items-start justify-start rounded-xl border px-4 py-3 transition',
   {
     variants: {
       active: {
@@ -31,7 +31,7 @@ export const container = cva(
   }
 )
 
-const detailContainerStyle = cva('first-letter:capitalize py-1/2 px-1')
+const detailContainerStyle = cva('py-1/2 px-1 first-letter:capitalize')
 const Divider = () => (
   <div className="mx-1 h-3 w-[1px] bg-slate-400 last-of-type:hidden" />
 )
