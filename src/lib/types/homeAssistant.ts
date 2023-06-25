@@ -38,8 +38,6 @@ export const stateSchema = z.object({
   state: z.string(),
 })
 
-export const entitySchema = z.object({})
-
 export type Area = z.infer<typeof areaSchema>
 export type Device = z.infer<typeof deviceSchema>
 export type State = z.infer<typeof stateSchema>

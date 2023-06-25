@@ -38,9 +38,9 @@ export const SmokeAlert = ({ area }: SmokeAlertProps) => {
       <FontAwesomeIcon
         icon={['far', 'fire-smoke']}
         size="4x"
-        className="mb-4 text-danger-600"
+        className="mb-4 text-destructive"
       />
-      <Title level={1} className="text-xl text-danger-600 dark:text-danger-600">
+      <Title level={1} className="text-xl text-destructive">
         Smoke detected!
       </Title>
       <Title level={3} className="mb-4 text-lg">
@@ -53,9 +53,11 @@ export const SmokeAlert = ({ area }: SmokeAlertProps) => {
           Unlock doors
         </Button>
         <div className="flex  gap-4">
-          <Link href={`/areas/${area}`} className={linkStyle()}>
-            <FontAwesomeIcon icon={getAreaIcon(area)} className="mr-2" />
-            {area}
+          <Link href={`/areas/${area}`}>
+            <Button>
+              <FontAwesomeIcon icon={getAreaIcon(area)} className="mr-2" />
+              {area}
+            </Button>
           </Link>
           <Button className="flex-1">
             <FontAwesomeIcon icon={['fas', 'x']} className="mr-2" />

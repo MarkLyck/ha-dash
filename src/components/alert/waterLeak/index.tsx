@@ -38,9 +38,9 @@ export const WaterLeakAlert = ({ area }: WaterLeakAlertProps) => {
       <FontAwesomeIcon
         icon={['far', 'house-flood-water']}
         size="4x"
-        className="mb-4 text-danger-600"
+        className="mb-4 text-destructive"
       />
-      <Title level={1} className="text-xl text-danger-600 dark:text-danger-600">
+      <Title level={1} className="text-xl text-destructive">
         Water leak detected!
       </Title>
       <Title level={3} className="mb-4 text-lg">

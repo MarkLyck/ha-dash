@@ -8,25 +8,19 @@ const config = {
   singleQuote: true,
   tabWidth: 2,
   trailingComma: 'es5',
-  // @ts-expect-error - ?
+  // @ts-expect-error - tailwindFunctions not in prettier.Config
+  tailwindFunctions: ['tv', 'cn', 'clsx', 'cva'],
   importOrder: [
-    '^(react/(.*)$)|^(react$)',
-    '^(next/(.*)$)|^(next$)',
+    '',
+    '<BUILTIN_MODULES>',
+    '',
     '<THIRD_PARTY_MODULES>',
     '',
-    '^types$',
-    '^@local/(.*)$',
-    '^@/config/(.*)$',
-    '^@/lib/(.*)$',
-    '^@/components/(.*)$',
-    '^@/styles/(.*)$',
+    '^@/(.*)$',
+    '',
     '^[./]',
+    '',
   ],
-  importOrderSeparation: false,
-  importOrderSortSpecifiers: true,
-  importOrderBuiltinModulesToTop: true,
-  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
-  importOrderMergeDuplicateImports: true,
 }
 
 module.exports = config

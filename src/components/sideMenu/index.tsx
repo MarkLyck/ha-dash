@@ -19,10 +19,10 @@ type NavigationItemProps = {
 }
 const NavigationItem = ({ href, icon, children }: NavigationItemProps) => {
   return (
-    <li className="overflow-hidden border-b border-b-slate-200 first-of-type:rounded-tl first-of-type:rounded-tr last-of-type:rounded-bl last-of-type:rounded-br last-of-type:border-b-0 dark:border-b-slate-1000">
+    <li className="dark:border-b-slate-1000 overflow-hidden border-b border-b-slate-200 first-of-type:rounded-tl first-of-type:rounded-tr last-of-type:rounded-bl last-of-type:rounded-br last-of-type:border-b-0">
       <Link
         href={href}
-        className="block w-full px-4 py-2  hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-1100"
+        className="dark:hover:bg-slate-1100 block w-full px-4  py-2 hover:bg-slate-100 dark:text-slate-200"
       >
         <FontAwesomeIcon icon={icon} className="mr-4" />
         {children}
@@ -42,8 +42,8 @@ export const SideMenu = () => {
         <NavigationItem href="/security" icon={['fas', 'camera-security']}>
           Security
         </NavigationItem>
-        <NavigationItem href="/devices" icon={['fas', 'sensor']}>
-          Devices
+        <NavigationItem href="/entities" icon={['fas', 'sensor']}>
+          Entities
         </NavigationItem>
         <NavigationItem href="/areas" icon={['fas', 'layer-group']}>
           Areas

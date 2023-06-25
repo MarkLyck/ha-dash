@@ -3,8 +3,6 @@ import type { HassEntity } from 'home-assistant-js-websocket'
 import { LightCard } from './Card'
 
 export const Light = ({ entity }: { entity: HassEntity }) => {
-  console.log('🔈 ~ entity:', entity)
-
   return (
     <LightCard
       setState={() => {
