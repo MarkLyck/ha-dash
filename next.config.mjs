@@ -10,6 +10,16 @@ const config = {
   experimental: {
     appDir: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'brands.home-assistant.io',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you

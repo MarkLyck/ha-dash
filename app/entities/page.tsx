@@ -5,7 +5,7 @@ import { Entity } from '@/components/entity'
 import type { HassEntity } from 'home-assistant-js-websocket'
 import { Separator } from '@/components/ui/separator'
 
-const generateGroupedEntities = (entities: (HassEntity | undefined)[]) => {
+const groupEntitiesByDomain = (entities: (HassEntity | undefined)[]) => {
   const groupedEntities: Record<string, HassEntity[]> = {}
 
   entities.forEach((entity) => {
@@ -24,23 +24,24 @@ const generateGroupedEntities = (entities: (HassEntity | undefined)[]) => {
 
 const Entities = () => {
   const entities = useStore((s) => s.entities)
+  // TODO: clean this up to avoid this loop before grouping.
   const entitiesList = Object.keys(entities).map((key) => entities[key])
-  const groupEntities = generateGroupedEntities(entitiesList)
-  const groups = Object.keys(groupEntities)
+  const EntitiesByDomain = groupEntitiesByDomain(entitiesList)
+  const domains = Object.keys(EntitiesByDomain)
 
   return (
     <div className="flex flex-col gap-2 p-4">
-      {groups.map((group) => {
+      {domains.map((domain) => {
         return (
-          <>
-            <h1 className="font-bold capitalize">{group}</h1>
-            <Separator />
-            <ul key={group} className="flex flex-col gap-2">
-              {groupEntities[group]?.map((entity) => (
+          <div key={domain}>
+            <h1 className="font-bold capitalize">{domain}</h1>
+            <Separator className="my-2" />
+            <ul key={domain} className="flex flex-wrap gap-2">
+              {EntitiesByDomain[domain]?.map((entity) => (
                 <Entity entity={entity} key={entity.entity_id} />
               ))}
             </ul>
-          </>
+          </div>
         )
       })}
     </div>
