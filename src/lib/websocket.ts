@@ -80,7 +80,7 @@ export const connectToHASS = () => {
       setStates(states)
 
       await getUser(connection).then((user: HassUser) => {
-        console.log('Logged into Home Assistant as', user.name)
+        console.log('🚪 Logged into Home Assistant as', user.name)
       })
     })()
   }
