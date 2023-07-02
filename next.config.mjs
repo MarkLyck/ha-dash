@@ -18,6 +18,12 @@ const config = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'thranehome.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 
