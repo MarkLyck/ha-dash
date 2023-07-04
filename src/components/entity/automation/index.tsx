@@ -1,5 +1,3 @@
-// import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { HassEntity } from 'home-assistant-js-websocket'
 
@@ -12,22 +10,12 @@ type AutomationProps = {
   entity: HassEntity
 }
 
-const test = {
-  type: 'call_service',
-  domain: 'automation',
-  service: 'trigger',
-  service_data: { entity_id: 'automation.feed_pet', skip_condition: true },
-  id: 36,
-}
-
 export const Automation = ({ entity }: AutomationProps) => {
   const { toast } = useToast()
-  console.log('🔈 ~ entity:', entity)
 
   const { friendly_name } = entity.attributes
 
   const runAutomation = async () => {
-    console.log('✅ RUNNING AUTOMATION', friendly_name)
     toast({
       title: 'Automation triggered',
       description: friendly_name,

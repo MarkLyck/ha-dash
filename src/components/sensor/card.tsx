@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
-import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 
 const sensorStyle = cva(
   'relative rounded-lg border px-2 py-1 text-[14px] inline-block text-left hover:bg-slate-50 bg-slate-100 dark:bg-slate-900',
@@ -32,7 +32,7 @@ const stateIconStyle = cva(
   }
 )
 
-const sensorStatusStyle = cva('first-letter:capitalize', {
+const sensorStatusStyle = cva('first-letter:capitalize text-[12px]', {
   variants: {
     type: {
       default: 'dark:text-slate-100',
@@ -55,21 +55,18 @@ export const SensorCard = ({
   name,
   type = 'default',
 }: SensorCardProps) => (
-  <Button className={sensorStyle({ type })}>
+  <Card className={sensorStyle({ type })}>
     <div className={stateIconStyle({ type })}>
-      <FontAwesomeIcon
-        icon={['fas', 'exclamation']}
-        className="h-[10px] w-[10px]"
-      />
+      <FontAwesomeIcon icon={['fas', 'exclamation']} className="h-2 w-2" />
     </div>
-    <div className="flex flex-row items-center [&>svg]:mr-2 [&>svg]:h-5 [&>svg]:w-5">
+    <div className="flex flex-row items-center [&>svg]:mr-2 [&>svg]:h-4 [&>svg]:w-4">
       {icon}
-      <div className="">
-        <div className="-mb-1 text-[10px] text-slate-500 opacity-50 first-letter:capitalize dark:text-slate-200">
+      <div>
+        <div className="text-[10px] text-slate-500 opacity-50 first-letter:capitalize dark:text-slate-200">
           {name}
         </div>
         <div className={sensorStatusStyle({ type })}>{children}</div>
       </div>
     </div>
-  </Button>
+  </Card>
 )
