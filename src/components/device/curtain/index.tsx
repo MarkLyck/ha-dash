@@ -1,5 +1,6 @@
-import { CurtainCard, type CurtainCardProps } from './Card'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+
+import { CurtainCard, type CurtainCardProps } from './Card'
 
 export const Curtain = (props: Omit<CurtainCardProps, 'icon'>) => {
   const percentClosed = props.percentClosed

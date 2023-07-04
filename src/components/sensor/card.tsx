@@ -1,5 +1,6 @@
-import { cva } from 'class-variance-authority'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { cva } from 'class-variance-authority'
+
 import { Button } from '@/components/ui/button'
 
 const sensorStyle = cva(

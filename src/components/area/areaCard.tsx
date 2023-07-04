@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
 import { Button } from '@/components/ui/button'
-import { DeviceName, deviceIconStyle } from '@/components/ui/deviceCard'
+import { deviceIconStyle, DeviceName } from '@/components/ui/deviceCard'
 import Typography from '@/components/ui/typography'
+
 import { getAreaIcon } from './areaIcon'
 
 export const container = cva(

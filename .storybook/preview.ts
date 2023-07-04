@@ -2,6 +2,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import type { Preview } from '@storybook/react'
 
 import { WithTheme } from './decorators/withTheme'
+
 import 'tailwindcss/tailwind.css'
 import '@/lib/icons'
 import '@/styles/global.css'

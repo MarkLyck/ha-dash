@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import Typography from '@/components/ui/typography'
+
 import { Scene } from './scene'
 
 const meta = {

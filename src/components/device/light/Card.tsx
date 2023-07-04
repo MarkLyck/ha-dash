@@ -1,9 +1,10 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import colors from 'tailwindcss/colors'
 
-import { calculateContrast } from '@/lib/utils'
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { Slider } from '@/components/ui/slider'
+import { calculateContrast } from '@/lib/utils'
+
 import { LightDialogContent } from './DialogContent'
 
 export interface LightCardProps {

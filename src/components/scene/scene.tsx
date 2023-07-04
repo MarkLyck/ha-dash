@@ -1,8 +1,9 @@
 import { cva } from 'class-variance-authority'
 
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import Typography from '@/components/ui/typography'
+import { cn } from '@/lib/utils'
+
 import { SceneIcon } from './sceneIcons'
 
 type SceneProps = {

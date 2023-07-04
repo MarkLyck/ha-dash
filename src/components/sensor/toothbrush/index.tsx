@@ -1,5 +1,6 @@
-import { SensorCard } from '@/components/sensor/card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { SensorCard } from '@/components/sensor/card'
 
 export interface ToothBrushProps {
   brushing: boolean

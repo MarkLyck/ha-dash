@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
+import Link from 'next/link'
 
 import { getAreaIcon } from '@/components/area/areaIcon'
 import { Button } from '@/components/ui/button'

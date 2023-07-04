@@ -1,7 +1,8 @@
 // Button.stories.ts|tsx
 
-import { phillipsHueLightStrip } from '@/../mocks/entities'
 import type { StoryObj } from '@storybook/react'
+
+import { phillipsHueLightStrip } from '@/../mocks/entities'
 
 import {
   AirPurifier,
@@ -14,8 +15,8 @@ import {
   Lock,
   Speaker,
   Switch,
-  TV,
   Thermostat,
+  TV,
   Vacuum,
   WaterSupply,
 } from './index'

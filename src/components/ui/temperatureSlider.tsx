@@ -1,9 +1,9 @@
 'use client'
 
-import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as SliderPrimitive from '@radix-ui/react-slider'
 import { cva } from 'class-variance-authority'
+import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 

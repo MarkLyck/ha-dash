@@ -4,6 +4,7 @@ const config = {
     {
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'prettier',
       ],
       files: ['*.ts', '*.tsx'],
       parserOptions: {
@@ -20,6 +21,7 @@ const config = {
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:storybook/recommended',
+    'prettier',
   ],
   rules: {
     '@typescript-eslint/consistent-type-imports': [

@@ -1,18 +1,19 @@
 // import type { HassEntity } from 'home-assistant-js-websocket'
-import { callService, type HassEntity } from 'home-assistant-js-websocket'
-import { connection } from '@/lib/websocket'
+
+import { type HassEntity } from 'home-assistant-js-websocket'
+
+import { callService } from '@/lib/hass'
 
 import { LightCard } from './Card'
 
 export const Light = ({ entity }: { entity: HassEntity }) => {
   const handleStateChange = async () => {
-    await callService(
-      connection,
-      'light',
-      'toggle',
-      {},
-      { entity_id: entity.entity_id }
-    )
+    await callService({
+      domain: 'light',
+      service: 'toggle',
+      service_data: {},
+      target: { entity_id: entity.entity_id },
+    })
   }
 
   return (

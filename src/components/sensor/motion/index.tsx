@@ -1,6 +1,7 @@
-import { SensorCard } from '@/components/sensor/card'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { SensorCard } from '@/components/sensor/card'
 
 export interface MotionSensorProps {
   detected: boolean

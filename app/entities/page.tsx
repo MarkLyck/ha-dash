@@ -1,9 +1,10 @@
 'use client'
 
-import useStore from '@/lib/useStore'
-import { Entity } from '@/components/entity'
 import type { HassEntity } from 'home-assistant-js-websocket'
+
+import { Entity } from '@/components/entity'
 import { Separator } from '@/components/ui/separator'
+import useStore from '@/lib/useStore'
 
 const groupEntitiesByDomain = (entities: (HassEntity | undefined)[]) => {
   const groupedEntities: Record<string, HassEntity[]> = {}

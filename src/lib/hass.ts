@@ -2,6 +2,7 @@ import {
   callService as haCallService,
   type HassServiceTarget,
 } from 'home-assistant-js-websocket'
+
 import { connection } from '@/lib/websocket'
 
 type CallServiceOptions = {
@@ -15,6 +16,7 @@ export const callService = async ({
   domain,
   service,
   service_data,
+  target,
 }: CallServiceOptions) => {
-  return await haCallService(connection, domain, service, service_data)
+  return await haCallService(connection, domain, service, service_data, target)
 }
