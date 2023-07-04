@@ -9,7 +9,7 @@ type CallServiceOptions = {
   domain: string
   service: string
   service_data?: object | undefined
-  target: HassServiceTarget | undefined
+  target?: HassServiceTarget | undefined
 }
 
 export const callService = async ({

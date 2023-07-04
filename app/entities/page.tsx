@@ -36,7 +36,7 @@ const Entities = () => {
         return (
           <div key={domain}>
             <h1 className="font-bold capitalize">{domain}</h1>
-            <Separator className="my-2" />
+            <Separator className="my-2 mb-4" />
             <ul key={domain} className="flex flex-wrap gap-2">
               {EntitiesByDomain[domain]?.map((entity) => (
                 <Entity entity={entity} key={entity.entity_id} />
