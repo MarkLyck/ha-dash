@@ -2,6 +2,7 @@ import { CaretRightIcon, UpdateIcon } from '@radix-ui/react-icons'
 import type { HassEntity } from 'home-assistant-js-websocket'
 import Image from 'next/image'
 import Link from 'next/link'
+import { z } from 'zod'
 
 import { env } from '@/../env'
 import { Button } from '@/components/ui/button'
@@ -12,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Spin } from '@/components/ui/loading'
 import { useToast } from '@/components/ui/use-toast'
 import { callService } from '@/lib/hass'
 
@@ -21,7 +23,19 @@ type UpdateProps = {
   entity: HassEntity
 }
 
+const updateAttributesSchema = z.object({
+  title: z.string(),
+  installed_version: z.string(),
+  latest_version: z.string(),
+  entity_picture: z.string().nullable(),
+  release_url: z.string().nullable(),
+  in_progress: z.boolean(),
+})
+
 export const Update = ({ entity }: UpdateProps) => {
+  const { toast } = useToast()
+
+  const attributes = updateAttributesSchema.parse(entity.attributes)
   const {
     title,
     installed_version,
@@ -29,7 +43,7 @@ export const Update = ({ entity }: UpdateProps) => {
     entity_picture,
     release_url,
     in_progress,
-  } = entity.attributes
+  } = attributes
 
   if (installed_version === latest_version) return null
 
@@ -37,6 +51,10 @@ export const Update = ({ entity }: UpdateProps) => {
     entity_picture?.[0] === '/' ? `${hassUrl}${entity_picture}` : entity_picture
 
   const handleUpdate = async () => {
+    toast({
+      title: `Updating ${title}`,
+      description: `To version: ${latest_version}`,
+    })
     return callService({
       domain: 'update',
       service: 'install',
@@ -55,7 +73,7 @@ export const Update = ({ entity }: UpdateProps) => {
           src={pictureSrc ?? ''}
           height={32}
           width={32}
-          alt={title as string}
+          alt={title}
           className="mr-3 rounded"
         />
         <div className="w-full overflow-hidden">
@@ -70,14 +88,17 @@ export const Update = ({ entity }: UpdateProps) => {
         </div>
       </CardHeader>
       <CardContent className="flex gap-2 p-4">
-        {in_progress ? <p>in progress</p> : null}
         <Button
           size="sm"
           onClick={() => void handleUpdate()}
           disabled={!!in_progress}
         >
-          <UpdateIcon className="mr-2" />
-          Update
+          {in_progress ? (
+            <Spin size="sm" className="mr-2" />
+          ) : (
+            <UpdateIcon className="mr-2" />
+          )}
+          {in_progress ? 'Updating' : 'Update'}
         </Button>
         {typeof release_url === 'string' ? (
           <Link href={release_url} target="_blank">

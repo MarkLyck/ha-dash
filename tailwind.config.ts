@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const tailwindConfig = {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -72,5 +72,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('@tailwindcss/container-queries'),
+    require('tailwindcss-animate'),
+  ],
 }
+
+export default tailwindConfig
