@@ -1,4 +1,5 @@
 // import { Tabs } from '@/components/ui/tabs'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { getAreaIcon } from './areaIcon'

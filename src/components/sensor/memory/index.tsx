@@ -1,5 +1,6 @@
-import { SensorCard, type SensorCardProps } from '@/components/sensor/card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { SensorCard, type SensorCardProps } from '@/components/sensor/card'
 
 export interface MemorySensorProps {
   value: number

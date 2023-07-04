@@ -1,7 +1,8 @@
-import { SensorCard } from '@/components/sensor/card'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
+
+import { SensorCard } from '@/components/sensor/card'
 
 const iconStyle = cva('', {
   variants: {

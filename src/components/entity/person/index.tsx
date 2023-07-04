@@ -1,10 +1,11 @@
+import type { HassEntity } from 'home-assistant-js-websocket'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@/components/ui/hover-card'
-import type { HassEntity } from 'home-assistant-js-websocket'
 
 type PersonProps = {
   entity: HassEntity

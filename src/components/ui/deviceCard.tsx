@@ -2,7 +2,6 @@ import { type IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
-import { cn } from '@/lib/utils'
 import { BatteryIcon } from '@/components/ui/batteryIcon'
 import {
   Dialog,
@@ -13,6 +12,7 @@ import {
 } from '@/components/ui/dialog'
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
+import { cn } from '@/lib/utils'
 
 export const deviceCardStyle = cva(
   'relative flex flex-1 flex-col p-3 rounded-xl w-full border transition ',

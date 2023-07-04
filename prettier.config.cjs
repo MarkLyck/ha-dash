@@ -1,7 +1,7 @@
-/** @type {import("prettier").Config} */
+/** @type {import("@ianvs/prettier-plugin-sort-imports").PrettierConfig} */
 const config = {
   plugins: [
-    require.resolve('@ianvs/prettier-plugin-sort-imports'),
+    require('@ianvs/prettier-plugin-sort-imports'),
     require.resolve('prettier-plugin-tailwindcss'),
   ],
   semi: false,

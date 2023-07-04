@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 
-import useStore from '@/lib/useStore'
 import { AreaCard } from '@/components/area/areaCard'
+import useStore from '@/lib/useStore'
 
 const Areas = () => {
   const areas = useStore((s) => s.areas)

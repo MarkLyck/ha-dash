@@ -5,7 +5,9 @@ import React from 'react'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@/styles/global.css'
 import '@/lib/icons'
+
 import { SideMenu } from '@/components/sideMenu'
+
 import { Wrapper } from './wrapper'
 
 type RootLayoutProps = {

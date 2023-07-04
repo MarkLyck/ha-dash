@@ -2,6 +2,7 @@ import {
   callService as haCallService,
   type HassServiceTarget,
 } from 'home-assistant-js-websocket'
+
 import { connection } from '@/lib/websocket'
 
 type CallServiceOptions = {

@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState } from 'react'
 import store from 'store'
 
 // import { isSSR } from '@/lib/utils'

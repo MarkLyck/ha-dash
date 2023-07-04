@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
+import Link from 'next/link'
 
 import { ThemeSwitch } from './themeSwitch'
 

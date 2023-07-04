@@ -1,5 +1,6 @@
-import { phillipsHueLightStrip } from '@/../mocks/entities'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { phillipsHueLightStrip } from '@/../mocks/entities'
 
 import { Light } from './index'
 

@@ -1,9 +1,9 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
-import { Slider } from '@/components/ui/slider'
 import { StateActionButton } from '@/components/ui/quickActionButton'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Slider } from '@/components/ui/slider'
 
 export interface CurtainCardProps {
   name: string

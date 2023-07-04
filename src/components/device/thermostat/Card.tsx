@@ -1,8 +1,8 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { TemperatureSlider } from '@/components/ui/temperatureSlider'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface ThermostatCardProps {
   name: string
