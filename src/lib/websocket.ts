@@ -23,7 +23,7 @@ import {
 } from '@/lib/types/homeAssistant'
 import useStore from '@/lib/useStore'
 
-let connection: Connection
+export let connection: Connection
 
 const hassUrl = z.string().url().parse(process.env.NEXT_PUBLIC_HASS_URL)
 const hassToken = z.string().parse(process.env.NEXT_PUBLIC_HASS_TOKEN)
