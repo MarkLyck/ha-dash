@@ -6,10 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { CaretRightIcon, UpdateIcon } from '@radix-ui/react-icons'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
-
+import { useToast } from '@/components/ui/use-toast'
 import { callService } from '@/lib/hass'
 
 import { env } from '@/../env'
@@ -21,9 +22,6 @@ type UpdateProps = {
 }
 
 export const Update = ({ entity }: UpdateProps) => {
-  if (entity.entity_id === 'update.ssh_web_terminal_update') {
-    console.log('🔈 ~ entity:', entity)
-  }
   const {
     title,
     installed_version,
@@ -58,15 +56,15 @@ export const Update = ({ entity }: UpdateProps) => {
           height={32}
           width={32}
           alt={title as string}
-          className="mr-2 rounded"
+          className="mr-3 rounded"
         />
-        <div className="w-full">
-          <CardTitle className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
+        <div className="w-full overflow-hidden">
+          <CardTitle className="overflow-hidden text-ellipsis whitespace-nowrap">
             {title}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="flex items-center font-light">
             {installed_version}
-            {' > '}
+            <CaretRightIcon />
             {latest_version}
           </CardDescription>
         </div>
@@ -78,6 +76,7 @@ export const Update = ({ entity }: UpdateProps) => {
           onClick={() => void handleUpdate()}
           disabled={!!in_progress}
         >
+          <UpdateIcon className="mr-2" />
           Update
         </Button>
         {typeof release_url === 'string' ? (
