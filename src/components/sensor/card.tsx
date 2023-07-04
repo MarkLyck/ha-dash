@@ -59,7 +59,7 @@ export const SensorCard = ({
     <div className={stateIconStyle({ type })}>
       <FontAwesomeIcon icon={['fas', 'exclamation']} className="h-2 w-2" />
     </div>
-    <div className="flex flex-row items-center [&>svg]:mr-2 [&>svg]:h-4 [&>svg]:w-4">
+    <div className="flex flex-row items-center [&>svg]:mr-2 [&>svg]:h-5 [&>svg]:w-5">
       {icon}
       <div>
         <div className="text-[10px] text-slate-500 opacity-50 first-letter:capitalize dark:text-slate-200">
