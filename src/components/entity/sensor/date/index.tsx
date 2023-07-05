@@ -6,10 +6,9 @@ import { SensorCard } from '@/components/sensor/card'
 
 export interface MotionSensorProps {
   entity: HassEntity
-  date: Date
 }
 
-export const DateSensor = ({ entity, date }: MotionSensorProps) => {
+export const DateSensor = ({ entity }: MotionSensorProps) => {
   const name = entity.attributes.friendly_name || entity.entity_id
 
   return (
@@ -18,7 +17,7 @@ export const DateSensor = ({ entity, date }: MotionSensorProps) => {
       name={name}
     >
       <span className="first-letter:capitalize">
-        {dayjs(date).format('DD/MM/YYYY')}
+        {dayjs(entity.state).format('DD/MM/YYYY HH:mm')}
       </span>
     </SensorCard>
   )
