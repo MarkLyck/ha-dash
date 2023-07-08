@@ -1,62 +1,106 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { cva } from 'class-variance-authority'
+import { CaretLeftIcon, CaretRightIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { tv } from 'tailwind-variants'
 
+import { Button } from '../ui/button'
 import { ThemeSwitch } from './themeSwitch'
 
-const containerStyle = cva(
-  'bg-slate-0 dark:bg-slate-1200 p-4 w-52 h-screen border-r border-r-slate-100 dark:border-r-slate-1000'
-)
-const listStyle = cva(
-  'flex flex-col border border-slate-200 dark:border-slate-500 rounded'
-)
+const navigationItemLinkStyle = tv({
+  base: 'px-2 w-full rounded py-2 flex items-center transition-all duration-200',
+  variants: {
+    selected: {
+      true: 'bg-neutral-100',
+      false: 'dark:hover:bg-slate-1100 hover:bg-slate-100 dark:text-slate-200',
+    },
+  },
+})
 
 type NavigationItemProps = {
   href: string
   icon: IconProp
   children: React.ReactNode
+  selected: boolean
 }
-const NavigationItem = ({ href, icon, children }: NavigationItemProps) => {
+
+const NavigationItem = ({
+  href,
+  icon,
+  selected,
+  children,
+}: NavigationItemProps) => {
   return (
-    <li className="dark:border-b-slate-1000 overflow-hidden border-b border-b-slate-200 first-of-type:rounded-tl first-of-type:rounded-tr last-of-type:rounded-bl last-of-type:rounded-br last-of-type:border-b-0">
-      <Link
-        href={href}
-        className="dark:hover:bg-slate-1100 block w-full px-4  py-2 hover:bg-slate-100 dark:text-slate-200"
-      >
-        <FontAwesomeIcon icon={icon} className="mr-4" />
-        {children}
+    <li className="px-2 w-full navigation-item flex">
+      <Link href={href} className={navigationItemLinkStyle({ selected })}>
+        <FontAwesomeIcon
+          icon={icon}
+          className="w-4 h-4 mx-auto @[100px]:mx-4"
+        />
+        <span className="w-0 @[100px]:w-auto overflow-hidden whitespace-nowrap transition-all duration-200">
+          {children}
+        </span>
       </Link>
     </li>
   )
 }
 
-export const SideMenu = () => {
+type LinkItem = {
+  to: string
+  icon: IconProp
+  label: string
+}
+
+const links: LinkItem[] = [
+  { to: '/', icon: ['far', 'home'], label: 'Home' },
+  { to: '/security', icon: ['far', 'camera-security'], label: 'Security' },
+  { to: '/entities', icon: ['far', 'sensor'], label: 'Entities' },
+  { to: '/areas', icon: ['far', 'layer-group'], label: 'Areas' },
+  { to: '/energy', icon: ['far', 'bolt'], label: 'Energy' },
+  { to: '/logs', icon: ['far', 'list-timeline'], label: 'Logs' },
+]
+
+type SideMenuProps = {
+  collapsed: boolean
+  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
+  const pathname = usePathname()
+
   return (
-    <div className={containerStyle()}>
-      <h4 className="mb-4 dark:text-slate-100">HA Dash</h4>
-      <ul className={listStyle()}>
-        <NavigationItem href="/" icon={['fas', 'home']}>
-          Home
-        </NavigationItem>
-        <NavigationItem href="/security" icon={['fas', 'camera-security']}>
-          Security
-        </NavigationItem>
-        <NavigationItem href="/entities" icon={['fas', 'sensor']}>
-          Entities
-        </NavigationItem>
-        <NavigationItem href="/areas" icon={['fas', 'layer-group']}>
-          Areas
-        </NavigationItem>
-        <NavigationItem href="/energy" icon={['fas', 'bolt']}>
-          Energy
-        </NavigationItem>
-        <NavigationItem href="/logs" icon={['fas', 'list-timeline']}>
-          Logs
-        </NavigationItem>
+    <div className="@container bg-white h-screen border-r overflow-hidden border-r-slate-100 dark:border-r-slate-1000 flex flex-col">
+      <h4 className="m-2 dark:text-slate-100 p-2 h-12 flex items-center justify-center rounded-lg text-center whitespace-nowrap bg-primary text-white font-bold">
+        {collapsed ? 'HA' : 'HA-Dash'}
+      </h4>
+      <ul className="flex flex-col">
+        {links.map((link) => (
+          <NavigationItem
+            key={link.to}
+            href={link.to}
+            icon={link.icon}
+            selected={pathname === link.to}
+          >
+            {link.label}
+          </NavigationItem>
+        ))}
       </ul>
       <div className="my-4 flex justify-center">
         <ThemeSwitch />
+      </div>
+      <div className="w-full px-2 mb-2 mt-auto flex justify-center">
+        <Button
+          variant="ghost"
+          className="w-full p-2"
+          onClick={() => setCollapsed((curr) => !curr)}
+        >
+          {collapsed ? (
+            <CaretRightIcon className="w-6 h-6" />
+          ) : (
+            <CaretLeftIcon className="w-6 h-6" />
+          )}
+        </Button>
       </div>
     </div>
   )

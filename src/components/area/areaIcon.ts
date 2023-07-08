@@ -2,7 +2,7 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 export const getAreaIcon = (area: string) => {
   const areaName = area.toLowerCase()
-  const icon: IconProp = ['fas', 'table-layout']
+  const icon: IconProp = ['far', 'table-layout']
 
   if (areaName.includes('living')) icon[1] = 'loveseat'
   if (areaName.includes('bedarea')) icon[1] = 'bed-alt'
