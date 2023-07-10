@@ -39,7 +39,7 @@
     "clsx": "1.2.1",
     "colorjs.io": "0.4.5",
     "dayjs": "^1.11.9",
-    "home-assistant-js-websocket": "8.1.0",
+    "home-assistant-js-websocket": "8.2.0",
     "lucide-react": "0.258.0",
     "next": "13.4.8",
     "react": "18.2.0",
