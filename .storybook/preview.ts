@@ -1,7 +1,7 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import type { Preview } from '@storybook/react'
 
-import { WithTheme } from './decorators/withTheme'
+// import { WithTheme } from './decorators/withTheme'
 
 import 'tailwindcss/tailwind.css'
 import '@/lib/icons'
@@ -9,7 +9,7 @@ import '@/styles/global.css'
 import './index.css'
 
 const preview: Preview = {
-  decorators: [WithTheme],
+  // decorators: [WithTheme],
   parameters: {
     viewport: {
       viewports: INITIAL_VIEWPORTS,
