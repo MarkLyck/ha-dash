@@ -24,7 +24,7 @@ type UpdateProps = {
 }
 
 const updateAttributesSchema = z.object({
-  title: z.string(),
+  title: z.string().nullable(),
   installed_version: z.string(),
   latest_version: z.string(),
   entity_picture: z.string().nullable(),
@@ -73,7 +73,7 @@ export const Update = ({ entity }: UpdateProps) => {
           src={pictureSrc ?? ''}
           height={32}
           width={32}
-          alt={title}
+          alt={title ?? 'unknown'}
           className="mr-3 rounded"
         />
         <div className="w-full overflow-hidden">
