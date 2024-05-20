@@ -29,3 +29,43 @@ export const calculateContrast = (
 
   return contrast
 }
+
+export const hexToRgb = (hex: string): [number, number, number] => {
+  const hexValue = hex.charAt(0) === '#' ? hex.slice(1) : hex
+  const r = Number.parseInt(hexValue.slice(0, 2), 16)
+  const g = Number.parseInt(hexValue.slice(2, 4), 16)
+  const b = Number.parseInt(hexValue.slice(4, 6), 16)
+  return [r, g, b]
+}
+
+export type SupportedFeaturesMap<T extends string> = Map<T, number>
+
+export const getSupportedFeatures = <T extends string>(
+  supportedFeatures: Record<number, T>,
+  featureNumber: number | undefined,
+): SupportedFeaturesMap<T> => {
+  if (featureNumber === undefined) return new Map<T, number>()
+
+  const features: SupportedFeaturesMap<T> = new Map()
+
+  for (const key in supportedFeatures) {
+    if ((featureNumber & Number(key)) === Number(key)) {
+      const feature = supportedFeatures[Number(key)]
+      if (feature) {
+        // Set the feature name as the key and associated number as the value
+        features.set(feature, Number(key))
+      }
+    }
+  }
+
+  return features
+}
+
+export const debounce = (func: (...args: any[]) => any, wait: number) => {
+  let timeout: NodeJS.Timeout
+
+  return (...args: any[]) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => func(...args), wait)
+  }
+}

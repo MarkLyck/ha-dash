@@ -3,15 +3,17 @@ import colors from 'tailwindcss/colors'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { Slider } from '@/components/ui/slider'
-import { calculateContrast } from '@/lib/utils'
+import { calculateContrast, debounce } from '@/lib/utils'
 
 import { LightDialogContent } from './DialogContent'
+import type { SupportedFeaturesMap } from './types'
+import { useEffect, useRef, useState } from 'react'
 
 export interface LightCardProps {
+  supportedFeatures: SupportedFeaturesMap
   name: string
   color: string | undefined
   isOn: boolean
-  isDimmable?: boolean
   brightness?: number
   icon: IconProp
   setState: (state: boolean) => void
@@ -20,9 +22,9 @@ export interface LightCardProps {
 }
 
 export const LightCard = ({
+  supportedFeatures = new Map(),
   name,
   isOn,
-  isDimmable,
   brightness = 0,
   color,
   icon,
@@ -30,6 +32,25 @@ export const LightCard = ({
   setColor,
   setBrightness,
 }: LightCardProps) => {
+  const [sliderValue, setSliderValue] = useState<number>(brightness)
+
+  useEffect(() => {
+    setSliderValue(brightness)
+  }, [brightness])
+
+  const debouncedSetBrightness = useRef(
+    debounce((value: number) => setBrightness(value), 300),
+  ).current
+
+  useEffect(() => {
+    if (
+      sliderValue !== brightness &&
+      supportedFeatures.has('SUPPORT_BRIGHTNESS')
+    ) {
+      debouncedSetBrightness(sliderValue)
+    }
+  }, [sliderValue, supportedFeatures])
+
   let colorOfLight: string | undefined = color
   const contrast = calculateContrast(colorOfLight, 'white')
   if (contrast < 1.1) {
@@ -39,7 +60,7 @@ export const LightCard = ({
   let status = 'Off'
   if (isOn) {
     status = 'On'
-    if (isDimmable) {
+    if (supportedFeatures.has('SUPPORT_BRIGHTNESS')) {
       status = `${brightness}%`
     }
   }
@@ -53,12 +74,12 @@ export const LightCard = ({
       setIsActive={setState}
       modalContent={<LightDialogContent color={color} setColor={setColor} />}
     >
-      {isOn && isDimmable ? (
+      {isOn && supportedFeatures.has('SUPPORT_BRIGHTNESS') ? (
         <div className="flex w-full gap-2">
           <Slider
+            onValueChange={(value) => setSliderValue(Number(value))}
             onClick={(e) => e.stopPropagation()}
-            onChange={(value) => setBrightness(Number(value))}
-            value={[brightness]}
+            value={[sliderValue]}
             color={color}
             max={100}
             step={1}
