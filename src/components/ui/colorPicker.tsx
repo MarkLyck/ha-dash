@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { HexColorPicker } from 'react-colorful'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { HexColorPicker } from 'react-colorful'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '@/components/ui/button'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
+// import {
+//   Popover,
+//   PopoverContent,
+//   PopoverTrigger,
+// } from '@/components/ui/popover'
 
 type ColorPickerProps = {
   color: string
@@ -24,22 +24,22 @@ const defaultColors = [
   '#ea580c', // orange
 ]
 
-export const ColorGrid = ({ color, setColor }: ColorPickerProps) => {
+export const ColorGrid = ({ setColor }: ColorPickerProps) => {
   // TODO save grid colors in database
-  const [gridColors, setGridColors] = useState(defaultColors)
+  const [gridColors, _setGridColors] = useState(defaultColors)
 
   return (
     <div className="flex flex-wrap gap-2">
       {gridColors.map((gridColor) => (
         <Button
           key={gridColor}
-          className="h-8 w-8 rounded border border-slate-500 p-0"
+          className="h-8 w-8 rounded border border-border p-0"
           style={{ background: gridColor }}
           onClick={() => setColor(gridColor)}
         />
       ))}
-      <Popover>
-        <PopoverTrigger>
+      {/* <Popover>
+        <PopoverTrigger asChild>
           <Button
             variant="outline"
             className="h-8 w-8 p-0 dark:border-slate-500"
@@ -53,11 +53,11 @@ export const ColorGrid = ({ color, setColor }: ColorPickerProps) => {
         <PopoverContent className="w-auto border-none p-4">
           <ColorPicker color={color} setColor={setColor} />
         </PopoverContent>
-      </Popover>
+      </Popover> */}
     </div>
   )
 }
 
-export const ColorPicker = ({ color, setColor }: ColorPickerProps) => (
-  <HexColorPicker color={color} onChange={setColor} />
-)
+// export const ColorPicker = ({ color, setColor }: ColorPickerProps) => (
+//   <HexColorPicker color={color} onChange={setColor} />
+// )
