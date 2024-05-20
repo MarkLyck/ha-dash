@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '@/components/ui/button'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-
-import { PlusIcon } from './icons'
 
 type ColorPickerProps = {
   color: string
@@ -49,7 +47,7 @@ export const ColorGrid = ({ color, setColor }: ColorPickerProps) => {
               setGridColors((colors) => [...colors, color])
             }}
           >
-            <PlusIcon className="text-slate-300" />
+            <FontAwesomeIcon icon={['far', 'plus']} />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto border-none p-4">
