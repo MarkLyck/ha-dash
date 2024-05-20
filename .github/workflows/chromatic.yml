@@ -1,9 +1,9 @@
-name: '📙 Chromatic'
+name: "📙 Chromatic"
 
 on:
   push:
     branches-ignore:
-      - 'main'
+      - "main"
 
 env:
   # 7 GiB by default on GitHub, setting to 6 GiB
@@ -16,8 +16,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: 🥟 Setup Bun
-        uses: antongolub/action-setup-bun@v1
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.1.8
       - name: 📦 install depencies
         run: bun i
       - name: ☁️ Publish to Chromatic
