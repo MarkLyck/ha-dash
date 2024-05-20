@@ -6,14 +6,10 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@chromatic-com/storybook',
   ],
-  framework: {
-    name: '@storybook/nextjs',
-    options: {},
-  },
-  docs: {
-    autodocs: 'tag',
-  },
+  framework: '@storybook/nextjs',
+  docs: {},
   webpackFinal: async (config) => {
     if (config.module?.rules) {
       // This modifies the existing image rule to exclude .svg files
