@@ -14,7 +14,6 @@ const preview: Preview = {
     viewport: {
       viewports: INITIAL_VIEWPORTS,
     },
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
