@@ -3,7 +3,7 @@ import type { HassEntity } from 'home-assistant-js-websocket'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useToast } from '@/hooks/use-toast'
+import { toast } from 'sonner'
 import { callService } from '@/lib/hass'
 
 type AutomationProps = {
@@ -11,13 +11,10 @@ type AutomationProps = {
 }
 
 export const Automation = ({ entity }: AutomationProps) => {
-  const { toast } = useToast()
-
   const { friendly_name } = entity.attributes
 
   const runAutomation = async () => {
-    toast({
-      title: 'Automation triggered',
+    toast('Automation triggered', {
       description: friendly_name,
     })
 
