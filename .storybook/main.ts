@@ -20,7 +20,7 @@ const config: StorybookConfig = {
       // since you want to handle those files with @svgr/webpack
       const imageRule = config.module.rules.find((rule) =>
         // @ts-expect-error - "test" doesn't exist on rule
-        rule.test?.test('.svg')
+        rule.test?.test('.svg'),
       )
       if (imageRule) {
         // @ts-expect-error - "test" doesn't exist on rule

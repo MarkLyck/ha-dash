@@ -9,7 +9,7 @@ import { Button } from '../ui/button'
 import { ThemeSwitch } from './themeSwitch'
 
 const navigationItemLinkStyle = tv({
-  base: 'px-2 w-full rounded py-2 flex items-center transition-all duration-200',
+  base: 'flex w-full items-center rounded px-2 py-2 transition-all duration-200',
   variants: {
     selected: {
       true: 'bg-neutral-100',
@@ -32,13 +32,13 @@ const NavigationItem = ({
   children,
 }: NavigationItemProps) => {
   return (
-    <li className="px-2 w-full navigation-item flex">
+    <li className="navigation-item flex w-full px-2">
       <Link href={href} className={navigationItemLinkStyle({ selected })}>
         <FontAwesomeIcon
           icon={icon}
-          className="w-4 h-4 mx-auto @[100px]:mx-4"
+          className="mx-auto h-4 w-4 @[100px]:mx-4"
         />
-        <span className="w-0 @[100px]:w-auto overflow-hidden whitespace-nowrap transition-all duration-200">
+        <span className="w-0 overflow-hidden whitespace-nowrap transition-all duration-200 @[100px]:w-auto">
           {children}
         </span>
       </Link>
@@ -70,8 +70,8 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
   const pathname = usePathname()
 
   return (
-    <div className="@container bg-white h-screen border-r overflow-hidden border-r-slate-100 dark:border-r-slate-1000 flex flex-col">
-      <h4 className="m-2 dark:text-slate-100 p-2 h-12 flex items-center justify-center rounded-lg text-center whitespace-nowrap bg-primary text-white font-bold">
+    <div className="@container flex h-screen flex-col overflow-hidden border-r border-r-slate-100 bg-white dark:border-r-slate-1000">
+      <h4 className="m-2 flex h-12 items-center justify-center whitespace-nowrap rounded-lg bg-primary p-2 text-center font-bold text-white dark:text-slate-100">
         {collapsed ? 'HA' : 'HA-Dash'}
       </h4>
       <ul className="flex flex-col">
@@ -89,16 +89,16 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
       <div className="my-4 flex justify-center">
         <ThemeSwitch />
       </div>
-      <div className="w-full px-2 mb-2 mt-auto flex justify-center">
+      <div className="mt-auto mb-2 flex w-full justify-center px-2">
         <Button
           variant="ghost"
           className="w-full p-2"
           onClick={() => setCollapsed((curr) => !curr)}
         >
           {collapsed ? (
-            <CaretRightIcon className="w-6 h-6" />
+            <CaretRightIcon className="h-6 w-6" />
           ) : (
-            <CaretLeftIcon className="w-6 h-6" />
+            <CaretLeftIcon className="h-6 w-6" />
           )}
         </Button>
       </div>

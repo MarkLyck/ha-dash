@@ -1,25 +1,25 @@
 import {
+  type Connection,
+  type HassConfig,
+  type HassEntities,
+  type HassServices,
+  type HassUser,
   createConnection,
   createLongLivedTokenAuth,
   getUser,
   subscribeConfig,
   subscribeEntities,
   subscribeServices,
-  type Connection,
-  type HassConfig,
-  type HassEntities,
-  type HassServices,
-  type HassUser,
 } from 'home-assistant-js-websocket'
 import { z } from 'zod'
 
 import {
-  areaSchema,
-  deviceSchema,
-  stateSchema,
   type Area,
   type Device,
   type State,
+  areaSchema,
+  deviceSchema,
+  stateSchema,
 } from '@/lib/types/homeAssistant'
 import useStore from '@/lib/useStore'
 
@@ -54,6 +54,7 @@ export const connectToHASS = () => {
         const auth = createLongLivedTokenAuth(hassUrl, hassToken)
         connection = await createConnection({ auth })
       } catch (err) {
+        console.error('Failed to connect to Home Assistant:', err)
         throw err
       }
 
@@ -79,8 +80,8 @@ export const connectToHASS = () => {
       setDevices(devices)
       setStates(states)
 
-      await getUser(connection).then((user: HassUser) => {
-        console.log('🚪 Logged into Home Assistant as', user.name)
+      await getUser(connection).then((_user: HassUser) => {
+        // no empty arrow functions
       })
     })()
   }

@@ -31,10 +31,10 @@ export const Person = ({ entity }: PersonProps) => {
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
-            <h4 className="text-sm font-semibold">{friendly_name}</h4>
+            <h4 className="font-semibold text-sm">{friendly_name}</h4>
             <p className="text-sm">{entity.state}</p>
             <div className="flex items-center pt-2">
-              <span className="text-xs text-muted-foreground">
+              <span className="text-muted-foreground text-xs">
                 {entity.last_updated}
               </span>
             </div>

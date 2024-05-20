@@ -11,7 +11,7 @@ export const isSSR = typeof window === 'undefined'
 
 export const calculateContrast = (
   color1: string | undefined,
-  color2: string | undefined
+  color2: string | undefined,
 ): number => {
   if (!color1 || !color2) return 0
 

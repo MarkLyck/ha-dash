@@ -1,4 +1,4 @@
-import { type IconProp } from '@fortawesome/fontawesome-svg-core'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
@@ -15,7 +15,7 @@ import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 
 export const deviceCardStyle = cva(
-  'relative flex flex-1 flex-col p-3 rounded-xl w-full border transition ',
+  'relative flex w-full flex-1 flex-col rounded-xl border p-3 transition',
   {
     variants: {
       active: {
@@ -34,7 +34,7 @@ export const deviceCardStyle = cva(
         ],
       },
     },
-  }
+  },
 )
 
 export const deviceCardTypeStyle = cva('', {
@@ -42,9 +42,9 @@ export const deviceCardTypeStyle = cva('', {
     type: {
       default: '',
       warning:
-        'border-warning-600 dark:border-warning-600 text-warning-600 dark:text-warning-600 hover:text-warning-700 dark:hover:border-warning-500 dark:hover:text-warning-500 hover:border-warning-700 [&>.device-status]:text-warning-600',
+        'border-warning-600 text-warning-600 dark:border-warning-600 dark:hover:border-warning-500 hover:border-warning-700 [&>.device-status]:text-warning-600 dark:hover:text-warning-500 dark:text-warning-600 hover:text-warning-700',
       error:
-        'border-danger-600 dark:border-danger-600 text-danger-600 dark:text-danger-600 hover:text-danger-700 dark:hover:border-danger-500 dark:hover:text-danger-500 hover:border-danger-700 [&>.device-status]:text-danger-600',
+        'border-danger-600 text-danger-600 dark:border-danger-600 dark:hover:border-danger-500 hover:border-danger-700 [&>.device-status]:text-danger-600 dark:hover:text-danger-500 dark:text-danger-600 hover:text-danger-700',
     },
   },
 })
@@ -57,11 +57,11 @@ export const deviceIconStyle = cva(
         false: ['text-slate-400', 'dark:text-slate-400'],
       },
     },
-  }
+  },
 )
 
 const stateIconStyle = cva(
-  'absolute top-0 right-0 mr-0 -translate-y-1/2 translate-x-1/2 h-6 w-6 rounded-full flex items-center justify-center text-white dark:text-black',
+  '-translate-y-1/2 absolute top-0 right-0 mr-0 flex h-6 w-6 translate-x-1/2 items-center justify-center rounded-full text-white dark:text-black',
   {
     variants: {
       type: {
@@ -70,7 +70,7 @@ const stateIconStyle = cva(
         error: 'bg-danger-600',
       },
     },
-  }
+  },
 )
 
 export type DeviceCardType = 'default' | 'warning' | 'error'
@@ -117,7 +117,7 @@ export const DeviceCard = ({
       <div
         className={cn(
           deviceCardStyle({ active: isActive }),
-          deviceCardTypeStyle({ type })
+          deviceCardTypeStyle({ type }),
         )}
       >
         <div className={stateIconStyle({ type })}>
@@ -162,7 +162,7 @@ export const DeviceCard = ({
       <Dialog>
         <DialogTrigger
           asChild
-          className="w-full cursor-pointer rounded-xl text-left outline-none transition focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900"
+          className="w-full cursor-pointer rounded-xl text-left outline-none transition dark:focus:ring-slate-400 focus:ring-2 focus:ring-slate-400 dark:focus:ring-offset-slate-900 focus:ring-offset-2"
         >
           {content}
         </DialogTrigger>
@@ -180,7 +180,7 @@ export const DeviceCard = ({
 }
 
 export const DeviceName = ({ children }: { children: React.ReactNode }) => (
-  <Typography.Text className="text-sm font-medium first-letter:capitalize">
+  <Typography.Text className="font-medium text-sm first-letter:capitalize">
     {children}
   </Typography.Text>
 )

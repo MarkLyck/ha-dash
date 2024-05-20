@@ -14,7 +14,7 @@ type TemperatureSliderProps = React.ComponentPropsWithoutRef<
 }
 
 const currentTempStyle = cva(
-  'absolute top-1/2 -translate-y-1/2 h-1 w-1 rounded opacity-25',
+  '-translate-y-1/2 absolute top-1/2 h-1 w-1 rounded opacity-25',
   {
     variants: {
       isHigher: {
@@ -22,7 +22,7 @@ const currentTempStyle = cva(
         false: 'bg-slate-400 dark:bg-slate-500',
       },
     },
-  }
+  },
 )
 
 export const TemperatureSlider = React.forwardRef<
@@ -46,7 +46,7 @@ export const TemperatureSlider = React.forwardRef<
       ref={ref}
       className={cn(
         'relative flex w-full touch-none select-none items-center overflow-hidden',
-        className
+        className,
       )}
       {...props}
     >
@@ -68,7 +68,7 @@ export const TemperatureSlider = React.forwardRef<
         />
       ) : null}
       <SliderPrimitive.Thumb
-        className="relative mr-2 block h-[14px] w-[2px] rounded border border-none bg-slate-100 transition focus:outline-none dark:bg-slate-800 "
+        className="relative mr-2 block h-[14px] w-[2px] rounded border border-none bg-slate-100 transition dark:bg-slate-800 focus:outline-none"
         style={value < 10 ? { opacity: 0 } : { opacity: 1 }}
       />
     </SliderPrimitive.Root>

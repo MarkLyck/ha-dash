@@ -18,8 +18,8 @@ const config = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
-        hostname: 'thranehome.com',
+        protocol: 'http',
+        hostname: 'homeassistant.local:8123',
         port: '',
         pathname: '/**',
       },

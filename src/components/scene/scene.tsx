@@ -12,7 +12,7 @@ type SceneProps = {
   setActive: (active: boolean) => void
 }
 
-export const container = cva('py-3 px-4 rounded-xl border transition ', {
+export const container = cva('rounded-xl border px-4 py-3 transition', {
   variants: {
     active: {
       false: [
@@ -42,7 +42,7 @@ export const Scene = ({ name, active, setActive }: SceneProps) => {
       <SceneIcon name={name} active={active} />
       <Typography.Text
         className={
-          'flex-1 text-left text-sm font-normal leading-4 text-slate-900'
+          'flex-1 text-left font-normal text-slate-900 text-sm leading-4'
         }
       >
         {name}

@@ -14,7 +14,7 @@ export const BatterySensor = ({ entity }: DurationSensorProps) => {
   const percentage = Number(entity.state)
 
   let icon: IconProp = ['far', 'battery-full']
-  if (isNaN(percentage)) icon = ['far', 'question-circle']
+  if (Number.isNaN(percentage)) icon = ['far', 'question-circle']
   if (percentage < 100) icon = ['far', 'battery-three-quarters']
   if (percentage < 75) icon = ['far', 'battery-half']
   if (percentage < 25) icon = ['far', 'battery-quarter']
