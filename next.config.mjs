@@ -14,7 +14,7 @@ const config = {
       },
       {
         protocol: 'http',
-        hostname: 'homeassistant.local:8123',
+        hostname: 'homeassistant.local',
         port: '',
         pathname: '/**',
       },

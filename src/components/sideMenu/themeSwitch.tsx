@@ -1,7 +1,7 @@
 'use client'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import store from 'store'
 
 // import { isSSR } from '@/lib/utils'
@@ -9,9 +9,14 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 
 export function ThemeSwitch() {
-  const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>(
-    (store.get('theme') as 'light' | 'dark') || 'light',
-  )
+  const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const storedTheme = store.get('theme') as undefined | 'light' | 'dark'
+    if (storedTheme !== currentTheme) {
+      setCurrentTheme(storedTheme || 'light')
+    }
+  }, [])
 
   const onCheckedChange = () => {
     if (currentTheme === 'light') {

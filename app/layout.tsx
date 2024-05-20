@@ -30,7 +30,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <html lang="en">
+    <html lang="en" style={{ colorScheme: 'light dark' }}>
       <head>
         <title>Home Dashboard</title>
       </head>
