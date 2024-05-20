@@ -5,11 +5,12 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=5d18f407552d"
+    "chromatic": "npx chromatic --project-token=5d18f407552d",
+    "lint": "biome check .",
+    "lint:fix": "biome check --apply ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.4.0",
@@ -54,6 +55,7 @@
     "zustand": "4.3.9"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.3",
     "@ianvs/prettier-plugin-sort-imports": "4.0.2",
     "@storybook/addon-essentials": "7.0.25",
     "@storybook/addon-interactions": "7.0.25",

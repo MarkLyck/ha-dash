@@ -7,24 +7,24 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/typography'
 
 const linkStyle = cva(
-  'active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800 first-letter:capitalize',
+  'inline-flex items-center justify-center rounded-md font-medium text-sm transition-colors disabled:pointer-events-none active:scale-95 dark:data-[state=open]:bg-slate-800 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:hover:text-slate-100 first-letter:capitalize disabled:opacity-50 focus:outline-none dark:focus:ring-slate-400 focus:ring-2 focus:ring-slate-400 dark:focus:ring-offset-slate-900 focus:ring-offset-2',
   {
     variants: {
       variant: {
         default:
-          'bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-50 dark:text-slate-900',
+          'bg-slate-900 text-white dark:bg-slate-50 hover:bg-slate-700 dark:text-slate-900',
       },
       size: {
-        default: 'h-10 py-2 px-4',
-        sm: 'h-9 px-2 rounded-md',
-        lg: 'h-11 px-8 rounded-md',
+        default: 'h-10 px-4 py-2',
+        sm: 'h-9 rounded-md px-2',
+        lg: 'h-11 rounded-md px-8',
       },
     },
     defaultVariants: {
       variant: 'default',
       size: 'default',
     },
-  }
+  },
 )
 
 type WaterLeakAlertProps = {
@@ -40,7 +40,7 @@ export const WaterLeakAlert = ({ area }: WaterLeakAlertProps) => {
         size="4x"
         className="mb-4 text-destructive"
       />
-      <Title level={1} className="text-xl text-destructive">
+      <Title level={1} className="text-destructive text-xl">
         Water leak detected!
       </Title>
       <Title level={3} className="mb-4 text-lg">

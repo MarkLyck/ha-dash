@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type ReactNode } from 'react'
+import { type ReactNode, useState } from 'react'
 
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@/styles/global.css'

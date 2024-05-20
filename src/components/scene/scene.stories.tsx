@@ -49,7 +49,7 @@ export const Demo: Story = {
       <>
         <div className="mb-8">
           <Typography.Title className="mb-4">Scenes</Typography.Title>
-          <div className="flex flex-wrap gap-2 ">
+          <div className="flex flex-wrap gap-2">
             {sceneTypes.map((name) => (
               <Scene key={name} name={name} active setActive={console.log} />
             ))}
@@ -57,7 +57,7 @@ export const Demo: Story = {
         </div>
         <div>
           <Typography.Title className="mb-4">Scenes</Typography.Title>
-          <div className="flex flex-wrap gap-2 ">
+          <div className="flex flex-wrap gap-2">
             {sceneTypes.map((name) => (
               <Scene
                 key={name}

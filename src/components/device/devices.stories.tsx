@@ -15,8 +15,8 @@ import {
   Lock,
   Speaker,
   Switch,
-  Thermostat,
   TV,
+  Thermostat,
   Vacuum,
   WaterSupply,
 } from './index'

@@ -45,6 +45,7 @@ export const Demo = {
       <TypographyParagraph>
         The king thought long and hard, and finally came up with{' '}
         <a
+          // biome-ignore lint/a11y/useValidAnchor: <explanation>
           href="#"
           className="font-medium text-slate-900 underline underline-offset-4 dark:text-slate-50"
         >

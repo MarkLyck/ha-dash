@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
 import { Button } from '@/components/ui/button'
-import { deviceIconStyle, DeviceName } from '@/components/ui/deviceCard'
+import { DeviceName, deviceIconStyle } from '@/components/ui/deviceCard'
 import Typography from '@/components/ui/typography'
 
 import { getAreaIcon } from './areaIcon'
@@ -29,10 +29,10 @@ export const container = cva(
         ],
       },
     },
-  }
+  },
 )
 
-const detailContainerStyle = cva('py-1/2 px-1 first-letter:capitalize')
+const detailContainerStyle = cva('px-1 py-1/2 first-letter:capitalize')
 const Divider = () => (
   <div className="mx-1 h-3 w-[1px] bg-slate-400 last-of-type:hidden" />
 )

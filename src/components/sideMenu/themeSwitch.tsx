@@ -10,7 +10,7 @@ import { Switch } from '@/components/ui/switch'
 
 export function ThemeSwitch() {
   const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>(
-    (store.get('theme') as 'light' | 'dark') || 'light'
+    (store.get('theme') as 'light' | 'dark') || 'light',
   )
 
   const onCheckedChange = () => {

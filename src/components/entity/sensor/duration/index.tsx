@@ -7,7 +7,8 @@ export interface DurationSensorProps {
   entity: HassEntity
 }
 
-function formatSeconds(seconds: number): string {
+function formatSeconds(s: number): string {
+  let seconds = s
   const days = Math.floor(seconds / (24 * 60 * 60))
   seconds %= 24 * 60 * 60
   const hours = Math.floor(seconds / (60 * 60))
@@ -26,7 +27,7 @@ function formatSeconds(seconds: number): string {
 
 export const DurationSensor = ({ entity }: DurationSensorProps) => {
   const name = entity.attributes.friendly_name || entity.entity_id
-  const duration = parseFloat(entity.state)
+  const duration = Number.parseFloat(entity.state)
   const durationUnit = entity.attributes.unit_of_measurement ?? ''
 
   const durationText =

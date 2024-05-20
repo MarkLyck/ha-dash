@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["clsx", "hass", "mireds", "newhighsco"],
+  "cSpell.words": ["clsx", "hass", "mireds", "newhighsco", "subcomponents"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
 }
