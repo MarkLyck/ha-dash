@@ -16,9 +16,7 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <body>
-      <main className="h-full min-h-screen bg-white dark:bg-slate-900">
-        {children}
-      </main>
+      <main className="h-full min-h-screen bg-bg-white">{children}</main>
       <Toaster />
     </body>
   )
