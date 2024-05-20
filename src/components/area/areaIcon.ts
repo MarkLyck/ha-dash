@@ -5,6 +5,7 @@ export const getAreaIcon = (area: string) => {
   const icon: IconProp = ['far', 'table-layout']
 
   if (areaName.includes('living')) icon[1] = 'loveseat'
+  if (areaName.includes('balcony')) icon[1] = 'window-frame-open'
   if (areaName.includes('bedarea')) icon[1] = 'bed-alt'
   if (areaName.includes('guest area')) icon[1] = 'bed-empty'
   if (areaName.includes('kids area')) icon[1] = 'bed-bunk'

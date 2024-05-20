@@ -12,8 +12,8 @@ const navigationItemLinkStyle = tv({
   base: 'flex w-full items-center rounded px-2 py-2 transition-all duration-200',
   variants: {
     selected: {
-      true: 'bg-neutral-100',
-      false: 'dark:hover:bg-slate-1100 hover:bg-slate-100 dark:text-slate-200',
+      true: 'bg-bg-sub dark:bg-surface',
+      false: 'dark:hover:bg-bg-white hover:bg-bg-weak',
     },
   },
 })
@@ -70,8 +70,8 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
   const pathname = usePathname()
 
   return (
-    <div className="@container flex h-screen flex-col overflow-hidden border-r border-r-slate-100 bg-white dark:border-r-slate-1000">
-      <h4 className="m-2 flex h-12 items-center justify-center whitespace-nowrap rounded-lg bg-primary p-2 text-center font-bold text-white dark:text-slate-100">
+    <div className="@container flex h-screen flex-col overflow-hidden border-r border-r-border bg-bg-white dark:border-r-slate-1000 dark:bg-bg-weak">
+      <h4 className="m-2 flex h-12 items-center justify-center whitespace-nowrap rounded-lg bg-black p-2 text-center font-bold text-text-white dark:bg-bg-white dark:text-white">
         {collapsed ? 'HA' : 'HA-Dash'}
       </h4>
       <ul className="flex flex-col">
