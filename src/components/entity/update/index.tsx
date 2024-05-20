@@ -14,7 +14,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Spin } from '@/components/ui/loading'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'sonner'
 import { callService } from '@/lib/hass'
 
 const hassUrl = env.NEXT_PUBLIC_HASS_URL
@@ -33,8 +33,6 @@ const updateAttributesSchema = z.object({
 })
 
 export const Update = ({ entity }: UpdateProps) => {
-  const { toast } = useToast()
-
   const attributes = updateAttributesSchema.parse(entity.attributes)
   const {
     title,
@@ -51,8 +49,7 @@ export const Update = ({ entity }: UpdateProps) => {
     entity_picture?.[0] === '/' ? `${hassUrl}${entity_picture}` : entity_picture
 
   const handleUpdate = async () => {
-    toast({
-      title: `Updating ${title}`,
+    toast(`Updating ${title}`, {
       description: `To version: ${latest_version}`,
     })
     return callService({
