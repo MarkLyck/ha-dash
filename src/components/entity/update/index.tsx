@@ -29,6 +29,7 @@ const updateAttributesSchema = z.object({
   latest_version: z.string(),
   entity_picture: z.string().nullable(),
   release_url: z.string().nullable(),
+  skipped_version: z.string().nullable(),
   in_progress: z.boolean(),
 })
 
@@ -38,12 +39,14 @@ export const Update = ({ entity }: UpdateProps) => {
     title,
     installed_version,
     latest_version,
+    skipped_version,
     entity_picture,
     release_url,
     in_progress,
   } = attributes
 
   if (installed_version === latest_version) return null
+  if (latest_version === skipped_version) return null
 
   const pictureSrc =
     entity_picture?.[0] === '/' ? `${hassUrl}${entity_picture}` : entity_picture

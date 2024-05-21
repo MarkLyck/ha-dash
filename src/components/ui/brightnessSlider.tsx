@@ -21,18 +21,22 @@ export const BrightnessSlider = React.forwardRef<
       orientation="vertical"
       ref={ref}
       className={cn(
-        'relative flex w-[80px] touch-none select-none items-center overflow-hidden',
+        'relative flex w-[80px] touch-none select-none items-center',
         className,
       )}
       {...props}
     >
-      <SliderPrimitive.Track className="relative h-60 w-full grow overflow-hidden rounded-lg border border-slate-200 bg-bg-sub hover:cursor-pointer dark:border-none dark:bg-slate-1000">
+      <SliderPrimitive.Track className="relative h-60 w-full grow overflow-hidden rounded-[20px] border-2 border-border bg-white hover:cursor-pointer dark:bg-black">
         <SliderPrimitive.Range
-          className="absolute w-full bg-white"
-          style={{ background: color ? color : undefined }}
+          className="absolute w-full bg-bg-weak"
+          // style={{ background: color ? color : undefined }}
         />
       </SliderPrimitive.Track>
-      <SliderPrimitive.Thumb className="relative mx-2 mt-4 block h-[6px] w-[62px] cursor-grab rounded border border-none bg-black transition focus:outline-none" />
+      <SliderPrimitive.Thumb className="relative mx-2 mt-4 block h-[6px] w-[62px] cursor-grab rounded border border-none bg-black transition focus:outline-none">
+        <div className="-right-6 -translate-y-1/2 absolute top-1/2 translate-x-1/2 rounded-full bg-blue-500 px-2 py-1 text-xs">
+          {props.value}%
+        </div>
+      </SliderPrimitive.Thumb>
     </SliderPrimitive.Root>
   )
 })

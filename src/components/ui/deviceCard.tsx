@@ -20,7 +20,7 @@ export const deviceCardStyle = cva(
     variants: {
       active: {
         false: [
-          'bg-slate-100',
+          'bg-bg-white',
           'border-slate-200',
           'dark:bg-slate-1000',
           'dark:border-slate-700',
@@ -166,7 +166,7 @@ export const DeviceCard = ({
         >
           {content}
         </DialogTrigger>
-        <DialogContent className="w-auto min-w-[280px]">
+        <DialogContent className="w-auto min-w-[280px] bg-bg-white">
           <DialogHeader>
             <DialogTitle className="mb-4 first-letter:capitalize">
               {name}
