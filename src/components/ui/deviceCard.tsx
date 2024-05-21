@@ -166,7 +166,7 @@ export const DeviceCard = ({
         >
           {content}
         </DialogTrigger>
-        <DialogContent className="w-auto">
+        <DialogContent className="w-auto min-w-[280px]">
           <DialogHeader>
             <DialogTitle className="mb-4 first-letter:capitalize">
               {name}

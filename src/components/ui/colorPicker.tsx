@@ -18,10 +18,10 @@ const defaultColors = [
   '#fdba74', // warm
   '#16a34a', // green,
   '#2563eb', // blue,
-  '#6d28d9', // violet
-  '#ec4899', // pink
-  '#dc2626', // red
-  '#ea580c', // orange
+  // '#6d28d9', // violet
+  // '#ec4899', // pink
+  // '#dc2626', // red
+  // '#ea580c', // orange
 ]
 
 export const ColorGrid = ({ setColor }: ColorPickerProps) => {

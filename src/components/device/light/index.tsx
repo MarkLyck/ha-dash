@@ -46,7 +46,9 @@ export const Light = ({ entity }: { entity: HassEntity }) => {
       },
     })
   }
-  const handleSetBrightness = async (brightness: number) => {
+  const handleSetBrightness = async (brightness: number | undefined) => {
+    if (!brightness) return
+
     await callService({
       domain: 'light',
       service: 'turn_on',

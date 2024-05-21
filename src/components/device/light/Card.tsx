@@ -18,7 +18,7 @@ export interface LightCardProps {
   icon: IconProp
   setState: (state: boolean) => void
   setColor: (color: string) => void
-  setBrightness: (brightness: number) => void
+  setBrightness: (brightness: number | undefined) => void
 }
 
 export const LightCard = ({
@@ -39,7 +39,7 @@ export const LightCard = ({
   }, [brightness])
 
   const debouncedSetBrightness = useRef(
-    debounce((value: number) => setBrightness(value), 300),
+    debounce((value: number | undefined) => setBrightness(value), 300),
   ).current
 
   useEffect(() => {
@@ -72,7 +72,15 @@ export const LightCard = ({
       name={name}
       status={status}
       setIsActive={setState}
-      modalContent={<LightDialogContent color={color} setColor={setColor} />}
+      modalContent={
+        <LightDialogContent
+          color={color}
+          setColor={setColor}
+          brightness={brightness}
+          setBrightness={setBrightness}
+          supportedFeatures={supportedFeatures}
+        />
+      }
     >
       {isOn && supportedFeatures.has('SUPPORT_BRIGHTNESS') ? (
         <div className="flex w-full gap-2">
