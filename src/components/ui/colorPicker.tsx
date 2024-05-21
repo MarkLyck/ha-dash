@@ -16,12 +16,12 @@ type ColorPickerProps = {
 const defaultColors = [
   '#ffffff', // white
   '#fdba74', // warm
-  '#16a34a', // green,
-  '#2563eb', // blue,
+  // '#16a34a', // green,
+  // '#2563eb', // blue,
   // '#6d28d9', // violet
   // '#ec4899', // pink
-  // '#dc2626', // red
-  // '#ea580c', // orange
+  '#ea580c', // orange
+  '#dc2626', // red
 ]
 
 export const ColorGrid = ({ setColor }: ColorPickerProps) => {

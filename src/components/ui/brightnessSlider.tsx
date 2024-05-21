@@ -42,7 +42,7 @@ export const BrightnessSlider = React.forwardRef<
         />
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb className="relative mx-2 mt-4 block h-[6px] w-[62px] cursor-grab rounded border border-none bg-black transition focus:outline-none">
-        <div className="-right-6 -translate-y-1/2 absolute top-1/2 translate-x-1/2 rounded-full bg-blue-500 px-2 py-1 text-xs">
+        <div className="-right-6 -translate-y-1/2 absolute top-1/2 translate-x-1/2 rounded-full bg-info px-2 py-1 text-xs">
           {sliderValue}%
         </div>
       </SliderPrimitive.Thumb>
