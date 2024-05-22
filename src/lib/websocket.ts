@@ -31,6 +31,9 @@ const hassToken = z.string().parse(process.env.NEXT_PUBLIC_HASS_TOKEN)
 const setEntities = (entities: HassEntities) => {
   useStore.getState().setEntities(entities)
 }
+const setEntityRegistry = (states: any) => {
+  useStore.getState().setEntityRegistry(states)
+}
 const setServices = (services: HassServices) => {
   useStore.getState().setServices(services)
 }
@@ -71,6 +74,10 @@ export const connectToHASS = () => {
       const stateData = await connection.sendMessagePromise({
         type: 'get_states',
       })
+      // this entity list has device_id
+      const configEntityRegistryList = await connection.sendMessagePromise({
+        type: 'config/entity_registry/list',
+      })
 
       const areas = z.array(areaSchema).parse(areaRegistry)
       const devices = z.array(deviceSchema).parse(deviceRegistry)
@@ -79,6 +86,7 @@ export const connectToHASS = () => {
       setAreas(areas)
       setDevices(devices)
       setStates(states)
+      setEntityRegistry(configEntityRegistryList)
 
       await getUser(connection).then((_user: HassUser) => {
         // no empty arrow functions

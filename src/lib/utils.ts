@@ -3,6 +3,8 @@ import type { ClassValue } from 'clsx'
 import Color from 'colorjs.io'
 import { twMerge } from 'tailwind-merge'
 
+import type { EntityRegistry } from './types/homeAssistant'
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -68,4 +70,8 @@ export const debounce = (func: (...args: any[]) => any, wait: number) => {
     clearTimeout(timeout)
     timeout = setTimeout(() => func(...args), wait)
   }
+}
+
+export const getEntitiesByType = (entities: EntityRegistry[], type: string) => {
+  return entities.filter((entity) => entity.entity_id.startsWith(type))
 }

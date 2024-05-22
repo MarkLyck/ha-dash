@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["clsx", "hass", "mireds", "newhighsco", "subcomponents"],
+  "cSpell.words": [
+    "clsx",
+    "colorjs",
+    "hass",
+    "mireds",
+    "newhighsco",
+    "subcomponents"
+  ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
 }

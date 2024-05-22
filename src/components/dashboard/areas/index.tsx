@@ -4,8 +4,11 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import useStore from '@/lib/useStore'
 import { useState } from 'react'
-
 import { tv } from 'tailwind-variants'
+
+import { MediaPlayer } from './mediaPlayer'
+import { getEntitiesByType } from '@/lib/utils'
+import { useArea } from '@/hooks/useArea'
 
 const AreaTabClass = tv({
   base: 'rounded-none bg-transparent text-white shadow-none hover:bg-white/20',
@@ -28,9 +31,16 @@ const areaImages = {
 
 export const AreasCard = () => {
   const areas = useStore((s) => s.areas)
+  const states = useStore((s) => s.states)
+  console.log('🔈 ~ states:', states)
   const [selectedArea, setSelectedArea] = useState<string | undefined>(
     areas[0]?.area_id,
   )
+  const area = useArea(selectedArea)
+  console.log('🔈 ~ area:', area)
+
+  const mediaPlayerEntities = getEntitiesByType(area.entities, 'media_player')
+  console.log('🔈 ~ mediaPlayerEntities:', mediaPlayerEntities)
 
   const currentArea = areas.find((area) => area.area_id === selectedArea)
   const areaImageSrc =
@@ -44,7 +54,7 @@ export const AreasCard = () => {
         backgroundImage: `url(${areaImageSrc})`,
       }}
     >
-      <ul className="inline-flex overflow-x-auto rounded-lg border border-border/10 bg-black/20 backdrop-blur-sm">
+      <ul className="inline-flex overflow-x-auto rounded-lg border border-border/10 bg-black/20 backdrop-blur-lg">
         {areas.map((area) => (
           <li key={area.area_id}>
             <Button
@@ -59,6 +69,9 @@ export const AreasCard = () => {
           </li>
         ))}
       </ul>
+      {mediaPlayerEntities.length > 0 ? (
+        <MediaPlayer entityId={mediaPlayerEntities[0]?.entity_id} />
+      ) : null}
     </Card>
   )
 }
