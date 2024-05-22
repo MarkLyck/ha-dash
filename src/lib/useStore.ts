@@ -5,13 +5,15 @@ import type {
 } from 'home-assistant-js-websocket'
 import { create } from 'zustand'
 
-import type { Area, Device, State } from './types/homeAssistant'
+import type { Area, Device, State, EntityRegistry } from './types/homeAssistant'
 
 interface StoreType {
   areas: Area[]
   setAreas: (areas: Area[]) => void
   entities: HassEntities
   setEntities: (entities: HassEntities) => void
+  entityRegistry: EntityRegistry[]
+  setEntityRegistry: (entityRegistry: EntityRegistry[]) => void
   states: State[]
   setStates: (states: State[]) => void
   services: HassServices
@@ -25,6 +27,8 @@ interface StoreType {
 const useStore = create<StoreType>((set) => ({
   areas: [],
   setAreas: (areas) => set(() => ({ areas })),
+  entityRegistry: [],
+  setEntityRegistry: (entityRegistry) => set(() => ({ entityRegistry })),
   entities: {},
   setEntities: (entities) => set(() => ({ entities })),
   states: [],

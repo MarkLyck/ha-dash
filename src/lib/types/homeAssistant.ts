@@ -38,6 +38,35 @@ export const stateSchema = z.object({
   state: z.string(),
 })
 
+export const entityRegistrySchema = z.object({
+  area_id: z.string().nullable(),
+  categories: z.object({}),
+  config_entry_id: z.string(),
+  device_id: z.string(),
+  disabled_by: z.string(),
+  entity_category: z.unknown().nullable(),
+  entity_id: z.string(),
+  has_entity_name: z.boolean(),
+  hidden_by: z.unknown().nullable(),
+  icon: z.unknown().nullable(),
+  id: z.string(),
+  labels: z.array(z.unknown()),
+  name: z.string().nullable(),
+  options: z.object({
+    conversation: z.object({
+      should_expose: z.boolean(),
+    }),
+    // 'sensor.private': z.object({
+    //   refresh_initial_entity_options: z.boolean(),
+    // }),
+  }),
+  original_name: z.string(),
+  platform: z.string(),
+  translation_key: z.string(),
+  unique_id: z.string(),
+})
+
 export type Area = z.infer<typeof areaSchema>
 export type Device = z.infer<typeof deviceSchema>
 export type State = z.infer<typeof stateSchema>
+export type EntityRegistry = z.infer<typeof entityRegistrySchema>
