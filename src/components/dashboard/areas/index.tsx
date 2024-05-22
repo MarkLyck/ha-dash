@@ -37,10 +37,8 @@ export const AreasCard = () => {
     areas[0]?.area_id,
   )
   const area = useArea(selectedArea)
-  console.log('🔈 ~ area:', area)
 
   const mediaPlayerEntities = getEntitiesByType(area.entities, 'media_player')
-  console.log('🔈 ~ mediaPlayerEntities:', mediaPlayerEntities)
 
   const currentArea = areas.find((area) => area.area_id === selectedArea)
   const areaImageSrc =
@@ -49,29 +47,33 @@ export const AreasCard = () => {
 
   return (
     <Card
-      className="h-[600px] bg-center bg-cover p-4"
+      className="flex h-[400px] flex-col justify-between bg-center bg-cover p-4"
       style={{
         backgroundImage: `url(${areaImageSrc})`,
       }}
     >
-      <ul className="inline-flex overflow-x-auto rounded-lg border border-border/10 bg-black/20 backdrop-blur-lg">
-        {areas.map((area) => (
-          <li key={area.area_id}>
-            <Button
-              size="lg"
-              onClick={() => setSelectedArea(area.area_id)}
-              className={AreaTabClass({
-                selected: selectedArea === area.area_id,
-              })}
-            >
-              {area.name}
-            </Button>
-          </li>
-        ))}
-      </ul>
-      {mediaPlayerEntities.length > 0 ? (
-        <MediaPlayer entityId={mediaPlayerEntities[0]?.entity_id} />
-      ) : null}
+      <div>
+        <ul className="inline-flex overflow-x-auto rounded-lg border border-border/10 bg-black/20 backdrop-blur-lg">
+          {areas.map((area) => (
+            <li key={area.area_id}>
+              <Button
+                size="lg"
+                onClick={() => setSelectedArea(area.area_id)}
+                className={AreaTabClass({
+                  selected: selectedArea === area.area_id,
+                })}
+              >
+                {area.name}
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        {mediaPlayerEntities.length > 0 ? (
+          <MediaPlayer entityId={mediaPlayerEntities[0]?.entity_id} />
+        ) : null}
+      </div>
     </Card>
   )
 }
