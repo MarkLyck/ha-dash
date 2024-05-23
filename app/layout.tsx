@@ -2,6 +2,8 @@
 
 import { type ReactNode, useState } from 'react'
 
+import { GeistSans } from 'geist/font/sans'
+
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@/styles/global.css'
 import '@/lib/icons'
@@ -30,7 +32,11 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <html lang="en" style={{ colorScheme: 'light dark' }}>
+    <html
+      lang="en"
+      style={{ colorScheme: 'light dark' }}
+      className={GeistSans.className}
+    >
       <head>
         <title>Home Dashboard</title>
       </head>
