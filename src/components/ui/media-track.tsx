@@ -65,7 +65,7 @@ export const MediaTrack = ({
         value={[currentTime]}
         max={duration}
         min={0}
-        className="ml-[48px] w-full [&_.slider-thumb]:border-2 [&_.slider-thumb]:border-border/90 [&_.slider-thumb]:bg-white"
+        className="ml-[48px] w-full [&_.slider-thumb]:border-2 [&_.slider-thumb]:border-black/80 [&_.slider-thumb]:bg-white"
         onValueChange={(value) => {
           if (value[0] === undefined) return
           setCurrentTime(value[0])
