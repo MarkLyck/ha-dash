@@ -2,24 +2,23 @@
 
 import type { StoryObj } from '@storybook/react'
 
-import { phillipsHueLightStrip } from '@/../mocks/entities/light'
+// import { phillipsHueLightStrip } from '@/../mocks/entities/light'
 
-import {
-  AirPurifier,
-  Car,
-  Curtain,
-  FoodDispenser,
-  GarageDoor,
-  Humidifier,
-  Light,
-  Lock,
-  Speaker,
-  Switch,
-  TV,
-  Thermostat,
-  Vacuum,
-  WaterSupply,
-} from './index'
+// import {
+//   AirPurifier,
+//   Car,
+//   Curtain,
+//   FoodDispenser,
+//   GarageDoor,
+//   Humidifier,
+//   Lock,
+//   Speaker,
+//   Switch,
+//   TV,
+//   Thermostat,
+//   Vacuum,
+//   WaterSupply,
+// } from './index'
 
 const meta = {
   title: 'components/device',
@@ -36,30 +35,30 @@ type Story = StoryObj
 export const DevicesOn: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Switch
+      {/* <Switch
         name="kitchen lights"
         icon={['far', 'light-switch-on']}
         isOn
         setState={() => {
           //
         }}
-      />
-      <Lock
+      /> */}
+      {/* <Lock
         name="front door"
         icon={['far', 'lock']}
         isLocked
-        setState={() => {
+        setState={(_state: boolean) => {
           //
         }}
-      />
-      <GarageDoor
+      /> */}
+      {/* <GarageDoor
         name="Garage"
         isOpen={true}
-        setState={() => {
+        setState={(_state: boolean) => {
           //
         }}
-      />
-      <AirPurifier
+      /> */}
+      {/* <AirPurifier
         name="air purifier"
         isOn={true}
         setState={() => {
@@ -79,9 +78,9 @@ export const DevicesOn: Story = {
         setPercentClosed={() => {
           //
         }}
-      />
-      <Light entity={phillipsHueLightStrip} />
-      <Thermostat
+      /> */}
+      {/* <Light entity={phillipsHueLightStrip} /> */}
+      {/* <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
         mode="cooling"
@@ -142,7 +141,7 @@ export const DevicesOn: Story = {
         setState={() => {
           //
         }}
-      />
+      /> */}
     </div>
   ),
 }
@@ -150,7 +149,7 @@ export const DevicesOn: Story = {
 export const DevicesOff: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Switch
+      {/* <Switch
         name="kitchen lights"
         icon={['far', 'light-switch-on']}
         isOn={false}
@@ -193,9 +192,9 @@ export const DevicesOff: Story = {
         setPercentClosed={() => {
           //
         }}
-      />
-      <Light entity={phillipsHueLightStrip} />
-      <Thermostat
+      /> */}
+      {/* <Light entity={phillipsHueLightStrip} /> */}
+      {/* <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
         mode="off"
@@ -256,7 +255,7 @@ export const DevicesOff: Story = {
         setState={() => {
           //
         }}
-      />
+      /> */}
     </div>
   ),
 }

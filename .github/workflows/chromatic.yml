@@ -28,4 +28,5 @@ jobs:
           onlyChanged: true
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         env:
-          DATABASE_URL: file:./db.sqlite
+          NEXT_PUBLIC_HASS_URL: http://homeassistant.local:8123
+          NEXT_PUBLIC_HASS_TOKEN: secret_token
