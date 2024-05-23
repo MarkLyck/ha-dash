@@ -13,7 +13,6 @@ const convertBrightnessToPercentage = (brightness: number): number => {
 }
 
 export const Light = ({ entity }: { entity: HassEntity }) => {
-  console.log('🔈 ~ entity:', entity)
   const supportedFeatures = getSupportedFeatures(
     'light',
     entity.attributes.supported_features,

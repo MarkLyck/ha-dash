@@ -61,8 +61,6 @@ export const connectToHASS = () => {
         throw err
       }
 
-      console.log('🔈 ~ connection:', connection)
-
       subscribeEntities(connection, setEntities)
       subscribeServices(connection, setServices)
       subscribeConfig(connection, setConfig)
