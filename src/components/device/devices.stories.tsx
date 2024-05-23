@@ -2,7 +2,7 @@
 
 import type { StoryObj } from '@storybook/react'
 
-import { phillipsHueLightStrip } from '@/../mocks/entities/light'
+// import { phillipsHueLightStrip } from '@/../mocks/entities/light'
 
 import {
   AirPurifier,
@@ -11,7 +11,6 @@ import {
   FoodDispenser,
   GarageDoor,
   Humidifier,
-  Light,
   Lock,
   Speaker,
   Switch,
@@ -80,7 +79,7 @@ export const DevicesOn: Story = {
           //
         }}
       />
-      <Light entity={phillipsHueLightStrip} />
+      {/* <Light entity={phillipsHueLightStrip} /> */}
       <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
@@ -194,7 +193,7 @@ export const DevicesOff: Story = {
           //
         }}
       />
-      <Light entity={phillipsHueLightStrip} />
+      {/* <Light entity={phillipsHueLightStrip} /> */}
       <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
