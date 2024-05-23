@@ -11,6 +11,7 @@ import { getEntitiesByType } from '@/lib/utils'
 import { useArea } from '@/hooks/useArea'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getAreaIcon } from '@/components/area/areaIcon'
+import { LightsControl } from './lights'
 
 const AreaTabClass = tv({
   base: 'rounded-none bg-transparent text-white shadow-none hover:bg-white/20 px-4',
@@ -38,6 +39,7 @@ export const AreasCard = () => {
   )
   const area = useArea(selectedArea)
 
+  const lightEntities = getEntitiesByType(area.entities, 'light')
   const mediaPlayerEntities = getEntitiesByType(area.entities, 'media_player')
 
   const currentArea = areas.find((area) => area.area_id === selectedArea)
@@ -73,11 +75,16 @@ export const AreasCard = () => {
           ))}
         </ul>
       </div>
-      <div>
+      <div className="flex gap-4">
         {mediaPlayerEntities.length > 0 ? (
           <MediaPlayer
             key={selectedArea}
             entityId={mediaPlayerEntities[0]?.entity_id}
+          />
+        ) : null}
+        {lightEntities.length > 0 ? (
+          <LightsControl
+            entityIds={lightEntities.map((entity) => entity.entity_id)}
           />
         ) : null}
       </div>
