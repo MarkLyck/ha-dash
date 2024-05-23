@@ -1,10 +1,3 @@
-export type SupportedFeature =
-  | 'SUPPORT_BRIGHTNESS'
-  | 'SUPPORT_COLOR_TEMP'
-  | 'SUPPORT_EFFECT'
-  | 'SUPPORT_FLASH'
-  | 'SUPPORT_COLOR'
-  | 'SUPPORT_TRANSITION'
-  | 'SUPPORT_WHITE_VALUE'
+import type { LightFeature } from '@/lib/supportedFeatures'
 
-export type SupportedFeaturesMap = Map<SupportedFeature, number>
+export type SupportedFeaturesMap = Map<LightFeature, number>

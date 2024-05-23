@@ -1,21 +1,11 @@
 import type { HassEntity } from 'home-assistant-js-websocket'
 
 import { callService } from '@/lib/hass'
-import { hexToRgb, getSupportedFeatures } from '@/lib/utils'
+import { hexToRgb } from '@/lib/utils'
 
 import { LightCard } from './Card'
 
-import type { SupportedFeature } from './types'
-
-const SUPPORTED_FEATURES: Record<number, SupportedFeature> = {
-  1: 'SUPPORT_BRIGHTNESS',
-  2: 'SUPPORT_COLOR_TEMP',
-  4: 'SUPPORT_EFFECT',
-  8: 'SUPPORT_FLASH',
-  16: 'SUPPORT_COLOR',
-  32: 'SUPPORT_TRANSITION',
-  128: 'SUPPORT_WHITE_VALUE',
-}
+import { getSupportedFeatures } from '@/lib/supportedFeatures'
 
 // brightness from the HASS API is a number between 0 and 255
 const convertBrightnessToPercentage = (brightness: number): number => {
@@ -24,7 +14,7 @@ const convertBrightnessToPercentage = (brightness: number): number => {
 
 export const Light = ({ entity }: { entity: HassEntity }) => {
   const supportedFeatures = getSupportedFeatures(
-    SUPPORTED_FEATURES,
+    'light',
     entity.attributes.supported_features,
   )
 

@@ -40,8 +40,9 @@ export const VolumeControl = ({
       <PopoverContent
         side="top"
         sideOffset={4}
-        className="z-10 flex h-[100px] w-8 flex-col items-center justify-center rounded-lg bg-bg-white"
+        className="z-10 flex flex-col items-center justify-center rounded-lg bg-black/40 p-3 backdrop-blur-lg"
       >
+        <span className="mb-2 text-sm">{volume}%</span>
         <SliderPrimitive.Root
           orientation="vertical"
           ref={ref}

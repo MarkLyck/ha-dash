@@ -9,9 +9,11 @@ import { tv } from 'tailwind-variants'
 import { MediaPlayer } from './mediaPlayer'
 import { getEntitiesByType } from '@/lib/utils'
 import { useArea } from '@/hooks/useArea'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { getAreaIcon } from '@/components/area/areaIcon'
 
 const AreaTabClass = tv({
-  base: 'rounded-none bg-transparent text-white shadow-none hover:bg-white/20',
+  base: 'rounded-none bg-transparent text-white shadow-none hover:bg-white/20 px-4',
   variants: {
     selected: {
       true: 'bg-white text-black hover:bg-white',
@@ -31,8 +33,6 @@ const areaImages = {
 
 export const AreasCard = () => {
   const areas = useStore((s) => s.areas)
-  const states = useStore((s) => s.states)
-  console.log('🔈 ~ states:', states)
   const [selectedArea, setSelectedArea] = useState<string | undefined>(
     areas[0]?.area_id,
   )
@@ -63,6 +63,10 @@ export const AreasCard = () => {
                   selected: selectedArea === area.area_id,
                 })}
               >
+                <FontAwesomeIcon
+                  icon={getAreaIcon(area.name)}
+                  className="mr-2"
+                />
                 {area.name}
               </Button>
             </li>
@@ -71,7 +75,10 @@ export const AreasCard = () => {
       </div>
       <div>
         {mediaPlayerEntities.length > 0 ? (
-          <MediaPlayer entityId={mediaPlayerEntities[0]?.entity_id} />
+          <MediaPlayer
+            key={selectedArea}
+            entityId={mediaPlayerEntities[0]?.entity_id}
+          />
         ) : null}
       </div>
     </Card>
