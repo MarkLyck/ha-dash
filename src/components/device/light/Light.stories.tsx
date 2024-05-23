@@ -4,9 +4,9 @@ import { phillipsHueLightStrip } from '@/../mocks/entities/light'
 
 import { Light } from './index'
 
-const meta = {
+const meta: Meta<typeof Light> = {
   component: Light,
-} satisfies Meta<typeof Light>
+}
 
 export default meta
 type Story = StoryObj<typeof Light>
