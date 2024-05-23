@@ -43,22 +43,22 @@ export const DevicesOn: Story = {
           //
         }}
       /> */}
-      <Lock
+      {/* <Lock
         name="front door"
         icon={['far', 'lock']}
         isLocked
-        setState={() => {
+        setState={(_state: boolean) => {
           //
         }}
-      />
-      {/* <GarageDoor
+      /> */}
+      <GarageDoor
         name="Garage"
         isOpen={true}
-        setState={() => {
+        setState={(_state: boolean) => {
           //
         }}
       />
-      <AirPurifier
+      {/* <AirPurifier
         name="air purifier"
         isOn={true}
         setState={() => {
