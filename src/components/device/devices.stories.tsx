@@ -4,21 +4,21 @@ import type { StoryObj } from '@storybook/react'
 
 // import { phillipsHueLightStrip } from '@/../mocks/entities/light'
 
-import {
-  AirPurifier,
-  Car,
-  Curtain,
-  FoodDispenser,
-  GarageDoor,
-  Humidifier,
-  Lock,
-  Speaker,
-  Switch,
-  TV,
-  Thermostat,
-  Vacuum,
-  WaterSupply,
-} from './index'
+// import {
+//   AirPurifier,
+//   Car,
+//   Curtain,
+//   FoodDispenser,
+//   GarageDoor,
+//   Humidifier,
+//   Lock,
+//   Speaker,
+//   Switch,
+//   TV,
+//   Thermostat,
+//   Vacuum,
+//   WaterSupply,
+// } from './index'
 
 const meta = {
   title: 'components/device',
@@ -51,13 +51,13 @@ export const DevicesOn: Story = {
           //
         }}
       /> */}
-      <GarageDoor
+      {/* <GarageDoor
         name="Garage"
         isOpen={true}
         setState={(_state: boolean) => {
           //
         }}
-      />
+      /> */}
       {/* <AirPurifier
         name="air purifier"
         isOn={true}
