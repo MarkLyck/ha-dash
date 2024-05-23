@@ -35,15 +35,15 @@ type Story = StoryObj
 export const DevicesOn: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Switch
+      {/* <Switch
         name="kitchen lights"
         icon={['far', 'light-switch-on']}
         isOn
         setState={() => {
           //
         }}
-      />
-      {/* <Lock
+      /> */}
+      <Lock
         name="front door"
         icon={['far', 'lock']}
         isLocked
@@ -51,7 +51,7 @@ export const DevicesOn: Story = {
           //
         }}
       />
-      <GarageDoor
+      {/* <GarageDoor
         name="Garage"
         isOpen={true}
         setState={() => {
