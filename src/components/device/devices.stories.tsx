@@ -35,7 +35,7 @@ type Story = StoryObj
 export const DevicesOn: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      {/* <Switch
+      <Switch
         name="kitchen lights"
         icon={['far', 'light-switch-on']}
         isOn
@@ -43,7 +43,7 @@ export const DevicesOn: Story = {
           //
         }}
       />
-      <Lock
+      {/* <Lock
         name="front door"
         icon={['far', 'lock']}
         isLocked
@@ -78,9 +78,9 @@ export const DevicesOn: Story = {
         setPercentClosed={() => {
           //
         }}
-      />
-      <Light entity={phillipsHueLightStrip} />
-      <Thermostat
+      /> */}
+      {/* <Light entity={phillipsHueLightStrip} /> */}
+      {/* <Thermostat
         name="Thermostat"
         icon={['far', 'air-conditioner']}
         mode="cooling"
