@@ -68,15 +68,44 @@ export const MEDIA_PLAYER_FEATURES_BIT_MAP: Record<number, MediaPlayerFeature> =
     2097152: 'MEDIA_ENQUEUE',
   }
 
-type FeatureMap = {
-  light: LightFeature
-  media_player: MediaPlayerFeature
+export type ClimateFeature =
+  | 'TARGET_TEMPERATURE'
+  | 'TARGET_TEMPERATURE_RANGE'
+  | 'TARGET_HUMIDITY'
+  | 'FAN_MODE'
+  | 'PRESET_MODE'
+  | 'SWING_MODE'
+  | 'AUX_HEAT'
+  | 'TURN_OFF'
+  | 'TURN_ON'
+
+export const CLIMATE_FEATURES_BIT_MAP: Record<number, ClimateFeature> = {
+  1: 'TARGET_TEMPERATURE',
+  2: 'TARGET_TEMPERATURE_RANGE',
+  4: 'TARGET_HUMIDITY',
+  8: 'FAN_MODE',
+  16: 'PRESET_MODE',
+  32: 'SWING_MODE',
+  64: 'AUX_HEAT',
+  128: 'TURN_OFF',
+  256: 'TURN_ON',
 }
 
-type FeatureBitmapMap = {
-  light: typeof LIGHT_FEATURES_BIT_MAP
-  media_player: typeof MEDIA_PLAYER_FEATURES_BIT_MAP
+// Unified object holding all your feature maps
+const FEATURE_MAPS = {
+  light: LIGHT_FEATURES_BIT_MAP,
+  media_player: MEDIA_PLAYER_FEATURES_BIT_MAP,
+  climate: CLIMATE_FEATURES_BIT_MAP,
+  // Add more feature maps here...
+} as const
+
+// Dynamically create the FeatureMap type based on keys of FEATURE_MAPS
+type FeatureMap = {
+  [K in keyof typeof FEATURE_MAPS]: (typeof FEATURE_MAPS)[K][keyof (typeof FEATURE_MAPS)[K]]
 }
+
+// Type for the feature bitmap map
+type FeatureBitmapMap = typeof FEATURE_MAPS
 
 export const getSupportedFeatures = <T extends keyof FeatureMap>(
   type: T,
@@ -85,9 +114,7 @@ export const getSupportedFeatures = <T extends keyof FeatureMap>(
   if (featureNumber === undefined) return new Map<FeatureMap[T], number>()
 
   const features = new Map<FeatureMap[T], number>()
-  const featureMap: FeatureBitmapMap[T] = (
-    type === 'light' ? LIGHT_FEATURES_BIT_MAP : MEDIA_PLAYER_FEATURES_BIT_MAP
-  ) as FeatureBitmapMap[T]
+  const featureMap: FeatureBitmapMap[T] = FEATURE_MAPS[type]
 
   for (const key in featureMap) {
     if ((featureNumber & Number(key)) === Number(key)) {

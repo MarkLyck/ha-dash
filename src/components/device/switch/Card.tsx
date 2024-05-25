@@ -2,6 +2,7 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { Slider } from '@/components/ui/slider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface SwitchCardProps {
   name: string
@@ -35,7 +36,7 @@ export const SwitchCard = ({
       isActive={isOn}
       name={name}
       status={status}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
       setIsActive={setState}
     >
       {isOn && isDimmable ? (

@@ -1,4 +1,3 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
@@ -15,23 +14,12 @@ import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 
 export const deviceCardStyle = cva(
-  'relative flex w-full flex-1 flex-col rounded-xl border p-3 transition',
+  'relative flex w-full flex-1 flex-col rounded-xl border border-border p-3 transition',
   {
     variants: {
       active: {
-        false: [
-          'bg-bg-white',
-          'border-slate-200',
-          'dark:bg-slate-1000',
-          'dark:border-slate-700',
-          'dark:hover:border-slate-500',
-        ],
-        true: [
-          'bg-white',
-          'dark:bg-slate-800',
-          'dark:border-slate-500',
-          'dark:hover:border-slate-600',
-        ],
+        false: ['bg-bg-white', 'dark:bg-bg-white', 'dark:border-slate-700'],
+        true: ['bg-white', 'dark:bg-bg-weak', 'dark:hover:border-slate-600'],
       },
     },
   },
@@ -76,8 +64,8 @@ const stateIconStyle = cva(
 export type DeviceCardType = 'default' | 'warning' | 'error'
 
 type DeviceCardProps = {
-  name: string
-  icon: IconProp
+  name: string | undefined
+  Icon?: React.ElementType
   status?: React.ReactNode
   batteryPercentage?: number
   isCharging?: boolean
@@ -90,7 +78,7 @@ type DeviceCardProps = {
 }
 export const DeviceCard = ({
   name,
-  icon,
+  Icon,
   status,
   action,
   isActive,
@@ -127,11 +115,9 @@ export const DeviceCard = ({
           />
         </div>
         <div className="mb-2 flex h-8 w-full items-center justify-between">
-          <FontAwesomeIcon
-            icon={icon}
-            className={deviceIconStyle({ active: isActive })}
-          />
-
+          {Icon ? (
+            <Icon className={deviceIconStyle({ active: isActive })} />
+          ) : null}
           {action}
         </div>
         <DeviceName>{name}</DeviceName>

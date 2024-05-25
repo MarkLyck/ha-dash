@@ -1,6 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface AirPurifierCardProps {
   name: string
@@ -23,7 +24,7 @@ export const AirPurifierCard = ({
       name={name}
       status={status}
       setIsActive={setState}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
     />
   )
 }

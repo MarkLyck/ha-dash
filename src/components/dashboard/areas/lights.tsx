@@ -1,7 +1,5 @@
 'use client'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import useStore from '@/lib/useStore'
@@ -42,7 +40,9 @@ export const LightsControl = ({ entityIds }: LightsControlProps) => {
           <LightIcon size={32} />
         )}
         <span className="mt-2 text-sm text-white/50">
-          {lightsOn.length > 0 ? `${lightsOn.length} lights on` : null}
+          {lightsOn.length > 0
+            ? `${lightsOn.length} light${lightsOn.length !== 1 ? 's' : ''} on`
+            : null}
           {areAllLightsOff ? 'Lights off' : null}
         </span>
       </div>
