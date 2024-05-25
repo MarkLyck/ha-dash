@@ -15,6 +15,8 @@ import { useEffect, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 import { getSupportedFeatures } from '@/lib/supportedFeatures'
+import { PauseIcon, PlayIcon, SpeakerIcon } from '@/assets/icons'
+
 const homeAssistantURL = env.NEXT_PUBLIC_HASS_URL
 
 type MediaPlayerProps = {
@@ -86,10 +88,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
         className="group relative h-auto w-auto bg-transparent p-0 hover:bg-transparent"
       >
         <span className="absolute inset-0 flex items-center justify-center rounded bg-black/50 text-2xl text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          <FontAwesomeIcon
-            icon={['fas', isPlaying ? 'pause' : 'play']}
-            className="text-[20px]"
-          />
+          {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </span>
         {imgSrc ? (
           <Image
@@ -105,10 +104,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
           />
         ) : (
           <div className="flex size-[96px] items-center justify-center rounded bg-black/20 text-white">
-            <FontAwesomeIcon
-              icon={['fas', 'speaker']}
-              className="text-[40px]"
-            />
+            <SpeakerIcon size={52} />
           </div>
         )}
       </Button>
@@ -150,9 +146,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
                   onClick={handlePlayPause}
                   className="size-10"
                 >
-                  <FontAwesomeIcon
-                    icon={['fas', isPlaying ? 'pause' : 'play']}
-                  />
+                  {isPlaying ? <PauseIcon /> : <PlayIcon />}
                 </Button>
               ) : null}
               {supportedFeatures.has('NEXT_TRACK') ? (

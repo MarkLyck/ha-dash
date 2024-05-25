@@ -1,5 +1,4 @@
 import type { HassEntity } from 'home-assistant-js-websocket'
-import { MapIcon } from 'lucide-react'
 import Link from 'next/link'
 
 import { env } from '@/../env'
@@ -23,7 +22,7 @@ export const Zone = ({ entity }: ZoneProps) => {
       <CardContent>
         <Link href={`${hassUrl}/config/zone`} target="_blank">
           <Button size="sm">
-            <MapIcon className="mr-2 h-4 w-4" />
+            {/* <MapIcon className="mr-2 h-4 w-4" /> */}
             View zone
           </Button>
         </Link>
