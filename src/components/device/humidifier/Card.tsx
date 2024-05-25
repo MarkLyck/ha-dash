@@ -11,7 +11,6 @@ export interface HumidifierCardProps {
 
 export const HumidifierCard = ({
   name,
-  icon,
   isOn,
   setState,
 }: HumidifierCardProps) => {
