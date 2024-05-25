@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 import Link from 'next/link'
 
-import { getAreaIcon } from '@/components/area/areaIcon'
+import { getAreaIcon } from '@/components/area/getAreaIcon'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/typography'
 

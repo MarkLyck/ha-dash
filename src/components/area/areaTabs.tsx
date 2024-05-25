@@ -2,7 +2,7 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { getAreaIcon } from './areaIcon'
+import { getAreaIcon } from './getAreaIcon'
 
 type areaTabsProps = {
   areas: string[]

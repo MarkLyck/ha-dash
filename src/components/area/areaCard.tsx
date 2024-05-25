@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { DeviceName, deviceIconStyle } from '@/components/ui/deviceCard'
 import Typography from '@/components/ui/typography'
 
-import { getAreaIcon } from './areaIcon'
+import { AreaIcon } from './AreaIcon'
 
 export const container = cva(
   'flex h-auto w-full max-w-[160px] flex-col items-start justify-start rounded-xl border px-4 py-3 transition',
@@ -50,12 +50,10 @@ export const AreaCard = ({
   temperature,
   humidity,
 }: AreaCardProps) => {
-  const icon = getAreaIcon(areaName)
-
   return (
     <Button className={container({ active: true })}>
       <div className="mb-2 flex h-8 w-full items-center justify-between">
-        <FontAwesomeIcon icon={icon} className={deviceIconStyle()} />
+        <AreaIcon areaName={areaName} className={deviceIconStyle()} />
       </div>
       <DeviceName>{areaName}</DeviceName>
 
