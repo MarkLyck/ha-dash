@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <div className="p-4">
       <AreasCard />
-      <Climate />
+      <div className="py-4">
+        <Climate />
+      </div>
     </div>
   )
 }

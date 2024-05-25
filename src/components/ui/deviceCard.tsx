@@ -1,4 +1,3 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { cva } from 'class-variance-authority'
 
@@ -13,26 +12,14 @@ import {
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
-import React from 'react'
 
 export const deviceCardStyle = cva(
-  'relative flex w-full flex-1 flex-col rounded-xl border p-3 transition',
+  'relative flex w-full flex-1 flex-col rounded-xl border border-border p-3 transition',
   {
     variants: {
       active: {
-        false: [
-          'bg-bg-white',
-          'border-slate-200',
-          'dark:bg-slate-1000',
-          'dark:border-slate-700',
-          'dark:hover:border-slate-500',
-        ],
-        true: [
-          'bg-white',
-          'dark:bg-slate-800',
-          'dark:border-slate-500',
-          'dark:hover:border-slate-600',
-        ],
+        false: ['bg-bg-white', 'dark:bg-bg-white', 'dark:border-slate-700'],
+        true: ['bg-white', 'dark:bg-bg-weak', 'dark:hover:border-slate-600'],
       },
     },
   },
