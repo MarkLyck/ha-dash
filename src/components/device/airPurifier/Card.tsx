@@ -11,7 +11,6 @@ export interface AirPurifierCardProps {
 
 export const AirPurifierCard = ({
   name,
-  icon,
   isOn,
   setState,
 }: AirPurifierCardProps) => {
@@ -23,7 +22,6 @@ export const AirPurifierCard = ({
       name={name}
       status={status}
       setIsActive={setState}
-      icon={icon}
     />
   )
 }

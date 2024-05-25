@@ -65,7 +65,7 @@ export type DeviceCardType = 'default' | 'warning' | 'error'
 
 type DeviceCardProps = {
   name: string | undefined
-  Icon: React.ElementType
+  Icon?: React.ElementType
   status?: React.ReactNode
   batteryPercentage?: number
   isCharging?: boolean
@@ -115,7 +115,9 @@ export const DeviceCard = ({
           />
         </div>
         <div className="mb-2 flex h-8 w-full items-center justify-between">
-          <Icon className={deviceIconStyle({ active: isActive })} />
+          {Icon ? (
+            <Icon className={deviceIconStyle({ active: isActive })} />
+          ) : null}
           {action}
         </div>
         <DeviceName>{name}</DeviceName>
