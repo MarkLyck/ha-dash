@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { TemperatureSlider } from '@/components/ui/temperatureSlider'
-import { SnowIcon } from '@/assets/icons'
+import { FireIcon, SnowIcon, MidTemperatureIcon } from '@/assets/icons'
 import { useRef, useState } from 'react'
 import { debounce } from '@/lib/utils'
 
@@ -30,6 +28,9 @@ export const ClimateCard = ({
 
   const isActive = state !== 'off'
 
+  let StateIcon = SnowIcon
+  if (state === 'heat') StateIcon = FireIcon
+
   return (
     <DeviceCard
       isActive={isActive}
@@ -38,17 +39,14 @@ export const ClimateCard = ({
         <div className="flex w-full items-center justify-between">
           <span className="first-letter:capitalize">{state}</span>
           {isActive ? (
-            <span className="ml-auto">
-              <FontAwesomeIcon
-                className="mr-1 text-[12px]"
-                icon={['far', 'temperature-half']}
-              />
+            <span className="ml-auto flex items-center">
+              <MidTemperatureIcon size={18} />
               {targetTempValue}°
             </span>
           ) : null}
         </div>
       }
-      Icon={SnowIcon}
+      Icon={StateIcon}
       setIsActive={(value) => setState(value ? 'cool' : 'off')}
     >
       {isActive ? (

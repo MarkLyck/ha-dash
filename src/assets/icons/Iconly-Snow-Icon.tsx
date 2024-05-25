@@ -1,6 +1,6 @@
 import type { IconlyIconProps } from './types'
 
-export const SnowIcon = ({ size = 24, ...props }: IconlyIconProps) => (
+export const SnowIcon = ({ size = 20, ...props }: IconlyIconProps) => (
   <svg
     width={size}
     height={size}

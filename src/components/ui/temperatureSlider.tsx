@@ -1,10 +1,10 @@
 'use client'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as SliderPrimitive from '@radix-ui/react-slider'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
 
+import { FireIcon, SnowIcon } from '@/assets/icons'
 import { cn } from '@/lib/utils'
 
 type TemperatureSliderProps = React.ComponentPropsWithoutRef<
@@ -41,6 +41,8 @@ export const TemperatureSlider = React.forwardRef<
   const isHeating = value > currentValue
   const showCoolHotIcon = value > 10
 
+  const CoolHotIcon = isCooling ? SnowIcon : FireIcon
+
   return (
     <SliderPrimitive.Root
       ref={ref}
@@ -62,9 +64,9 @@ export const TemperatureSlider = React.forwardRef<
         />
       ) : null}
       {showCoolHotIcon && (isCooling || isHeating) ? (
-        <FontAwesomeIcon
-          icon={['far', isCooling ? 'snowflake' : 'heat']}
-          className="absolute left-2 text-[12px] text-slate-400 dark:text-slate-500"
+        <CoolHotIcon
+          size={16}
+          className="absolute left-2 text-slate-400 dark:text-slate-500"
         />
       ) : null}
       <SliderPrimitive.Thumb
