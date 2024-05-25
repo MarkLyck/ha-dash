@@ -12,6 +12,7 @@ export interface LockCardProps {
 
 export const LockCard = ({
   name,
+  icon,
   isLocked,
   batteryPercentage,
   setState,
@@ -29,6 +30,7 @@ export const LockCard = ({
           : undefined
       }
       setIsActive={setState}
+      icon={icon}
     />
   )
 }

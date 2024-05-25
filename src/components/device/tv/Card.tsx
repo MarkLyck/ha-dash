@@ -15,6 +15,7 @@ export interface TVCardProps {
 
 export const TVCard = ({
   name,
+  icon,
   mode,
   volume,
   content,
@@ -47,6 +48,7 @@ export const TVCard = ({
           ) : null}
         </div>
       }
+      icon={icon}
       setIsActive={setState}
     >
       {isActive ? (

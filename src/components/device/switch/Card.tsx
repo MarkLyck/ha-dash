@@ -15,6 +15,7 @@ export interface SwitchCardProps {
 
 export const SwitchCard = ({
   name,
+  icon,
   isOn,
   isDimmable,
   brightness = 0,
@@ -34,6 +35,7 @@ export const SwitchCard = ({
       isActive={isOn}
       name={name}
       status={status}
+      icon={icon}
       setIsActive={setState}
     >
       {isOn && isDimmable ? (

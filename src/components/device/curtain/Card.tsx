@@ -15,6 +15,7 @@ export interface CurtainCardProps {
 
 export const CurtainCard = ({
   name,
+  icon,
   percentClosed,
   setPercentClosed,
   batteryPercentage,
@@ -51,6 +52,7 @@ export const CurtainCard = ({
           setPercentClosed(0)
         }
       }}
+      icon={icon}
     >
       <Slider
         onClick={(e) => e.stopPropagation()}

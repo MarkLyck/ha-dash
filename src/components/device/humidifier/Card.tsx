@@ -22,6 +22,7 @@ export const HumidifierCard = ({
       name={name}
       status={status}
       setIsActive={setState}
+      icon={icon}
     />
   )
 }

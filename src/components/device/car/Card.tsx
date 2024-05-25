@@ -20,6 +20,7 @@ export interface CarCardProps {
 
 export const CarCard = ({
   name,
+  icon,
   mode,
   batteryPercentage,
   isCharging,
@@ -37,6 +38,7 @@ export const CarCard = ({
       isActive={isActive}
       name={name}
       status={status}
+      icon={icon}
       setIsActive={setState}
       batteryPercentage={batteryPercentage}
       isCharging={isCharging}

@@ -11,6 +11,7 @@ export interface WaterSupplyCardProps {
 
 export const WaterSupplyCard = ({
   name,
+  icon,
   isOn,
   setState,
 }: WaterSupplyCardProps) => {
@@ -22,6 +23,7 @@ export const WaterSupplyCard = ({
       name={name}
       status={status}
       setIsActive={setState}
+      icon={icon}
     />
   )
 }

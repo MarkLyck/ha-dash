@@ -15,6 +15,7 @@ export interface ThermostatCardProps {
 
 export const ThermostatCard = ({
   name,
+  icon,
   mode,
   currentTemperature,
   targetTemperature,
@@ -40,6 +41,7 @@ export const ThermostatCard = ({
           ) : null}
         </div>
       }
+      icon={icon}
       setIsActive={setState}
     >
       {isActive ? (
