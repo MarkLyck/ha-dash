@@ -22,6 +22,7 @@ export const AirPurifierCard = ({
       name={name}
       status={status}
       setIsActive={setState}
+      icon={icon}
     />
   )
 }
