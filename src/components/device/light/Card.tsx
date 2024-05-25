@@ -8,6 +8,7 @@ import { calculateContrast, debounce } from '@/lib/utils'
 import { LightDialogContent } from './DialogContent'
 import type { SupportedFeaturesMap } from './types'
 import { useEffect, useRef, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface LightCardProps {
   supportedFeatures: SupportedFeaturesMap
@@ -68,7 +69,7 @@ export const LightCard = ({
   return (
     <DeviceCard
       isActive={isOn}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
       name={name}
       status={status}
       setIsActive={setState}

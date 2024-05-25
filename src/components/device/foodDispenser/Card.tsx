@@ -34,7 +34,7 @@ export const FoodDispenserCard = ({
       status={<span data-chromatic="ignore">{status}</span>}
       type={type}
       setIsActive={setState}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
       action={
         <StateActionButton isActive={isActive}>
           <FontAwesomeIcon icon={['far', 'bowl-food']} />

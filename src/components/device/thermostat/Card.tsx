@@ -41,7 +41,7 @@ export const ThermostatCard = ({
           ) : null}
         </div>
       }
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
       setIsActive={setState}
     >
       {isActive ? (

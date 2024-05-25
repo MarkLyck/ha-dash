@@ -38,7 +38,7 @@ export const CarCard = ({
       isActive={isActive}
       name={name}
       status={status}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
       setIsActive={setState}
       batteryPercentage={batteryPercentage}
       isCharging={isCharging}

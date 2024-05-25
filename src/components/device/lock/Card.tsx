@@ -1,6 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface LockCardProps {
   name: string
@@ -30,7 +31,7 @@ export const LockCard = ({
           : undefined
       }
       setIsActive={setState}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
     />
   )
 }

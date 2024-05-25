@@ -38,7 +38,7 @@ export const VacuumCard = ({
           <FontAwesomeIcon icon={['far', isActive ? 'home' : 'play']} />
         </StateActionButton>
       }
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
       setIsActive={setState}
     >
       {isActive ? (

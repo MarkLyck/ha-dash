@@ -1,6 +1,7 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 import { DeviceCard } from '@/components/ui/deviceCard'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export interface HumidifierCardProps {
   name: string
@@ -11,6 +12,7 @@ export interface HumidifierCardProps {
 
 export const HumidifierCard = ({
   name,
+  icon,
   isOn,
   setState,
 }: HumidifierCardProps) => {
@@ -22,7 +24,7 @@ export const HumidifierCard = ({
       name={name}
       status={status}
       setIsActive={setState}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
     />
   )
 }

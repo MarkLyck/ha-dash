@@ -48,7 +48,7 @@ export const SpeakerCard = ({
           ) : null}
         </div>
       }
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
       setIsActive={setState}
     >
       {isActive ? (

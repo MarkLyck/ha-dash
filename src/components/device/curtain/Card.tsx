@@ -52,7 +52,7 @@ export const CurtainCard = ({
           setPercentClosed(0)
         }
       }}
-      icon={icon}
+      Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
     >
       <Slider
         onClick={(e) => e.stopPropagation()}
