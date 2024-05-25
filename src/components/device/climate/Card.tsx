@@ -1,8 +1,14 @@
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { TemperatureSlider } from '@/components/ui/temperatureSlider'
-import { FireIcon, SnowIcon, MidTemperatureIcon } from '@/assets/icons'
+import {
+  FireIcon,
+  SnowIcon,
+  MidTemperatureIcon,
+  CoolerIcon,
+} from '@/assets/icons'
 import { useRef, useState } from 'react'
 import { debounce } from '@/lib/utils'
+import type { ClimateFeature } from '@/lib/supportedFeatures'
 
 export interface ClimateCardProps {
   name?: string
@@ -11,6 +17,7 @@ export interface ClimateCardProps {
   targetTemperature: number
   setState: (state: 'heat' | 'cool' | 'auto' | 'off') => void
   setTargetTemperature: (temperature: number) => void
+  supportedFeatures: Map<ClimateFeature, number>
 }
 
 export const ClimateCard = ({
@@ -20,6 +27,7 @@ export const ClimateCard = ({
   targetTemperature,
   setState,
   setTargetTemperature,
+  supportedFeatures,
 }: ClimateCardProps) => {
   const [targetTempValue, setTargetTempValue] = useState(targetTemperature)
   const debouncedSetTargetTemperature = useRef(
@@ -28,8 +36,9 @@ export const ClimateCard = ({
 
   const isActive = state !== 'off'
 
-  let StateIcon = SnowIcon
+  let StateIcon = CoolerIcon
   if (state === 'heat') StateIcon = FireIcon
+  if (state === 'cool') StateIcon = SnowIcon
 
   return (
     <DeviceCard
@@ -49,7 +58,7 @@ export const ClimateCard = ({
       Icon={StateIcon}
       setIsActive={(value) => setState(value ? 'cool' : 'off')}
     >
-      {isActive ? (
+      {supportedFeatures.has('TARGET_TEMPERATURE') && isActive ? (
         <div className="flex w-full gap-2">
           <TemperatureSlider
             value={[targetTempValue]}

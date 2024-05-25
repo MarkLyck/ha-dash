@@ -17,7 +17,6 @@ export const Climate = () => {
   if (!climateEntityId) return null
   const entity = entities[climateEntityId]
   if (!entity) return null
-  console.log('🔈 ~ entity:', entity)
 
   const supportedFeatures = getSupportedFeatures(
     'climate',
@@ -46,11 +45,10 @@ export const Climate = () => {
     })
   }
 
-  console.log('🔈 ~ supportedFeatures:', supportedFeatures)
-
   return (
     <ClimateCard
       name={entity.attributes.friendly_name}
+      supportedFeatures={supportedFeatures}
       state={entity.state as 'off' | 'cool' | 'heat' | 'auto'}
       currentTemperature={entity.attributes.current_temperature}
       targetTemperature={entity.attributes.temperature}
