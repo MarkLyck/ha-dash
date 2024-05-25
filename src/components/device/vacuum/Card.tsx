@@ -18,7 +18,6 @@ export interface VacuumCardProps {
 
 export const VacuumCard = ({
   name,
-  icon,
   mode,
   batteryPercentage,
   isCharging,
@@ -38,7 +37,6 @@ export const VacuumCard = ({
           <FontAwesomeIcon icon={['far', isActive ? 'home' : 'play']} />
         </StateActionButton>
       }
-      icon={icon}
       setIsActive={setState}
     >
       {isActive ? (

@@ -9,12 +9,7 @@ export interface GarageDoorProps {
   setState: (state: boolean) => void
 }
 
-export const GarageDoorCard = ({
-  name,
-  icon,
-  isOpen,
-  setState,
-}: GarageDoorProps) => {
+export const GarageDoorCard = ({ name, isOpen, setState }: GarageDoorProps) => {
   const status = isOpen ? 'open' : 'closed'
 
   return (
@@ -23,7 +18,6 @@ export const GarageDoorCard = ({
       name={name}
       status={status}
       setIsActive={setState}
-      icon={icon}
     />
   )
 }

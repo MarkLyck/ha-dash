@@ -68,7 +68,6 @@ export const LightCard = ({
   return (
     <DeviceCard
       isActive={isOn}
-      icon={icon}
       name={name}
       status={status}
       setIsActive={setState}

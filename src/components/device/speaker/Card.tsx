@@ -15,7 +15,6 @@ export interface SpeakerCardProps {
 
 export const SpeakerCard = ({
   name,
-  icon,
   mode,
   volume,
   content,
@@ -48,7 +47,6 @@ export const SpeakerCard = ({
           ) : null}
         </div>
       }
-      icon={icon}
       setIsActive={setState}
     >
       {isActive ? (
