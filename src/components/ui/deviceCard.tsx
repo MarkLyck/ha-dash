@@ -13,6 +13,7 @@ import {
 import { Switch } from '@/components/ui/switch'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
+import React from 'react'
 
 export const deviceCardStyle = cva(
   'relative flex w-full flex-1 flex-col rounded-xl border p-3 transition',
@@ -76,8 +77,8 @@ const stateIconStyle = cva(
 export type DeviceCardType = 'default' | 'warning' | 'error'
 
 type DeviceCardProps = {
-  name: string
-  icon: IconProp
+  name: string | undefined
+  Icon: React.ElementType
   status?: React.ReactNode
   batteryPercentage?: number
   isCharging?: boolean
@@ -90,7 +91,7 @@ type DeviceCardProps = {
 }
 export const DeviceCard = ({
   name,
-  icon,
+  Icon,
   status,
   action,
   isActive,
@@ -127,11 +128,7 @@ export const DeviceCard = ({
           />
         </div>
         <div className="mb-2 flex h-8 w-full items-center justify-between">
-          <FontAwesomeIcon
-            icon={icon}
-            className={deviceIconStyle({ active: isActive })}
-          />
-
+          <Icon className={deviceIconStyle({ active: isActive })} />
           {action}
         </div>
         <DeviceName>{name}</DeviceName>
