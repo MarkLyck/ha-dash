@@ -92,6 +92,14 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
   if (!description && entity.attributes.app_name)
     description = entity.attributes.app_name
 
+  let mediaPosition = Math.round(entity.attributes.media_position)
+  if (entity.attributes.media_position_updated_at) {
+    const updated = new Date(entity.attributes.media_position_updated_at)
+    const now = new Date()
+    const diff = now.getTime() - updated.getTime()
+    mediaPosition += Math.round(diff / 1000)
+  }
+
   return (
     <Card className="inline-flex gap-4 rounded-lg border-border/20 bg-black/20 p-4 text-white backdrop-blur-lg">
       <Button
@@ -170,11 +178,10 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
               ) : null}
             </div>
           </div>
-          {/* TODO: handle media_position_updated_at */}
           <MediaTrack
             key={entity.attributes.media_title}
             isPlaying={isPlaying}
-            currentTime={entity.attributes.media_position}
+            currentTime={mediaPosition}
             duration={entity.attributes.media_duration}
             seekToPosition={handleSeekPosition}
           />
