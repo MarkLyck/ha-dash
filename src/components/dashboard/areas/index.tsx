@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import useStore from '@/lib/useStore'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { tv } from 'tailwind-variants'
 
 import { MediaPlayer } from './mediaPlayer'
@@ -37,6 +37,12 @@ export const AreasCard = () => {
     areas[0]?.area_id,
   )
   const area = useArea(selectedArea)
+
+  useEffect(() => {
+    if (!selectedArea) {
+      setSelectedArea(areas[0]?.area_id)
+    }
+  }, [areas.length])
 
   const lightEntities = getEntitiesByType(area.entities, 'light')
   const mediaPlayerEntities = getEntitiesByType(area.entities, 'media_player')
