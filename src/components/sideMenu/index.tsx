@@ -1,12 +1,19 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { CaretLeftIcon, CaretRightIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { tv } from 'tailwind-variants'
 
 import { Button } from '../ui/button'
 import { ThemeSwitch } from './themeSwitch'
+import {
+  VideoCameraIcon,
+  HomeIcon,
+  LayersIcon,
+  FlashIcon,
+  Database2Icon,
+  CPUProcessorIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from '@/assets/icons'
 
 const navigationItemLinkStyle = tv({
   base: 'flex w-full items-center rounded px-2 py-2 transition-all duration-200',
@@ -20,24 +27,21 @@ const navigationItemLinkStyle = tv({
 
 type NavigationItemProps = {
   href: string
-  icon: IconProp
+  Icon: React.ElementType
   children: React.ReactNode
   selected: boolean
 }
 
 const NavigationItem = ({
   href,
-  icon,
+  Icon,
   selected,
   children,
 }: NavigationItemProps) => {
   return (
     <li className="navigation-item flex w-full px-2">
       <Link href={href} className={navigationItemLinkStyle({ selected })}>
-        <FontAwesomeIcon
-          icon={icon}
-          className="mx-auto h-4 w-4 @[100px]:mx-4"
-        />
+        <Icon className="mx-auto h-4 w-4 @[100px]:mx-4" />
         <span className="w-0 overflow-hidden whitespace-nowrap transition-all duration-200 @[100px]:w-auto">
           {children}
         </span>
@@ -48,17 +52,17 @@ const NavigationItem = ({
 
 type LinkItem = {
   to: string
-  icon: IconProp
+  Icon: React.ElementType
   label: string
 }
 
 const links: LinkItem[] = [
-  { to: '/', icon: ['far', 'home'], label: 'Home' },
-  { to: '/security', icon: ['far', 'camera-security'], label: 'Security' },
-  { to: '/entities', icon: ['far', 'sensor'], label: 'Entities' },
-  { to: '/areas', icon: ['far', 'layer-group'], label: 'Areas' },
-  { to: '/energy', icon: ['far', 'bolt'], label: 'Energy' },
-  { to: '/logs', icon: ['far', 'list-timeline'], label: 'Logs' },
+  { to: '/', Icon: HomeIcon, label: 'Home' },
+  { to: '/security', Icon: VideoCameraIcon, label: 'Security' },
+  { to: '/entities', Icon: CPUProcessorIcon, label: 'Entities' },
+  { to: '/areas', Icon: LayersIcon, label: 'Areas' },
+  { to: '/energy', Icon: FlashIcon, label: 'Energy' },
+  { to: '/logs', Icon: Database2Icon, label: 'Logs' },
 ]
 
 type SideMenuProps = {
@@ -79,7 +83,7 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
           <NavigationItem
             key={link.to}
             href={link.to}
-            icon={link.icon}
+            Icon={link.Icon}
             selected={pathname === link.to}
           >
             {link.label}
@@ -96,9 +100,9 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
           onClick={() => setCollapsed((curr) => !curr)}
         >
           {collapsed ? (
-            <CaretRightIcon className="h-6 w-6" />
+            <CaretRightIcon size={32} />
           ) : (
-            <CaretLeftIcon className="h-6 w-6" />
+            <CaretLeftIcon size={32} />
           )}
         </Button>
       </div>

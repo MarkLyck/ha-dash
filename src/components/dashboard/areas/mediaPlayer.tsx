@@ -104,7 +104,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
     <Card className="inline-flex gap-4 rounded-lg border-border/20 bg-black/20 p-4 text-white backdrop-blur-lg">
       <Button
         onClick={handlePlayPause}
-        className="group relative h-auto w-auto bg-transparent p-0 hover:bg-transparent"
+        className="group relative h-auto max-h-[96px] w-auto max-w-[96px] bg-transparent p-0 hover:bg-transparent"
       >
         <span className="absolute inset-0 flex items-center justify-center rounded bg-black/50 text-2xl text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           {isPlaying ? <PauseIcon /> : <PlayIcon />}

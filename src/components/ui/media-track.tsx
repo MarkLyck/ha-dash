@@ -57,7 +57,6 @@ export const MediaTrack = ({
 
   return (
     <div className="relative flex items-center gap-2">
-      {/* 62px fits 88:88:88 */}
       <span className="absolute text-end font-light text-sm text-white/50">
         {secondsToHHMMSS(Math.min(currentTime, duration))}
       </span>
@@ -65,7 +64,9 @@ export const MediaTrack = ({
         value={[currentTime]}
         max={duration}
         min={0}
-        className="ml-[48px] w-full [&_.slider-thumb]:border-2 [&_.slider-thumb]:border-black/80 [&_.slider-thumb]:bg-white"
+        // 64px fits 88:88:88 when the content is over 1 hour long.
+        style={{ marginLeft: duration > 3600 ? 64 : 48 }}
+        className="ml-[64px] w-full [&_.slider-thumb]:border-2 [&_.slider-thumb]:border-black/80 [&_.slider-thumb]:bg-white"
         onValueChange={(value) => {
           if (value[0] === undefined) return
           setCurrentTime(value[0])
