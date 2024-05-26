@@ -1,6 +1,6 @@
 import type { IconlyIconProps } from './types'
 
-export const IconlyForward = ({ size = 20, ...props }: IconlyIconProps) => {
+export const ForwardIcon = ({ size = 20, ...props }: IconlyIconProps) => {
   return (
     <svg
       width={size}

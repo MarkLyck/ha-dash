@@ -1,6 +1,6 @@
 import type { IconlyIconProps } from './types'
 
-export const IconlyBackward = ({ size = 20, ...props }: IconlyIconProps) => (
+export const BackwardIcon = ({ size = 20, ...props }: IconlyIconProps) => (
   <svg
     width={size}
     height={size}

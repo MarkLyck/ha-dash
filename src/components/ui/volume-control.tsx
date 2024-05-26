@@ -10,7 +10,7 @@ import { cn, debounce } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRef, useState } from 'react'
-// import { Slider } from '@/components/ui/slider'
+import { VolumeUpIcon } from '@/assets/icons'
 
 type VolumeControlProps = {
   ref?: React.RefObject<React.ElementRef<typeof SliderPrimitive.Root>>
@@ -33,8 +33,8 @@ export const VolumeControl = ({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="size-10" variant="ghost">
-          <FontAwesomeIcon icon={['fas', 'volume']} />
+        <Button className="size-10 p-0" variant="ghost">
+          <VolumeUpIcon size={20} />
         </Button>
       </PopoverTrigger>
       <PopoverContent
