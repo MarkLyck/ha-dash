@@ -5,7 +5,6 @@ import useStore from '@/lib/useStore'
 import { Card } from '@/components/ui/card'
 import { env } from '@/../env'
 import { Button } from '@/components/ui/button'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { MediaTrack } from '@/components/ui/media-track'
 import { VolumeControl } from '@/components/ui/volume-control'
@@ -15,7 +14,13 @@ import { useEffect, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 import { getSupportedFeatures } from '@/lib/supportedFeatures'
-import { PauseIcon, PlayIcon, SpeakerIcon } from '@/assets/icons'
+import {
+  BackwardIcon,
+  ForwardIcon,
+  PauseIcon,
+  PlayIcon,
+  SpeakerIcon,
+} from '@/assets/icons'
 
 const homeAssistantURL = env.NEXT_PUBLIC_HASS_URL
 
@@ -81,6 +86,12 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
     })
   }
 
+  let description = ''
+  if (entity.attributes.media_artist)
+    description = entity.attributes.media_artist
+  if (!description && entity.attributes.app_name)
+    description = entity.attributes.app_name
+
   return (
     <Card className="inline-flex gap-4 rounded-lg border-border/20 bg-black/20 p-4 text-white backdrop-blur-lg">
       <Button
@@ -92,7 +103,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
         </span>
         {imgSrc ? (
           <Image
-            className="rounded bg-black/40 text-xs"
+            className="max-h-[96px] w-auto rounded bg-black/40 text-xs"
             src={imgSrc}
             alt={
               entity.attributes.media_album_name ??
@@ -116,12 +127,11 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
               <h5 className="truncate font-bold text-lg">
                 {entity.attributes.media_title}
               </h5>
-              <p className="truncate text-sm text-white/50">
-                {entity.attributes.media_artist}
-              </p>
+              <p className="truncate text-sm text-white/50">{description}</p>
             </div>
             <div className="ml-4 flex items-center">
-              {supportedFeatures.has('VOLUME_SET') ? (
+              {supportedFeatures.has('VOLUME_SET') &&
+              typeof entity.attributes.volume_level === 'number' ? (
                 <VolumeControl
                   volume={entity.attributes.volume_level * 100}
                   setVolume={(volumePct) => handleVolumeSet(volumePct / 100)}
@@ -135,16 +145,16 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
                 <Button
                   variant="ghost"
                   onClick={() => handlePreviousOrNextTrack('previous')}
-                  className="size-10"
+                  className="size-10 p-0"
                 >
-                  <FontAwesomeIcon icon={['fas', 'backward']} />
+                  <BackwardIcon />
                 </Button>
               ) : null}
               {supportedFeatures.has('PAUSE') ? (
                 <Button
                   variant="ghost"
                   onClick={handlePlayPause}
-                  className="size-10"
+                  className="size-10 p-0"
                 >
                   {isPlaying ? <PauseIcon /> : <PlayIcon />}
                 </Button>
@@ -153,13 +163,14 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
                 <Button
                   variant="ghost"
                   onClick={() => handlePreviousOrNextTrack('next')}
-                  className="size-10"
+                  className="size-10 p-0"
                 >
-                  <FontAwesomeIcon icon={['fas', 'forward']} />
+                  <ForwardIcon />
                 </Button>
               ) : null}
             </div>
           </div>
+          {/* TODO: handle media_position_updated_at */}
           <MediaTrack
             key={entity.attributes.media_title}
             isPlaying={isPlaying}
