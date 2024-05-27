@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { tv } from 'tailwind-variants'
 
 import { MediaPlayer } from './mediaPlayer'
-import { getEntitiesByType } from '@/lib/utils'
+import { cn, getEntitiesByType } from '@/lib/utils'
 import { useArea } from '@/hooks/useArea'
 import { LightsControl } from './lights'
 import { AreaIcon } from '@/components/area/AreaIcon'
@@ -31,7 +31,7 @@ const areaImages = {
   fallback: '/images/areas/living_room.png',
 }
 
-export const AreasCard = () => {
+export const AreasCard = ({ className }: { className?: string }) => {
   const areas = useStore((s) => s.areas)
   const [selectedArea, setSelectedArea] = useState<string | undefined>(
     areas[0]?.area_id,
@@ -54,7 +54,10 @@ export const AreasCard = () => {
 
   return (
     <Card
-      className="flex h-[400px] flex-col justify-between bg-center bg-cover p-4"
+      className={cn(
+        'flex h-[400px] flex-col justify-between bg-center bg-cover p-4',
+        className,
+      )}
       style={{
         backgroundImage: `url(${areaImageSrc})`,
       }}
