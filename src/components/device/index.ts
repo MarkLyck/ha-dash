@@ -1,7 +1,6 @@
 export * from './light'
 export * from './switch'
 export * from './lock'
-export * from './thermostat'
 export * from './vacuum'
 export * from './speaker'
 export * from './tv'

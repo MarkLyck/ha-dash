@@ -7,15 +7,11 @@ import { callService } from '@/lib/hass'
 
 import { ClimateCard } from './Card'
 
-export const Climate = () => {
+export const Climate = ({ entityId }: { entityId?: string }) => {
   const entities = useStore((s) => s.entities)
 
-  if (!entities) return null
-  const climateEntityId = Object.keys(entities).find((entityId) =>
-    entityId.startsWith('climate'),
-  )
-  if (!climateEntityId) return null
-  const entity = entities[climateEntityId]
+  if (!entityId) return null
+  const entity = entities[entityId]
   if (!entity) return null
 
   const supportedFeatures = getSupportedFeatures(
@@ -30,7 +26,7 @@ export const Climate = () => {
       service_data: {
         hvac_mode: state,
       },
-      target: { entity_id: climateEntityId },
+      target: { entity_id: entityId },
     })
   }
 
@@ -41,7 +37,7 @@ export const Climate = () => {
       service_data: {
         temperature: targetTemperature,
       },
-      target: { entity_id: climateEntityId },
+      target: { entity_id: entityId },
     })
   }
 

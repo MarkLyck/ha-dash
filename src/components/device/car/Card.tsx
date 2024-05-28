@@ -7,15 +7,16 @@ import {
   StateActionButton,
 } from '@/components/ui/quickActionButton'
 
+import type { ChargingState, ShiftState } from './types'
+
 export interface CarCardProps {
   name: string
-  mode: 'parked' | 'driving' | 'charging'
+  mode: ShiftState | undefined
   isLocked?: boolean
-  batteryPercentage: number
-  isCharging?: boolean
+  batteryPercentage: number | undefined
+  chargingState: ChargingState | undefined
   isHome?: boolean
   icon: IconProp
-  setState: (state: boolean) => void
 }
 
 export const CarCard = ({
@@ -23,13 +24,19 @@ export const CarCard = ({
   icon,
   mode,
   batteryPercentage,
-  isCharging,
+  chargingState,
   isLocked,
-  setState,
+  // setState,
 }: CarCardProps) => {
-  const isActive = mode !== 'parked'
-  let status: string = mode
-  if (isCharging || batteryPercentage < 90) {
+  const isActive = mode !== 'p'
+  let status: string | undefined = mode
+  const isCharging =
+    chargingState === 'charging' || chargingState === 'starting'
+
+  if (
+    isCharging ||
+    (typeof batteryPercentage === 'number' && batteryPercentage < 90)
+  ) {
     status = `${mode} - ${batteryPercentage}%`
   }
 
@@ -39,11 +46,11 @@ export const CarCard = ({
       name={name}
       status={status}
       Icon={(props) => <FontAwesomeIcon icon={icon} {...props} />}
-      setIsActive={setState}
+      setIsActive={() => {}}
       batteryPercentage={batteryPercentage}
       isCharging={isCharging}
       action={
-        mode === 'parked' || mode === 'charging' ? (
+        mode === 'p' || isCharging ? (
           <StateActionButton isActive={isActive}>
             <FontAwesomeIcon icon={['far', isLocked ? 'lock-open' : 'lock']} />
           </StateActionButton>
