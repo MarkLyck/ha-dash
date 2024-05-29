@@ -2,6 +2,10 @@
 
 import { useEffect } from 'react'
 import store from 'store'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+// Create a client
+const queryClient = new QueryClient()
 
 import { Toaster } from '@/components/ui/sonner'
 import { connectToHASS } from '@/lib/websocket'
@@ -16,7 +20,9 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <body>
-      <main className="h-full min-h-screen bg-bg-white">{children}</main>
+      <QueryClientProvider client={queryClient}>
+        <main className="h-full min-h-screen bg-bg-white">{children}</main>
+      </QueryClientProvider>
       <Toaster />
     </body>
   )

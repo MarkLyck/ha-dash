@@ -1,7 +1,6 @@
 'use client'
 
 import { type ReactNode, useState } from 'react'
-
 import { GeistSans } from 'geist/font/sans'
 
 import '@fortawesome/fontawesome-svg-core/styles.css'
