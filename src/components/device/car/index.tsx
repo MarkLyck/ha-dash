@@ -1,4 +1,5 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { useQuery } from '@tanstack/react-query'
 
 import { CarCard } from './Card'
 import useStore from '@/lib/useStore'
@@ -23,8 +24,22 @@ const CAR_ENTITY_IDS = {
   speed: 'sensor.model_y_speed',
 }
 
+const fetchTeslaState = async () => {
+  const response = await fetch('/api/teslemetry')
+  if (!response.ok) {
+    throw new Error(`Error: ${response.statusText}`)
+  }
+  return response.json()
+}
+
 export const Car = () => {
   const entities = useStore((s) => s.entities)
+  const teslaState = useQuery({
+    queryKey: ['teslaState'],
+    queryFn: fetchTeslaState,
+  })
+
+  console.log('🔈 ~ teslaState:', teslaState)
 
   const batteryEntity = entities[CAR_ENTITY_IDS.battery_level]
   const chargingEntity = entities[CAR_ENTITY_IDS.charging]
