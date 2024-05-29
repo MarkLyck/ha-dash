@@ -5,6 +5,7 @@ import { CarCard } from './Card'
 import useStore from '@/lib/useStore'
 
 import type { ChargingState, ShiftState } from './types'
+import { useEffect, useState } from 'react'
 
 const CAR_ENTITY_IDS = {
   battery_level: 'sensor.model_y_battery_level',
@@ -32,14 +33,61 @@ const fetchTeslaState = async () => {
   return response.json()
 }
 
-export const Car = () => {
-  const entities = useStore((s) => s.entities)
-  const teslaState = useQuery({
-    queryKey: ['teslaState'],
-    queryFn: fetchTeslaState,
-  })
+const VIN = '7SAYGDEEXPF836682'
+const TESLEMETRY_TOKEN = 'au412j8a9c-zhemftpmwj-c6wzcv89fz-z5zneaqlw9'
+const TESLEMETRY_SERVER = 'us-west'
 
-  console.log('🔈 ~ teslaState:', teslaState)
+export const Car = () => {
+  const [events, setEvents] = useState([])
+  console.log('🔈 ~ events:', events)
+  const entities = useStore((s) => s.entities)
+  // const teslaState = useQuery({
+  //   queryKey: ['teslaState'],
+  //   queryFn: fetchTeslaState,
+  // })
+
+  useEffect(() => {
+    const myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+    myHeaders.append('Authorization', `Bearer ${TESLEMETRY_TOKEN}`)
+
+    fetch(
+      `https://${TESLEMETRY_SERVER}.teslemetry.com/api/1/vehicles/${VIN}/vehicle_data`,
+      // `https://fleet-api.prd.na.vn.cloud.tesla.co/m/api/1/vehicles/${VIN}/vehicle_data`,
+      {
+        method: 'GET',
+        // mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${TESLEMETRY_TOKEN}`,
+        },
+        redirect: 'follow',
+      },
+    )
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error))
+  }, [])
+  // useEffect(() => {
+  //   const eventSource = new EventSource(
+  //     `https://${TESLEMETRY_SERVER}.teslemetry.com/sse/${VIN}?token=${TESLEMETRY_TOKEN}`,
+  //   )
+
+  //   eventSource.onmessage = (event) => {
+  //     const newEvent = JSON.parse(event.data)
+  //     // @ts-expect-error - ??
+  //     setEvents((prevEvents) => [...prevEvents, newEvent])
+  //   }
+
+  //   eventSource.onerror = (error) => {
+  //     console.error('EventSource failed:', error)
+  //     eventSource.close()
+  //   }
+
+  //   return () => {
+  //     eventSource.close()
+  //   }
+  // }, [])
 
   const batteryEntity = entities[CAR_ENTITY_IDS.battery_level]
   const chargingEntity = entities[CAR_ENTITY_IDS.charging]
