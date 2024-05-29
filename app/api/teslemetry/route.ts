@@ -18,6 +18,13 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  const user = await kv.hgetall('tesla_state')
-  return NextResponse.json(user)
+  try {
+    const teslaState = await kv.get('tesla_state')
+    console.log('🔈 ~ GET tesla_state:', teslaState)
+    return NextResponse.json(teslaState)
+  } catch (error: any) {
+    return new Response(`error: ${error.message}`, {
+      status: 400,
+    })
+  }
 }
