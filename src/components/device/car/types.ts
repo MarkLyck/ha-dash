@@ -6,4 +6,11 @@ export type ChargingState =
   | 'disconnected'
   | 'no_power'
 
-export type ShiftState = 'p' | 'd' | 'r' | 'n'
+export type ShiftState = 'p' | 'd' | 'r' | 'n' | 'unknown'
+
+export type Location = {
+  address: string
+  latitude: number
+  longitude: number
+  saved_location: null | unknown
+}

@@ -20,7 +20,7 @@ const Home = () => {
     <div className="grid grid-cols-8 gap-4 p-4">
       <AreasCard className="col-span-8" />
       <Climate entityId={climateEntityId} />
-      <Car />
+      <Car className="col-span-2" />
     </div>
   )
 }

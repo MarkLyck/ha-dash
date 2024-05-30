@@ -144,3 +144,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.mapboxgl-ctrl-attrib {
+  display: none;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}

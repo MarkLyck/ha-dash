@@ -10,6 +10,8 @@ const queryClient = new QueryClient()
 import { Toaster } from '@/components/ui/sonner'
 import { connectToHASS } from '@/lib/websocket'
 
+import 'mapbox-gl/dist/mapbox-gl.css'
+
 export const Wrapper = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const theme =
