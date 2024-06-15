@@ -25,7 +25,6 @@ export const TeslaCard = ({ className, location, locked }: TeslaCardProps) => {
     width: 0,
     height: 0,
   })
-  console.log('🔈 ~ size:', size)
 
   useEffect(() => {
     // when the component gets mounted
@@ -74,7 +73,6 @@ export const TeslaCard = ({ className, location, locked }: TeslaCardProps) => {
                 latitude: location.latitude,
                 zoom: 14,
               }}
-              // TODO make it fit the card
               style={{ width: size.width, height: 180 }}
               mapStyle="mapbox://styles/marklyck/clwspy9v505hd01nxhp06ahd0"
             >
