@@ -1,22 +1,32 @@
 import { Card, CardContent } from '@/components/ui/card'
-import Image from 'next/image'
 import { default as MapBox, Marker } from 'react-map-gl'
 
 import { env } from '@/../env'
 
-import type { Location } from './types'
+import type { ChargingState, Location, ShiftState } from './types'
 import { Button } from '@/components/ui/button'
-import { LockIcon, LockOpenIcon } from '@/assets/icons'
+import { TbLock, TbLockOpen, TbSnowflake, TbSnowflakeOff } from 'react-icons/tb'
 import { cn } from '@/lib/utils'
 import { useEffect, useRef, useState } from 'react'
+import { BatteryIndicator } from './BatteryIndicator'
 
 type TeslaCardProps = {
   className?: string
   location: Location
-  locked?: boolean
+  locked: boolean | undefined
+  batteryPercentage: number | undefined
+  chargingState: ChargingState | undefined
+  gear: ShiftState | undefined
 }
 
-export const TeslaCard = ({ className, location, locked }: TeslaCardProps) => {
+export const TeslaCard = ({
+  className,
+  location,
+  locked,
+  batteryPercentage,
+  chargingState,
+  gear,
+}: TeslaCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null)
   const [size, setSize] = useState<{
     width: number | undefined
@@ -51,15 +61,12 @@ export const TeslaCard = ({ className, location, locked }: TeslaCardProps) => {
         className="relative flex flex-col items-center justify-center gap-2 bg-[#040405] p-4"
       >
         <div className="z-20 mt-[100px]">
-          <Image
-            src="/images/tesla/model_y_front.png"
-            alt="Model Y"
-            width={200}
-            height={100}
-          />
           <div>
-            <Button variant="ghost">
-              {locked ? <LockOpenIcon /> : <LockIcon />}
+            <Button variant="outline" className="rounded-r-none border-r-0">
+              {locked ? <TbLockOpen /> : <TbLock />}
+            </Button>
+            <Button variant="outline" className="rounded-l-none border-l-0">
+              {locked ? <TbSnowflake /> : <TbSnowflakeOff />}
             </Button>
           </div>
         </div>
@@ -86,6 +93,31 @@ export const TeslaCard = ({ className, location, locked }: TeslaCardProps) => {
             </MapBox>
           </div>
         ) : null}
+        <div className="absolute top-3 left-3 space-y-1.5">
+          <p
+            className="font-semibold"
+            style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
+          >
+            Tesla Model Y
+          </p>
+          <div className="flex items-center gap-2">
+            <BatteryIndicator
+              percentage={batteryPercentage}
+              isCharging={chargingState === 'charging'}
+            />
+            <span
+              className="font-semibold text-text-sub text-xs"
+              style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
+            >
+              {batteryPercentage}%
+            </span>
+          </div>
+          {gear !== 'unknown' && (
+            <p className="text-text-sub text-xs first-letter:capitalize">
+              {gear}
+            </p>
+          )}
+        </div>
       </CardContent>
     </Card>
   )
