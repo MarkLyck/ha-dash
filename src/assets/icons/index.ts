@@ -16,6 +16,8 @@ export * from './Iconly-Video-camera-Icon'
 export * from './Iconly-cpu-processor-Icon'
 export * from './Iconly-Caret-Left-SM-Icon'
 export * from './Iconly-Caret-Right-SM-Icon'
+export * from './Iconly-Lock-Icon'
+export * from './Iconly-Lock-open-Icon'
 
 // Area icons
 export * from './Iconly-Bath-Icon'

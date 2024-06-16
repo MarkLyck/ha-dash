@@ -12,6 +12,7 @@ import {
   subscribeServices,
 } from 'home-assistant-js-websocket'
 import { z } from 'zod'
+import { toast } from 'sonner'
 
 import {
   type Area,
@@ -56,7 +57,11 @@ export const connectToHASS = () => {
       try {
         const auth = createLongLivedTokenAuth(hassUrl, hassToken)
         connection = await createConnection({ auth })
-      } catch (err) {
+      } catch (err: any) {
+        toast.error('Could not connect to Home Assistant', {
+          description: err.message,
+          duration: 10000,
+        })
         console.error('Failed to connect to Home Assistant:', err)
         throw err
       }

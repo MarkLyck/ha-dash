@@ -17,10 +17,10 @@ const Home = () => {
   // console.log('🔈 ~ vacuumEntityId:', vacuumEntityId)
 
   return (
-    <div className="grid grid-cols-8 gap-4 p-4">
-      <AreasCard className="col-span-8" />
+    <div className="flex flex-wrap gap-4 p-4">
+      <AreasCard className="w-full" />
       <Climate entityId={climateEntityId} />
-      <Car />
+      <Car className="w-[380px]" />
     </div>
   )
 }
