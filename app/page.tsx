@@ -8,9 +8,12 @@ import useStore from '@/lib/useStore'
 const Home = () => {
   const entities = useStore((s) => s.entities)
 
-  const climateEntityId = Object.keys(entities).find((entityId) =>
-    entityId.startsWith('climate'),
-  )
+  const climateEntityId = Object.keys(entities).find((entityId) => {
+    if (entityId.startsWith('climate') && !entityId.includes('tesla')) {
+      return true
+    }
+    return false
+  })
   // const vacuumEntityId = Object.keys(entities).find((entityId) =>
   //   entityId.startsWith('vacuum'),
   // )
@@ -19,7 +22,7 @@ const Home = () => {
     <div className="flex flex-wrap gap-4 p-4">
       <AreasCard className="w-full" />
       <Climate entityId={climateEntityId} />
-      <Car className="w-[380px]" />
+      <Car className="w-[280px]" />
     </div>
   )
 }

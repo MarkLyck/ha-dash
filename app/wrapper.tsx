@@ -23,7 +23,9 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <body>
       <QueryClientProvider client={queryClient}>
-        <main className="h-full min-h-screen bg-[#080808]">{children}</main>
+        <main className="h-full min-h-screen bg-white dark:bg-[#080808]">
+          {children}
+        </main>
       </QueryClientProvider>
       <Toaster />
     </body>

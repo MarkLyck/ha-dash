@@ -18,7 +18,7 @@ export const deviceCardStyle = cva(
   {
     variants: {
       active: {
-        false: ['bg-bg-white', 'dark:bg-bg-white', 'dark:border-slate-700'],
+        false: ['bg-bg-white', 'dark:bg-bg-white'],
         true: ['bg-white', 'dark:bg-bg-weak', 'dark:hover:border-slate-600'],
       },
     },

@@ -6,13 +6,7 @@ import { env } from '@/../env'
 import Image from 'next/image'
 import type { ChargingState, Location, ShiftState } from './types'
 import { Button } from '@/components/ui/button'
-import {
-  TbCar,
-  TbLock,
-  TbLockOpen,
-  TbSnowflake,
-  TbSnowflakeOff,
-} from 'react-icons/tb'
+import { TbLock, TbLockOpen, TbSnowflake, TbSnowflakeOff } from 'react-icons/tb'
 import { cn } from '@/lib/utils'
 import { useEffect, useRef, useState } from 'react'
 import { BatteryIndicator } from './BatteryIndicator'
@@ -67,9 +61,9 @@ export const TeslaCard = ({
     <Card className={cn('overflow-hidden', className)}>
       <CardContent
         ref={cardRef}
-        className="relative flex flex-col items-center justify-center gap-2 bg-[#040405] p-4"
+        className="relative flex h-[280px] flex-col items-center justify-center gap-2 bg-[#040405] p-4"
       >
-        <div className="z-20 mt-[100px]">
+        <div className="z-20 mt-auto">
           <div>
             <Button
               variant="outline"
@@ -97,7 +91,7 @@ export const TeslaCard = ({
                 latitude: location.latitude,
                 zoom: 14,
               }}
-              style={{ width: size.width, height: 180 }}
+              style={{ width: size.width, height: 280 }}
               mapStyle="mapbox://styles/marklyck/clwspy9v505hd01nxhp06ahd0"
             >
               <Marker
@@ -131,7 +125,6 @@ export const TeslaCard = ({
                     }
                   />
                 </div>
-                {/* <div className="size-4 rounded-full border-2 border-info bg-info/50 shadow-md" /> */}
               </Marker>
             </MapBox>
           </div>
