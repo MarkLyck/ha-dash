@@ -1,4 +1,7 @@
+'use client'
+
 import { useQuery } from '@tanstack/react-query'
+import { withErrorBoundary } from 'react-error-boundary'
 
 import { TeslaCard } from './TeslaCard'
 import useStore from '@/lib/useStore'
@@ -35,7 +38,7 @@ type CarProps = {
   className?: string
 }
 
-export const Car = ({ className }: CarProps) => {
+const CarComponent = ({ className }: CarProps) => {
   const entities = useStore((s) => s.entities)
   const { data: location } = useQuery({
     queryKey: ['teslaLocation'],
@@ -60,3 +63,7 @@ export const Car = ({ className }: CarProps) => {
     />
   )
 }
+
+export const Car = withErrorBoundary(CarComponent, {
+  fallback: <div>Car Error</div>,
+})
