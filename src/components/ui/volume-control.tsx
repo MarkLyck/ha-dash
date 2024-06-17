@@ -8,9 +8,8 @@ import * as SliderPrimitive from '@radix-ui/react-slider'
 import { cn, debounce } from '@/lib/utils'
 
 import { Button } from '@/components/ui/button'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRef, useState } from 'react'
-import { VolumeUpIcon } from '@/assets/icons'
+import { TbVolume } from 'react-icons/tb'
 
 type VolumeControlProps = {
   ref?: React.RefObject<React.ElementRef<typeof SliderPrimitive.Root>>
@@ -34,7 +33,7 @@ export const VolumeControl = ({
     <Popover>
       <PopoverTrigger asChild>
         <Button className="size-10 p-0" variant="ghost">
-          <VolumeUpIcon size={20} />
+          <TbVolume size={20} />
         </Button>
       </PopoverTrigger>
       <PopoverContent

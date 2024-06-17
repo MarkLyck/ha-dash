@@ -4,8 +4,8 @@ import * as SliderPrimitive from '@radix-ui/react-slider'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
 
-import { FireIcon, SnowIcon } from '@/assets/icons'
 import { cn } from '@/lib/utils'
+import { TbFlame, TbSnowflake } from 'react-icons/tb'
 
 type TemperatureSliderProps = React.ComponentPropsWithoutRef<
   typeof SliderPrimitive.Root
@@ -41,7 +41,7 @@ export const TemperatureSlider = React.forwardRef<
   const isHeating = value > currentValue
   const showCoolHotIcon = value > 10
 
-  const CoolHotIcon = isCooling ? SnowIcon : FireIcon
+  const CoolHotIcon = isCooling ? TbSnowflake : TbFlame
 
   return (
     <SliderPrimitive.Root

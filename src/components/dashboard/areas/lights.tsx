@@ -6,7 +6,7 @@ import useStore from '@/lib/useStore'
 import { callService } from '@/lib/hass'
 
 import type { HassEntity } from 'home-assistant-js-websocket'
-import { LightIcon, LightOnIcon, PowerButtonIcon } from '@/assets/icons'
+import { TbBulb, TbBulbOff } from 'react-icons/tb'
 
 type LightsControlProps = {
   entityIds: string[]
@@ -32,13 +32,17 @@ export const LightsControl = ({ entityIds }: LightsControlProps) => {
   }
 
   return (
-    <Card className="inline-flex flex-col items-center justify-center gap-4 rounded-lg border-border/20 bg-black/20 p-4 text-white backdrop-blur-lg">
+    <Card className="inline-flex flex-col items-center justify-center gap-2 rounded-lg border-border/20 bg-black/20 p-4 text-white backdrop-blur-lg">
+      <Button
+        variant={lightsOn.length > 0 ? 'default' : 'outline'}
+        className="w-full"
+        onClick={() =>
+          toggleLights(lightsOn.length > 0 ? 'turn_off' : 'turn_on')
+        }
+      >
+        {lightsOn.length > 0 ? <TbBulb size={14} /> : <TbBulbOff size={14} />}
+      </Button>
       <div className="flex flex-col items-center">
-        {lightsOn.length > 0 ? (
-          <LightOnIcon size={32} />
-        ) : (
-          <LightIcon size={32} />
-        )}
         <span className="mt-2 text-sm text-white/50">
           {lightsOn.length > 0
             ? `${lightsOn.length} light${lightsOn.length !== 1 ? 's' : ''} on`
@@ -46,14 +50,6 @@ export const LightsControl = ({ entityIds }: LightsControlProps) => {
           {areAllLightsOff ? 'Lights off' : null}
         </span>
       </div>
-      <Button
-        className="w-full"
-        onClick={() =>
-          toggleLights(lightsOn.length > 0 ? 'turn_off' : 'turn_on')
-        }
-      >
-        <PowerButtonIcon />
-      </Button>
     </Card>
   )
 }

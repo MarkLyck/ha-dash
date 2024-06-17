@@ -15,12 +15,12 @@ import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 import { getSupportedFeatures } from '@/lib/supportedFeatures'
 import {
-  BackwardIcon,
-  ForwardIcon,
-  PauseIcon,
-  PlayIcon,
-  SpeakerIcon,
-} from '@/assets/icons'
+  TbDeviceSpeaker,
+  TbPlayerPauseFilled,
+  TbPlayerPlayFilled,
+  TbPlayerTrackNextFilled,
+  TbPlayerTrackPrevFilled,
+} from 'react-icons/tb'
 
 const homeAssistantURL = env.NEXT_PUBLIC_HASS_URL
 
@@ -107,7 +107,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
         className="group relative h-auto max-h-[96px] w-auto max-w-[96px] bg-transparent p-0 hover:bg-transparent"
       >
         <span className="absolute inset-0 flex items-center justify-center rounded bg-black/50 text-2xl text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          {isPlaying ? <PauseIcon /> : <PlayIcon />}
+          {isPlaying ? <TbPlayerPauseFilled /> : <TbPlayerPlayFilled />}
         </span>
         {imgSrc ? (
           <Image
@@ -123,7 +123,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
           />
         ) : (
           <div className="flex size-[96px] items-center justify-center rounded bg-black/20 text-white">
-            <SpeakerIcon size={52} />
+            <TbDeviceSpeaker size={52} />
           </div>
         )}
       </Button>
@@ -155,7 +155,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
                   onClick={() => handlePreviousOrNextTrack('previous')}
                   className="size-10 p-0"
                 >
-                  <BackwardIcon />
+                  <TbPlayerTrackPrevFilled size={20} />
                 </Button>
               ) : null}
               {supportedFeatures.has('PAUSE') ? (
@@ -164,7 +164,11 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
                   onClick={handlePlayPause}
                   className="size-10 p-0"
                 >
-                  {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                  {isPlaying ? (
+                    <TbPlayerPauseFilled size={20} />
+                  ) : (
+                    <TbPlayerPlayFilled size={20} />
+                  )}
                 </Button>
               ) : null}
               {supportedFeatures.has('NEXT_TRACK') ? (
@@ -173,7 +177,7 @@ export const MediaPlayer = ({ entityId }: MediaPlayerProps) => {
                   onClick={() => handlePreviousOrNextTrack('next')}
                   className="size-10 p-0"
                 >
-                  <ForwardIcon />
+                  <TbPlayerTrackNextFilled size={20} />
                 </Button>
               ) : null}
             </div>
