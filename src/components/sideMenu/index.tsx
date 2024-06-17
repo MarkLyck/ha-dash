@@ -5,15 +5,15 @@ import { tv } from 'tailwind-variants'
 import { Button } from '../ui/button'
 import { ThemeSwitch } from './themeSwitch'
 import {
-  VideoCameraIcon,
-  HomeIcon,
-  LayersIcon,
-  FlashIcon,
-  Database2Icon,
-  CPUProcessorIcon,
-  CaretLeftIcon,
-  CaretRightIcon,
-} from '@/assets/icons'
+  TbBolt,
+  TbBox,
+  TbChevronLeft,
+  TbChevronRight,
+  TbCpu,
+  TbLogs,
+  TbSmartHome,
+  TbVideo,
+} from 'react-icons/tb'
 
 const navigationItemLinkStyle = tv({
   base: 'flex w-full items-center rounded px-2 py-2 transition-all duration-200',
@@ -57,12 +57,12 @@ type LinkItem = {
 }
 
 const links: LinkItem[] = [
-  { to: '/', Icon: HomeIcon, label: 'Home' },
-  { to: '/security', Icon: VideoCameraIcon, label: 'Security' },
-  { to: '/entities', Icon: CPUProcessorIcon, label: 'Entities' },
-  { to: '/areas', Icon: LayersIcon, label: 'Areas' },
-  { to: '/energy', Icon: FlashIcon, label: 'Energy' },
-  { to: '/logs', Icon: Database2Icon, label: 'Logs' },
+  { to: '/', Icon: TbSmartHome, label: 'Home' },
+  { to: '/security', Icon: TbVideo, label: 'Security' },
+  { to: '/entities', Icon: TbCpu, label: 'Entities' },
+  { to: '/areas', Icon: TbBox, label: 'Areas' },
+  { to: '/energy', Icon: TbBolt, label: 'Energy' },
+  { to: '/logs', Icon: TbLogs, label: 'Logs' },
 ]
 
 type SideMenuProps = {
@@ -100,9 +100,9 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
           onClick={() => setCollapsed((curr) => !curr)}
         >
           {collapsed ? (
-            <CaretRightIcon size={32} />
+            <TbChevronRight size={32} />
           ) : (
-            <CaretLeftIcon size={32} />
+            <TbChevronLeft size={32} />
           )}
         </Button>
       </div>

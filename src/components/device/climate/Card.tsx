@@ -1,14 +1,14 @@
 import { DeviceCard } from '@/components/ui/deviceCard'
 import { TemperatureSlider } from '@/components/ui/temperatureSlider'
-import {
-  FireIcon,
-  SnowIcon,
-  MidTemperatureIcon,
-  CoolerIcon,
-} from '@/assets/icons'
 import { useRef, useState } from 'react'
 import { debounce } from '@/lib/utils'
 import type { ClimateFeature } from '@/lib/supportedFeatures'
+import {
+  TbAirConditioning,
+  TbFlame,
+  TbSnowflake,
+  TbTemperature,
+} from 'react-icons/tb'
 
 export interface ClimateCardProps {
   name?: string
@@ -36,9 +36,9 @@ export const ClimateCard = ({
 
   const isActive = state !== 'off'
 
-  let StateIcon = CoolerIcon
-  if (state === 'heat') StateIcon = FireIcon
-  if (state === 'cool') StateIcon = SnowIcon
+  let StateIcon = TbAirConditioning
+  if (state === 'heat') StateIcon = TbFlame
+  if (state === 'cool') StateIcon = TbSnowflake
 
   return (
     <DeviceCard
@@ -49,7 +49,7 @@ export const ClimateCard = ({
           <span className="first-letter:capitalize">{state}</span>
           {isActive ? (
             <span className="ml-auto flex items-center">
-              <MidTemperatureIcon size={18} />
+              <TbTemperature size={18} />
               {targetTempValue}°
             </span>
           ) : null}
