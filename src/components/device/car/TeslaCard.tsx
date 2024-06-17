@@ -62,10 +62,18 @@ export const TeslaCard = ({
       >
         <div className="z-20 mt-[100px]">
           <div>
-            <Button variant="outline" className="rounded-r-none border-r-0">
+            <Button
+              variant="outline"
+              className="rounded-r-none border-r-0"
+              disabled
+            >
               {locked ? <TbLockOpen /> : <TbLock />}
             </Button>
-            <Button variant="outline" className="rounded-l-none border-l-0">
+            <Button
+              variant="outline"
+              className="rounded-l-none border-l-0"
+              disabled
+            >
               {locked ? <TbSnowflake /> : <TbSnowflakeOff />}
             </Button>
           </div>
