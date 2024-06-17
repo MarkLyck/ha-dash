@@ -74,7 +74,7 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
   const pathname = usePathname()
 
   return (
-    <div className="@container flex h-screen flex-col overflow-hidden border-r border-r-border bg-bg-white dark:border-r-slate-1000 dark:bg-bg-weak">
+    <div className="@container flex h-screen flex-col overflow-hidden border-r border-r-border bg-neutral-50 dark:border-r-slate-1000 dark:bg-neutral-900">
       <h4 className="m-2 flex h-12 items-center justify-center whitespace-nowrap rounded-lg bg-black p-2 text-center font-bold text-text-white dark:bg-bg-white dark:text-white">
         {collapsed ? 'HA' : 'HA-Dash'}
       </h4>
@@ -100,9 +100,9 @@ export const SideMenu = ({ collapsed, setCollapsed }: SideMenuProps) => {
           onClick={() => setCollapsed((curr) => !curr)}
         >
           {collapsed ? (
-            <TbChevronRight size={32} />
+            <TbChevronRight size={16} />
           ) : (
-            <TbChevronLeft size={32} />
+            <TbChevronLeft size={16} />
           )}
         </Button>
       </div>

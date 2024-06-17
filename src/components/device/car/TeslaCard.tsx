@@ -3,9 +3,16 @@ import { default as MapBox, Marker } from 'react-map-gl'
 
 import { env } from '@/../env'
 
+import Image from 'next/image'
 import type { ChargingState, Location, ShiftState } from './types'
 import { Button } from '@/components/ui/button'
-import { TbLock, TbLockOpen, TbSnowflake, TbSnowflakeOff } from 'react-icons/tb'
+import {
+  TbCar,
+  TbLock,
+  TbLockOpen,
+  TbSnowflake,
+  TbSnowflakeOff,
+} from 'react-icons/tb'
 import { cn } from '@/lib/utils'
 import { useEffect, useRef, useState } from 'react'
 import { BatteryIndicator } from './BatteryIndicator'
@@ -13,6 +20,7 @@ import { BatteryIndicator } from './BatteryIndicator'
 type TeslaCardProps = {
   className?: string
   location: Location
+  heading: number | undefined
   locked: boolean | undefined
   batteryPercentage: number | undefined
   chargingState: ChargingState | undefined
@@ -22,6 +30,7 @@ type TeslaCardProps = {
 export const TeslaCard = ({
   className,
   location,
+  heading,
   locked,
   batteryPercentage,
   chargingState,
@@ -96,7 +105,33 @@ export const TeslaCard = ({
                 latitude={location.latitude}
                 anchor="bottom"
               >
-                <div className="size-4 rounded-full border-2 border-info bg-info/50 shadow-md" />
+                <div className="relative">
+                  <div
+                    className="absolute inset-0 blur-sm filter"
+                    style={
+                      heading
+                        ? {
+                            boxShadow: '0 0 10px rgba(255,255,255,0.25)',
+                            transform: `rotate(${heading}deg)`,
+                          }
+                        : undefined
+                    }
+                  />
+                  <Image
+                    alt="tesla model y"
+                    src="/images/tesla/model_y_top_down.png"
+                    width={562 / 14}
+                    height={263 / 14}
+                    style={
+                      heading
+                        ? {
+                            transform: `rotate(${heading}deg)`,
+                          }
+                        : undefined
+                    }
+                  />
+                </div>
+                {/* <div className="size-4 rounded-full border-2 border-info bg-info/50 shadow-md" /> */}
               </Marker>
             </MapBox>
           </div>
@@ -106,7 +141,7 @@ export const TeslaCard = ({
             className="font-semibold"
             style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
           >
-            Tesla Model Y
+            <span>Tesla Model Y</span>
           </p>
           <div className="flex items-center gap-2">
             <BatteryIndicator

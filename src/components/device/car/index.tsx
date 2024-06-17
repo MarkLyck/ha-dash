@@ -26,8 +26,15 @@ const CAR_ENTITY_IDS = {
   lock: 'lock.tesla_model_y_lock',
 }
 
-const fetchTeslaState = async () => {
+const fetchTeslaLocation = async () => {
   const response = await fetch('/api/tessie/location')
+  if (!response.ok) {
+    throw new Error(`Error: ${response.statusText}`)
+  }
+  return response.json()
+}
+const fetchTeslaState = async () => {
+  const response = await fetch('/api/tessie/state')
   if (!response.ok) {
     throw new Error(`Error: ${response.statusText}`)
   }
@@ -40,9 +47,13 @@ type CarProps = {
 
 const CarComponent = ({ className }: CarProps) => {
   const entities = useStore((s) => s.entities)
-  const { data: location } = useQuery({
-    queryKey: ['teslaLocation'],
+  const { data: state } = useQuery({
+    queryKey: ['tesla', 'state'],
     queryFn: fetchTeslaState,
+  })
+  const { data: location } = useQuery({
+    queryKey: ['tesla', 'location'],
+    queryFn: fetchTeslaLocation,
   })
 
   const lockEntity = entities[CAR_ENTITY_IDS.lock]
@@ -54,6 +65,7 @@ const CarComponent = ({ className }: CarProps) => {
     <TeslaCard
       className={className}
       location={location}
+      heading={state?.drive_state.heading}
       locked={lockEntity?.state === 'locked'}
       batteryPercentage={
         batteryEntity?.state ? Number.parseInt(batteryEntity.state) : undefined
