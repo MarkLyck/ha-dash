@@ -14,6 +14,7 @@ export async function GET() {
       `https://api.tessie.com/${process.env.TESLA_VIN}/location`,
       options,
     )
+
     const json = await result.json()
     return NextResponse.json(json)
   } catch (error: any) {
