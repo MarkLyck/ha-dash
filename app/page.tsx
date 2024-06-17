@@ -14,7 +14,6 @@ const Home = () => {
   // const vacuumEntityId = Object.keys(entities).find((entityId) =>
   //   entityId.startsWith('vacuum'),
   // )
-  // console.log('🔈 ~ vacuumEntityId:', vacuumEntityId)
 
   return (
     <div className="flex flex-wrap gap-4 p-4">

@@ -15,7 +15,6 @@ export async function GET() {
       options,
     )
     const json = await result.json()
-    console.log('🔈 ~ json:', json)
     return NextResponse.json(json)
   } catch (error: any) {
     return new Response(`error: ${error.message}`, {
