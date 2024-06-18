@@ -30,7 +30,6 @@ export const TeslaCard = ({
   chargingState,
   gear,
 }: TeslaCardProps) => {
-  console.log('🔈 ~ location:', location)
   const cardRef = useRef<HTMLDivElement>(null)
   const [size, setSize] = useState<{
     width: number | undefined
