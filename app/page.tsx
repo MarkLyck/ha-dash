@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div className="flex flex-wrap gap-4 p-4">
       <AreasCard className="w-full" />
-      <Climate entityId={climateEntityId} />
+      <Climate entityId={climateEntityId} className="w-[280px]" />
       <Car className="w-[280px]" />
     </div>
   )

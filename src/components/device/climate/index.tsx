@@ -7,7 +7,10 @@ import { callService } from '@/lib/hass'
 
 import { ClimateCard } from './Card'
 
-export const Climate = ({ entityId }: { entityId?: string }) => {
+export const Climate = ({
+  entityId,
+  className,
+}: { entityId?: string; className?: string }) => {
   const entities = useStore((s) => s.entities)
 
   if (!entityId) return null
@@ -43,6 +46,7 @@ export const Climate = ({ entityId }: { entityId?: string }) => {
 
   return (
     <ClimateCard
+      className={className}
       name={entity.attributes.friendly_name}
       supportedFeatures={supportedFeatures}
       state={entity.state as 'off' | 'cool' | 'heat' | 'auto'}
