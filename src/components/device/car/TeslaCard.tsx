@@ -30,6 +30,7 @@ export const TeslaCard = ({
   chargingState,
   gear,
 }: TeslaCardProps) => {
+  console.log('🔈 ~ location:', location)
   const cardRef = useRef<HTMLDivElement>(null)
   const [size, setSize] = useState<{
     width: number | undefined
@@ -81,7 +82,7 @@ export const TeslaCard = ({
             </Button>
           </div>
         </div>
-        {location ? (
+        {location?.latitude && location?.longitude ? (
           <div className="absolute top-0 right-0 left-0 z-1 overflow-hidden rounded-lg">
             <div className="pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-[100px] w-full bg-gradient-to-t from-black to-transparent" />
             <MapBox
