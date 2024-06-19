@@ -87,10 +87,9 @@ const CarComponent = ({ className }: CarProps) => {
     <TeslaCard
       className={className}
       location={{
-        address: location.address,
-        latitude: state?.drive_state.latitude ?? location.latitude,
-        longitude: state?.drive_state.longitude ?? location.longitude,
-        saved_location: location.saved_location,
+        ...location,
+        latitude: state?.drive_state.latitude ?? location?.latitude,
+        longitude: state?.drive_state.longitude ?? location?.longitude,
       }}
       heading={state?.drive_state.heading}
       locked={lockEntity?.state === 'locked'}
