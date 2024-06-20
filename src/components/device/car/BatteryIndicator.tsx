@@ -40,7 +40,6 @@ export const BatteryIndicator = ({
         />
       </div>
       <div className="ml-[1px] h-[6px] w-[2px] rounded-r-[1px] bg-neutral-700" />
-      {isCharging && <TbBolt className="ml-2 size-2 text-success" />}
     </div>
   )
 }

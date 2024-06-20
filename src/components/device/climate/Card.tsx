@@ -51,10 +51,10 @@ export const ClimateCard = ({
   const ticks = Array.from({ length: 85 - 65 + 1 }, (_, i) => i + 65)
 
   return (
-    <Card className={cn('relative', className)}>
-      <CardHeader className="p-3">
+    <Card className={cn('relative h-[280px]', className)}>
+      <CardHeader className="p-4">
         <CardTitle className="z-40 flex w-fit items-center gap-2">
-          <StateIcon /> <span>Air Condition</span>
+          <StateIcon /> <span>Thermostat</span>
         </CardTitle>
         <p className="text-sm text-text-sub first-letter:capitalize">
           {state === 'heat' || state === 'cool'
