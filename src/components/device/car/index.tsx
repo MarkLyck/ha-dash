@@ -7,6 +7,7 @@ import { TeslaCard } from './TeslaCard'
 import useStore from '@/lib/useStore'
 import type { ChargingState, ShiftState } from './types'
 import { useEffect } from 'react'
+import { callService } from '@/lib/hass'
 
 const CAR_ENTITY_IDS = {
   battery_level: 'sensor.tesla_model_y_battery_level',
@@ -25,6 +26,7 @@ const CAR_ENTITY_IDS = {
   shift_state: 'sensor.tesla_model_y_shift_state',
   speed: 'sensor.tesla_model_y_speed',
   lock: 'lock.tesla_model_y_lock',
+  climate: 'climate.tesla_model_y_climate',
 }
 
 const fetchTeslaLocation = async () => {
@@ -61,6 +63,27 @@ const CarComponent = ({ className }: CarProps) => {
   const batteryEntity = entities[CAR_ENTITY_IDS.battery_level]
   const chargingEntity = entities[CAR_ENTITY_IDS.charging]
   const shiftStateEntity = entities[CAR_ENTITY_IDS.shift_state]
+  const climateEntity = entities[CAR_ENTITY_IDS.climate]
+
+  const toggleLockTesla = async () => {
+    await callService({
+      domain: 'lock',
+      service: lockEntity?.state === 'locked' ? 'unlock' : 'lock',
+      service_data: {
+        entity_id: lockEntity?.entity_id,
+      },
+    })
+  }
+  const toggleTeslaClimate = async () => {
+    await callService({
+      domain: 'climate',
+      service: 'set_hvac_mode',
+      service_data: {
+        entity_id: climateEntity?.entity_id,
+        hvac_mode: climateEntity?.state === 'off' ? 'heat_cool' : 'off',
+      },
+    })
+  }
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined
@@ -98,6 +121,9 @@ const CarComponent = ({ className }: CarProps) => {
       }
       gear={shiftStateEntity?.state as ShiftState | undefined}
       chargingState={chargingEntity?.state as ChargingState | undefined}
+      toggleLockTesla={toggleLockTesla}
+      toggleTeslaClimate={toggleTeslaClimate}
+      hvacMode={climateEntity?.state}
     />
   )
 }

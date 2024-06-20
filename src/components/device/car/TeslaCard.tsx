@@ -6,7 +6,7 @@ import { env } from '@/../env'
 import Image from 'next/image'
 import type { ChargingState, Location, ShiftState } from './types'
 import { Button } from '@/components/ui/button'
-import { TbLock, TbLockOpen, TbSnowflake, TbSnowflakeOff } from 'react-icons/tb'
+import { TbCarFan, TbLock, TbLockOpen } from 'react-icons/tb'
 import { cn } from '@/lib/utils'
 import { useEffect, useRef, useState } from 'react'
 import { BatteryIndicator } from './BatteryIndicator'
@@ -19,6 +19,9 @@ type TeslaCardProps = {
   batteryPercentage: number | undefined
   chargingState: ChargingState | undefined
   gear: ShiftState | undefined
+  hvacMode: string | undefined
+  toggleLockTesla: () => void
+  toggleTeslaClimate: () => void
 }
 
 export const TeslaCard = ({
@@ -29,6 +32,9 @@ export const TeslaCard = ({
   batteryPercentage,
   chargingState,
   gear,
+  hvacMode,
+  toggleLockTesla,
+  toggleTeslaClimate,
 }: TeslaCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null)
   const [size, setSize] = useState<{
@@ -68,16 +74,20 @@ export const TeslaCard = ({
             <Button
               variant="outline"
               className="rounded-r-none border-r-0"
-              disabled
+              onClick={toggleLockTesla}
             >
               {locked ? <TbLockOpen /> : <TbLock />}
             </Button>
             <Button
               variant="outline"
               className="rounded-l-none border-l-0"
-              disabled
+              onClick={toggleTeslaClimate}
             >
-              {locked ? <TbSnowflake /> : <TbSnowflakeOff />}
+              {!hvacMode || hvacMode === 'off' ? (
+                <TbCarFan />
+              ) : (
+                <TbCarFan className="animate-spin" />
+              )}
             </Button>
           </div>
         </div>
@@ -129,7 +139,7 @@ export const TeslaCard = ({
             </MapBox>
           </div>
         ) : null}
-        <div className="absolute top-3 left-3 space-y-1.5">
+        <div className="absolute top-4 left-4 space-y-1.5">
           <p
             className="font-semibold"
             style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
@@ -142,7 +152,10 @@ export const TeslaCard = ({
               isCharging={chargingState === 'charging'}
             />
             <span
-              className="font-semibold text-text-sub text-xs"
+              className={cn(
+                'font-semibold text-text-sub text-xs',
+                chargingState === 'charging' && 'text-success',
+              )}
               style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
             >
               {batteryPercentage}%
