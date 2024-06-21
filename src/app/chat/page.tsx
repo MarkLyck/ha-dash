@@ -1,81 +1,64 @@
 'use client'
 
-import { useChat } from '@ai-sdk/react'
-import type { ToolInvocation } from 'ai'
+import type { CoreMessage } from 'ai'
+import { useState } from 'react'
+import { continueConversation } from './actions'
+import { readStreamableValue } from 'ai/rsc'
+
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
+// Force the page to be dynamic and allow streaming responses up to 30 seconds
+export const dynamic = 'force-dynamic'
+export const maxDuration = 30
+
 const Chat = () => {
-  const { messages, input, handleInputChange, handleSubmit, addToolResult } =
-    useChat({
-      maxToolRoundtrips: 5,
-      // run client-side tools that are automatically executed:
-      async onToolCall({ toolCall }) {
-        if (toolCall.toolName === 'getLocation') {
-          const cities = ['New York', 'Los Angeles', 'Chicago', 'San Francisco']
-          return cities[Math.floor(Math.random() * cities.length)]
-        }
-      },
-    })
+  const [messages, setMessages] = useState<CoreMessage[]>([])
+  const [input, setInput] = useState('')
+
   return (
     <div className="stretch mx-auto flex w-full max-w-md flex-col py-24">
-      {messages.map((m) => (
+      {messages.map((m, i) => (
         <div
-          key={m.id}
-          className="whitespace-pre-wrap text-gray-500 dark:text-gray-400 mb-4"
+          key={i}
+          className="mb-4 whitespace-pre-wrap text-gray-500 dark:text-gray-400"
         >
           <span className="font-bold text-white">
             {m.role === 'user' ? 'User: ' : 'AI: '}
           </span>
-          <p>{m.content}</p>
-          {m.toolInvocations?.map((toolInvocation: ToolInvocation) => {
-            const toolCallId = toolInvocation.toolCallId
-            const addResult = (result: string) =>
-              addToolResult({ toolCallId, result })
-
-            // render confirmation tool (client-side tool with user interaction)
-            if (toolInvocation.toolName === 'askForConfirmation') {
-              return (
-                <div key={toolCallId}>
-                  {toolInvocation.args.message}
-                  <div>
-                    {'result' in toolInvocation ? (
-                      <b>{toolInvocation.result}</b>
-                    ) : (
-                      <>
-                        <button type="button" onClick={() => addResult('Yes')}>
-                          Yes
-                        </button>
-                        <button type="button" onClick={() => addResult('No')}>
-                          No
-                        </button>
-                      </>
-                    )}
-                  </div>
-                </div>
-              )
-            }
-
-            // other tools:
-            return 'result' in toolInvocation ? (
-              <div key={toolCallId}>
-                Tool call {`${toolInvocation.toolName}: `}
-                {toolInvocation.result}
-              </div>
-            ) : (
-              <div key={toolCallId}>Calling {toolInvocation.toolName}...</div>
-            )
-          })}
-          <br />
+          <p>{m.content as string}</p>
         </div>
       ))}
 
       <div className="flex flex-1 flex-col gap-4">
-        <form onSubmit={handleSubmit} className="grid gap-4">
+        <form
+          className="grid gap-4"
+          action={async () => {
+            const newMessages: CoreMessage[] = [
+              ...messages,
+              { content: input, role: 'user' },
+            ]
+
+            setMessages(newMessages)
+            setInput('')
+
+            const result = await continueConversation(newMessages)
+
+            for await (const content of readStreamableValue(result)) {
+              setMessages([
+                ...newMessages,
+                {
+                  role: 'assistant',
+                  content: content as string,
+                },
+              ])
+            }
+          }}
+        >
           <Input
             value={input}
             placeholder="Type your question here..."
-            onChange={handleInputChange}
+            onChange={(e) => setInput(e.target.value)}
           />
           <Button type="submit">Ask AI</Button>
         </form>

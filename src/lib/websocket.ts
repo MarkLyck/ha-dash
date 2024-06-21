@@ -23,6 +23,7 @@ import {
   stateSchema,
 } from '@/lib/types/homeAssistant'
 import useStore from '@/lib/useStore'
+import { getAIData } from './aiData'
 
 export let connection: Connection
 
@@ -92,6 +93,8 @@ export const connectToHASS = () => {
       setDevices(devices)
       setStates(states)
       setEntityRegistry(configEntityRegistryList)
+
+      getAIData()
 
       await getUser(connection).then((_user: HassUser) => {
         // no empty arrow functions
