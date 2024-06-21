@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json()
 
   const result = await streamText({
-    model: openai('gpt-4o'),
+    model: openai('gpt-3.5-turbo'),
     system:
       'You are a helpful smart home assistant controlling a homeassistant instance',
     messages: convertToCoreMessages(messages),
