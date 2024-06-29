@@ -14,6 +14,7 @@ export const maxDuration = 30
 
 const Chat = () => {
   const [messages, setMessages] = useState<CoreMessage[]>([])
+  console.log('🔈 ~ messages:', messages)
   const [input, setInput] = useState('')
 
   return (
