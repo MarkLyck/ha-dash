@@ -101,23 +101,21 @@ export const getAIData = () => {
     services: filterServices(state.services),
   }
 
-  const initialAIData = aiObject.devices.map((device) => {
-    const deviceEntities = aiObject.entities.filter(
-      (entity) => entity.device_id === device.id,
-    )
+  // const initialAIData = aiObject.devices.map((device) => {
+  //   const deviceEntities = aiObject.entities.filter(
+  //     (entity) => entity.device_id === device.id,
+  //   )
 
-    return {
-      device_id: device.id,
-      area_id: device.area_id,
-      name: device.name,
-      friendly_name: device.friendly_name,
-      entities: deviceEntities.map(
-        (entity) => entity.attributes.friendly_name ?? entity.original_name,
-      ),
-    }
-  })
+  //   return {
+  //     device_id: device.id,
+  //     area_id: device.area_id,
+  //     name: device.name,
+  //     friendly_name: device.friendly_name,
+  //     entities: deviceEntities.map(
+  //       (entity) => entity.attributes.friendly_name ?? entity.original_name,
+  //     ),
+  //   }
+  // })
 
-  console.log('🔈 ~ aiObject:', aiObject)
-  console.log('🔈 ~ initialAIData:', initialAIData)
   return aiObject
 }

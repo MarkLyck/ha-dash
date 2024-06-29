@@ -20,6 +20,7 @@ const Chat = () => {
     <div className="stretch mx-auto flex w-full max-w-md flex-col py-24">
       {messages.map((m, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           key={i}
           className="mb-4 whitespace-pre-wrap text-gray-500 dark:text-gray-400"
         >
