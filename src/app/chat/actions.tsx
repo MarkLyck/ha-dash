@@ -7,6 +7,8 @@ import z from 'zod'
 
 import { deviceList } from './data'
 
+const validIds = deviceList.map((device) => device.device_id)
+
 export async function continueConversation(messages: CoreMessage[]) {
   const formattedDeviceList = deviceList
     .map(
@@ -32,17 +34,6 @@ ${index + 1}. Device ID: ${device.device_id}
     
     Do not invent or create new device IDs.
     `,
-    // Example:
-    // User: Turn on the office light
-    // Assistant: Certainly! I'll turn on the office light for you. Let me fetch the device information.
-
-    // To do this, I'll use the getDevice tool with the device ID for the office corner lamp.
-
-    // getDevice(device_id: "e47d99aae59c29200828536dc821c681")
-
-    // [Wait for tool response]
-
-    // Great! I've retrieved the information for the office corner lamp. I'll proceed to turn it on for you.`,
     messages: messages,
     tools: {
       getDevice: {
@@ -52,8 +43,6 @@ ${index + 1}. Device ID: ${device.device_id}
           device_id: z.string().describe('The device_id from the device list'),
         }),
         execute: async ({ device_id }) => {
-          console.log('🔈 ~ device_id:', device_id)
-          const validIds = deviceList.map((device) => device.device_id)
           if (!validIds.includes(device_id)) {
             return `Error: Invalid device ID. Please use one of the following: ${validIds.join(', ')}`
           }
@@ -62,8 +51,6 @@ ${index + 1}. Device ID: ${device.device_id}
       },
     },
   })
-
-  // ... rest of your function
 
   const stream = createStreamableValue(result.textStream)
   return stream.value
