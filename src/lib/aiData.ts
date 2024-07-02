@@ -25,6 +25,8 @@ const formatDevices = (devices: Device[]) => {
       }
     })
     .filter((device) => {
+      if (!device.area_id) return false
+      if (device.name === 'Sun') return false
       if (device.manufacturer === 'Home Assistant') return false
       if (device.manufacturer === 'Official add-ons') return false
       if (device.manufacturer === 'hacs.xyz') return false
@@ -81,6 +83,7 @@ function filterServices(services: Record<string, any>) {
 
 export const getAIData = () => {
   const state = useStore.getState()
+  console.log('🔈 ~ state:', state)
 
   const formattedDevices = formatDevices(state.devices)
   const deviceIds = formattedDevices.map((device) => device.id)
@@ -101,21 +104,23 @@ export const getAIData = () => {
     services: filterServices(state.services),
   }
 
-  // const initialAIData = aiObject.devices.map((device) => {
-  //   const deviceEntities = aiObject.entities.filter(
-  //     (entity) => entity.device_id === device.id,
-  //   )
+  const initialAIData = aiObject.devices.map((device) => {
+    const deviceEntities = aiObject.entities.filter(
+      (entity) => entity.device_id === device.id,
+    )
 
-  //   return {
-  //     device_id: device.id,
-  //     area_id: device.area_id,
-  //     name: device.name,
-  //     friendly_name: device.friendly_name,
-  //     entities: deviceEntities.map(
-  //       (entity) => entity.attributes.friendly_name ?? entity.original_name,
-  //     ),
-  //   }
-  // })
+    return {
+      device_id: device.id,
+      area_id: device.area_id,
+      name: device.friendly_name,
+      domains: [
+        ...new Set(
+          deviceEntities.map((entity) => entity.entity_id.split('.')[0]),
+        ),
+      ],
+    }
+  })
+  console.log('🔈 ~ initialAIData:', initialAIData)
 
   return aiObject
 }
