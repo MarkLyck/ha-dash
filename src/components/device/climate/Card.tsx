@@ -16,9 +16,11 @@ import { Button } from '@/components/ui/button'
 export interface ClimateCardProps {
   className?: string
   name?: string
-  state: 'heat' | 'cool' | 'auto' | 'off'
+  state: 'heat' | 'cool' | 'auto' | 'off' | 'heat_cool'
   currentTemperature: number
-  targetTemperature: number
+  targetTemperature?: number
+  targetTemperatureLow?: number
+  targetTemperatureHigh?: number
   setState: (state: 'heat' | 'cool' | 'auto' | 'off') => void
   setTargetTemperature: (temperature: number) => void
   supportedFeatures: Map<ClimateFeature, number>
@@ -29,11 +31,15 @@ export const ClimateCard = ({
   state,
   currentTemperature,
   targetTemperature,
+  targetTemperatureLow,
+  targetTemperatureHigh,
   setState,
   setTargetTemperature,
   supportedFeatures,
 }: ClimateCardProps) => {
-  const [targetTempValue, setTargetTempValue] = useState(targetTemperature)
+  const [targetTempValue, setTargetTempValue] = useState<number>(
+    Number(targetTemperature),
+  )
   const debouncedSetTargetTemperature = useRef(
     debounce((value: number) => setTargetTemperature(value), 300),
   ).current
@@ -46,6 +52,8 @@ export const ClimateCard = ({
   } else if (state === 'cool') {
     StateIcon = TbSnowflake
     stateText = 'cooling'
+  } else if (state === 'heat_cool') {
+    stateText = 'heating and cooling'
   }
 
   const ticks = Array.from({ length: 85 - 65 + 1 }, (_, i) => i + 65)
@@ -75,15 +83,15 @@ export const ClimateCard = ({
             className="w-[136px] hover:bg-warning hover:text-white"
             disabled={!supportedFeatures.has('TARGET_TEMPERATURE')}
             onClick={() => {
-              setTargetTempValue(Math.round(targetTemperature) + 1)
-              debouncedSetTargetTemperature(Math.round(targetTemperature) + 1)
+              setTargetTempValue(Math.round(targetTempValue) + 1)
+              debouncedSetTargetTemperature(Math.round(targetTempValue) + 1)
             }}
           >
             <TbChevronUp size={20} />
           </Button>
           <div className="relative rounded-lg bg-neutral-100 dark:bg-neutral-800">
             <div className="fond-bold flex w-[136px] items-center justify-center gap-2 text-[32px]">
-              <span>{Math.round(targetTempValue)}</span>
+              <span>{Math.round(Number(targetTempValue))}</span>
             </div>
           </div>
           <Button
@@ -91,8 +99,8 @@ export const ClimateCard = ({
             className="w-[136px] hover:bg-info hover:text-white"
             disabled={!supportedFeatures.has('TARGET_TEMPERATURE')}
             onClick={() => {
-              setTargetTempValue(Math.round(targetTemperature) - 1)
-              debouncedSetTargetTemperature(Math.round(targetTemperature) - 1)
+              setTargetTempValue(Math.round(targetTempValue) - 1)
+              debouncedSetTargetTemperature(Math.round(targetTempValue) - 1)
             }}
           >
             <TbChevronDown size={20} />
@@ -147,6 +155,10 @@ export const ClimateCard = ({
           {ticks.reverse().map((tick) => {
             const isCurrentTemp = tick === Math.round(currentTemperature)
             const isTargetTemp = tick === Math.round(targetTempValue)
+            const isTargetTempLow =
+              tick === Math.round(Number(targetTemperatureLow))
+            const isTargetTempHigh =
+              tick === Math.round(Number(targetTemperatureHigh))
 
             return (
               <div key={tick} className="relative z-1">
@@ -157,11 +169,23 @@ export const ClimateCard = ({
                     tick % 5 === 0 && 'w-6',
                     isCurrentTemp && 'bg-white dark:bg-white',
                     isTargetTemp && 'bg-info dark:bg-info',
+                    isTargetTempLow && 'bg-info dark:bg-info',
+                    isTargetTempHigh && 'bg-warning dark:bg-warning',
                   )}
                 />
+                {isTargetTempLow && (
+                  <div className="-translate-y-1/2 absolute top-1/2 right-8 z-30 rounded bg-info px-1 py-0.5 text-[14px] text-white shadow">
+                    {Math.round(Number(targetTemperatureLow))}°
+                  </div>
+                )}
                 {isTargetTemp && (
                   <div className="-translate-y-1/2 absolute top-1/2 right-8 z-30 rounded bg-info px-1 py-0.5 text-[14px] text-white shadow">
                     {Math.round(targetTempValue)}°
+                  </div>
+                )}
+                {isTargetTempHigh && (
+                  <div className="-translate-y-1/2 absolute top-1/2 right-8 z-30 rounded bg-warning px-1 py-0.5 text-[14px] text-white shadow">
+                    {Math.round(Number(targetTemperatureHigh))}°
                   </div>
                 )}
                 {tick % 5 === 0 && (

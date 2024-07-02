@@ -15,8 +15,7 @@ export async function continueConversation(messages: CoreMessage[]) {
       (device, index) => `
 ${index + 1}. Device ID: ${device.device_id}
    Area: ${device.area_id}
-   Name: ${device.name}
-   Friendly Name: ${device.friendly_name}
+   Name: ${device.friendly_name}
 `,
     )
     .join('\n')
