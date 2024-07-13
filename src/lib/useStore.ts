@@ -1,4 +1,5 @@
 import type {
+  Connection,
   HassConfig,
   HassEntities,
   HassServices,
@@ -22,6 +23,8 @@ interface StoreType {
   setConfig: (config: HassConfig) => void
   devices: Device[]
   setDevices: (deviceRegistry: Device[]) => void
+  connection: Connection | null
+  setConnection: (connection: Connection) => void
 }
 
 const useStore = create<StoreType>((set) => ({
@@ -39,6 +42,8 @@ const useStore = create<StoreType>((set) => ({
   setConfig: (config) => set(() => ({ config })),
   devices: [],
   setDevices: (devices) => set(() => ({ devices })),
+  connection: null,
+  setConnection: (connection) => set(() => ({ connection })),
 }))
 
 export default useStore

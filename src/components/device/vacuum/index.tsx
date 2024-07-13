@@ -2,24 +2,24 @@ import useStore from '@/lib/useStore'
 import { callService } from '@/lib/hass'
 
 import { VacuumCard } from './Card'
-import { getSupportedFeatures } from '@/lib/supportedFeatures'
+// import { getSupportedFeatures } from '@/lib/supportedFeatures'
 
-export const Vacuum = ({
-  entityId,
-}: {
+type VacuumProps = {
   entityId?: string
-}) => {
+  className?: string
+}
+
+export const Vacuum = ({ entityId, className }: VacuumProps) => {
   const entities = useStore((s) => s.entities)
 
   if (!entityId) return null
   const entity = entities[entityId]
-  console.log('🔈 ~ entity:', entity)
   if (!entity) return null
 
-  const supportedFeatures = getSupportedFeatures(
-    'vacuum',
-    entity.attributes.supported_features,
-  )
+  // const supportedFeatures = getSupportedFeatures(
+  //   'vacuum',
+  //   entity.attributes.supported_features,
+  // )
 
   const startVacuum = async () => {
     await callService({
@@ -30,7 +30,7 @@ export const Vacuum = ({
     })
   }
 
-  console.log(supportedFeatures)
+  // console.log(supportedFeatures)
 
-  return <VacuumCard className="w-[280px]" startVacuum={startVacuum} />
+  return <VacuumCard className={className} startVacuum={startVacuum} />
 }

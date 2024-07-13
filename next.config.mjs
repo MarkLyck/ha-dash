@@ -14,6 +14,12 @@ const config = {
       },
       {
         protocol: 'http',
+        hostname: 'ha.lyck.app',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
         hostname: 'homeassistant.local',
         port: '8123',
         pathname: '/**',
