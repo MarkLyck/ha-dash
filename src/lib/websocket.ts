@@ -69,10 +69,6 @@ export const connectToHASS = () => {
         throw err
       }
 
-      connection.subscribeEvents((event) => {
-        console.log('Assist Pipeline Event:', event)
-      }, 'assist_pipeline_event')
-
       subscribeEntities(connection, setEntities)
       subscribeServices(connection, setServices)
       subscribeConfig(connection, setConfig)

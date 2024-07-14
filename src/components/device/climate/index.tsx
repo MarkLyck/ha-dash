@@ -21,7 +21,6 @@ export const Climate = ({
     'climate',
     entity.attributes.supported_features,
   )
-  console.log('🔈 ~ entity:', entity)
 
   const setState = async (state: 'off' | 'cool' | 'heat' | 'auto') => {
     await callService({

@@ -21,7 +21,7 @@ const Home = () => {
   )
 
   return (
-    <div className="relative flex flex-wrap gap-4 p-4">
+    <div className="flex flex-wrap gap-4 p-4">
       <AreasCard className="w-full" />
       <Climate entityId={climateEntityId} className="w-[280px]" />
       <Car className="w-[280px]" />

@@ -83,7 +83,6 @@ function filterServices(services: Record<string, any>) {
 
 export const getAIData = () => {
   const state = useStore.getState()
-  console.log('🔈 ~ state:', state)
 
   const formattedDevices = formatDevices(state.devices)
   const deviceIds = formattedDevices.map((device) => device.id)
@@ -104,23 +103,22 @@ export const getAIData = () => {
     services: filterServices(state.services),
   }
 
-  const initialAIData = aiObject.devices.map((device) => {
-    const deviceEntities = aiObject.entities.filter(
-      (entity) => entity.device_id === device.id,
-    )
+  // const initialAIData = aiObject.devices.map((device) => {
+  //   const deviceEntities = aiObject.entities.filter(
+  //     (entity) => entity.device_id === device.id,
+  //   )
 
-    return {
-      device_id: device.id,
-      area_id: device.area_id,
-      name: device.friendly_name,
-      domains: [
-        ...new Set(
-          deviceEntities.map((entity) => entity.entity_id.split('.')[0]),
-        ),
-      ],
-    }
-  })
-  console.log('🔈 ~ initialAIData:', initialAIData)
+  //   return {
+  //     device_id: device.id,
+  //     area_id: device.area_id,
+  //     name: device.friendly_name,
+  //     domains: [
+  //       ...new Set(
+  //         deviceEntities.map((entity) => entity.entity_id.split('.')[0]),
+  //       ),
+  //     ],
+  //   }
+  // })
 
   return aiObject
 }
