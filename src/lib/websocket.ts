@@ -23,7 +23,6 @@ import {
   stateSchema,
 } from '@/lib/types/homeAssistant'
 import useStore from '@/lib/useStore'
-import { getAIData } from './aiData'
 
 export let connection: Connection
 
@@ -51,6 +50,9 @@ const setDevices = (devices: Device[]) => {
 const setStates = (states: State[]) => {
   useStore.getState().setStates(states)
 }
+const setConnection = (connection: Connection) => {
+  useStore.getState().setConnection(connection)
+}
 
 export const connectToHASS = () => {
   if (!connection) {
@@ -66,6 +68,10 @@ export const connectToHASS = () => {
         console.error('Failed to connect to Home Assistant:', err)
         throw err
       }
+
+      connection.subscribeEvents((event) => {
+        console.log('Assist Pipeline Event:', event)
+      }, 'assist_pipeline_event')
 
       subscribeEntities(connection, setEntities)
       subscribeServices(connection, setServices)
@@ -93,8 +99,7 @@ export const connectToHASS = () => {
       setDevices(devices)
       setStates(states)
       setEntityRegistry(configEntityRegistryList)
-
-      getAIData()
+      setConnection(connection)
 
       await getUser(connection).then((_user: HassUser) => {
         // no empty arrow functions

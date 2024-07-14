@@ -76,7 +76,7 @@ export const TeslaCard = ({
               className="rounded-r-none border-r-0"
               onClick={toggleLockTesla}
             >
-              {locked ? <TbLockOpen /> : <TbLock />}
+              {locked ? <TbLock /> : <TbLockOpen />}
             </Button>
             <Button
               variant="outline"

@@ -21,6 +21,7 @@ export const Climate = ({
     'climate',
     entity.attributes.supported_features,
   )
+  console.log('🔈 ~ entity:', entity)
 
   const setState = async (state: 'off' | 'cool' | 'heat' | 'auto') => {
     await callService({
@@ -52,6 +53,8 @@ export const Climate = ({
       state={entity.state as 'off' | 'cool' | 'heat' | 'auto'}
       currentTemperature={entity.attributes.current_temperature}
       targetTemperature={entity.attributes.temperature}
+      targetTemperatureLow={entity.attributes.target_temp_low}
+      targetTemperatureHigh={entity.attributes.target_temp_high}
       setState={setState}
       setTargetTemperature={setTargetTemperature}
     />

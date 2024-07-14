@@ -91,11 +91,45 @@ export const CLIMATE_FEATURES_BIT_MAP: Record<number, ClimateFeature> = {
   256: 'TURN_ON',
 }
 
+export type VacuumFeature =
+  | 'TURN_ON' // Deprecated, not supported by StateVacuumEntity
+  | 'TURN_OFF' // Deprecated, not supported by StateVacuumEntity
+  | 'PAUSE'
+  | 'STOP'
+  | 'RETURN_HOME'
+  | 'FAN_SPEED'
+  | 'BATTERY'
+  | 'STATUS' // Deprecated, not supported by StateVacuumEntity
+  | 'SEND_COMMAND'
+  | 'LOCATE'
+  | 'CLEAN_SPOT'
+  | 'MAP'
+  | 'STATE' // Must be set by vacuum platforms derived from StateVacuumEntity
+  | 'START'
+
+export const VACUUM_FEATURES_BIT_MAP: Record<number, VacuumFeature> = {
+  1: 'TURN_ON',
+  2: 'TURN_OFF',
+  4: 'PAUSE',
+  8: 'STOP',
+  16: 'RETURN_HOME',
+  32: 'FAN_SPEED',
+  64: 'BATTERY',
+  128: 'STATUS',
+  256: 'SEND_COMMAND',
+  512: 'LOCATE',
+  1024: 'CLEAN_SPOT',
+  2048: 'MAP',
+  4096: 'STATE',
+  8192: 'START',
+}
+
 // Unified object holding all your feature maps
 const FEATURE_MAPS = {
   light: LIGHT_FEATURES_BIT_MAP,
   media_player: MEDIA_PLAYER_FEATURES_BIT_MAP,
   climate: CLIMATE_FEATURES_BIT_MAP,
+  vacuum: VACUUM_FEATURES_BIT_MAP,
   // Add more feature maps here...
 } as const
 
