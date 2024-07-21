@@ -16,38 +16,24 @@ import {
 import { Input } from '../ui/input'
 import { cn } from '@/lib/utils'
 
+import type { Connection, UnsubscribeFunc } from 'home-assistant-js-websocket'
+
+interface AssistPipelineResponse {
+  type: 'run-start' | 'run-end' | 'intent-start' | 'intent-end'
+  timestamp: string
+  data: any
+}
+
+interface AssistPipelineResult {
+  [key: string]: any
+}
+
 type ChatProps = {} & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 type Message = {
   role: 'user' | 'assistant'
   content: string
   date: Date
-}
-
-type AssistantResponseData =
-  | {
-      code: 'no_intent_match'
-    }
-  | {
-      failed?: { id: string; name: string; entity: string }[]
-      success?: { id: string; name: string; entity: string }[]
-      targets?: []
-    }
-
-type AssistantResponse = {
-  response: {
-    speech: {
-      plain: {
-        speech: string
-        extra_data: unknown | null
-      }
-    }
-    card: unknown
-    language: 'en'
-    response_type: 'error' | 'query_answer'
-    data: AssistantResponseData
-  }
-  conversation_id: null
 }
 
 const messageClass = tv({
@@ -63,7 +49,7 @@ const messageClass = tv({
 export const Chat = ({ className }: ChatProps) => {
   const audioRef = useRef<HTMLAudioElement>(null)
   const messagesContainerRef = useRef(null)
-  const [isMuted, setIsMuted] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
   const [messages, setMessages] = useState<Message[]>([])
   const connection = useStore((s) => s.connection)
   const form = useForm({
@@ -100,46 +86,81 @@ export const Chat = ({ className }: ChatProps) => {
     scrollToBottom()
   }, [messages.length])
 
+  const runAssistPipeline = async (
+    connection: Connection,
+    message: string,
+  ): Promise<AssistPipelineResult> => {
+    return new Promise<AssistPipelineResult>((resolve, reject) => {
+      const pipelineResult: AssistPipelineResult = {}
+      let unsubscribeFunc: UnsubscribeFunc | null = null
+
+      const setupSubscription = async () => {
+        unsubscribeFunc = await connection.subscribeMessage(
+          async (event: AssistPipelineResponse) => {
+            if (event.type === 'intent-end') {
+              const responseMessage =
+                event.data?.intent_output.response.speech.plain.speech
+
+              if (!isMuted) {
+                const voiceResponse =
+                  await getElevenLabsResponse(responseMessage)
+
+                const reader = new FileReader()
+                reader.readAsDataURL(voiceResponse)
+                reader.onload = () => {
+                  if (audioRef.current) {
+                    audioRef.current.src = reader.result as string
+                    audioRef.current.play()
+                  }
+                }
+              }
+
+              setMessages((prev) => [
+                ...prev,
+                {
+                  role: 'assistant',
+                  content: responseMessage,
+                  date: new Date(),
+                },
+              ])
+            }
+
+            if (event.type === 'run-end') {
+              unsubscribeFunc?.()
+              resolve(pipelineResult)
+            }
+          },
+          {
+            type: 'assist_pipeline/run',
+            start_stage: 'intent',
+            end_stage: 'intent',
+            input: {
+              text: message,
+            },
+          },
+        )
+      }
+
+      setupSubscription().catch(reject)
+
+      // Optional: Set a timeout in case the pipeline doesn't complete
+      setTimeout(() => {
+        if (unsubscribeFunc) {
+          unsubscribeFunc()
+        }
+        reject(new Error('Pipeline timed out'))
+      }, 30000) // 30 seconds timeout
+    })
+  }
+
   const onSubmit = async ({ message }: { message: string }) => {
     form.reset()
-    if (!message) return
-
+    if (!message || !connection) return
     setMessages((prev) => [
       ...prev,
       { role: 'user', content: message, date: new Date() },
     ])
-    const result: AssistantResponse | undefined =
-      await connection?.sendMessagePromise({
-        type: 'conversation/process',
-        text: message,
-        language: 'en',
-        conversation_id: '01hfmxf4d3d3crfpctk4z5tcsa',
-      })
-    if (result?.response?.speech?.plain?.speech) {
-      const responseMessage = result.response.speech.plain.speech
-
-      if (!isMuted) {
-        const voiceResponse = await getElevenLabsResponse(responseMessage)
-
-        const reader = new FileReader()
-        reader.readAsDataURL(voiceResponse)
-        reader.onload = () => {
-          if (audioRef.current) {
-            audioRef.current.src = reader.result as string
-            audioRef.current.play()
-          }
-        }
-      }
-
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: result.response.speech.plain.speech,
-          date: new Date(),
-        },
-      ])
-    }
+    await runAssistPipeline(connection, message)
   }
 
   return (
